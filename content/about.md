@@ -1,7 +1,5 @@
 ---
-title: "About Us - Your Site Title"
-description: "Your about page description goes here"
+title: "About Us - Get Ahead Shot Photography"
+description: "Professional photography services by Kevin Elwell"
 pageTitle: "About Us"
 ---
-
-Your content goes here. Create more components to add more content.

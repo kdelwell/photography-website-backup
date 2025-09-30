@@ -12,7 +12,9 @@
     "lint": "next lint",
     "clean": "./scripts/cleanup.sh",
     "logs": "tail -f logs/dev-server.log",
-    "logs:error": "tail -f logs/dev-server-errors.log"
+    "logs:error": "tail -f logs/dev-server-errors.log",
+    "deploy": "node scripts/deploy.js",
+    "deploy:preview": "vercel"
   },
   "keywords": [],
   "author": "",
@@ -23,6 +25,7 @@
     "autoprefixer": "10.4.21",
     "gray-matter": "4.0.3",
     "lucide-react": "0.539.0",
+    "marked": "^16.3.0",
     "next": "15.4.6",
     "next-seo": "6.8.0",
     "postcss": "8.5.6",

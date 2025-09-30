@@ -1,7 +1,8 @@
 ---
-title: "Pricing - Your Site Title"
-description: "Your pricing page description goes here"
-pageTitle: "Our Pricing"
+title: Pricing
+description: Professional headshot photography pricing and packages
 ---
 
-Your content goes here. Create more components to add more content.
+# Pricing
+
+Our professional headshot pricing and packages are designed to meet your needs.
