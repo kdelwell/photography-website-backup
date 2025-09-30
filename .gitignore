@@ -14,3 +14,8 @@ yarn.lock
 # Cache directories
 node_modules/.cache
 .next/cache
+# Large video files
+public/images/groups/Headshots_Groups.mp4
+public/images/groups/Corp_Testimony.mp4
+public/images/Web banner_small.mp4
+
