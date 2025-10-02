@@ -236,8 +236,8 @@ export default function Option3({ frontmatter, content }: { frontmatter: any; co
             >
               Book Your Session
             </Link>
-            <Link 
-              href="/pricing" 
+            <Link
+              href="/more_info"
               className="border-2 border-white text-white hover:bg-white hover:text-[#242424] px-10 py-5 rounded-lg text-xl font-semibold transition-colors"
             >
               View Pricing

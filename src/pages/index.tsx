@@ -70,8 +70,8 @@ export default function Home({ frontmatter, content }: { frontmatter: any; conte
             </p>
             
             <div className="flex justify-center">
-              <a 
-                href="https://getaheadshot.net/professionalpricing" 
+              <a
+                href="/more_info"
                 className="bg-red-500 hover:bg-red-600 text-white px-10 py-5 rounded-lg text-xl font-semibold transition-colors"
               >
                 Get Pricing

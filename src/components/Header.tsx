@@ -7,12 +7,12 @@ export default function Header() {
   const [isMenuOpen, setIsMenuOpen] = useState(false)
 
   const navigation = [
-    { name: 'GROUPS', href: 'https://getaheadshot.net/groups', external: true },
+    { name: 'GROUPS', href: '/groups', external: false },
     { name: 'FAQS', href: '/faqs', external: false },
-    { name: 'ARTICLES', href: 'https://getaheadshot.net/articles', external: true },
-    { name: 'TERMS', href: 'https://getaheadshot.net/terms', external: true },
-    { name: 'PREP TIPS', href: 'https://getaheadshot.net/prep', external: true },
-    { name: 'HAIR & MAKEUP', href: 'https://getaheadshot.net/hairandmakeup', external: true },
+    { name: 'ARTICLES', href: '/articles', external: false },
+    { name: 'TERMS', href: '/terms', external: false },
+    { name: 'PREP TIPS', href: '/prep', external: false },
+    { name: 'HAIR & MAKEUP', href: '/hair', external: false },
   ]
 
   return (
@@ -37,14 +37,12 @@ export default function Header() {
 
             {/* Right side - Get Pricing button and mobile menu */}
             <div className="flex items-center space-x-4">
-              <a 
-                href="https://getaheadshot.net/professionalpricing" 
+              <Link
+                href="/more_info"
                 className="bg-red-600 hover:bg-red-700 text-white px-3 py-1.5 md:px-6 md:py-2 lg:px-8 lg:py-2 rounded-md font-semibold text-xs md:text-sm lg:text-lg transition-colors duration-200"
-                target="_blank"
-                rel="noopener noreferrer"
               >
                 Get Pricing
-              </a>
+              </Link>
             </div>
           </div>
         </div>

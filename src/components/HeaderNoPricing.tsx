@@ -7,12 +7,12 @@ export default function HeaderNoPricing() {
   const [isMenuOpen, setIsMenuOpen] = useState(false)
 
   const navigation = [
-    { name: 'GROUPS', href: 'https://getaheadshot.net/groups', external: true },
+    { name: 'GROUPS', href: '/groups', external: false },
     { name: 'FAQS', href: '/faqs', external: false },
-    { name: 'ARTICLES', href: 'https://getaheadshot.net/articles', external: true },
-    { name: 'TERMS', href: 'https://getaheadshot.net/terms', external: true },
-    { name: 'PREP TIPS', href: 'https://getaheadshot.net/prep', external: true },
-    { name: 'HAIR & MAKEUP', href: 'https://getaheadshot.net/hairandmakeup', external: true },
+    { name: 'ARTICLES', href: '/articles', external: false },
+    { name: 'TERMS', href: '/terms', external: false },
+    { name: 'PREP TIPS', href: '/prep', external: false },
+    { name: 'HAIR & MAKEUP', href: '/hair', external: false },
   ]
 
   return (

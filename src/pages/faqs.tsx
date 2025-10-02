@@ -1,7 +1,7 @@
 import Layout from '@/components/Layout'
 import Image from 'next/image'
 import { useState } from 'react'
-import { ChevronDown, ChevronUp } from 'lucide-react'
+import { ChevronDown, ChevronUp, X } from 'lucide-react'
 
 interface FAQItem {
   question: string
@@ -37,10 +37,28 @@ const faqData: FAQItem[] = [
 
 export default function FAQs() {
   const [openIndex, setOpenIndex] = useState<number | null>(null)
+  const [lightboxOpen, setLightboxOpen] = useState(false)
+  const [lightboxImage, setLightboxImage] = useState('')
 
   const toggleFAQ = (index: number) => {
     setOpenIndex(openIndex === index ? null : index)
   }
+
+  const openLightbox = (imageSrc: string) => {
+    setLightboxImage(imageSrc)
+    setLightboxOpen(true)
+  }
+
+  const closeLightbox = () => {
+    setLightboxOpen(false)
+  }
+
+  const faqImages = [
+    { src: '/images/faqs/Abdullah.jpg', alt: 'Professional headshot of Abdullah' },
+    { src: '/images/faqs/Abha.jpg', alt: 'Professional headshot of Abha' },
+    { src: '/images/faqs/Bernice.jpg', alt: 'Professional headshot of Bernice' },
+    { src: '/images/faqs/Mike.jpg', alt: 'Professional headshot of Mike' }
+  ]
 
   return (
     <Layout title="FAQs - Professional Headshot Photography" description="Frequently asked questions about professional headshot photography services">
@@ -54,41 +72,21 @@ export default function FAQs() {
 
         {/* Hero Images Section */}
         <div className="w-full bg-white pb-8">
-          <div className="max-w-7xl mx-auto px-4">
-            <div className="grid grid-cols-2 md:grid-cols-4 gap-0">
-              <div className="relative aspect-[4/3]">
+          <div className="grid grid-cols-2 md:grid-cols-4 gap-0">
+            {faqImages.map((image, index) => (
+              <div
+                key={index}
+                className="relative aspect-[4/3] cursor-pointer"
+                onClick={() => openLightbox(image.src)}
+              >
                 <Image
-                  src="/images/faqs/Abdullah.jpg"
-                  alt="Professional headshot of Abdullah"
+                  src={image.src}
+                  alt={image.alt}
                   fill
                   className="object-cover"
                 />
               </div>
-              <div className="relative aspect-[4/3]">
-                <Image
-                  src="/images/faqs/Abha.jpg"
-                  alt="Professional headshot of Abha"
-                  fill
-                  className="object-cover"
-                />
-              </div>
-              <div className="relative aspect-[4/3]">
-                <Image
-                  src="/images/faqs/Bernice.jpg"
-                  alt="Professional headshot of Bernice"
-                  fill
-                  className="object-cover"
-                />
-              </div>
-              <div className="relative aspect-[4/3]">
-                <Image
-                  src="/images/faqs/Mike.jpg"
-                  alt="Professional headshot of Mike"
-                  fill
-                  className="object-cover"
-                />
-              </div>
-            </div>
+            ))}
           </div>
         </div>
 
@@ -155,6 +153,31 @@ export default function FAQs() {
             </div>
           </div>
         </div>
+
+        {/* Image Lightbox */}
+        {lightboxOpen && (
+          <div
+            className="fixed inset-0 bg-black bg-opacity-95 z-50 flex items-center justify-center p-4"
+            onClick={closeLightbox}
+          >
+            <div className="relative max-w-6xl max-h-full w-full">
+              <button
+                onClick={closeLightbox}
+                className="absolute top-4 right-4 text-white text-3xl hover:text-gray-300 z-10"
+              >
+                <X className="w-8 h-8" />
+              </button>
+              <Image
+                src={lightboxImage}
+                alt="Enlarged view"
+                width={1200}
+                height={900}
+                className="w-full h-auto max-h-screen object-contain rounded-lg"
+                onClick={(e) => e.stopPropagation()}
+              />
+            </div>
+          </div>
+        )}
       </div>
     </Layout>
   )
