@@ -4,15 +4,15 @@ import { ChevronLeft, ChevronRight, X } from 'lucide-react'
 
 const DoubletakesCarousel = () => {
   const images = [
-    { src: '/images/doubletakes/Chris.jpg', alt: 'Chris Professional Headshot' },
-    { src: '/images/doubletakes/Dan.jpg', alt: 'Dan Professional Headshot' },
-    { src: '/images/doubletakes/Derrick.jpg', alt: 'Derrick Professional Headshot' },
-    { src: '/images/doubletakes/Kristie.jpg', alt: 'Kristie Professional Headshot' },
-    { src: '/images/doubletakes/Kristin.jpg', alt: 'Kristin Professional Headshot' },
-    { src: '/images/doubletakes/Phillipe.jpg', alt: 'Phillipe Professional Headshot' },
-    { src: '/images/doubletakes/Raph.jpg', alt: 'Raph Professional Headshot' },
-    { src: '/images/doubletakes/Riz.jpg', alt: 'Riz Professional Headshot' },
-    { src: '/images/doubletakes/Tristan.jpg', alt: 'Tristan Professional Headshot' }
+    { src: '/images/DoubleTakes/Chris.jpg', alt: 'Chris Professional Headshot' },
+    { src: '/images/DoubleTakes/Dan.jpg', alt: 'Dan Professional Headshot' },
+    { src: '/images/DoubleTakes/Derrick.jpg', alt: 'Derrick Professional Headshot' },
+    { src: '/images/DoubleTakes/Kristie.jpg', alt: 'Kristie Professional Headshot' },
+    { src: '/images/DoubleTakes/Kristin.jpg', alt: 'Kristin Professional Headshot' },
+    { src: '/images/DoubleTakes/Phillipe.jpg', alt: 'Phillipe Professional Headshot' },
+    { src: '/images/DoubleTakes/Raph.jpg', alt: 'Raph Professional Headshot' },
+    { src: '/images/DoubleTakes/Riz.jpg', alt: 'Riz Professional Headshot' },
+    { src: '/images/DoubleTakes/Tristan.jpg', alt: 'Tristan Professional Headshot' }
   ]
 
   const [currentIndex, setCurrentIndex] = useState(0)
