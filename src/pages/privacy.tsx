@@ -214,7 +214,7 @@ export async function getStaticProps() {
   try {
     const fileContents = fs.readFileSync(filePath, 'utf8')
     const { data, content } = matter(fileContents)
-    frontmatter = data
+    frontmatter = { ...frontmatter, ...data }
   } catch (error) {
     // File doesn't exist, use defaults
   }
