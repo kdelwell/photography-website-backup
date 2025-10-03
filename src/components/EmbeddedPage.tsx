@@ -33,7 +33,7 @@ export default function EmbeddedPage({
 }: EmbeddedPageProps) {
   return (
     <LayoutNoPricing title={title} description={description}>
-      <div className="container mx-auto px-4 py-3 max-w-4xl">
+      <div className="w-full px-4 py-3">
         {/* Page Title */}
         {pageTitle && (
           <div className="text-center mb-1">
