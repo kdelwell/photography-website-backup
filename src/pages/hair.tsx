@@ -144,15 +144,10 @@ const Hair = ({ frontmatter }: HairProps) => {
               Experience the confidence that comes with professional hair and makeup styling for your headshot session.
             </p>
             <a
-              href="https://getaheadshot.net/hairandmakeup"
-              className="bg-red-600 hover:bg-red-700 text-white px-8 py-3 rounded-md font-semibold text-lg transition-colors duration-200 inline-flex items-center"
-              target="_blank"
-              rel="noopener noreferrer"
+              href="/more_info"
+              className="bg-red-600 hover:bg-red-700 text-white px-8 py-3 rounded-md font-semibold text-lg transition-colors duration-200"
             >
-              Book Hair & Makeup Services
-              <svg className="ml-2 w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M17 8l4 4m0 0l-4 4m4-4H3" />
-              </svg>
+              Get Pricing
             </a>
           </div>
         </section>

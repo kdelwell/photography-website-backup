@@ -347,14 +347,14 @@ const Groups = ({ frontmatter }: GroupsProps) => {
         </div>
 
         {/* Group Shot Option Section */}
-        <div className="bg-[#242424] px-4" style={{ paddingTop: '30px', paddingBottom: '30px' }}>
+        <div className="bg-[#242424] px-4" style={{ paddingTop: '20px', paddingBottom: '20px' }}>
           <div className="max-w-7xl mx-auto">
-            <h2 className="text-4xl md:text-5xl font-bold text-white mb-4 text-center tracking-wide">
+            <h2 className="text-4xl md:text-5xl font-bold text-white text-center tracking-wide">
               Group Shot Option
             </h2>
 
             {/* Two Column Layout - Text Left, Image Right */}
-            <div className="grid grid-cols-1 lg:grid-cols-2 gap-6 items-center">
+            <div className="grid grid-cols-1 lg:grid-cols-2 gap-2 items-center">
               {/* Left Column - Text Content */}
               <div className="text-white">
                 <h3 className="text-2xl md:text-3xl font-bold mb-6 text-white">
@@ -404,10 +404,8 @@ const Groups = ({ frontmatter }: GroupsProps) => {
                 Are you ready?
               </h2>
               <a
-                href="https://getaheadshot.net/professionalpricing"
+                href="/pricing"
                 className="bg-red-600 hover:bg-red-700 text-white px-8 py-3 rounded-md font-semibold text-lg transition-colors duration-200"
-                target="_blank"
-                rel="noopener noreferrer"
               >
                 Get Pricing
               </a>

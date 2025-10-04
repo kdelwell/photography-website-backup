@@ -30,7 +30,7 @@ export default function About({ frontmatter, content }: { frontmatter: any; cont
         {/* Mobile static image */}
         <div className="block md:hidden absolute inset-0">
           <Image 
-            src="/images/Roles.jpeg" 
+            src="/images/AboutMe/Roles.jpeg" 
             alt="Professional Photography Services"
             fill
             className="object-cover object-center"
@@ -47,7 +47,7 @@ export default function About({ frontmatter, content }: { frontmatter: any; cont
           }}
         >
           <Image 
-            src="/images/Roles.jpeg" 
+            src="/images/AboutMe/Roles.jpeg" 
             alt="Professional Photography Services"
             fill
             className="object-cover object-top"
@@ -73,7 +73,7 @@ export default function About({ frontmatter, content }: { frontmatter: any; cont
             onClick={() => toggleCard('career')}
           >
             <Image 
-              src="/images/Career.jpg" 
+              src="/images/AboutMe/Career.jpg" 
               alt="Career Photography"
               fill
               className="object-cover object-top transition-all duration-500 md:group-hover:opacity-45 md:group-hover:grayscale"
@@ -104,7 +104,7 @@ export default function About({ frontmatter, content }: { frontmatter: any; cont
             onClick={() => toggleCard('cycling')}
           >
             <Image 
-              src="/images/Cycling.jpg" 
+              src="/images/AboutMe/Cycling.jpg" 
               alt="Cycling Photography"
               fill
               className="object-cover object-top transition-all duration-500 md:group-hover:opacity-45 md:group-hover:grayscale"
@@ -137,7 +137,7 @@ export default function About({ frontmatter, content }: { frontmatter: any; cont
             onClick={() => toggleCard('family')}
           >
             <Image 
-              src="/images/Family.jpg" 
+              src="/images/AboutMe/Family.jpg" 
               alt="Family Photography"
               fill
               className="object-cover object-top transition-all duration-500 md:group-hover:opacity-45 md:group-hover:grayscale"
@@ -168,7 +168,7 @@ export default function About({ frontmatter, content }: { frontmatter: any; cont
             onClick={() => toggleCard('photog')}
           >
             <Image 
-              src="/images/Photog.jpg" 
+              src="/images/AboutMe/Photog.jpg" 
               alt="Professional Photography"
               fill
               className="object-cover object-top transition-all duration-500 md:group-hover:opacity-45 md:group-hover:grayscale"
