@@ -53,7 +53,7 @@ export default function Footer() {
 
           <div className="relative w-24 h-24 md:w-32 md:h-32 rounded-lg overflow-hidden hidden md:block">
             <Image
-              src="/images/kevin_footer.jpg"
+              src="/images/Kevin_footer.jpg"
               alt="Kevin Elwell"
               width={128}
               height={128}
