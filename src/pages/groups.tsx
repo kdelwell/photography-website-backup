@@ -463,7 +463,6 @@ const Groups = ({ frontmatter }: GroupsProps) => {
             </div>
           </div>
         )}
-      </div>
     </Layout>
   )
 }
