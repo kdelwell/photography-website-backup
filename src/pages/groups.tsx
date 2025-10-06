@@ -103,10 +103,10 @@ const Groups = ({ frontmatter }: GroupsProps) => {
               <div className="bg-white p-4 rounded-lg shadow-lg max-w-md">
                 <div
                   className="cursor-pointer"
-                  onClick={() => openLightbox("/images/groups/composites/Score.jpg")}
+                  onClick={() => openLightbox("/images/groups/composites/SCORE.jpg")}
                 >
                   <Image
-                    src="/images/groups/composites/Score.jpg"
+                    src="/images/groups/composites/SCORE.jpg"
                     alt="Score Company Team Photography"
                     width={500}
                     height={625}
@@ -463,6 +463,7 @@ const Groups = ({ frontmatter }: GroupsProps) => {
             </div>
           </div>
         )}
+      </div>
     </Layout>
   )
 }

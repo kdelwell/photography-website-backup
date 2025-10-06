@@ -13,6 +13,8 @@
     "clean": "./scripts/cleanup.sh",
     "logs": "tail -f logs/dev-server.log",
     "logs:error": "tail -f logs/dev-server-errors.log",
+    "compress:images": "node scripts/compress-images.js",
+    "optimize:all": "npm run compress:images && npm run build",
     "deploy": "node scripts/deploy.js",
     "deploy:preview": "vercel"
   },

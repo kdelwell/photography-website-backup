@@ -8,6 +8,7 @@ export default function Schedule({ frontmatter, content }: { frontmatter: any; c
     <EmbeddedPage
       title={frontmatter.title}
       description={frontmatter.description}
+      pageTitle="Choose a time and a session that works for you"
       imageSrc="/images/schedule.jpg"
       imageAlt="Schedule Your Session"
       iframeSrc="https://api.getaheadshot.net/booking/kevin-elwell-photography,-llc-1w583dfiyrjh/sc/68c1d42576a8d83fcd791805?heightMode=fixed&showHeader=true"

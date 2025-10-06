@@ -36,7 +36,7 @@ export default function EmbeddedPage({
       <div className="w-full">
         {/* Page Title */}
         {pageTitle && (
-          <div className="text-center mb-1 px-4">
+          <div className="text-center mt-5 mb-1 px-4">
             <h1 className="text-3xl md:text-4xl lg:text-5xl font-bold text-gray-900 leading-tight">
               {pageTitle}
             </h1>
