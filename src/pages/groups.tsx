@@ -404,7 +404,7 @@ const Groups = ({ frontmatter }: GroupsProps) => {
                 Are you ready?
               </h2>
               <a
-                href="/pricing"
+                href="/more_info"
                 className="bg-red-600 hover:bg-red-700 text-white px-8 py-3 rounded-md font-semibold text-lg transition-colors duration-200"
               >
                 Get Pricing

@@ -12,7 +12,9 @@ const DoubletakesCarousel = () => {
     { src: '/images/DoubleTakes/Phillipe.jpg', alt: 'Phillipe Professional Headshot' },
     { src: '/images/DoubleTakes/Raph.jpg', alt: 'Raph Professional Headshot' },
     { src: '/images/DoubleTakes/Riz.jpg', alt: 'Riz Professional Headshot' },
-    { src: '/images/DoubleTakes/Tristan.jpg', alt: 'Tristan Professional Headshot' }
+    { src: '/images/DoubleTakes/Tristan.jpg', alt: 'Tristan Professional Headshot' },
+    { src: '/images/DoubleTakes/Sophia.jpg', alt: 'Sophia Professional Headshot' },
+    { src: '/images/DoubleTakes/Cynthia.jpg', alt: 'Cynthia Professional Headshot' }
   ]
 
   const [currentIndex, setCurrentIndex] = useState(0)

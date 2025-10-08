@@ -43,7 +43,7 @@ const FaceArticle = () => {
           {/* Hero Image */}
           <div className="relative w-full h-[400px] md:h-[500px] lg:h-[600px] mb-12 rounded-lg overflow-hidden">
             <Image
-              src="/images/Articles/Which_Side_Best.webp"
+              src="/images/Articles/Side.webp"
               alt="Facial symmetry in photography - Professional headshot showing optimal angles"
               fill
               className="object-cover"

@@ -36,7 +36,7 @@ const Articles = ({ frontmatter }: ArticlesProps) => {
       id: 'which-side-face-better',
       title: 'Which Side of My Face is Better?',
       excerpt: 'The question of which side of the face is more flattering is a common inquiry that arises during my photography sessions. There are patterns that emerge when considering human preferences and anatomy. Statistically, a majority of...',
-      image: '/images/Articles/Which_Side_Best.webp',
+      image: '/images/Articles/Side.webp',
       date: '2024-01-05',
       author: 'Kevin Elwell',
       readTime: '3 min read'

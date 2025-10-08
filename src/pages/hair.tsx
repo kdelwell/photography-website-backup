@@ -98,12 +98,20 @@ const Hair = ({ frontmatter }: HairProps) => {
 
         {/* Hero Section with Parallax */}
         <section
-          className="relative overflow-hidden bg-cover bg-center bg-fixed"
+          className="relative overflow-hidden bg-center bg-fixed h-[40vh] md:h-[50vh] lg:h-[60vh]"
           style={{
-            height: '60vh',
-            backgroundImage: "url('/images/Hair/Mallory.jpg')"
+            backgroundImage: "url('/images/Hair/Mallory.jpg')",
+            backgroundSize: 'auto 60%',
+            backgroundRepeat: 'no-repeat'
           }}
         >
+          <style jsx>{`
+            @media (min-width: 768px) {
+              section {
+                background-size: cover !important;
+              }
+            }
+          `}</style>
         </section>
 
         {/* Text Section */}
