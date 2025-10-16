@@ -12,6 +12,7 @@ import LightSingleSegment from '@/components/LightSingleSegment'
 import BusinessSingleSegment from '@/components/BusinessSingleSegment'
 import DoctorSingleSegment from '@/components/DoctorSingleSegment'
 import GalleryWithLightbox from '@/components/GalleryWithLightbox'
+import MainGallery from '@/components/MainGallery'
 import { X } from 'lucide-react'
 
 export default function Home({ frontmatter, content }: { frontmatter: any; content: string }) {
@@ -98,18 +99,7 @@ export default function Home({ frontmatter, content }: { frontmatter: any; conte
       </section>
 
       {/* Full Width Gallery Section */}
-      <GalleryWithLightbox 
-        images={[
-          { src: '/images/Gallery/Teresa.jpg', alt: 'Teresa Professional Headshot' },
-          { src: '/images/Gallery/Jeffrey.jpg', alt: 'Jeffrey Professional Headshot' },
-          { src: '/images/Gallery/Courtney.jpg', alt: 'Courtney Professional Headshot' },
-          { src: '/images/Gallery/Joe.jpg', alt: 'Joe Professional Headshot' },
-          { src: '/images/Gallery/Kelly.jpg', alt: 'Kelly Professional Headshot' },
-          { src: '/images/Gallery/Matt.jpg', alt: 'Matt Professional Headshot' },
-          { src: '/images/Gallery/Patricia.jpg', alt: 'Patricia Professional Headshot' },
-          { src: '/images/Gallery/Sherif.jpg', alt: 'Sherif Professional Headshot' }
-        ]}
-      />
+      <MainGallery />
 
 
       {/* About Preview */}
@@ -234,22 +224,21 @@ export default function Home({ frontmatter, content }: { frontmatter: any; conte
       />
 
       {/* Reviews Section */}
-      <section style={{ backgroundColor: '#242424', paddingTop: '80px', paddingBottom: '80px' }}>
+      <section style={{ backgroundColor: '#242424', paddingTop: '48px', paddingBottom: '80px' }}>
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-          <h2 className="text-3xl md:text-4xl lg:text-5xl font-bold text-white text-center mb-20 leading-tight">
+          <h2 className="text-3xl md:text-4xl lg:text-5xl font-bold text-white text-center mb-12 leading-tight">
             200+ 5-Star Reviews
           </h2>
           
           <div className="grid grid-cols-1 lg:grid-cols-3 gap-12">
             {/* Peter's Review */}
             <div className="text-center flex flex-col items-center">
-              <div className="relative w-72 h-72 mb-8">
+              <div className="relative w-72 aspect-[5/4] mb-8 overflow-hidden rounded">
                 <Image
                   src="/images/Reviews/Peter.jpg"
                   alt="Peter A."
                   fill
                   className="object-cover"
-                  style={{ borderRadius: '4px' }}
                 />
               </div>
               <p className="text-white text-base italic mb-8 leading-relaxed max-w-sm">
@@ -263,13 +252,12 @@ export default function Home({ frontmatter, content }: { frontmatter: any; conte
             
             {/* Kerensa's Review */}
             <div className="text-center flex flex-col items-center">
-              <div className="relative w-72 h-72 mb-8">
+              <div className="relative w-72 aspect-[5/4] mb-8 overflow-hidden rounded">
                 <Image
                   src="/images/Reviews/Kerensa.jpg"
                   alt="Kerensa G."
                   fill
-                  className="object-cover"
-                  style={{ borderRadius: '4px', objectPosition: '-100px center' }}
+                  className="object-cover object-[center_center]"
                 />
               </div>
               <p className="text-white text-base italic mb-8 leading-relaxed max-w-sm">
@@ -283,13 +271,12 @@ export default function Home({ frontmatter, content }: { frontmatter: any; conte
             
             {/* Elizabeth's Review */}
             <div className="text-center flex flex-col items-center">
-              <div className="relative w-72 h-72 mb-8">
+              <div className="relative w-72 aspect-[5/4] mb-8 overflow-hidden rounded">
                 <Image
                   src="/images/Reviews/Elizabeth.jpg"
                   alt="Elizabeth G."
                   fill
                   className="object-cover"
-                  style={{ borderRadius: '4px' }}
                 />
               </div>
               <p className="text-white text-base italic mb-8 leading-relaxed max-w-sm">

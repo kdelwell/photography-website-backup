@@ -44,7 +44,7 @@ export default function EmbeddedPage({
         )}
 
         {/* Image */}
-        <div className="container mx-auto px-4 py-3 max-w-4xl">
+        <div className="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8 py-3">
           <div className="relative w-full aspect-[4/2] mt-5 mb-5">
             <Image
               src={imageSrc}
@@ -67,7 +67,7 @@ export default function EmbeddedPage({
 
         {/* Embedded Form */}
         <div className="w-full flex justify-center">
-          <div className="w-full max-w-6xl px-4" style={{ minHeight: iframeHeight }}>
+          <div className="w-full max-w-6xl px-4 sm:px-6 lg:px-8" style={{ minHeight: iframeHeight }}>
           <iframe
             src={iframeSrc}
             style={iframeStyle || { width: '100%', height: iframeHeight, border: 'none', borderRadius: '3px' }}

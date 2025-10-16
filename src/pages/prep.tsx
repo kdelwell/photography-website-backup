@@ -31,14 +31,14 @@ export default function Prep({ frontmatter, content }: { frontmatter: any; conte
     <Layout title={frontmatter.title} description={frontmatter.description}>
       <div className="min-h-screen bg-gray-50">
         {/* Header Section */}
-        <div className="bg-white py-12">
+        <div className="bg-white py-6">
           <h1 className="text-4xl md:text-5xl font-bold text-center leading-tight">
             Preparing for your session...
           </h1>
         </div>
 
         {/* Images Grid */}
-        <div className="w-full bg-white pb-8">
+        <div className="w-full bg-white pb-2">
           <div className="grid grid-cols-2 md:grid-cols-4 gap-0">
             {prepImages.map((image, index) => (
               <div
@@ -59,7 +59,7 @@ export default function Prep({ frontmatter, content }: { frontmatter: any; conte
 
         {/* Content */}
         <div className="bg-white">
-          <div className="max-w-4xl mx-auto px-4 py-12">
+          <div className="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8 pt-4 pb-12">
             <div className="text-gray-700 leading-relaxed">
               <style jsx>{`
                 div :global(strong) {

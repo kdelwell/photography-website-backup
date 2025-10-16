@@ -15,7 +15,7 @@ export default function MoreInfo({ frontmatter, content }: { frontmatter: any; c
       formId="P3fiOKHq2PRWe6gDrAO4"
       scriptSrc="https://api.getaheadshot.net/js/form_embed.js"
       pageTitle="More Info..."
-      bodyText="When you provide your contact information, you will receive an email that will link you to the pricing page where you can make your appointment if you're ready. You will also be subscribed to the 'Get aHead Series' which is a series of emails that provides you with headshot tips."
+      bodyText="Thank you for your interest in my product and services. Please fill out this form and I'll link you to my pricing page. I'll also send you some more information regarding my offerings. This small step gets you that much closer to a headshot that says 'wow.'"
     />
   )
 }

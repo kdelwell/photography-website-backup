@@ -4,6 +4,7 @@ import Layout from '../components/Layout'
 import fs from 'fs'
 import path from 'path'
 import matter from 'gray-matter'
+import { ChevronLeft, ChevronRight } from 'lucide-react'
 
 interface GroupsProps {
   frontmatter: { title: string; description: string }
@@ -12,9 +13,16 @@ interface GroupsProps {
 
 const Groups = ({ frontmatter }: GroupsProps) => {
   const [lightboxOpen, setLightboxOpen] = useState(false)
-  const [lightboxImage, setLightboxImage] = useState('')
+  const [currentImageIndex, setCurrentImageIndex] = useState(0)
   const [videoLightboxOpen, setVideoLightboxOpen] = useState(false)
   const [lightboxVideo, setLightboxVideo] = useState('')
+
+  const compositeImages = [
+    { src: '/images/groups/composites/Copper_River.jpg', alt: 'Copper River Company Team Photography' },
+    { src: '/images/groups/composites/SCORE.jpg', alt: 'Score Company Team Photography' },
+    { src: '/images/groups/composites/V2X.jpg', alt: 'V2X Company Team Photography' },
+    { src: '/images/groups/composites/Anning-Johnson.jpg', alt: 'Anning-Johnson Company Team Photography' }
+  ]
 
   const compositeSteps = [
     {
@@ -43,14 +51,34 @@ const Groups = ({ frontmatter }: GroupsProps) => {
     return () => clearInterval(interval)
   }, [])
 
-  const openLightbox = (imageSrc: string) => {
-    setLightboxImage(imageSrc)
+  const openLightbox = (index: number) => {
+    setCurrentImageIndex(index)
     setLightboxOpen(true)
   }
 
   const closeLightbox = () => {
     setLightboxOpen(false)
   }
+
+  const goToPrevious = () => {
+    setCurrentImageIndex((prev) => (prev === 0 ? compositeImages.length - 1 : prev - 1))
+  }
+
+  const goToNext = () => {
+    setCurrentImageIndex((prev) => (prev === compositeImages.length - 1 ? 0 : prev + 1))
+  }
+
+  useEffect(() => {
+    const handleKeyDown = (e: KeyboardEvent) => {
+      if (!lightboxOpen) return
+      if (e.key === 'ArrowLeft') goToPrevious()
+      if (e.key === 'ArrowRight') goToNext()
+      if (e.key === 'Escape') closeLightbox()
+    }
+
+    window.addEventListener('keydown', handleKeyDown)
+    return () => window.removeEventListener('keydown', handleKeyDown)
+  }, [lightboxOpen])
 
   const openVideoLightbox = (videoSrc: string) => {
     setLightboxVideo(videoSrc)
@@ -65,10 +93,10 @@ const Groups = ({ frontmatter }: GroupsProps) => {
     <Layout title={frontmatter.title} description={frontmatter.description}>
       <div className="min-h-screen">
         {/* Hero Section */}
-        <section className="bg-gray-100 py-5">
-          <div className="max-w-7xl mx-auto px-4">
+        <section className="bg-gray-100 py-6">
+          <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
             <div className="text-center">
-              <h1 className="text-4xl md:text-6xl font-bold text-black my-5 tracking-wide">
+              <h1 className="text-3xl md:text-4xl lg:text-5xl font-bold text-gray-900 text-center leading-tight">
                 Groups and Corporate Photography for Metro DC
               </h1>
             </div>
@@ -76,84 +104,37 @@ const Groups = ({ frontmatter }: GroupsProps) => {
         </section>
 
         {/* Company Composites Section */}
-        <div className="bg-[#242424] py-16 px-4">
-          <div className="max-w-7xl mx-auto">
+        <div className="bg-[#242424] pt-8 pb-16">
+          <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
             <h2 className="text-3xl md:text-4xl font-bold text-center text-white mb-12 tracking-wide">
               Company Composites
             </h2>
 
             <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-8 justify-items-center">
-              {/* Copper River */}
-              <div className="bg-white p-4 rounded-lg shadow-lg max-w-md">
-                <div
-                  className="cursor-pointer"
-                  onClick={() => openLightbox("/images/groups/composites/Copper_River.jpg")}
-                >
-                  <Image
-                    src="/images/groups/composites/Copper_River.jpg"
-                    alt="Copper River Company Team Photography"
-                    width={500}
-                    height={625}
-                    className="w-full h-auto rounded hover:opacity-80 transition-opacity"
-                  />
+              {compositeImages.map((image, index) => (
+                <div key={index} className="bg-white p-4 rounded-lg shadow-lg max-w-md">
+                  <div
+                    className="cursor-pointer"
+                    onClick={() => openLightbox(index)}
+                  >
+                    <Image
+                      src={image.src}
+                      alt={image.alt}
+                      width={500}
+                      height={625}
+                      className="w-full h-auto rounded hover:opacity-80 transition-opacity"
+                    />
+                  </div>
                 </div>
-              </div>
-
-              {/* Score */}
-              <div className="bg-white p-4 rounded-lg shadow-lg max-w-md">
-                <div
-                  className="cursor-pointer"
-                  onClick={() => openLightbox("/images/groups/composites/SCORE.jpg")}
-                >
-                  <Image
-                    src="/images/groups/composites/SCORE.jpg"
-                    alt="Score Company Team Photography"
-                    width={500}
-                    height={625}
-                    className="w-full h-auto rounded hover:opacity-80 transition-opacity"
-                  />
-                </div>
-              </div>
-
-              {/* V2X */}
-              <div className="bg-white p-4 rounded-lg shadow-lg max-w-md">
-                <div
-                  className="cursor-pointer"
-                  onClick={() => openLightbox("/images/groups/composites/V2X.jpg")}
-                >
-                  <Image
-                    src="/images/groups/composites/V2X.jpg"
-                    alt="V2X Company Team Photography"
-                    width={500}
-                    height={625}
-                    className="w-full h-auto rounded hover:opacity-80 transition-opacity"
-                  />
-                </div>
-              </div>
-
-              {/* Anning-Johnson */}
-              <div className="bg-white p-4 rounded-lg shadow-lg max-w-md">
-                <div
-                  className="cursor-pointer"
-                  onClick={() => openLightbox("/images/groups/composites/Anning-Johnson.jpg")}
-                >
-                  <Image
-                    src="/images/groups/composites/Anning-Johnson.jpg"
-                    alt="Anning-Johnson Company Team Photography"
-                    width={500}
-                    height={625}
-                    className="w-full h-auto rounded hover:opacity-80 transition-opacity"
-                  />
-                </div>
-              </div>
+              ))}
 
             </div>
           </div>
         </div>
 
         {/* Options Heading */}
-        <div className="bg-gray-300 px-4" style={{ paddingTop: '20px', paddingBottom: '20px' }}>
-          <div className="max-w-7xl mx-auto">
+        <div className="bg-gray-300" style={{ paddingTop: '20px', paddingBottom: '20px' }}>
+          <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
             <h2 className="text-3xl md:text-4xl font-bold text-center text-black tracking-wide">
               Options
             </h2>
@@ -161,13 +142,13 @@ const Groups = ({ frontmatter }: GroupsProps) => {
         </div>
 
         {/* Options Section */}
-        <div className="bg-[#242424] py-16 px-4">
+        <div className="bg-[#242424] py-16 px-4 sm:px-6 lg:px-8">
           <div className="max-w-7xl mx-auto">
 
             {/* Option 1 */}
             <div className="mb-16">
-              <div className="flex flex-col md:flex-row gap-8 items-center max-w-6xl mx-auto">
-                <div className="w-full md:w-1/2 max-w-lg">
+              <div className="flex flex-col md:flex-row gap-8 items-start">
+                <div className="w-full md:w-1/2">
                   <div
                     className="cursor-pointer relative"
                     onClick={() => openVideoLightbox("/images/groups/Headshots_Groups.mp4")}
@@ -192,7 +173,7 @@ const Groups = ({ frontmatter }: GroupsProps) => {
                     </div>
                   </div>
                 </div>
-                <div className="w-full md:w-1/2 text-white max-w-lg">
+                <div className="w-full md:w-1/2 text-white">
                   <h4 className="text-2xl md:text-3xl font-bold mb-6 tracking-wide leading-tight">
                     Opt 1: On Location for Large Groups
                   </h4>
@@ -205,9 +186,9 @@ const Groups = ({ frontmatter }: GroupsProps) => {
             </div>
 
             {/* Option 2 */}
-            <div className="mb-16">
-              <div className="flex flex-col md:flex-row gap-8 items-center max-w-6xl mx-auto">
-                <div className="w-full md:w-1/2 text-white max-w-lg">
+            <div className="mb-4 md:mb-16">
+              <div className="flex flex-col md:flex-row gap-8 items-start">
+                <div className="w-full md:w-1/2 text-white">
                   <h4 className="text-2xl md:text-3xl font-bold mb-6 tracking-wide leading-tight">
                     Opt 2: In-Studio for Small Groups
                   </h4>
@@ -218,7 +199,7 @@ const Groups = ({ frontmatter }: GroupsProps) => {
                     Did someone miss "picture day?" Or maybe you have a New-Hire - no problem. I provide a convenient way for that person to come by and take care of that at my studio using the link below.
                   </p>
                 </div>
-                <div className="w-full md:w-1/2 max-w-lg">
+                <div className="w-full md:w-1/2">
                   <div
                     className="cursor-pointer relative"
                     onClick={() => openVideoLightbox("/images/groups/Corp_Testimony.mp4")}
@@ -250,8 +231,8 @@ const Groups = ({ frontmatter }: GroupsProps) => {
         </div>
 
         {/* Unparalleled Service Section */}
-        <div className="bg-white px-4" style={{ paddingTop: '30px', paddingBottom: '64px' }}>
-          <div className="max-w-7xl mx-auto">
+        <div className="bg-white" style={{ paddingTop: '30px', paddingBottom: '64px' }}>
+          <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
             <h2 className="text-4xl md:text-5xl font-bold text-center text-black mb-16 tracking-wide">
               Unparalleled Service
             </h2>
@@ -347,20 +328,20 @@ const Groups = ({ frontmatter }: GroupsProps) => {
         </div>
 
         {/* Group Shot Option Section */}
-        <div className="bg-[#242424] px-4" style={{ paddingTop: '20px', paddingBottom: '20px' }}>
-          <div className="max-w-7xl mx-auto">
-            <h2 className="text-4xl md:text-5xl font-bold text-white text-center tracking-wide">
+        <div className="bg-[#242424]" style={{ paddingTop: '48px', paddingBottom: '20px' }}>
+          <div className="max-w-5xl mx-auto px-4 sm:px-6 lg:px-8">
+            <h2 className="text-4xl md:text-5xl font-bold text-white text-center tracking-wide mb-2">
               Group Shot Option
             </h2>
 
             {/* Two Column Layout - Text Left, Image Right */}
-            <div className="grid grid-cols-1 lg:grid-cols-2 gap-2 items-center">
+            <div className="grid grid-cols-1 lg:grid-cols-2 gap-4 lg:gap-8 items-center">
               {/* Left Column - Text Content */}
               <div className="text-white">
-                <h3 className="text-2xl md:text-3xl font-bold mb-6 text-white">
+                <h3 className="text-2xl md:text-3xl font-bold mb-3 lg:mb-6 text-white">
                   {compositeSteps[currentStep].title}
                 </h3>
-                <p className="text-lg leading-relaxed mb-8 text-gray-200">
+                <p className="text-lg leading-relaxed mb-4 lg:mb-8 text-gray-200">
                   {compositeSteps[currentStep].description}
                 </p>
 
@@ -382,7 +363,7 @@ const Groups = ({ frontmatter }: GroupsProps) => {
 
               {/* Right Column - Image */}
               <div className="flex justify-center">
-                <div className="relative w-full max-w-lg" style={{ height: '500px' }}>
+                <div className="relative w-full max-w-lg h-[350px] lg:h-[500px]">
                   <Image
                     src={compositeSteps[currentStep].image}
                     alt={compositeSteps[currentStep].title}
@@ -397,15 +378,15 @@ const Groups = ({ frontmatter }: GroupsProps) => {
         </div>
 
         {/* Get Pricing Section */}
-        <div className="bg-white px-4" style={{ paddingTop: '20px', paddingBottom: '30px' }}>
-          <div className="max-w-7xl mx-auto">
-            <div className="flex items-center justify-center gap-8">
-              <h2 className="text-3xl md:text-4xl font-bold text-gray-900 tracking-wide">
+        <div className="bg-white" style={{ paddingTop: '20px', paddingBottom: '20px' }}>
+          <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div className="flex items-center justify-center gap-3 sm:gap-8">
+              <h2 className="text-xl sm:text-3xl md:text-4xl font-bold text-gray-900 tracking-wide">
                 Are you ready?
               </h2>
               <a
                 href="/more_info"
-                className="bg-red-600 hover:bg-red-700 text-white px-8 py-3 rounded-md font-semibold text-lg transition-colors duration-200"
+                className="bg-red-600 hover:bg-red-700 text-white px-4 py-2 sm:px-8 sm:py-3 rounded-md font-semibold text-sm sm:text-lg transition-colors duration-200 whitespace-nowrap"
               >
                 Get Pricing
               </a>
@@ -422,13 +403,38 @@ const Groups = ({ frontmatter }: GroupsProps) => {
             <div className="relative max-w-6xl max-h-full w-full">
               <button
                 onClick={closeLightbox}
-                className="absolute top-4 right-4 text-white text-3xl hover:text-gray-300 z-10"
+                className="absolute top-4 right-4 text-white hover:text-gray-300 bg-black/50 rounded-full p-2 z-10 text-2xl w-10 h-10 flex items-center justify-center"
               >
                 ×
               </button>
+
+              {/* Previous Button */}
+              <button
+                onClick={(e) => {
+                  e.stopPropagation()
+                  goToPrevious()
+                }}
+                className="absolute left-4 top-1/2 -translate-y-1/2 text-white hover:text-gray-300 bg-black/50 rounded-full p-2 z-10"
+                aria-label="Previous image"
+              >
+                <ChevronLeft className="w-8 h-8" />
+              </button>
+
+              {/* Next Button */}
+              <button
+                onClick={(e) => {
+                  e.stopPropagation()
+                  goToNext()
+                }}
+                className="absolute right-4 top-1/2 -translate-y-1/2 text-white hover:text-gray-300 bg-black/50 rounded-full p-2 z-10"
+                aria-label="Next image"
+              >
+                <ChevronRight className="w-8 h-8" />
+              </button>
+
               <Image
-                src={lightboxImage}
-                alt="Enlarged view"
+                src={compositeImages[currentImageIndex].src}
+                alt={compositeImages[currentImageIndex].alt}
                 width={1200}
                 height={900}
                 className="w-full h-auto max-h-screen object-contain rounded-lg"
@@ -447,7 +453,7 @@ const Groups = ({ frontmatter }: GroupsProps) => {
             <div className="relative max-w-6xl max-h-full w-full">
               <button
                 onClick={closeVideoLightbox}
-                className="absolute top-4 right-4 text-white text-3xl hover:text-gray-300 z-10"
+                className="absolute top-4 right-4 text-white hover:text-gray-300 bg-black/50 rounded-full p-2 z-10 text-2xl w-10 h-10 flex items-center justify-center"
               >
                 ×
               </button>
