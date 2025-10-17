@@ -3,7 +3,11 @@ import Link from 'next/link'
 import { Menu, X } from 'lucide-react'
 import Image from 'next/image'
 
-export default function Header() {
+interface HeaderProps {
+  hideMenu?: boolean
+}
+
+export default function Header({ hideMenu = false }: HeaderProps) {
   const [isMenuOpen, setIsMenuOpen] = useState(false)
 
   const navigation = [
@@ -50,75 +54,77 @@ export default function Header() {
       </div>
 
       {/* Navigation bar */}
-      <div className="bg-gray-300">
-        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-          {/* Mobile menu button */}
-          <div className="md:hidden flex justify-center items-center py-2">
-            <button
-              onClick={() => setIsMenuOpen(!isMenuOpen)}
-              className="text-gray-800 hover:text-gray-600"
-            >
-              {isMenuOpen ? <X className="h-6 w-6" /> : <Menu className="h-6 w-6" />}
-            </button>
-          </div>
-          
-          {/* Desktop Navigation */}
-          <nav className="hidden md:flex justify-center space-x-4 py-1">
-            {navigation.map((item) => (
-              item.external ? (
-                <a
-                  key={item.name}
-                  href={item.href}
-                  className="text-gray-800 hover:text-red-600 px-3 py-2 text-sm font-semibold transition-colors uppercase tracking-wide"
-                  target="_blank"
-                  rel="noopener noreferrer"
-                >
-                  {item.name}
-                </a>
-              ) : (
-                <Link
-                  key={item.name}
-                  href={item.href}
-                  className="text-gray-800 hover:text-red-600 px-3 py-2 text-sm font-semibold transition-colors uppercase tracking-wide"
-                >
-                  {item.name}
-                </Link>
-              )
-            ))}
-          </nav>
-
-          {/* Mobile Navigation */}
-          {isMenuOpen && (
-            <div className="md:hidden py-3">
-              <div className="space-y-1">
-                {navigation.map((item) => (
-                  item.external ? (
-                    <a
-                      key={item.name}
-                      href={item.href}
-                      className="text-gray-800 hover:text-red-600 block px-3 py-2 text-base font-semibold uppercase tracking-wide"
-                      target="_blank"
-                      rel="noopener noreferrer"
-                      onClick={() => setIsMenuOpen(false)}
-                    >
-                      {item.name}
-                    </a>
-                  ) : (
-                    <Link
-                      key={item.name}
-                      href={item.href}
-                      className="text-gray-800 hover:text-red-600 block px-3 py-2 text-base font-semibold uppercase tracking-wide"
-                      onClick={() => setIsMenuOpen(false)}
-                    >
-                      {item.name}
-                    </Link>
-                  )
-                ))}
-              </div>
+      {!hideMenu && (
+        <div className="bg-gray-300">
+          <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            {/* Mobile menu button */}
+            <div className="md:hidden flex justify-center items-center py-2">
+              <button
+                onClick={() => setIsMenuOpen(!isMenuOpen)}
+                className="text-gray-800 hover:text-gray-600"
+              >
+                {isMenuOpen ? <X className="h-6 w-6" /> : <Menu className="h-6 w-6" />}
+              </button>
             </div>
-          )}
+
+            {/* Desktop Navigation */}
+            <nav className="hidden md:flex justify-center space-x-4 py-1">
+              {navigation.map((item) => (
+                item.external ? (
+                  <a
+                    key={item.name}
+                    href={item.href}
+                    className="text-gray-800 hover:text-red-600 px-3 py-2 text-sm font-semibold transition-colors uppercase tracking-wide"
+                    target="_blank"
+                    rel="noopener noreferrer"
+                  >
+                    {item.name}
+                  </a>
+                ) : (
+                  <Link
+                    key={item.name}
+                    href={item.href}
+                    className="text-gray-800 hover:text-red-600 px-3 py-2 text-sm font-semibold transition-colors uppercase tracking-wide"
+                  >
+                    {item.name}
+                  </Link>
+                )
+              ))}
+            </nav>
+
+            {/* Mobile Navigation */}
+            {isMenuOpen && (
+              <div className="md:hidden py-3">
+                <div className="space-y-1">
+                  {navigation.map((item) => (
+                    item.external ? (
+                      <a
+                        key={item.name}
+                        href={item.href}
+                        className="text-gray-800 hover:text-red-600 block px-3 py-2 text-base font-semibold uppercase tracking-wide"
+                        target="_blank"
+                        rel="noopener noreferrer"
+                        onClick={() => setIsMenuOpen(false)}
+                      >
+                        {item.name}
+                      </a>
+                    ) : (
+                      <Link
+                        key={item.name}
+                        href={item.href}
+                        className="text-gray-800 hover:text-red-600 block px-3 py-2 text-base font-semibold uppercase tracking-wide"
+                        onClick={() => setIsMenuOpen(false)}
+                      >
+                        {item.name}
+                      </Link>
+                    )
+                  ))}
+                </div>
+              </div>
+            )}
+          </div>
         </div>
-      </div>
+      )}
     </header>
   )
 }

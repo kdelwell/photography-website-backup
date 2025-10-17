@@ -8,9 +8,10 @@ interface LayoutProps {
   children: ReactNode
   title?: string
   description?: string
+  hideMenu?: boolean
 }
 
-export default function Layout({ children, title = 'Photography Studio', description = 'Professional photography services' }: LayoutProps) {
+export default function Layout({ children, title = 'Photography Studio', description = 'Professional photography services', hideMenu = false }: LayoutProps) {
   return (
     <>
       <NextSeo
@@ -24,7 +25,7 @@ export default function Layout({ children, title = 'Photography Studio', descrip
       />
       <div className="min-h-screen flex flex-col">
         <PerformanceMonitor />
-        <Header />
+        <Header hideMenu={hideMenu} />
         <main className="flex-grow">
           {children}
         </main>

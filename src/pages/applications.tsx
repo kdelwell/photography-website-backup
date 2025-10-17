@@ -9,10 +9,10 @@ export default function Applications() {
       description="Discover how a great headshot can open so many doors"
     >
       {/* Hero Section */}
-      <section className="bg-gray-100 py-16">
+      <section className="bg-gray-100 py-6">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
           <div className="text-center">
-            <h1 className="text-4xl md:text-5xl lg:text-6xl font-bold text-gray-900 mb-6 leading-tight">
+            <h1 className="text-4xl md:text-5xl lg:text-6xl font-bold text-gray-900 mb-1 leading-tight">
               The Power of a Professional Image
             </h1>
             <p className="text-xl md:text-2xl text-gray-700 max-w-4xl mx-auto leading-relaxed">

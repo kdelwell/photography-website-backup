@@ -13,6 +13,9 @@ import BusinessSingleSegment from '@/components/BusinessSingleSegment'
 import DoctorSingleSegment from '@/components/DoctorSingleSegment'
 import GalleryWithLightbox from '@/components/GalleryWithLightbox'
 import MainGallery from '@/components/MainGallery'
+import HeadshotProcess from '@/components/HeadshotProcess'
+import HeadshotReviews from '@/components/HeadshotReviews'
+import BeforeAfter from '@/components/BeforeAfter'
 import { X } from 'lucide-react'
 
 export default function Home({ frontmatter, content }: { frontmatter: any; content: string }) {
@@ -150,146 +153,13 @@ export default function Home({ frontmatter, content }: { frontmatter: any; conte
       />
 
       {/* Process Section */}
-      <section style={{ paddingTop: '30px', paddingBottom: '30px' }} className="bg-white">
-        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-          <div className="text-center mb-8">
-            <h2 className="text-3xl md:text-4xl lg:text-5xl font-bold text-gray-900 mb-4">
-              Getting Your Headshot Is Easy
-            </h2>
-          </div>
-          
-          <div className="grid grid-cols-1 md:grid-cols-3 gap-8 lg:gap-12">
-            {/* Step 1 */}
-            <div className="text-center">
-              <div className="flex justify-center mb-6">
-                <div className="w-20 h-20 relative">
-                  <Image
-                    src="/images/ProcessIcons/Calendar.png"
-                    alt="Calendar Icon"
-                    fill
-                    className="object-contain"
-                  />
-                </div>
-              </div>
-              <p className="text-gray-900 text-lg leading-relaxed">
-                1. Match your schedule up with mine using my on-line appointment system – you choose a time that works for you.
-              </p>
-            </div>
-            
-            {/* Step 2 */}
-            <div className="text-center">
-              <div className="flex justify-center mb-6">
-                <div className="w-20 h-20 relative">
-                  <Image
-                    src="/images/ProcessIcons/Camera.png"
-                    alt="Camera Icon"
-                    fill
-                    className="object-contain"
-                  />
-                </div>
-              </div>
-              <p className="text-gray-900 text-lg leading-relaxed">
-                2. We'll use my feedback system to fine-tune the image and together select the best images.
-              </p>
-            </div>
-            
-            {/* Step 3 */}
-            <div className="text-center">
-              <div className="flex justify-center mb-6">
-                <div className="w-20 h-20 relative">
-                  <Image
-                    src="/images/ProcessIcons/Sliders.png"
-                    alt="Sliders Icon"
-                    fill
-                    className="object-contain"
-                  />
-                </div>
-              </div>
-              <p className="text-gray-900 text-lg leading-relaxed">
-                3. You get professionally retouched images that are delivered to you digitally on your time-line.
-              </p>
-            </div>
-          </div>
-        </div>
-      </section>
+      <HeadshotProcess />
 
       {/* Transformations Gallery Section */}
-      <GalleryWithLightbox 
-        images={[
-          { src: '/images/Transformations/Deepak_BA.jpg', alt: 'Deepak Professional Transformation' },
-          { src: '/images/Transformations/Kurt_BA.jpg', alt: 'Kurt Professional Transformation' },
-          { src: '/images/Transformations/Marva_BA.jpg', alt: 'Marva Professional Transformation' },
-          { src: '/images/Transformations/Monica_BA.jpg', alt: 'Monica Professional Transformation' }
-        ]}
-      />
+      <BeforeAfter />
 
       {/* Reviews Section */}
-      <section style={{ backgroundColor: '#242424', paddingTop: '48px', paddingBottom: '80px' }}>
-        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-          <h2 className="text-3xl md:text-4xl lg:text-5xl font-bold text-white text-center mb-12 leading-tight">
-            200+ 5-Star Reviews
-          </h2>
-          
-          <div className="grid grid-cols-1 lg:grid-cols-3 gap-12">
-            {/* Peter's Review */}
-            <div className="text-center flex flex-col items-center">
-              <div className="relative w-72 aspect-[5/4] mb-8 overflow-hidden rounded">
-                <Image
-                  src="/images/Reviews/Peter.jpg"
-                  alt="Peter A."
-                  fill
-                  className="object-cover"
-                />
-              </div>
-              <p className="text-white text-base italic mb-8 leading-relaxed max-w-sm">
-                "Kevin knows how to bring to life the natural personality of his clients who may otherwise feel uncomfortable or stiff in front of the camera. I couldn't be more happy with the results!"
-              </p>
-              <div>
-                <h3 className="text-white text-lg font-medium mb-1">Peter A.</h3>
-                <p className="text-gray-400 text-sm font-light">Chief Executive Officer</p>
-              </div>
-            </div>
-            
-            {/* Kerensa's Review */}
-            <div className="text-center flex flex-col items-center">
-              <div className="relative w-72 aspect-[5/4] mb-8 overflow-hidden rounded">
-                <Image
-                  src="/images/Reviews/Kerensa.jpg"
-                  alt="Kerensa G."
-                  fill
-                  className="object-cover object-[center_center]"
-                />
-              </div>
-              <p className="text-white text-base italic mb-8 leading-relaxed max-w-sm">
-                "Kevin was able to get so many great shots and in a short amount of time. I am extremely happy with my pictures and his work is phenomenal! If I could give him 10 stars, I would!"
-              </p>
-              <div>
-                <h3 className="text-white text-lg font-medium mb-1">Kerensa G.</h3>
-                <p className="text-gray-400 text-sm font-light">Educator</p>
-              </div>
-            </div>
-            
-            {/* Elizabeth's Review */}
-            <div className="text-center flex flex-col items-center">
-              <div className="relative w-72 aspect-[5/4] mb-8 overflow-hidden rounded">
-                <Image
-                  src="/images/Reviews/Elizabeth.jpg"
-                  alt="Elizabeth G."
-                  fill
-                  className="object-cover"
-                />
-              </div>
-              <p className="text-white text-base italic mb-8 leading-relaxed max-w-sm">
-                "Kevin is a best-in-class headshot photographer. Kevin's process is especially perfect for individuals that hate their photo being taken. Kevin listens and coaches you through subtle expression changes that captured the real you."
-              </p>
-              <div>
-                <h3 className="text-white text-lg font-medium mb-1">Elizabeth G.</h3>
-                <p className="text-gray-400 text-sm font-light">Chief Strategy Officer</p>
-              </div>
-            </div>
-          </div>
-        </div>
-      </section>
+      <HeadshotReviews />
 
       {/* Pricing CTA Section */}
       <PricingCTA />
