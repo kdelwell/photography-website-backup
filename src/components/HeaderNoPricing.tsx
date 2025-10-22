@@ -10,6 +10,7 @@ export default function HeaderNoPricing() {
     { name: 'GROUPS', href: '/groups', external: false },
     { name: 'FAQS', href: '/faqs', external: false },
     { name: 'ARTICLES', href: '/articles', external: false },
+    { name: 'APPLICATIONS', href: '/applications', external: false },
     { name: 'TERMS', href: '/terms', external: false },
     { name: 'PREP TIPS', href: '/prep', external: false },
     { name: 'HAIR & MAKEUP', href: '/hair', external: false },

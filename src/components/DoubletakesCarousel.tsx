@@ -131,7 +131,7 @@ const DoubletakesCarousel = () => {
 
   return (
     <>
-      <section className="bg-white">
+      <section id="branding" className="bg-white">
         <div className="w-full">
           <div className="text-center py-6">
             <h2 className="text-2xl md:text-3xl font-light text-gray-800">

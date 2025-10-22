@@ -142,12 +142,20 @@ const Groups = ({ frontmatter }: GroupsProps) => {
         </div>
 
         {/* Options Section */}
-        <div className="bg-[#242424] py-16 px-4 sm:px-6 lg:px-8">
-          <div className="max-w-7xl mx-auto">
+        <div className="bg-[#242424] py-16">
+          <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
 
             {/* Option 1 */}
             <div className="mb-16">
               <div className="flex flex-col md:flex-row gap-8 items-start">
+                <div className="w-full md:w-1/2 text-white">
+                  <h4 className="text-2xl md:text-3xl font-bold mb-6 tracking-wide leading-tight">
+                    Opt 1: On Location for Large Groups
+                  </h4>
+                  <p className="text-base md:text-lg leading-relaxed font-light">
+                    This option works great when you have 15+ people and are looking for something to use for an "About Us" page or something similar for marketing materials. I'll come to your location and set up a mobile studio to get what you need.
+                    </p>
+                  </div>
                 <div className="w-full md:w-1/2">
                   <div
                     className="cursor-pointer relative"
@@ -173,20 +181,11 @@ const Groups = ({ frontmatter }: GroupsProps) => {
                     </div>
                   </div>
                 </div>
-                <div className="w-full md:w-1/2 text-white">
-                  <h4 className="text-2xl md:text-3xl font-bold mb-6 tracking-wide leading-tight">
-                    Opt 1: On Location for Large Groups
-                  </h4>
-                  <p className="text-base md:text-lg leading-relaxed font-light">
-                    This option works great when you have 15+ people and are looking for something to use for an "About Us" page or something similar for marketing materials. I'll come to your location and set up a mobile studio to get what you need.
-                    </p>
-                  </div>
-                </div>
               </div>
             </div>
 
             {/* Option 2 */}
-            <div className="mb-4 md:mb-16">
+            <div className="mb-16">
               <div className="flex flex-col md:flex-row gap-8 items-start">
                 <div className="w-full md:w-1/2 text-white">
                   <h4 className="text-2xl md:text-3xl font-bold mb-6 tracking-wide leading-tight">
@@ -328,7 +327,7 @@ const Groups = ({ frontmatter }: GroupsProps) => {
         </div>
 
         {/* Group Shot Option Section */}
-        <div className="bg-[#242424]" style={{ paddingTop: '48px', paddingBottom: '20px' }}>
+        <div id="composite" className="bg-[#242424]" style={{ paddingTop: '48px', paddingBottom: '20px' }}>
           <div className="max-w-5xl mx-auto px-4 sm:px-6 lg:px-8">
             <h2 className="text-4xl md:text-5xl font-bold text-white text-center tracking-wide mb-2">
               Group Shot Option
@@ -469,6 +468,7 @@ const Groups = ({ frontmatter }: GroupsProps) => {
             </div>
           </div>
         )}
+      </div>
     </Layout>
   )
 }
