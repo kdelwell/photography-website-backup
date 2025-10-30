@@ -23,15 +23,16 @@ export default function Applications() {
       </section>
 
       {/* Section 1 - Dark */}
-      <section className="bg-[#242424] py-16">
+      <section className="bg-[#242424] py-4">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-          <div className="grid grid-cols-1 lg:grid-cols-2 gap-12 items-center">
-            <div className="relative h-[400px] rounded-lg overflow-hidden order-2 lg:order-1">
+          <div className="grid grid-cols-1 lg:grid-cols-2 gap-8 items-center">
+            <div className="relative w-full rounded-lg overflow-hidden order-2 lg:order-1 p-[21px]">
               <Image
                 src="/images/Applications/LI_Profile.jpg"
                 alt="LinkedIn profile headshot"
-                fill
-                className="object-cover"
+                width={800}
+                height={600}
+                className="w-full h-auto rounded-lg"
               />
             </div>
             <div className="order-1 lg:order-2">
@@ -47,9 +48,9 @@ export default function Applications() {
       </section>
 
       {/* Section 2 - Light */}
-      <section className="bg-white py-16">
+      <section className="bg-white py-4">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-          <div className="grid grid-cols-1 lg:grid-cols-2 gap-12 items-center">
+          <div className="grid grid-cols-1 lg:grid-cols-2 gap-8 items-center">
             <div>
               <h2 className="text-3xl md:text-4xl font-bold text-gray-900 mb-6">
                 Company Web Pages
@@ -58,12 +59,13 @@ export default function Applications() {
                 Consistent, high-quality images across your company's platforms signal professionalism, attention to detail, and a unified brand identity. They create a cohesive impression, and show that your team values presentation. Visual consistency reassures clients and partners that your business is reliable, credible, and serious about its image and message.
               </p>
             </div>
-            <div className="relative h-[400px] rounded-lg overflow-hidden">
+            <div className="relative w-full rounded-lg overflow-hidden p-[21px]">
               <Image
                 src="/images/Applications/Corp_web_app.jpg"
                 alt="Company web pages headshot"
-                fill
-                className="object-cover"
+                width={800}
+                height={600}
+                className="w-full h-auto rounded-lg"
               />
             </div>
           </div>
@@ -71,15 +73,16 @@ export default function Applications() {
       </section>
 
       {/* Section 3 - Dark */}
-      <section className="bg-[#242424] py-16">
+      <section className="bg-[#242424] py-4">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-          <div className="grid grid-cols-1 lg:grid-cols-2 gap-12 items-center">
-            <div className="relative h-[400px] rounded-lg overflow-hidden order-2 lg:order-1">
+          <div className="grid grid-cols-1 lg:grid-cols-2 gap-8 items-center">
+            <div className="relative w-full rounded-lg overflow-hidden order-2 lg:order-1 p-[21px]">
               <Image
                 src="/images/Applications/Speaker_Bio.jpg"
                 alt="Speaker bio headshot"
-                fill
-                className="object-cover"
+                width={800}
+                height={600}
+                className="w-full h-auto rounded-lg"
               />
             </div>
             <div className="order-1 lg:order-2">
@@ -95,9 +98,9 @@ export default function Applications() {
       </section>
 
       {/* Section 4 - Light */}
-      <section className="bg-white py-16">
+      <section className="bg-white py-4">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-          <div className="grid grid-cols-1 lg:grid-cols-2 gap-12 items-center">
+          <div className="grid grid-cols-1 lg:grid-cols-2 gap-8 items-center">
             <div>
               <h2 className="text-3xl md:text-4xl font-bold text-gray-900 mb-6">
                 Zoom Profile
@@ -106,12 +109,13 @@ export default function Applications() {
                 When your camera is off on Zoom, a quality profile image becomes your visual presence. It conveys professionalism, confidence, and approachability in your absence. A polished photo keeps you memorable, maintains engagement, and ensures you're still making a strong impression—even when you're not on screen. It's your silent representative.
               </p>
             </div>
-            <div className="relative h-[400px] rounded-lg overflow-hidden">
+            <div className="relative w-full rounded-lg overflow-hidden p-[21px]">
               <Image
                 src="/images/Applications/Zoom_Profile.jpg"
                 alt="Zoom profile headshot"
-                fill
-                className="object-cover"
+                width={800}
+                height={600}
+                className="w-full h-auto rounded-lg"
               />
             </div>
           </div>
@@ -119,15 +123,16 @@ export default function Applications() {
       </section>
 
       {/* Section 5 - Dark */}
-      <section className="bg-[#242424] py-16">
+      <section className="bg-[#242424] py-4">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-          <div className="grid grid-cols-1 lg:grid-cols-2 gap-12 items-center">
-            <div className="relative h-[400px] rounded-lg overflow-hidden order-2 lg:order-1">
+          <div className="grid grid-cols-1 lg:grid-cols-2 gap-8 items-center">
+            <div className="relative w-full rounded-lg overflow-hidden order-2 lg:order-1 p-[21px]">
               <Image
                 src="/images/Applications/email_signature.jpg"
                 alt="Email signature headshot"
-                fill
-                className="object-cover"
+                width={800}
+                height={600}
+                className="w-full h-auto rounded-lg"
               />
             </div>
             <div className="order-1 lg:order-2">
@@ -143,9 +148,9 @@ export default function Applications() {
       </section>
 
       {/* Section 6 - Light */}
-      <section className="bg-white py-16">
+      <section className="bg-white py-4">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-          <div className="grid grid-cols-1 lg:grid-cols-2 gap-12 items-center">
+          <div className="grid grid-cols-1 lg:grid-cols-2 gap-8 items-center">
             <div>
               <h2 className="text-3xl md:text-4xl font-bold text-gray-900 mb-6">
                 Social Media Profiles
@@ -154,12 +159,13 @@ export default function Applications() {
                 Your social media profile picture is often your first—and sometimes only—chance to make an impression. A great image communicates confidence, authenticity, and professionalism. It builds trust, attracts the right attention, and reinforces your personal or business brand. In a fast-scrolling world, your photo needs to stand out and resonate.
               </p>
             </div>
-            <div className="relative h-[400px] rounded-lg overflow-hidden">
+            <div className="relative w-full rounded-lg overflow-hidden p-[21px]">
               <Image
                 src="/images/Applications/FB_Profile.jpg"
                 alt="Social media profile headshot"
-                fill
-                className="object-cover"
+                width={800}
+                height={600}
+                className="w-full h-auto rounded-lg"
               />
             </div>
           </div>
@@ -167,15 +173,16 @@ export default function Applications() {
       </section>
 
       {/* Section 7 - Dark */}
-      <section className="bg-[#242424] py-16">
+      <section className="bg-[#242424] py-4">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-          <div className="grid grid-cols-1 lg:grid-cols-2 gap-12 items-center">
-            <div className="relative h-[400px] rounded-lg overflow-hidden order-2 lg:order-1">
+          <div className="grid grid-cols-1 lg:grid-cols-2 gap-8 items-center">
+            <div className="relative w-full rounded-lg overflow-hidden order-2 lg:order-1 p-[21px]">
               <Image
                 src="/images/Applications/namedrop.jpg"
                 alt="NameDrop and Nearby Share"
-                fill
-                className="object-cover"
+                width={800}
+                height={600}
+                className="w-full h-auto rounded-lg"
               />
             </div>
             <div className="order-1 lg:order-2">
@@ -194,9 +201,9 @@ export default function Applications() {
       </section>
 
       {/* Section 8 - Light */}
-      <section className="bg-white py-16">
+      <section className="bg-white py-4">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-          <div className="grid grid-cols-1 lg:grid-cols-2 gap-12 items-center">
+          <div className="grid grid-cols-1 lg:grid-cols-2 gap-8 items-center">
             <div>
               <h2 className="text-3xl md:text-4xl font-bold text-gray-900 mb-6">
                 Contact Poster
@@ -208,12 +215,13 @@ export default function Applications() {
                 Need to learn more – here's <a href="https://www.youtube.com/watch?v=FbOk85uvI7s" target="_blank" rel="noopener noreferrer" className="text-red-600 hover:text-red-700 underline font-semibold">how to</a> set that up.
               </p>
             </div>
-            <div className="relative h-[400px] rounded-lg overflow-hidden">
+            <div className="relative w-full rounded-lg overflow-hidden p-[21px]">
               <Image
                 src="/images/Applications/Contact_Poster.jpg"
                 alt="Contact poster headshot"
-                fill
-                className="object-cover"
+                width={800}
+                height={600}
+                className="w-full h-auto rounded-lg"
               />
             </div>
           </div>
