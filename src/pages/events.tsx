@@ -33,7 +33,7 @@ export default function Events({ frontmatter, content }: { frontmatter: any; con
         <div className="max-w-md mx-auto px-4 sm:px-6 lg:px-8 py-3">
           <div className="relative w-full aspect-[4/2] mt-0 mb-5">
             <Image
-              src="/images/Groups/CNM.jpg"
+              src="/images/groups/CNM.jpg"
               alt="CNM Event"
               fill
               className="object-contain"
