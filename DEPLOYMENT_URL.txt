@@ -1,4 +1,4 @@
 Photography Website Live URL:
-https://photography-website-n76klg5ss-kevin-elwells-projects.vercel.app
+https://photography-website-hxxbt417v-kevin-elwells-projects.vercel.app
 
-Last deployed: 2025-10-31T22:42:09.939Z
+Last deployed: 2025-11-01T11:34:41.477Z
