@@ -1,5 +1,5 @@
 ---
-title: Schedule Your Session - November 11th
+title: Schedule Your Session - Rice
 description: Book your photography session online with our easy scheduling system
 ---
 

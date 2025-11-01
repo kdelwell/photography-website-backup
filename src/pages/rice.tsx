@@ -3,7 +3,7 @@ import matter from 'gray-matter'
 import fs from 'fs'
 import path from 'path'
 
-export default function Nov11({ frontmatter, content }: { frontmatter: any; content: string }) {
+export default function Rice({ frontmatter, content }: { frontmatter: any; content: string }) {
   return (
     <EmbeddedPage
       title={frontmatter.title}
@@ -25,7 +25,7 @@ export default function Nov11({ frontmatter, content }: { frontmatter: any; cont
 }
 
 export async function getStaticProps() {
-  const filePath = path.join(process.cwd(), 'content', '11nov.md')
+  const filePath = path.join(process.cwd(), 'content', 'rice.md')
   const fileContents = fs.readFileSync(filePath, 'utf8')
   const { data, content } = matter(fileContents)
   return { props: { frontmatter: data, content } }
