@@ -49,11 +49,13 @@ export default function Rice({ frontmatter, content }: { frontmatter: any; conte
 
         {/* Embedded Form */}
         <div className="w-full flex justify-center">
-          <div className="w-full max-w-6xl px-4 sm:px-6 lg:px-8" style={{ minHeight: '600px' }}>
+          <div className="w-full max-w-6xl px-4 sm:px-6 lg:px-8" style={{ minHeight: '800px' }}>
             <iframe
-              src="https://GetaHeadShot.17hats.com/p#/scheduling/cckdstzstshbknfnnrzgpgzznhwznckk?embed=true&tp=false&hide_desc=false"
-              style={{ margin: '20px', width: '100%', border: 'none' }}
-              id="hats_scheduler"
+              src="https://app.acuityscheduling.com/schedule.php?owner=18671686&owner=18671686&appointmentType=14836506"
+              width="100%"
+              height="800"
+              frameBorder="0"
+              allow="payment"
               title="Rice Booking Form"
             />
           </div>
@@ -61,7 +63,7 @@ export default function Rice({ frontmatter, content }: { frontmatter: any; conte
 
         {/* Script for form */}
         <Script
-          src="https://GetaHeadShot.17hats.com/vendor/iframeSizer.min.js"
+          src="https://embed.acuityscheduling.com/js/embed.js"
           strategy="lazyOnload"
         />
       </div>
