@@ -51,7 +51,7 @@ export default function Rice({ frontmatter, content }: { frontmatter: any; conte
         <div className="w-full flex justify-center">
           <div className="w-full max-w-6xl px-4 sm:px-6 lg:px-8" style={{ minHeight: '800px' }}>
             <iframe
-              src="https://app.acuityscheduling.com/schedule.php?owner=18671686&owner=18671686&appointmentType=14836506"
+              src="https://app.acuityscheduling.com/schedule.php?owner=18671686&owner=18671686&appointmentType=85280922"
               width="100%"
               height="800"
               frameBorder="0"
