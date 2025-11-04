@@ -149,7 +149,7 @@ const Groups = ({ frontmatter }: GroupsProps) => {
             <div className="mb-16">
               <div className="flex flex-col md:flex-row gap-8 items-start">
                 <div className="w-full md:w-1/2 text-white">
-                  <h4 className="text-2xl md:text-3xl font-bold mb-6 tracking-wide leading-tight">
+                  <h4 id="experience" className="text-2xl md:text-3xl font-bold mb-6 tracking-wide leading-tight">
                     Opt 1: On Location for Large Groups
                   </h4>
                   <p className="text-base md:text-lg leading-relaxed font-light">
