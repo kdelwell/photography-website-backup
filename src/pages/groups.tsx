@@ -133,12 +133,22 @@ const Groups = ({ frontmatter }: GroupsProps) => {
         </div>
 
         {/* Options Heading */}
-        <div className="bg-gray-300" style={{ paddingTop: '20px', paddingBottom: '20px' }}>
+        <div id="experience" className="bg-gray-300" style={{ paddingTop: '20px', paddingBottom: '20px' }}>
           <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
             <h2 className="text-3xl md:text-4xl font-bold text-center text-black tracking-wide">
               Options
             </h2>
           </div>
+          <style jsx>{`
+            #experience {
+              scroll-margin-top: 60px;
+            }
+            @media (min-width: 768px) {
+              #experience {
+                scroll-margin-top: 100px;
+              }
+            }
+          `}</style>
         </div>
 
         {/* Options Section */}
@@ -149,7 +159,7 @@ const Groups = ({ frontmatter }: GroupsProps) => {
             <div className="mb-16">
               <div className="flex flex-col md:flex-row gap-8 items-start">
                 <div className="w-full md:w-1/2 text-white">
-                  <h4 id="experience" className="text-2xl md:text-3xl font-bold mb-6 tracking-wide leading-tight">
+                  <h4 className="text-2xl md:text-3xl font-bold mb-6 tracking-wide leading-tight">
                     Opt 1: On Location for Large Groups
                   </h4>
                   <p className="text-base md:text-lg leading-relaxed font-light">
@@ -173,12 +183,30 @@ const Groups = ({ frontmatter }: GroupsProps) => {
                       Your browser does not support the video tag.
                     </video>
                     <div className="absolute inset-0 flex items-center justify-center">
-                      <div className="bg-black bg-opacity-50 rounded-full p-3">
-                        <svg className="w-8 h-8 text-white" fill="currentColor" viewBox="0 0 24 24">
+                      <div
+                        className="bg-black bg-opacity-50 rounded-full p-4"
+                        style={{
+                          animation: 'pulse 2s cubic-bezier(0.4, 0, 0.6, 1) infinite',
+                          boxShadow: '0 0 20px 5px rgba(255, 255, 255, 0.5)',
+                        }}
+                      >
+                        <svg className="w-12 h-12 text-white" fill="currentColor" viewBox="0 0 24 24">
                           <path d="M8 5v14l11-7z"/>
                         </svg>
                       </div>
                     </div>
+                    <style jsx>{`
+                      @keyframes pulse {
+                        0%, 100% {
+                          transform: scale(1);
+                          opacity: 1;
+                        }
+                        50% {
+                          transform: scale(1.1);
+                          opacity: 0.8;
+                        }
+                      }
+                    `}</style>
                   </div>
                 </div>
               </div>
