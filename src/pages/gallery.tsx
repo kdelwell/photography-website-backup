@@ -18,6 +18,7 @@ export default function Gallery() {
   const [uploading, setUploading] = useState(false)
   const [showAdmin, setShowAdmin] = useState(false)
   const [dbReady, setDbReady] = useState(false)
+  const [uploadProgress, setUploadProgress] = useState({ current: 0, total: 0 })
 
   // Initialize IndexedDB
   const initDB = (): Promise<IDBDatabase> => {
@@ -107,79 +108,135 @@ export default function Gallery() {
 
     setUploading(true)
 
+    const fileArray = Array.from(files)
+    setUploadProgress({ current: 0, total: fileArray.length })
+
     const newImages: GalleryImage[] = []
+    let processedCount = 0
 
-    for (let i = 0; i < files.length; i++) {
-      const file = files[i]
+    // Process images sequentially to avoid memory issues
+    const processImage = (file: File, index: number): Promise<GalleryImage> => {
+      return new Promise((resolve, reject) => {
+        const reader = new FileReader()
 
-      // Convert to web-friendly format
-      const reader = new FileReader()
-      reader.onload = (event) => {
-        const img = document.createElement('img')
-        img.onload = () => {
-          // Create canvas to resize and optimize
-          const canvas = document.createElement('canvas')
-          const ctx = canvas.getContext('2d')
+        reader.onerror = () => reject(new Error(`Failed to read ${file.name}`))
 
-          // Max dimensions for web - reduced for storage efficiency
-          const MAX_WIDTH = 1280
-          const MAX_HEIGHT = 720
+        reader.onload = (event) => {
+          const img = document.createElement('img')
 
-          let width = img.width
-          let height = img.height
+          img.onerror = () => reject(new Error(`Failed to load ${file.name}`))
 
-          if (width > height) {
-            if (width > MAX_WIDTH) {
-              height *= MAX_WIDTH / width
-              width = MAX_WIDTH
-            }
-          } else {
-            if (height > MAX_HEIGHT) {
-              width *= MAX_HEIGHT / height
-              height = MAX_HEIGHT
-            }
-          }
-
-          canvas.width = width
-          canvas.height = height
-          ctx?.drawImage(img, 0, 0, width, height)
-
-          // Convert to JPEG with quality optimization - reduced for storage efficiency
-          const optimizedSrc = canvas.toDataURL('image/jpeg', 0.65)
-
-          const newImage: GalleryImage = {
-            id: `${Date.now()}-${i}`,
-            src: optimizedSrc,
-            name: file.name,
-            favorited: false,
-            comment: ''
-          }
-
-          newImages.push(newImage)
-
-          if (newImages.length === files.length) {
+          img.onload = () => {
             try {
-              setImages(prev => {
-                const combined = [...prev, ...newImages]
-                // Sort by filename
-                return combined.sort((a, b) => a.name.localeCompare(b.name))
-              })
-              setUploading(false)
+              // Create canvas to resize and optimize
+              const canvas = document.createElement('canvas')
+              const ctx = canvas.getContext('2d')
+
+              // Max dimensions for web
+              const MAX_WIDTH = 1280
+              const MAX_HEIGHT = 720
+
+              let width = img.width
+              let height = img.height
+
+              if (width > height) {
+                if (width > MAX_WIDTH) {
+                  height *= MAX_WIDTH / width
+                  width = MAX_WIDTH
+                }
+              } else {
+                if (height > MAX_HEIGHT) {
+                  width *= MAX_HEIGHT / height
+                  height = MAX_HEIGHT
+                }
+              }
+
+              canvas.width = width
+              canvas.height = height
+              ctx?.drawImage(img, 0, 0, width, height)
+
+              // Convert to JPEG with quality optimization
+              const optimizedSrc = canvas.toDataURL('image/jpeg', 0.65)
+
+              const newImage: GalleryImage = {
+                id: `${Date.now()}-${index}`,
+                src: optimizedSrc,
+                name: file.name,
+                favorited: false,
+                comment: ''
+              }
+
+              // Clean up
+              canvas.remove()
+              img.remove()
+
+              resolve(newImage)
             } catch (error) {
-              console.error('Failed to add images:', error)
-              alert(
-                `Error: Unable to add all images. You may have reached the browser storage limit.\n\n` +
-                `Successfully uploaded: ${newImages.length} images\n` +
-                `Try uploading fewer images at once or clearing some existing images first.`
-              )
-              setUploading(false)
+              reject(error)
             }
           }
+
+          img.src = event.target?.result as string
         }
-        img.src = event.target?.result as string
-      }
-      reader.readAsDataURL(file)
+
+        reader.readAsDataURL(file)
+      })
     }
+
+    try {
+      // Process images in batches of 5 to avoid memory issues
+      const BATCH_SIZE = 5
+      for (let i = 0; i < fileArray.length; i += BATCH_SIZE) {
+        const batch = fileArray.slice(i, i + BATCH_SIZE)
+        const batchResults = await Promise.all(
+          batch.map((file, batchIndex) => processImage(file, i + batchIndex))
+        )
+
+        newImages.push(...batchResults)
+        processedCount += batch.length
+
+        // Update progress
+        setUploadProgress({ current: processedCount, total: fileArray.length })
+        console.log(`Processed ${processedCount} of ${fileArray.length} images`)
+
+        // Small delay between batches to allow garbage collection
+        if (i + BATCH_SIZE < fileArray.length) {
+          await new Promise(resolve => setTimeout(resolve, 100))
+        }
+      }
+
+      // Add all processed images at once
+      setImages(prev => {
+        const combined = [...prev, ...newImages]
+        // Sort by filename
+        return combined.sort((a, b) => a.name.localeCompare(b.name))
+      })
+
+      setUploading(false)
+      setUploadProgress({ current: 0, total: 0 })
+      console.log(`Successfully processed all ${fileArray.length} images`)
+    } catch (error) {
+      console.error('Failed to process images:', error)
+      alert(
+        `Error processing images: ${error instanceof Error ? error.message : 'Unknown error'}\n\n` +
+        `Successfully processed: ${processedCount} of ${fileArray.length} images\n` +
+        `The processed images have been added to the gallery.`
+      )
+
+      // Add whatever we managed to process
+      if (newImages.length > 0) {
+        setImages(prev => {
+          const combined = [...prev, ...newImages]
+          return combined.sort((a, b) => a.name.localeCompare(b.name))
+        })
+      }
+
+      setUploading(false)
+      setUploadProgress({ current: 0, total: 0 })
+    }
+
+    // Reset file input
+    e.target.value = ''
   }
 
   const toggleFavorite = (id: string) => {
@@ -350,8 +407,19 @@ export default function Gallery() {
               </div>
 
               {uploading && (
-                <div className="mt-4 text-gray-600">
-                  <p>Optimizing images for web...</p>
+                <div className="mt-4">
+                  <div className="flex items-center gap-3">
+                    <div className="flex-grow bg-gray-200 rounded-full h-2.5">
+                      <div
+                        className="bg-red-600 h-2.5 rounded-full transition-all duration-300"
+                        style={{ width: `${uploadProgress.total > 0 ? (uploadProgress.current / uploadProgress.total) * 100 : 0}%` }}
+                      ></div>
+                    </div>
+                    <span className="text-gray-600 text-sm font-medium min-w-[80px]">
+                      {uploadProgress.current} / {uploadProgress.total}
+                    </span>
+                  </div>
+                  <p className="text-gray-600 text-sm mt-2">Processing images... Please wait.</p>
                 </div>
               )}
             </div>
