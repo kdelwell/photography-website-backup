@@ -7,7 +7,7 @@ import { Star, Upload, Download, Trash2, MessageSquare, Settings } from 'lucide-
 
 interface GalleryImage {
   id: string
-  url: string
+  src: string
   name: string
   favorited: boolean
   comment: string
@@ -17,32 +17,91 @@ export default function Gallery() {
   const [images, setImages] = useState<GalleryImage[]>([])
   const [uploading, setUploading] = useState(false)
   const [showAdmin, setShowAdmin] = useState(false)
-  const [loading, setLoading] = useState(true)
+  const [dbReady, setDbReady] = useState(false)
   const [uploadProgress, setUploadProgress] = useState({ current: 0, total: 0 })
 
-  // Load images from server on mount
+  // Initialize IndexedDB
+  const initDB = (): Promise<IDBDatabase> => {
+    return new Promise((resolve, reject) => {
+      const request = indexedDB.open('GalleryDB', 1)
+
+      request.onerror = () => reject(request.error)
+      request.onsuccess = () => resolve(request.result)
+
+      request.onupgradeneeded = (event) => {
+        const db = (event.target as IDBOpenDBRequest).result
+        if (!db.objectStoreNames.contains('images')) {
+          db.createObjectStore('images', { keyPath: 'id' })
+        }
+      }
+    })
+  }
+
+  // Load images from IndexedDB on mount
   useEffect(() => {
     const loadImages = async () => {
       try {
-        const response = await fetch('/api/gallery/list')
-        const data = await response.json()
+        const db = await initDB()
+        const transaction = db.transaction(['images'], 'readonly')
+        const store = transaction.objectStore('images')
+        const request = store.getAll()
 
-        if (data.images) {
+        request.onsuccess = () => {
+          const loadedImages = request.result as GalleryImage[]
           // Sort by filename
-          const sorted = data.images.sort((a: GalleryImage, b: GalleryImage) =>
-            a.name.localeCompare(b.name)
-          )
+          const sorted = loadedImages.sort((a, b) => a.name.localeCompare(b.name))
           setImages(sorted)
+          setDbReady(true)
+        }
+
+        request.onerror = () => {
+          console.error('Failed to load images from IndexedDB')
+          setDbReady(true)
         }
       } catch (error) {
-        console.error('Failed to load images:', error)
-      } finally {
-        setLoading(false)
+        console.error('Failed to initialize IndexedDB:', error)
+        setDbReady(true)
       }
     }
 
     loadImages()
   }, [])
+
+  // Save images to IndexedDB whenever they change
+  useEffect(() => {
+    if (!dbReady) return
+
+    const saveImages = async () => {
+      try {
+        const db = await initDB()
+        const transaction = db.transaction(['images'], 'readwrite')
+        const store = transaction.objectStore('images')
+
+        // Clear existing data
+        store.clear()
+
+        // Add all images
+        images.forEach(image => {
+          store.add(image)
+        })
+
+        transaction.oncomplete = () => {
+          console.log(`Images saved to IndexedDB successfully: ${images.length} images`)
+        }
+
+        transaction.onerror = (e) => {
+          console.error('Failed to save images to IndexedDB:', e)
+          alert('Error saving images to database. Images may not persist after refresh.')
+        }
+      } catch (error) {
+        console.error('Failed to save to IndexedDB:', error)
+      }
+    }
+
+    if (images.length >= 0) {
+      saveImages()
+    }
+  }, [images, dbReady])
 
   const handleImageUpload = async (e: React.ChangeEvent<HTMLInputElement>) => {
     const files = e.target.files
@@ -147,36 +206,31 @@ export default function Gallery() {
         }
       }
 
-      // Upload to server
-      const uploadResponse = await fetch('/api/gallery/upload', {
-        method: 'POST',
-        headers: { 'Content-Type': 'application/json' },
-        body: JSON.stringify({ images: newImages }),
-      })
-
-      if (!uploadResponse.ok) {
-        throw new Error('Failed to upload images to server')
-      }
-
-      const uploadData = await uploadResponse.json()
-
-      // Add uploaded images to state
+      // Add all processed images at once
       setImages(prev => {
-        const combined = [...prev, ...uploadData.images]
+        const combined = [...prev, ...newImages]
         // Sort by filename
         return combined.sort((a, b) => a.name.localeCompare(b.name))
       })
 
       setUploading(false)
       setUploadProgress({ current: 0, total: 0 })
-      console.log(`Successfully uploaded all ${fileArray.length} images`)
+      console.log(`Successfully processed all ${fileArray.length} images`)
     } catch (error) {
-      console.error('Failed to upload images:', error)
+      console.error('Failed to process images:', error)
       alert(
-        `Error uploading images: ${error instanceof Error ? error.message : 'Unknown error'}\n\n` +
+        `Error processing images: ${error instanceof Error ? error.message : 'Unknown error'}\n\n` +
         `Successfully processed: ${processedCount} of ${fileArray.length} images\n` +
-        `Please try again or upload fewer images at once.`
+        `The processed images have been added to the gallery.`
       )
+
+      // Add whatever we managed to process
+      if (newImages.length > 0) {
+        setImages(prev => {
+          const combined = [...prev, ...newImages]
+          return combined.sort((a, b) => a.name.localeCompare(b.name))
+        })
+      }
 
       setUploading(false)
       setUploadProgress({ current: 0, total: 0 })
@@ -186,59 +240,20 @@ export default function Gallery() {
     e.target.value = ''
   }
 
-  const toggleFavorite = async (id: string) => {
-    const image = images.find(img => img.id === id)
-    if (!image) return
-
-    // Optimistic update
+  const toggleFavorite = (id: string) => {
     setImages(prev =>
       prev.map(img =>
         img.id === id ? { ...img, favorited: !img.favorited } : img
       )
     )
-
-    try {
-      const response = await fetch('/api/gallery/update', {
-        method: 'PUT',
-        headers: { 'Content-Type': 'application/json' },
-        body: JSON.stringify({ id, favorited: !image.favorited }),
-      })
-
-      if (!response.ok) {
-        throw new Error('Failed to update')
-      }
-    } catch (error) {
-      console.error('Failed to toggle favorite:', error)
-      // Revert on error
-      setImages(prev =>
-        prev.map(img =>
-          img.id === id ? { ...img, favorited: image.favorited } : img
-        )
-      )
-    }
   }
 
-  const updateComment = async (id: string, comment: string) => {
-    // Optimistic update
+  const updateComment = (id: string, comment: string) => {
     setImages(prev =>
       prev.map(img =>
         img.id === id ? { ...img, comment } : img
       )
     )
-
-    try {
-      const response = await fetch('/api/gallery/update', {
-        method: 'PUT',
-        headers: { 'Content-Type': 'application/json' },
-        body: JSON.stringify({ id, comment }),
-      })
-
-      if (!response.ok) {
-        throw new Error('Failed to update')
-      }
-    } catch (error) {
-      console.error('Failed to update comment:', error)
-    }
   }
 
   const deleteImage = async (id: string, name: string) => {
@@ -247,19 +262,18 @@ export default function Gallery() {
     }
 
     try {
-      const response = await fetch('/api/gallery/delete', {
-        method: 'DELETE',
-        headers: { 'Content-Type': 'application/json' },
-        body: JSON.stringify({ id }),
-      })
-
-      if (!response.ok) {
-        throw new Error('Failed to delete')
-      }
-
       // Remove from state
       setImages(prev => prev.filter(img => img.id !== id))
-      console.log(`Deleted image: ${name}`)
+
+      // Remove from IndexedDB
+      const db = await initDB()
+      const transaction = db.transaction(['images'], 'readwrite')
+      const store = transaction.objectStore('images')
+      store.delete(id)
+
+      transaction.oncomplete = () => {
+        console.log(`Deleted image: ${name}`)
+      }
     } catch (error) {
       console.error('Failed to delete image:', error)
       alert('Failed to delete image. Please try again.')
@@ -296,19 +310,18 @@ export default function Gallery() {
   const clearAll = async () => {
     if (confirm('Are you sure you want to clear all images? This cannot be undone.')) {
       try {
-        const response = await fetch('/api/gallery/clear', {
-          method: 'POST',
-        })
+        const db = await initDB()
+        const transaction = db.transaction(['images'], 'readwrite')
+        const store = transaction.objectStore('images')
+        store.clear()
 
-        if (!response.ok) {
-          throw new Error('Failed to clear images')
+        transaction.oncomplete = () => {
+          setImages([])
+          console.log('All images cleared from IndexedDB')
         }
-
-        setImages([])
-        console.log('All images cleared from server')
       } catch (error) {
         console.error('Failed to clear images:', error)
-        alert('Failed to clear images. Please try again.')
+        setImages([])
       }
     }
   }
@@ -330,6 +343,12 @@ export default function Gallery() {
 
   const favoritedCount = images.filter(img => img.favorited).length
   const commentedCount = images.filter(img => img.comment).length
+
+  // Calculate storage usage (IndexedDB typically has 50MB+ limit)
+  const storageSize = new Blob([JSON.stringify(images)]).size
+  const storageMB = (storageSize / 1024 / 1024).toFixed(2)
+  const storageLimit = 50 * 1024 * 1024 // 50MB typical minimum for IndexedDB
+  const storagePercent = Math.round((storageSize / storageLimit) * 100)
 
   return (
     <>
@@ -356,11 +375,11 @@ export default function Gallery() {
           {/* Admin Panel */}
           {showAdmin && (
             <div className="bg-white rounded-lg shadow-sm p-6 mb-8">
-              {/* Storage Info */}
-              <div className="mb-4 p-3 bg-green-50 rounded-md text-sm text-green-800">
-                <strong>Server-Side Storage</strong>
+              {/* Domain Info */}
+              <div className="mb-4 p-3 bg-blue-50 rounded-md text-sm text-blue-800">
+                <strong>Current Site:</strong> {typeof window !== 'undefined' ? window.location.hostname : 'Unknown'}
                 <br />
-                <span className="text-xs text-green-600">Images are stored on the server and accessible from any device</span>
+                <span className="text-xs text-blue-600">Images are stored locally in your browser for this domain only</span>
               </div>
 
               {/* Stats */}
@@ -373,6 +392,9 @@ export default function Gallery() {
                 </div>
                 <div className="bg-blue-100 px-4 py-2 rounded-md">
                   <span className="font-semibold">{commentedCount}</span> With Comments
+                </div>
+                <div className={`px-4 py-2 rounded-md ${storagePercent > 80 ? 'bg-red-100' : storagePercent > 60 ? 'bg-orange-100' : 'bg-green-100'}`}>
+                  <span className="font-semibold">{storageMB} MB</span> Storage Used ({storagePercent}%)
                 </div>
               </div>
 
@@ -450,7 +472,7 @@ export default function Gallery() {
                     onDragStart={(e) => e.preventDefault()}
                   >
                     <img
-                      src={image.url}
+                      src={image.src}
                       alt={image.name}
                       className="object-contain w-full h-auto pointer-events-none"
                       style={{ maxHeight: '600px', userSelect: 'none' }}

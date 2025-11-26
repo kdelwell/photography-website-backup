@@ -24,6 +24,7 @@
   "packageManager": "pnpm@10.14.0",
   "dependencies": {
     "@tailwindcss/postcss": "4.1.11",
+    "@vercel/blob": "^2.0.0",
     "autoprefixer": "10.4.21",
     "gray-matter": "4.0.3",
     "lucide-react": "0.539.0",
