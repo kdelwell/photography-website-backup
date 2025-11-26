@@ -7,7 +7,7 @@ import { Star, Upload, Download, Trash2, MessageSquare, Settings } from 'lucide-
 
 interface GalleryImage {
   id: string
-  url: string
+  url?: string // URL from server after upload
   name: string
   favorited: boolean
   comment: string
