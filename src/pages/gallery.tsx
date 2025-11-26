@@ -11,6 +11,7 @@ interface GalleryImage {
   name: string
   favorited: boolean
   comment: string
+  src?: string // Temporary field for client-side processing before upload
 }
 
 export default function Gallery() {
