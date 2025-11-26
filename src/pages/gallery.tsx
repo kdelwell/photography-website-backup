@@ -463,11 +463,9 @@ export default function Gallery() {
                     onContextMenu={(e) => e.preventDefault()}
                     onDragStart={(e) => e.preventDefault()}
                   >
-                    <Image
+                    <img
                       src={image.src}
                       alt={image.name}
-                      width={800}
-                      height={800}
                       className="object-contain w-full h-auto pointer-events-none"
                       style={{ maxHeight: '600px', userSelect: 'none' }}
                       draggable={false}
