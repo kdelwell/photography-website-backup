@@ -17,52 +17,93 @@ export default function Gallery() {
   const [images, setImages] = useState<GalleryImage[]>([])
   const [uploading, setUploading] = useState(false)
   const [showAdmin, setShowAdmin] = useState(false)
+  const [dbReady, setDbReady] = useState(false)
 
-  // Load images from localStorage on mount
-  useEffect(() => {
-    const savedImages = localStorage.getItem('galleryImages')
-    if (savedImages) {
-      const parsed = JSON.parse(savedImages)
-      // Sort by filename
-      const sorted = parsed.sort((a: GalleryImage, b: GalleryImage) =>
-        a.name.localeCompare(b.name)
-      )
-      setImages(sorted)
-    }
-  }, [])
+  // Initialize IndexedDB
+  const initDB = (): Promise<IDBDatabase> => {
+    return new Promise((resolve, reject) => {
+      const request = indexedDB.open('GalleryDB', 1)
 
-  // Save images to localStorage whenever they change
+      request.onerror = () => reject(request.error)
+      request.onsuccess = () => resolve(request.result)
+
+      request.onupgradeneeded = (event) => {
+        const db = (event.target as IDBOpenDBRequest).result
+        if (!db.objectStoreNames.contains('images')) {
+          db.createObjectStore('images', { keyPath: 'id' })
+        }
+      }
+    })
+  }
+
+  // Load images from IndexedDB on mount
   useEffect(() => {
-    if (images.length > 0) {
+    const loadImages = async () => {
       try {
-        localStorage.setItem('galleryImages', JSON.stringify(images))
+        const db = await initDB()
+        const transaction = db.transaction(['images'], 'readonly')
+        const store = transaction.objectStore('images')
+        const request = store.getAll()
+
+        request.onsuccess = () => {
+          const loadedImages = request.result as GalleryImage[]
+          // Sort by filename
+          const sorted = loadedImages.sort((a, b) => a.name.localeCompare(b.name))
+          setImages(sorted)
+          setDbReady(true)
+        }
+
+        request.onerror = () => {
+          console.error('Failed to load images from IndexedDB')
+          setDbReady(true)
+        }
       } catch (error) {
-        console.error('Failed to save to localStorage:', error)
-        alert('Warning: Unable to save all images. You may have reached the browser storage limit. Consider reducing the number of images.')
+        console.error('Failed to initialize IndexedDB:', error)
+        setDbReady(true)
       }
     }
-  }, [images])
+
+    loadImages()
+  }, [])
+
+  // Save images to IndexedDB whenever they change
+  useEffect(() => {
+    if (!dbReady) return
+
+    const saveImages = async () => {
+      try {
+        const db = await initDB()
+        const transaction = db.transaction(['images'], 'readwrite')
+        const store = transaction.objectStore('images')
+
+        // Clear existing data
+        store.clear()
+
+        // Add all images
+        images.forEach(image => {
+          store.add(image)
+        })
+
+        transaction.oncomplete = () => {
+          console.log('Images saved to IndexedDB successfully')
+        }
+
+        transaction.onerror = () => {
+          console.error('Failed to save images to IndexedDB')
+        }
+      } catch (error) {
+        console.error('Failed to save to IndexedDB:', error)
+      }
+    }
+
+    if (images.length >= 0) {
+      saveImages()
+    }
+  }, [images, dbReady])
 
   const handleImageUpload = async (e: React.ChangeEvent<HTMLInputElement>) => {
     const files = e.target.files
     if (!files) return
-
-    // Check current localStorage usage
-    const currentSize = new Blob([JSON.stringify(images)]).size
-    const estimatedNewSize = files.length * 50000 // Rough estimate: 50KB per optimized image
-    const totalEstimated = currentSize + estimatedNewSize
-
-    // Warn if approaching 5MB limit
-    if (totalEstimated > 4500000) {
-      const proceed = confirm(
-        `Warning: You're uploading ${files.length} images. This may exceed browser storage limits. ` +
-        `Consider uploading in smaller batches. Continue anyway?`
-      )
-      if (!proceed) {
-        e.target.value = '' // Reset file input
-        return
-      }
-    }
 
     setUploading(true)
 
@@ -188,10 +229,22 @@ export default function Gallery() {
     window.URL.revokeObjectURL(url)
   }
 
-  const clearAll = () => {
+  const clearAll = async () => {
     if (confirm('Are you sure you want to clear all images? This cannot be undone.')) {
-      setImages([])
-      localStorage.removeItem('galleryImages')
+      try {
+        const db = await initDB()
+        const transaction = db.transaction(['images'], 'readwrite')
+        const store = transaction.objectStore('images')
+        store.clear()
+
+        transaction.oncomplete = () => {
+          setImages([])
+          console.log('All images cleared from IndexedDB')
+        }
+      } catch (error) {
+        console.error('Failed to clear images:', error)
+        setImages([])
+      }
     }
   }
 
@@ -213,10 +266,11 @@ export default function Gallery() {
   const favoritedCount = images.filter(img => img.favorited).length
   const commentedCount = images.filter(img => img.comment).length
 
-  // Calculate storage usage
+  // Calculate storage usage (IndexedDB typically has 50MB+ limit)
   const storageSize = new Blob([JSON.stringify(images)]).size
   const storageMB = (storageSize / 1024 / 1024).toFixed(2)
-  const storagePercent = Math.round((storageSize / 5000000) * 100) // 5MB limit
+  const storageLimit = 50 * 1024 * 1024 // 50MB typical minimum for IndexedDB
+  const storagePercent = Math.round((storageSize / storageLimit) * 100)
 
   return (
     <>
