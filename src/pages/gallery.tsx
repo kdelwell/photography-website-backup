@@ -86,11 +86,12 @@ export default function Gallery() {
         })
 
         transaction.oncomplete = () => {
-          console.log('Images saved to IndexedDB successfully')
+          console.log(`Images saved to IndexedDB successfully: ${images.length} images`)
         }
 
-        transaction.onerror = () => {
-          console.error('Failed to save images to IndexedDB')
+        transaction.onerror = (e) => {
+          console.error('Failed to save images to IndexedDB:', e)
+          alert('Error saving images to database. Images may not persist after refresh.')
         }
       } catch (error) {
         console.error('Failed to save to IndexedDB:', error)
@@ -374,6 +375,13 @@ export default function Gallery() {
           {/* Admin Panel */}
           {showAdmin && (
             <div className="bg-white rounded-lg shadow-sm p-6 mb-8">
+              {/* Domain Info */}
+              <div className="mb-4 p-3 bg-blue-50 rounded-md text-sm text-blue-800">
+                <strong>Current Site:</strong> {typeof window !== 'undefined' ? window.location.hostname : 'Unknown'}
+                <br />
+                <span className="text-xs text-blue-600">Images are stored locally in your browser for this domain only</span>
+              </div>
+
               {/* Stats */}
               <div className="flex flex-wrap gap-4 mb-6">
                 <div className="bg-gray-100 px-4 py-2 rounded-md">
