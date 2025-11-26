@@ -31,8 +31,64 @@ export default function Home({ frontmatter, content }: { frontmatter: any; conte
     return () => window.removeEventListener('scroll', handleScroll)
   }, [])
 
+  const faqSchema = {
+    "@context": "https://schema.org",
+    "@type": "FAQPage",
+    "mainEntity": [
+      {
+        "@type": "Question",
+        "name": "What makes your headshot photography different?",
+        "acceptedAnswer": {
+          "@type": "Answer",
+          "text": "We combine 10+ years of professional experience with a unique instant feedback system. You'll see your images in real-time during the session, ensuring you love the results before leaving. We specialize in authentic expressions, not stiff corporate poses, with magazine-quality editing on every image."
+        }
+      },
+      {
+        "@type": "Question",
+        "name": "How long does a headshot session take?",
+        "acceptedAnswer": {
+          "@type": "Answer",
+          "text": "Individual headshot sessions typically take 30-45 minutes. This includes time for multiple looks, wardrobe changes, and our instant feedback process to ensure perfect results."
+        }
+      },
+      {
+        "@type": "Question",
+        "name": "When will I receive my headshots?",
+        "acceptedAnswer": {
+          "@type": "Answer",
+          "text": "Standard turnaround is 48-72 hours with professionally edited, magazine-quality images. Same-day delivery is available for rush orders."
+        }
+      },
+      {
+        "@type": "Question",
+        "name": "Do you offer on-location photography in Washington DC?",
+        "acceptedAnswer": {
+          "@type": "Answer",
+          "text": "Yes! We bring our professional studio setup to your location anywhere in the Washington DC metro area, including Arlington, Alexandria, Bethesda, and Silver Spring. Perfect for corporate teams and group headshots."
+        }
+      },
+      {
+        "@type": "Question",
+        "name": "What should I bring to my headshot session?",
+        "acceptedAnswer": {
+          "@type": "Answer",
+          "text": "Bring 2-3 outfit options in solid colors that complement your skin tone. Avoid busy patterns. We provide detailed preparation guidance before your session, including tips on clothing, grooming, and what to expect."
+        }
+      }
+    ]
+  };
+
   return (
-    <Layout title={frontmatter.title} description={frontmatter.description}>
+    <Layout
+      title="Professional Headshots Washington DC | Get Ahead Shot Photography"
+      description="Washington DC's premier headshot photographer. Magazine-quality professional headshots for executives, entrepreneurs, and business professionals. Same-day turnaround. Studio or on-location. Book your session today!"
+    >
+      {/* FAQ Schema */}
+      <script
+        type="application/ld+json"
+        dangerouslySetInnerHTML={{ __html: JSON.stringify(faqSchema) }}
+      />
+
       {/* Option 3: Split Layout */}
       
       {/* Video Hero Section with Parallax */}
@@ -112,7 +168,7 @@ export default function Home({ frontmatter, content }: { frontmatter: any; conte
             <div className="relative h-[400px] lg:h-[500px] rounded-lg overflow-hidden">
               <Image
                 src="/images/Kevin_about.jpg"
-                alt="Kevin Elwell, Professional Photographer"
+                alt="Kevin Elwell - Professional headshot photographer in Washington DC with 10+ years experience"
                 fill
                 className="object-cover"
               />
@@ -143,12 +199,12 @@ export default function Home({ frontmatter, content }: { frontmatter: any; conte
       <PricingCTA />
 
       {/* Secondary Gallery Section */}
-      <GalleryWithLightbox 
+      <GalleryWithLightbox
         images={[
-          { src: '/images/SecondGallery/Allison.jpg', alt: 'Allison Professional Headshot' },
-          { src: '/images/SecondGallery/Ama.jpg', alt: 'Ama Professional Headshot' },
-          { src: '/images/SecondGallery/Fabian.jpg', alt: 'Fabian Professional Headshot' },
-          { src: '/images/SecondGallery/Spiro.jpg', alt: 'Spiro Professional Headshot' }
+          { src: '/images/SecondGallery/Allison.jpg', alt: 'Professional corporate headshot Washington DC - Business portrait photography near me' },
+          { src: '/images/SecondGallery/Ama.jpg', alt: 'Executive headshot DC - Professional business photography Washington DC' },
+          { src: '/images/SecondGallery/Fabian.jpg', alt: 'Professional LinkedIn headshot photographer Washington DC - Corporate portrait' },
+          { src: '/images/SecondGallery/Spiro.jpg', alt: 'Business headshot photography DC - Professional corporate photographer near me' }
         ]}
       />
 
@@ -230,12 +286,12 @@ export default function Home({ frontmatter, content }: { frontmatter: any; conte
       <DoubletakesCarousel />
 
       {/* Third Gallery Section */}
-      <GalleryWithLightbox 
+      <GalleryWithLightbox
         images={[
-          { src: '/images/ThirdGallery/Charles.jpg', alt: 'Charles Professional Headshot' },
-          { src: '/images/ThirdGallery/Kirsten.jpg', alt: 'Kirsten Professional Headshot' },
-          { src: '/images/ThirdGallery/Rachel.jpg', alt: 'Rachel Professional Headshot' },
-          { src: '/images/ThirdGallery/Ryan.jpg', alt: 'Ryan Professional Headshot' }
+          { src: '/images/ThirdGallery/Charles.jpg', alt: 'Professional headshot Washington DC - Executive portrait photographer near me' },
+          { src: '/images/ThirdGallery/Kirsten.jpg', alt: 'Corporate headshot photography Washington DC - Business professional portrait' },
+          { src: '/images/ThirdGallery/Rachel.jpg', alt: 'Professional business headshot DC - LinkedIn profile photography Washington DC' },
+          { src: '/images/ThirdGallery/Ryan.jpg', alt: 'Executive headshot photographer Washington DC - Professional corporate photography near me' }
         ]}
       />
 

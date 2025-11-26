@@ -10,14 +10,17 @@ export default function MoreInfo({ frontmatter, content }: { frontmatter: any; c
       description={frontmatter.description}
       imageSrc="/images/more_info.jpg"
       imageAlt="More Information"
-      iframeSrc="https://GetaHeadShot.17hats.com/p#/embed/vhtnhdfkgghgzhwtbkcdpppvvzczxhft"
-      iframeId="lc_contact_form"
-      scriptSrc="https://GetaHeadShot.17hats.com/vendor/iframeSizer.min.js"
+      iframeSrc="https://api.getaheadshot.net/widget/form/P3fiOKHq2PRWe6gDrAO4"
+      iframeId="inline-P3fiOKHq2PRWe6gDrAO4"
+      formId="P3fiOKHq2PRWe6gDrAO4"
+      scriptSrc="https://api.getaheadshot.net/js/form_embed.js"
       iframeStyle={{
         width: '100%',
-        border: 'none'
+        height: '100%',
+        border: 'none',
+        borderRadius: '3px'
       }}
-      iframeHeight="600px"
+      iframeHeight="805px"
       pageTitle="More Info..."
       bodyText="Thank you for your interest in my product and services. Please fill out this form and I'll link you to my pricing page. I'll also send you some more information regarding my offerings. This small step gets you that much closer to a headshot that says 'wow.'"
     />

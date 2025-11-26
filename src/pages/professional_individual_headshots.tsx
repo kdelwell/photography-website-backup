@@ -11,7 +11,10 @@ import BeforeAfter from '@/components/BeforeAfter'
 
 export default function ProfessionalIndividualHeadshots({ frontmatter, content }: { frontmatter: any; content: string }) {
   return (
-    <Layout title={frontmatter.title} description={frontmatter.description} hideMenu={true}>
+    <Layout
+      title="Professional Individual Headshots Washington DC | Corporate Photography"
+      description="Professional headshot photography for individuals in Washington DC. Perfect for LinkedIn, corporate websites, and personal branding. Get magazine-quality results with same-day turnaround. Book your headshot session now!"
+    >
       {/* Google Analytics */}
       <Script
         src="https://www.googletagmanager.com/gtag/js?id=G-9PNL0CCN6V"

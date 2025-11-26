@@ -3,24 +3,21 @@ import matter from 'gray-matter'
 import fs from 'fs'
 import path from 'path'
 
-export default function Trigger({ frontmatter, content }: { frontmatter: any; content: string }) {
+export default function Hats({ frontmatter, content }: { frontmatter: any; content: string }) {
   return (
     <EmbeddedPage
       title={frontmatter.title}
       description={frontmatter.description}
       imageSrc="/images/more_info.jpg"
       imageAlt="More Information"
-      iframeSrc="https://api.getaheadshot.net/widget/form/P3fiOKHq2PRWe6gDrAO4"
-      iframeId="inline-P3fiOKHq2PRWe6gDrAO4"
-      formId="P3fiOKHq2PRWe6gDrAO4"
-      scriptSrc="https://api.getaheadshot.net/js/form_embed.js"
+      iframeSrc="https://GetaHeadShot.17hats.com/p#/embed/vhtnhdfkgghgzhwtbkcdpppvvzczxhft"
+      iframeId="lc_contact_form"
+      scriptSrc="https://GetaHeadShot.17hats.com/vendor/iframeSizer.min.js"
       iframeStyle={{
         width: '100%',
-        height: '100%',
-        border: 'none',
-        borderRadius: '3px'
+        border: 'none'
       }}
-      iframeHeight="805px"
+      iframeHeight="600px"
       pageTitle="More Info..."
       bodyText="Thank you for your interest in my product and services. Please fill out this form and I'll link you to my pricing page. I'll also send you some more information regarding my offerings. This small step gets you that much closer to a headshot that says 'wow.'"
     />
@@ -28,7 +25,7 @@ export default function Trigger({ frontmatter, content }: { frontmatter: any; co
 }
 
 export async function getStaticProps() {
-  const filePath = path.join(process.cwd(), 'content', 'trigger.md')
+  const filePath = path.join(process.cwd(), 'content', 'hats.md')
   const fileContents = fs.readFileSync(filePath, 'utf8')
   const { data, content } = matter(fileContents)
   return { props: { frontmatter: data, content } }

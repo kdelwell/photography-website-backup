@@ -3,7 +3,7 @@ import matter from 'gray-matter'
 import fs from 'fs'
 import path from 'path'
 
-export default function Schedule({ frontmatter, content }: { frontmatter: any; content: string }) {
+export default function ScheduleHats({ frontmatter, content }: { frontmatter: any; content: string }) {
   return (
     <EmbeddedPage
       title={frontmatter.title}
@@ -11,13 +11,13 @@ export default function Schedule({ frontmatter, content }: { frontmatter: any; c
       pageTitle="Choose a time and a session that works for you"
       imageSrc="/images/schedule.jpg"
       imageAlt="Schedule Your Session"
-      iframeSrc="https://api.getaheadshot.net/booking/kevin-elwell-photography,-llc-1w583dfiyrjh/sc/68c1d42576a8d83fcd791805?heightMode=full&showHeader=true"
-      iframeId="68c1d42576a8d83fcd791805_1764104207645"
-      scriptSrc="https://api.getaheadshot.net/js/form_embed.js"
+      iframeSrc="https://GetaHeadShot.17hats.com/p#/scheduling/hnzpzgpvzhxgnndvtcpcnkhgsrbswchz?embed=true&tp=false&hide_desc=false"
+      iframeId="hats_scheduler"
+      scriptSrc="https://GetaHeadShot.17hats.com/vendor/iframeSizer.min.js"
       iframeStyle={{
+        margin: '20px',
         width: '100%',
-        border: 'none',
-        overflow: 'hidden'
+        border: 'none'
       }}
       iframeHeight="600px"
     />
@@ -25,7 +25,7 @@ export default function Schedule({ frontmatter, content }: { frontmatter: any; c
 }
 
 export async function getStaticProps() {
-  const filePath = path.join(process.cwd(), 'content', 'schedule.md')
+  const filePath = path.join(process.cwd(), 'content', 'schedule_hats.md')
   const fileContents = fs.readFileSync(filePath, 'utf8')
   const { data, content } = matter(fileContents)
   return { props: { frontmatter: data, content } }

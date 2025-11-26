@@ -1,0 +1,23 @@
+# robots.txt for getaheadshot.net
+
+# Allow all search engines to crawl all content
+User-agent: *
+Allow: /
+
+# Disallow crawling of internal pages that shouldn't be indexed
+Disallow: /test
+Disallow: /option3
+Disallow: /trigger
+Disallow: /rice
+Disallow: /30_min_solutions
+
+# Sitemap location
+Sitemap: https://getaheadshot.net/sitemap.xml
+
+# Additional sitemaps if you add them later
+# Sitemap: https://getaheadshot.net/sitemap-images.xml
+# Sitemap: https://getaheadshot.net/sitemap-articles.xml
+
+# Crawl-delay (optional - remove if causing issues)
+# User-agent: *
+# Crawl-delay: 1
