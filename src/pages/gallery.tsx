@@ -255,8 +255,28 @@ export default function Gallery() {
     )
   }
 
-  const deleteImage = (id: string) => {
-    setImages(prev => prev.filter(img => img.id !== id))
+  const deleteImage = async (id: string, name: string) => {
+    if (!confirm(`Delete "${name}"? This cannot be undone.`)) {
+      return
+    }
+
+    try {
+      // Remove from state
+      setImages(prev => prev.filter(img => img.id !== id))
+
+      // Remove from IndexedDB
+      const db = await initDB()
+      const transaction = db.transaction(['images'], 'readwrite')
+      const store = transaction.objectStore('images')
+      store.delete(id)
+
+      transaction.oncomplete = () => {
+        console.log(`Deleted image: ${name}`)
+      }
+    } catch (error) {
+      console.error('Failed to delete image:', error)
+      alert('Failed to delete image. Please try again.')
+    }
   }
 
   const downloadSummary = () => {
@@ -453,6 +473,17 @@ export default function Gallery() {
                       draggable={false}
                       onContextMenu={(e) => e.preventDefault()}
                     />
+
+                    {/* Delete Button - Admin Only */}
+                    {showAdmin && (
+                      <button
+                        onClick={() => deleteImage(image.id, image.name)}
+                        className="absolute top-3 left-3 p-2 rounded-full bg-white/80 text-gray-600 hover:bg-red-500 hover:text-white transition-all opacity-70 hover:opacity-100"
+                        title="Delete image"
+                      >
+                        <Trash2 className="w-5 h-5" />
+                      </button>
+                    )}
 
                     {/* Favorite Button */}
                     <button
