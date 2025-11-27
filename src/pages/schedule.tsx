@@ -11,8 +11,8 @@ export default function Schedule({ frontmatter, content }: { frontmatter: any; c
       pageTitle="Choose a time and a session that works for you"
       imageSrc="/images/schedule.jpg"
       imageAlt="Schedule Your Session"
-      iframeSrc="https://api.getaheadshot.net/booking/kevin-elwell-photography,-llc-1w583dfiyrjh/sc/68c1d42576a8d83fcd791805?heightMode=full&showHeader=true"
-      iframeId="68c1d42576a8d83fcd791805_1764104207645"
+      iframeSrc="https://api.getaheadshot.net/booking/kevin-elwell-photography,-llc-1w583dfiyrjh/sc/68c1d42576a8d83fcd791805?heightMode=full&showHeader=false"
+      iframeId="68c1d42576a8d83fcd791805_1764262371784"
       scriptSrc="https://api.getaheadshot.net/js/form_embed.js"
       iframeStyle={{
         width: '100%',
