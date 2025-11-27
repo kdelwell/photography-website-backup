@@ -33,17 +33,19 @@ export default function GhlCorp({ frontmatter, content }: { frontmatter: any; co
         <div className="w-full flex justify-center">
           <div className="w-full max-w-6xl px-4 sm:px-6 lg:px-8" style={{ minHeight: '600px' }}>
             <iframe
-              src="https://api.getaheadshot.net/booking/kevin-elwell-photography,-llc-1w583dfiyrjh/sc/69276f5b8e73e13b883e0129?heightMode=fixed&showHeader=true"
-              style={{ width: '100%', border: 'none', overflow: 'hidden' }}
-              scrolling="no"
-              id="69276f5b8e73e13b883e0129_1764253404832"
+              name="hats_scheduler"
+              style={{ margin: '20px' }}
+              frameBorder="0"
+              width="100%"
+              height="600"
+              src="https://GetaHeadShot.17hats.com/p#/scheduling/tbxwkphxrnvnnzpfvfwkcswpkzvtfhfv?embed=true&tp=false&hide_desc=false"
             />
           </div>
         </div>
 
         {/* Script for form */}
         <Script
-          src="https://api.getaheadshot.net/js/form_embed.js"
+          src="https://GetaHeadShot.17hats.com/vendor/iframeSizer.min.js"
           strategy="lazyOnload"
         />
       </div>
