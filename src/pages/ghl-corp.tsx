@@ -33,10 +33,10 @@ export default function GhlCorp({ frontmatter, content }: { frontmatter: any; co
         <div className="w-full flex justify-center">
           <div className="w-full max-w-6xl px-4 sm:px-6 lg:px-8" style={{ minHeight: '600px' }}>
             <iframe
-              src="https://api.getaheadshot.net/widget/group/tP7cf3m1E8l2jESPW27d"
+              src="https://api.getaheadshot.net/booking/kevin-elwell-photography,-llc-1w583dfiyrjh/sc/69276f5b8e73e13b883e0129?heightMode=fixed&showHeader=true"
               style={{ width: '100%', border: 'none', overflow: 'hidden' }}
               scrolling="no"
-              id="tP7cf3m1E8l2jESPW27d_1764193252022"
+              id="69276f5b8e73e13b883e0129_1764253404832"
             />
           </div>
         </div>
