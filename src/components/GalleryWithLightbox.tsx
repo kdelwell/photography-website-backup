@@ -1,4 +1,4 @@
-import { useState } from 'react'
+import { useState, useEffect } from 'react'
 import Image from 'next/image'
 import { ChevronLeft, ChevronRight, X } from 'lucide-react'
 
@@ -15,9 +15,9 @@ interface GalleryWithLightboxProps {
   }
 }
 
-const GalleryWithLightbox = ({ 
-  images, 
-  columns = { mobile: 2, desktop: 4 } 
+const GalleryWithLightbox = ({
+  images,
+  columns = { mobile: 2, desktop: 4 }
 }: GalleryWithLightboxProps) => {
   const [selectedImage, setSelectedImage] = useState<GalleryImage | null>(null)
 
@@ -44,6 +44,19 @@ const GalleryWithLightbox = ({
       setSelectedImage(images[previousIndex])
     }
   }
+
+  // Keyboard navigation
+  useEffect(() => {
+    const handleKeyDown = (e: KeyboardEvent) => {
+      if (!selectedImage) return
+      if (e.key === 'ArrowLeft') goToPrevious()
+      if (e.key === 'ArrowRight') goToNext()
+      if (e.key === 'Escape') closeLightbox()
+    }
+
+    window.addEventListener('keydown', handleKeyDown)
+    return () => window.removeEventListener('keydown', handleKeyDown)
+  }, [selectedImage])
 
   return (
     <>

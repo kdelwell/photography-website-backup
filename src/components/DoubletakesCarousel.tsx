@@ -129,6 +129,19 @@ const DoubletakesCarousel = () => {
     setTimeout(() => setIsAutoPlaying(true), 1000)
   }
 
+  // Keyboard navigation for lightbox
+  useEffect(() => {
+    const handleKeyDown = (e: KeyboardEvent) => {
+      if (!selectedImage) return
+      if (e.key === 'ArrowLeft') goToPreviousInLightbox()
+      if (e.key === 'ArrowRight') goToNextInLightbox()
+      if (e.key === 'Escape') closeLightbox()
+    }
+
+    window.addEventListener('keydown', handleKeyDown)
+    return () => window.removeEventListener('keydown', handleKeyDown)
+  }, [selectedImage])
+
   return (
     <>
       <section id="branding" className="bg-white">

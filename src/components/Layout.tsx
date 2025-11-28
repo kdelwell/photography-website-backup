@@ -24,9 +24,15 @@ export default function Layout({ children, title = 'Photography Studio', descrip
         }}
       />
       <div className="min-h-screen flex flex-col">
+        <a
+          href="#main-content"
+          className="sr-only focus:not-sr-only focus:absolute focus:top-4 focus:left-4 focus:z-50 focus:bg-red-600 focus:text-white focus:px-4 focus:py-2 focus:rounded"
+        >
+          Skip to main content
+        </a>
         <PerformanceMonitor />
         <Header hideMenu={hideMenu} />
-        <main className="flex-grow">
+        <main id="main-content" className="flex-grow">
           {children}
         </main>
         <Footer />
