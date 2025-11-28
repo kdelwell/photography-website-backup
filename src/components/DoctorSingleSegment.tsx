@@ -30,7 +30,7 @@ const DoctorSingleSegment = () => {
             <h2 className="text-3xl md:text-4xl lg:text-5xl font-bold text-white mb-6 leading-tight">
               Doctor Headshots
             </h2>
-            <p className="text-lg md:text-xl text-gray-300 leading-relaxed">
+            <p className="text-lg md:text-xl text-gray-200 leading-relaxed">
               As a doctor, you need a headshot that will show an expression to your patients that they can trust you. Your "bed-side manner" will be on display.
             </p>
           </div>

@@ -30,7 +30,7 @@ const DarkSingleSegment = () => {
             <h2 className="text-3xl md:text-4xl lg:text-5xl font-bold text-white mb-6 leading-tight">
               Actor Headshots
             </h2>
-            <p className="text-lg md:text-xl text-gray-300 leading-relaxed">
+            <p className="text-lg md:text-xl text-gray-200 leading-relaxed">
               As an Actor, your headshot is the single-most important marketing tool for your career. Casting Directors look for authentic expressions, professional results, and accurate representations.
             </p>
           </div>

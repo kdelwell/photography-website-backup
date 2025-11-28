@@ -148,12 +148,12 @@ export default function Home({ frontmatter, content }: { frontmatter: any; conte
         </div>
       </section>
 
-      {/* H1 Heading Section */}
+      {/* H2 Heading Section */}
       <section className="bg-white py-12">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-          <h1 className="text-3xl md:text-4xl lg:text-5xl font-bold text-gray-900 text-center leading-tight">
+          <h2 className="text-3xl md:text-4xl lg:text-5xl font-bold text-gray-900 text-center leading-tight">
             Washington DC's Premier Headshot & Portrait Photographer for Professionals
-          </h1>
+          </h2>
         </div>
       </section>
 

@@ -62,6 +62,7 @@ export default function Header({ hideMenu = false }: HeaderProps) {
               <button
                 onClick={() => setIsMenuOpen(!isMenuOpen)}
                 className="text-gray-800 hover:text-gray-600"
+                aria-label={isMenuOpen ? "Close menu" : "Open menu"}
               >
                 {isMenuOpen ? <X className="h-6 w-6" /> : <Menu className="h-6 w-6" />}
               </button>

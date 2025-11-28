@@ -292,7 +292,7 @@ const DoubletakesCarousel = () => {
                 <button
                   key={index}
                   onClick={() => goToSlide(index)}
-                  className={`w-2 h-2 rounded-full transition-all ${
+                  className={`w-2 h-2 rounded-full transition-all p-4 ${
                     index === currentIndex
                       ? 'bg-gray-800 w-8'
                       : 'bg-gray-400 hover:bg-gray-600'

@@ -24,7 +24,7 @@ export default function HeadshotReviews() {
             </p>
             <div>
               <h3 className="text-white text-lg font-medium mb-1">Peter A.</h3>
-              <p className="text-gray-400 text-sm font-light">Chief Executive Officer</p>
+              <p className="text-gray-300 text-sm font-light">Chief Executive Officer</p>
             </div>
           </div>
 
@@ -43,7 +43,7 @@ export default function HeadshotReviews() {
             </p>
             <div>
               <h3 className="text-white text-lg font-medium mb-1">Kerensa G.</h3>
-              <p className="text-gray-400 text-sm font-light">Educator</p>
+              <p className="text-gray-300 text-sm font-light">Educator</p>
             </div>
           </div>
 
@@ -62,7 +62,7 @@ export default function HeadshotReviews() {
             </p>
             <div>
               <h3 className="text-white text-lg font-medium mb-1">Elizabeth G.</h3>
-              <p className="text-gray-400 text-sm font-light">Chief Strategy Officer</p>
+              <p className="text-gray-300 text-sm font-light">Chief Strategy Officer</p>
             </div>
           </div>
         </div>
