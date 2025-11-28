@@ -159,17 +159,19 @@ const Groups = ({ frontmatter }: GroupsProps) => {
             <div className="mb-16">
               <div className="flex flex-col md:flex-row gap-8 items-start">
                 <div className="w-full md:w-1/2 text-white">
-                  <h4 className="text-2xl md:text-3xl font-bold mb-6 tracking-wide leading-tight">
+                  <h3 className="text-2xl md:text-3xl font-bold mb-6 tracking-wide leading-tight">
                     Opt 1: On Location for Large Groups
-                  </h4>
+                  </h3>
                   <p className="text-base md:text-lg leading-relaxed font-light">
                     This option works great when you have 15+ people and are looking for something to use for an "About Us" page or something similar for marketing materials. I'll come to your location and set up a mobile studio to get what you need.
                     </p>
                   </div>
                 <div className="w-full md:w-1/2">
-                  <div
-                    className="cursor-pointer relative"
+                  <button
+                    className="cursor-pointer relative w-full"
                     onClick={() => openVideoLightbox("/images/groups/Headshots_Groups.mp4")}
+                    aria-label="Play video about on-location large group headshots"
+                    type="button"
                   >
                     <video
                       className="w-full h-auto rounded-lg shadow-lg hover:opacity-80 transition-opacity"
@@ -190,7 +192,7 @@ const Groups = ({ frontmatter }: GroupsProps) => {
                           boxShadow: '0 0 20px 5px rgba(255, 255, 255, 0.5)',
                         }}
                       >
-                        <svg className="w-12 h-12 text-white" fill="currentColor" viewBox="0 0 24 24">
+                        <svg className="w-12 h-12 text-white" fill="currentColor" viewBox="0 0 24 24" aria-hidden="true">
                           <path d="M8 5v14l11-7z"/>
                         </svg>
                       </div>
@@ -207,7 +209,7 @@ const Groups = ({ frontmatter }: GroupsProps) => {
                         }
                       }
                     `}</style>
-                  </div>
+                  </button>
                 </div>
               </div>
             </div>
@@ -216,9 +218,9 @@ const Groups = ({ frontmatter }: GroupsProps) => {
             <div className="mb-16">
               <div className="flex flex-col md:flex-row gap-8 items-start">
                 <div className="w-full md:w-1/2 text-white">
-                  <h4 className="text-2xl md:text-3xl font-bold mb-6 tracking-wide leading-tight">
+                  <h3 className="text-2xl md:text-3xl font-bold mb-6 tracking-wide leading-tight">
                     Opt 2: In-Studio for Small Groups
-                  </h4>
+                  </h3>
                   <p className="text-base md:text-lg leading-relaxed font-light mb-4">
                     The most flexible option I offer is to have your group schedule with me individually which will provide the ultimate flexibility for those that are not on-site. My studio is conveniently located in Centreville, about 40 minutes West of Washington DC.
                   </p>
@@ -227,9 +229,11 @@ const Groups = ({ frontmatter }: GroupsProps) => {
                   </p>
                 </div>
                 <div className="w-full md:w-1/2">
-                  <div
-                    className="cursor-pointer relative"
+                  <button
+                    className="cursor-pointer relative w-full"
                     onClick={() => openVideoLightbox("/images/groups/Corp_Testimony.mp4")}
+                    aria-label="Play video testimonial about in-studio small group headshots"
+                    type="button"
                   >
                     <video
                       className="w-full h-auto rounded-lg shadow-lg hover:opacity-80 transition-opacity"
@@ -244,12 +248,12 @@ const Groups = ({ frontmatter }: GroupsProps) => {
                     </video>
                     <div className="absolute inset-0 flex items-center justify-center">
                       <div className="bg-black bg-opacity-50 rounded-full p-3">
-                        <svg className="w-8 h-8 text-white" fill="currentColor" viewBox="0 0 24 24">
+                        <svg className="w-8 h-8 text-white" fill="currentColor" viewBox="0 0 24 24" aria-hidden="true">
                           <path d="M8 5v14l11-7z"/>
                         </svg>
                       </div>
                     </div>
-                  </div>
+                  </button>
                 </div>
               </div>
             </div>

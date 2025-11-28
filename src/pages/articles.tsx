@@ -80,7 +80,7 @@ const Articles = ({ frontmatter }: ArticlesProps) => {
               <h1 className="text-4xl md:text-5xl lg:text-6xl font-bold text-gray-900 mb-4 tracking-wide">
                 Articles & Insights
               </h1>
-              <p className="text-lg md:text-xl text-gray-600 max-w-3xl mx-auto leading-relaxed">
+              <p className="text-lg md:text-xl text-gray-700 max-w-3xl mx-auto leading-relaxed">
                 Professional photography tips, industry insights, and creative inspiration to help you capture your best image.
               </p>
             </div>
@@ -106,7 +106,7 @@ const Articles = ({ frontmatter }: ArticlesProps) => {
                   {/* Article Content */}
                   <div className="p-6">
                     {/* Meta Information */}
-                    <div className="flex items-center text-sm text-gray-500 mb-3">
+                    <div className="flex items-center text-sm text-gray-600 mb-3">
                       <span>{article.date}</span>
                       <span className="mx-2">•</span>
                       <span>{article.readTime}</span>
@@ -120,7 +120,7 @@ const Articles = ({ frontmatter }: ArticlesProps) => {
                     </h2>
 
                     {/* Article Excerpt */}
-                    <p className="text-gray-600 leading-relaxed mb-4 line-clamp-3">
+                    <p className="text-gray-700 leading-relaxed mb-4 line-clamp-3">
                       {article.excerpt}
                     </p>
 

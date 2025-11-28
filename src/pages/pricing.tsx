@@ -57,7 +57,7 @@ export default function Pricing({ frontmatter, content }: { frontmatter: any; co
           <div className="bg-gray-100 p-6 flex flex-col">
             <div className="flex-1">
               <h2 className="text-2xl font-bold text-center mb-2">In-Studio Small Groups</h2>
-              <p className="text-center text-gray-600 mb-4">Come to my studio with your group</p>
+              <p className="text-center text-gray-700 mb-4">Come to my studio with your group</p>
               <div className="text-center mb-6">
                 <span className="text-3xl font-bold">$300</span>
                 <span className="text-lg">/Session Fee/person</span>
@@ -81,7 +81,7 @@ export default function Pricing({ frontmatter, content }: { frontmatter: any; co
           <div className="bg-gray-300 text-gray-800 p-6 flex flex-col">
             <div className="flex-1">
               <h2 className="text-2xl font-bold text-center mb-2">On-Location Headshots</h2>
-              <p className="text-center text-gray-600 mb-4">I bring my studio to your location</p>
+              <p className="text-center text-gray-700 mb-4">I bring my studio to your location</p>
               <div className="text-center mb-6">
                 <span className="text-3xl font-bold">Call for Pricing</span>
               </div>

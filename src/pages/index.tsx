@@ -175,13 +175,13 @@ export default function Home({ frontmatter, content }: { frontmatter: any; conte
             </div>
             <div>
               <h3 className="text-4xl font-bold text-gray-900 mb-6">Meet Your Guide — Kevin Elwell</h3>
-              <p className="text-lg text-gray-600 mb-6">
+              <p className="text-lg text-gray-700 mb-6">
                 Bad images with strained expressions and poor lighting are the norm. This is a struggle, especially for entrepreneurs, the C-Suite, or companies that rely on those images for building their businesses.
               </p>
-              <p className="text-lg text-gray-600 mb-6">
+              <p className="text-lg text-gray-700 mb-6">
                 I've developed an easy process that creates images that ensures authentic results, where quality exceeds price and delivers an exceptional value.
               </p>
-              <p className="text-lg text-gray-600" style={{ marginBottom: '0px' }}>
+              <p className="text-lg text-gray-700" style={{ marginBottom: '0px' }}>
                 I help busy professionals create magazine-quality images of themselves that lets them build their networks and present their best image to others. After more than 10 years of experience I have the talents, skills, and have developed the process that creates authentic expressions with great lighting. This includes a unique studio feedback-loop to get your instant reaction to ensure you love what we create together.
               </p>
               <Link 
@@ -260,9 +260,11 @@ export default function Home({ frontmatter, content }: { frontmatter: any; conte
             
             {/* Right - Video */}
             <div className="flex justify-center">
-              <div 
+              <button
                 className="relative w-full max-w-[450px] aspect-video bg-black rounded overflow-hidden group cursor-pointer"
                 onClick={() => setVideoModalOpen(true)}
+                aria-label="Play video about on-location group headshots"
+                type="button"
               >
                 <video
                   className="w-full h-full object-cover pointer-events-none"
@@ -276,7 +278,7 @@ export default function Home({ frontmatter, content }: { frontmatter: any; conte
                     <div className="w-0 h-0 border-l-[25px] border-l-gray-900 border-t-[15px] border-t-transparent border-b-[15px] border-b-transparent ml-1"></div>
                   </div>
                 </div>
-              </div>
+              </button>
             </div>
           </div>
         </div>
