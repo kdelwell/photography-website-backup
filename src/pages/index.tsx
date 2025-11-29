@@ -248,13 +248,13 @@ export default function Home({ frontmatter, content }: { frontmatter: any; conte
               <p className="text-base md:text-lg font-light text-gray-300">
                 Consistency is the key.
               </p>
-              <a 
-                href="https://getaheadshot.net/groups" 
+              <a
+                href="https://getaheadshot.net/groups"
                 target="_blank"
                 rel="noopener noreferrer"
                 className="inline-block bg-white text-gray-900 px-8 py-3 rounded font-semibold text-lg hover:bg-gray-100 transition-colors mt-8"
               >
-                More Info
+                Learn About Group Headshots
               </a>
             </div>
             
