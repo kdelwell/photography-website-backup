@@ -110,6 +110,7 @@ export default function Home({ frontmatter, content }: { frontmatter: any; conte
             style={{ transform: 'scale(1.2)' }}
           >
             <source src="/images/Web banner_small.mp4" type="video/mp4" />
+            <track kind="captions" />
             Your browser does not support the video tag.
           </video>
           
@@ -245,7 +246,7 @@ export default function Home({ frontmatter, content }: { frontmatter: any; conte
               <p className="text-lg md:text-xl font-light mb-8 leading-relaxed">
                 I bring my studio to your location for your group because you need your business to look like a team.
               </p>
-              <p className="text-base md:text-lg font-light text-gray-300">
+              <p className="text-base md:text-lg font-light text-gray-100">
                 Consistency is the key.
               </p>
               <a
@@ -320,7 +321,7 @@ export default function Home({ frontmatter, content }: { frontmatter: any; conte
         >
           <button
             onClick={() => setVideoModalOpen(false)}
-            className="absolute top-4 right-4 text-white hover:text-gray-300 transition-colors"
+            className="absolute top-4 right-4 text-white hover:text-gray-100 transition-colors p-2 min-w-[48px] min-h-[48px] flex items-center justify-center"
             aria-label="Close video"
           >
             <X className="w-8 h-8" />

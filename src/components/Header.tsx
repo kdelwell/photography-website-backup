@@ -61,7 +61,7 @@ export default function Header({ hideMenu = false }: HeaderProps) {
             <div className="md:hidden flex justify-center items-center py-2">
               <button
                 onClick={() => setIsMenuOpen(!isMenuOpen)}
-                className="text-gray-800 hover:text-gray-600"
+                className="text-gray-800 hover:text-gray-600 p-3 min-w-[48px] min-h-[48px] flex items-center justify-center"
                 aria-label={isMenuOpen ? "Close menu" : "Open menu"}
               >
                 {isMenuOpen ? <X className="h-6 w-6" /> : <Menu className="h-6 w-6" />}
