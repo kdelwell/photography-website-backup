@@ -28,7 +28,7 @@ export default function Header({ hideMenu = false }: HeaderProps) {
           <div className="flex justify-between items-center">
             {/* Logo section */}
             <div className="flex items-center space-x-0 md:space-x-2">
-              <Link href="/">
+              <Link href="/" aria-label="Get Ahead Shot - Home">
                 <Image
                   src="/images/Logo.jpg"
                   alt="Get Ahead Shot Logo"
