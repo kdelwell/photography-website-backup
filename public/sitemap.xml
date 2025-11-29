@@ -5,39 +5,69 @@
   <!-- Homepage - Highest Priority -->
   <url>
     <loc>https://getaheadshot.net/</loc>
-    <lastmod>2025-11-09</lastmod>
+    <lastmod>2025-11-29</lastmod>
     <changefreq>weekly</changefreq>
     <priority>1.0</priority>
+    <image:image>
+      <image:loc>https://getaheadshot.net/images/Logo.jpg</image:loc>
+      <image:title>Get Ahead Shot Photography - Professional Headshot Photographer Washington DC</image:title>
+      <image:caption>Washington DC's premier professional headshot photographer</image:caption>
+    </image:image>
+    <image:image>
+      <image:loc>https://getaheadshot.net/images/Kevin_about.jpg</image:loc>
+      <image:title>Kevin Elwell - Professional Headshot Photographer</image:title>
+      <image:caption>Kevin Elwell, professional headshot photographer with 10+ years experience in Washington DC</image:caption>
+    </image:image>
   </url>
 
   <!-- SEO Landing Pages - High Priority -->
   <url>
     <loc>https://getaheadshot.net/headshots-washington-dc</loc>
-    <lastmod>2025-11-09</lastmod>
+    <lastmod>2025-11-29</lastmod>
     <changefreq>weekly</changefreq>
     <priority>1.0</priority>
+    <image:image>
+      <image:loc>https://getaheadshot.net/images/Logo.jpg</image:loc>
+      <image:title>Professional Headshots Washington DC</image:title>
+      <image:caption>Professional headshot photography services in Washington DC metro area</image:caption>
+    </image:image>
   </url>
 
   <!-- Main Service Pages - High Priority -->
   <url>
     <loc>https://getaheadshot.net/professional_individual_headshots</loc>
-    <lastmod>2025-11-09</lastmod>
+    <lastmod>2025-11-29</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.9</priority>
+    <image:image>
+      <image:loc>https://getaheadshot.net/images/Logo.jpg</image:loc>
+      <image:title>Professional Individual Headshots</image:title>
+      <image:caption>Magazine-quality professional individual headshot photography</image:caption>
+    </image:image>
   </url>
 
   <url>
     <loc>https://getaheadshot.net/corporate</loc>
-    <lastmod>2025-11-09</lastmod>
+    <lastmod>2025-11-29</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.9</priority>
+    <image:image>
+      <image:loc>https://getaheadshot.net/images/Logo.jpg</image:loc>
+      <image:title>Corporate Headshot Photography</image:title>
+      <image:caption>Professional corporate headshots for businesses and teams</image:caption>
+    </image:image>
   </url>
 
   <url>
     <loc>https://getaheadshot.net/groups</loc>
-    <lastmod>2025-11-09</lastmod>
+    <lastmod>2025-11-29</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.9</priority>
+    <image:image>
+      <image:loc>https://getaheadshot.net/images/groups/composites/V2X.jpg</image:loc>
+      <image:title>Group Headshot Photography</image:title>
+      <image:caption>On-location group headshot photography services</image:caption>
+    </image:image>
   </url>
 
   <!-- Important Information Pages -->

@@ -1,4 +1,5 @@
-import Head from 'next/head'
+import { NextSeo } from 'next-seo'
+import { useRouter } from 'next/router'
 import HeaderNoPricing from './HeaderNoPricing'
 import Footer from './Footer'
 
@@ -9,15 +10,25 @@ interface LayoutProps {
 }
 
 export default function LayoutNoPricing({ children, title, description }: LayoutProps) {
+  const router = useRouter()
+  const canonicalUrl = `https://getaheadshot.net${router.asPath}`
+
   return (
     <>
-      <Head>
-        <title>{title}</title>
-        <meta name="description" content={description} />
-        <meta name="viewport" content="width=device-width, initial-scale=1" />
-        <meta name="robots" content="noindex, nofollow" />
-        <link rel="icon" href="/favicon.ico" />
-      </Head>
+      <NextSeo
+        title={title}
+        description={description}
+        canonical={canonicalUrl}
+        noindex={true}
+        nofollow={true}
+        openGraph={{
+          title,
+          description,
+          type: 'website',
+          url: canonicalUrl,
+          site_name: 'Get Ahead Shot Photography',
+        }}
+      />
 
       <div className="min-h-screen flex flex-col">
         <a

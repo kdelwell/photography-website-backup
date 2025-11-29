@@ -4,11 +4,74 @@ import Link from 'next/link'
 import { ChevronLeft } from 'lucide-react'
 
 const TimeArticle = () => {
+  const articleSchema = {
+    "@context": "https://schema.org",
+    "@type": "Article",
+    "headline": "The Sands of Time",
+    "description": "Time is a relentless force, etching its mark on all of us. Learn why updating your professional photos regularly is essential in our ever-changing world.",
+    "image": "https://getaheadshot.net/images/Articles/Time.webp",
+    "author": {
+      "@type": "Person",
+      "name": "Kevin Elwell",
+      "url": "https://getaheadshot.net/about"
+    },
+    "publisher": {
+      "@type": "Organization",
+      "name": "Get Ahead Shot Photography",
+      "logo": {
+        "@type": "ImageObject",
+        "url": "https://getaheadshot.net/images/Logo.jpg"
+      }
+    },
+    "datePublished": "2023-12-15",
+    "dateModified": "2023-12-15",
+    "mainEntityOfPage": {
+      "@type": "WebPage",
+      "@id": "https://getaheadshot.net/articles/time"
+    }
+  };
+
+  const breadcrumbSchema = {
+    "@context": "https://schema.org",
+    "@type": "BreadcrumbList",
+    "itemListElement": [
+      {
+        "@type": "ListItem",
+        "position": 1,
+        "name": "Home",
+        "item": "https://getaheadshot.net"
+      },
+      {
+        "@type": "ListItem",
+        "position": 2,
+        "name": "Articles",
+        "item": "https://getaheadshot.net/articles"
+      },
+      {
+        "@type": "ListItem",
+        "position": 3,
+        "name": "The Sands of Time",
+        "item": "https://getaheadshot.net/articles/time"
+      }
+    ]
+  };
+
   return (
     <Layout
       title="The Sands of Time - Get Ahead Shot"
       description="Time is a relentless force, etching its mark on all of us. Learn why updating your professional photos regularly is essential in our ever-changing world."
     >
+      {/* Article Schema */}
+      <script
+        type="application/ld+json"
+        dangerouslySetInnerHTML={{ __html: JSON.stringify(articleSchema) }}
+      />
+
+      {/* BreadcrumbList Schema */}
+      <script
+        type="application/ld+json"
+        dangerouslySetInnerHTML={{ __html: JSON.stringify(breadcrumbSchema) }}
+      />
       <div className="min-h-screen bg-white">
         {/* Back to Articles */}
         <div className="bg-gray-50 py-4">

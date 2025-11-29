@@ -10,11 +10,36 @@ import HeadshotReviews from '@/components/HeadshotReviews'
 import BeforeAfter from '@/components/BeforeAfter'
 
 export default function ProfessionalIndividualHeadshots({ frontmatter, content }: { frontmatter: any; content: string }) {
+  const breadcrumbSchema = {
+    "@context": "https://schema.org",
+    "@type": "BreadcrumbList",
+    "itemListElement": [
+      {
+        "@type": "ListItem",
+        "position": 1,
+        "name": "Home",
+        "item": "https://getaheadshot.net"
+      },
+      {
+        "@type": "ListItem",
+        "position": 2,
+        "name": "Professional Individual Headshots",
+        "item": "https://getaheadshot.net/professional_individual_headshots"
+      }
+    ]
+  };
+
   return (
     <Layout
       title="Professional Individual Headshots Washington DC | Corporate Photography"
       description="Professional headshot photography for individuals in Washington DC. Perfect for LinkedIn, corporate websites, and personal branding. Get magazine-quality results with same-day turnaround. Book your headshot session now!"
     >
+      {/* BreadcrumbList Schema */}
+      <script
+        type="application/ld+json"
+        dangerouslySetInnerHTML={{ __html: JSON.stringify(breadcrumbSchema) }}
+      />
+
       {/* Google Analytics */}
       <Script
         src="https://www.googletagmanager.com/gtag/js?id=G-9PNL0CCN6V"

@@ -1,6 +1,30 @@
 import { Html, Head, Main, NextScript } from 'next/document'
 
 export default function Document() {
+  const organizationSchema = {
+    "@context": "https://schema.org",
+    "@type": "Organization",
+    "name": "Get Ahead Shot Photography",
+    "url": "https://getaheadshot.net",
+    "logo": "https://getaheadshot.net/images/Logo.jpg",
+    "description": "Washington DC's premier professional headshot photographer. Magazine-quality headshots for executives, entrepreneurs, and business professionals.",
+    "telephone": "+1-703-802-9379",
+    "email": "info@getaheadshot.net",
+    "address": {
+      "@type": "PostalAddress",
+      "streetAddress": "6720 Hartwood Lane",
+      "addressLocality": "Centreville",
+      "addressRegion": "VA",
+      "postalCode": "20121",
+      "addressCountry": "US"
+    },
+    "sameAs": [
+      "https://www.instagram.com/getaheadshotwithkevin",
+      "https://www.facebook.com/getaheadshot",
+      "https://www.linkedin.com/in/getaheadshot/"
+    ]
+  };
+
   const localBusinessSchema = {
     "@context": "https://schema.org",
     "@type": "ProfessionalService",
@@ -121,10 +145,29 @@ export default function Document() {
   return (
     <Html lang="en">
       <Head>
+        {/* Favicons and Icons */}
         <link rel="icon" type="image/png" sizes="32x32" href="/favicon-32x32.png" />
         <link rel="icon" type="image/png" sizes="16x16" href="/favicon-16x16.png" />
         <link rel="shortcut icon" href="/favicon-32x32.png" />
-        <link rel="apple-touch-icon" href="/images/Logo.jpg" />
+        <link rel="apple-touch-icon" sizes="180x180" href="/images/Logo.jpg" />
+
+        {/* Web App Manifest */}
+        <link rel="manifest" href="/manifest.json" />
+
+        {/* Theme Color for Mobile Browsers */}
+        <meta name="theme-color" content="#ef4444" />
+        <meta name="msapplication-TileColor" content="#ef4444" />
+
+        {/* Apple Mobile Web App */}
+        <meta name="apple-mobile-web-app-capable" content="yes" />
+        <meta name="apple-mobile-web-app-status-bar-style" content="default" />
+        <meta name="apple-mobile-web-app-title" content="Get Ahead Shot" />
+
+        {/* Organization Schema */}
+        <script
+          type="application/ld+json"
+          dangerouslySetInnerHTML={{ __html: JSON.stringify(organizationSchema) }}
+        />
 
         {/* LocalBusiness Schema */}
         <script

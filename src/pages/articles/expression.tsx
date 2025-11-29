@@ -4,11 +4,74 @@ import Link from 'next/link'
 import { ChevronLeft } from 'lucide-react'
 
 const ExpressionArticle = () => {
+  const articleSchema = {
+    "@context": "https://schema.org",
+    "@type": "Article",
+    "headline": "Expression is the Currency of Photography",
+    "description": "Expression is the heartbeat of portrait photography—a currency more valuable than any technical prowess or artistic finesse. Learn how authentic emotion transforms photography.",
+    "image": "https://getaheadshot.net/images/Articles/Expression.jpeg",
+    "author": {
+      "@type": "Person",
+      "name": "Kevin Elwell",
+      "url": "https://getaheadshot.net/about"
+    },
+    "publisher": {
+      "@type": "Organization",
+      "name": "Get Ahead Shot Photography",
+      "logo": {
+        "@type": "ImageObject",
+        "url": "https://getaheadshot.net/images/Logo.jpg"
+      }
+    },
+    "datePublished": "2024-01-15",
+    "dateModified": "2024-01-15",
+    "mainEntityOfPage": {
+      "@type": "WebPage",
+      "@id": "https://getaheadshot.net/articles/expression"
+    }
+  };
+
+  const breadcrumbSchema = {
+    "@context": "https://schema.org",
+    "@type": "BreadcrumbList",
+    "itemListElement": [
+      {
+        "@type": "ListItem",
+        "position": 1,
+        "name": "Home",
+        "item": "https://getaheadshot.net"
+      },
+      {
+        "@type": "ListItem",
+        "position": 2,
+        "name": "Articles",
+        "item": "https://getaheadshot.net/articles"
+      },
+      {
+        "@type": "ListItem",
+        "position": 3,
+        "name": "Expression is the Currency of Photography",
+        "item": "https://getaheadshot.net/articles/expression"
+      }
+    ]
+  };
+
   return (
     <Layout
       title="Expression is the Currency of Photography - Get Ahead Shot"
       description="Expression is the heartbeat of portrait photography—a currency more valuable than any technical prowess or artistic finesse. Learn how authentic emotion transforms photography."
     >
+      {/* Article Schema */}
+      <script
+        type="application/ld+json"
+        dangerouslySetInnerHTML={{ __html: JSON.stringify(articleSchema) }}
+      />
+
+      {/* BreadcrumbList Schema */}
+      <script
+        type="application/ld+json"
+        dangerouslySetInnerHTML={{ __html: JSON.stringify(breadcrumbSchema) }}
+      />
       <div className="min-h-screen bg-white">
         {/* Back to Articles */}
         <div className="bg-gray-50 py-4">
