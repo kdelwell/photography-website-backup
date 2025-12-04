@@ -33,9 +33,11 @@ export default function Corporate({ frontmatter, content }: { frontmatter: any; 
         <div className="w-full flex justify-center">
           <div className="w-full max-w-6xl px-4 sm:px-6 lg:px-8" style={{ minHeight: '600px' }}>
             <iframe
-              src="https://GetaHeadShot.17hats.com/p#/scheduling/hnzpzgpvzhxgnndvtcpcnkhgsrbswchz?embed=true&tp=false&hide_desc=false"
-              style={{ width: '100%', border: 'none', overflow: 'hidden' }}
-              scrolling="no"
+              name="hats_scheduler"
+              src="https://GetaHeadShot.17hats.com/p#/scheduling/tbxwkphxrnvnnzpfvfwkcswpkzvtfhfv?embed=true&tp=false&hide_desc=false"
+              style={{ margin: '20px', width: '100%', border: 'none' }}
+              width="100%"
+              height="600"
               id="hats_scheduler"
             />
           </div>
