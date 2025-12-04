@@ -88,22 +88,12 @@ export default function ProfessionalIndividualHeadshots({ frontmatter, content }
 
           {/* Embedded Form */}
           <div className="w-full bg-white pt-8">
-            <div className="w-full max-w-6xl px-4 sm:px-6 lg:px-8 mx-auto" style={{ minHeight: '805px' }}>
+            <div className="w-full max-w-6xl px-4 sm:px-6 lg:px-8 mx-auto" style={{ minHeight: '600px' }}>
               <iframe
-                id="inline-P3fiOKHq2PRWe6gDrAO4"
-                src="https://api.getaheadshot.net/widget/form/P3fiOKHq2PRWe6gDrAO4"
-                style={{ width: '100%', height: '805px', border: 'none', borderRadius: '3px' }}
-                data-layout="{'id':'INLINE'}"
-                data-trigger-type="alwaysShow"
-                data-trigger-value=""
-                data-activation-type="alwaysActivated"
-                data-activation-value=""
-                data-deactivation-type="neverDeactivate"
-                data-deactivation-value=""
-                data-form-name="More Info Form"
-                data-height="805"
-                data-layout-iframe-id="inline-P3fiOKHq2PRWe6gDrAO4"
-                data-form-id="P3fiOKHq2PRWe6gDrAO4"
+                name="lc_contact_form"
+                src="https://GetaHeadShot.17hats.com/p#/embed/vhtnhdfkgghgzhwtbkcdpppvvzczxhft"
+                style={{ width: '100%', height: '600px', border: 'none' }}
+                id="lc_contact_form"
                 title="Contact Form"
               />
             </div>
@@ -111,7 +101,7 @@ export default function ProfessionalIndividualHeadshots({ frontmatter, content }
 
           {/* Script for form */}
           <Script
-            src="https://api.getaheadshot.net/js/form_embed.js"
+            src="https://GetaHeadShot.17hats.com/vendor/iframeSizer.min.js"
             strategy="lazyOnload"
           />
         </div>
