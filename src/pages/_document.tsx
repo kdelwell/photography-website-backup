@@ -163,6 +163,9 @@ export default function Document() {
         <meta name="apple-mobile-web-app-status-bar-style" content="default" />
         <meta name="apple-mobile-web-app-title" content="Get Ahead Shot" />
 
+        {/* Google Search Console Verification */}
+        <meta name="google-site-verification" content="gXklOuDGOMYfYLh6s806C9uOfObEU-fDn_H15yK0BZA" />
+
         {/* Organization Schema */}
         <script
           type="application/ld+json"
