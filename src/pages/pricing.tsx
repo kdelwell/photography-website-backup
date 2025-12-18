@@ -93,9 +93,9 @@ export default function Pricing({ frontmatter, content }: { frontmatter: any; co
               </ul>
             </div>
             <div className="text-center">
-              <button className="bg-red-600 hover:bg-red-700 text-white px-6 py-3 rounded font-semibold">
+              <a href="https://calendly.com/kdelwell/one-on-one-meeting" target="_blank" rel="noopener noreferrer" className="inline-block bg-red-600 hover:bg-red-700 text-white px-6 py-3 rounded font-semibold">
                 Schedule Call
-              </button>
+              </a>
             </div>
           </div>
         </div>
