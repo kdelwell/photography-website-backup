@@ -300,14 +300,14 @@ const DoubletakesCarousel = () => {
             </div>
 
             {/* Dots indicator */}
-            <div className="flex justify-center gap-2 py-3">
+            <div className="flex justify-center gap-1 md:gap-2 py-3">
               {images.map((_, index) => (
                 <button
                   key={index}
                   onClick={() => goToSlide(index)}
-                  className={`w-2 h-2 rounded-full transition-all p-4 ${
+                  className={`w-2 h-2 rounded-full transition-all p-2 md:p-3 ${
                     index === currentIndex
-                      ? 'bg-gray-800 w-8'
+                      ? 'bg-gray-800 w-4 md:w-6'
                       : 'bg-gray-400 hover:bg-gray-600'
                   }`}
                   aria-label={`Go to slide ${index + 1}`}
