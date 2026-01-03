@@ -1,0 +1,78 @@
+# llms.txt
+# Get Ahead Shot Photography - Professional Headshot Photography in Washington DC
+
+# Site Information
+Site Name: Get Ahead Shot Photography
+Description: Washington DC's premier headshot photographer. Magazine-quality professional headshots for executives, entrepreneurs, and business professionals. Same-day turnaround available.
+Business Type: Professional Photography Services - Specializing in Corporate Headshots
+Location: Washington DC Metro Area
+Website: https://photography-website-9i18mag4t-kevin-elwells-projects.vercel.app
+
+# Services Offered
+- Professional headshots for executives and business professionals
+- Corporate photography
+- LinkedIn profile photos
+- Business portraits
+- Executive portraits
+- Group headshots
+- Event photography
+- Same-day turnaround available
+
+# Target Audience
+- Executives
+- Entrepreneurs
+- Business professionals
+- Corporate teams
+- Job seekers
+- Personal branding professionals
+
+# Key Pages
+## Main Navigation
+- Home: / - Primary landing page with hero message about professional image
+- About: /about - Photographer background and expertise
+- Pricing: /pricing - Service packages and rates
+- Gallery: /gallery - Portfolio of professional headshots
+- Contact: /contact - Booking and inquiry form
+
+## Additional Pages
+- Schedule: /schedule - Book a session
+- Articles: /articles - Photography tips and industry insights
+- Events: /events - Group headshot events
+- Consultation: /consult - Pre-session consultation booking
+- Preparation: /prep - How to prepare for your headshot session
+- Group Sessions: /groups - Information about group photography sessions
+
+# Business Philosophy
+In a digital world, your headshot is your first impression. Professional photography that makes a powerful statement and opens opportunities.
+
+# Value Propositions
+- Magazine-quality professional headshots
+- Same-day turnaround available
+- Expertise with executives and business professionals
+- Washington DC premier headshot photography service
+- Professional image consulting
+
+# Contact & Booking
+Website: https://photography-website-9i18mag4t-kevin-elwells-projects.vercel.app
+Primary CTA: Schedule a headshot session
+Contact Page: /contact
+Scheduling Page: /schedule
+
+# Technical Details
+Platform: Next.js (React framework)
+Deployed on: Vercel
+Content Management: Markdown files with frontmatter
+Image Optimization: Next.js Image component with Vercel Blob storage
+
+# Keywords & SEO Focus
+- professional headshots
+- Washington DC headshots
+- corporate photography
+- business portraits
+- LinkedIn headshots
+- headshot photographer DC
+- executive portraits
+- professional photography DC
+
+# Content Strategy
+Focus on demonstrating how professional headshots impact career success and business opportunities. Emphasis on quality, professionalism, and results-oriented photography for business professionals.
