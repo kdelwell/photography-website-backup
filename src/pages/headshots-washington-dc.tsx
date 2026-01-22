@@ -17,7 +17,7 @@ export default function HeadshotsWashingtonDC() {
         "name": "How much do professional headshots cost in Washington DC?",
         "acceptedAnswer": {
           "@type": "Answer",
-          "text": "Professional headshot sessions in Washington DC typically range from $200-$600 depending on the package, number of looks, and turnaround time. At Get Ahead Shot Photography, we offer competitive pricing with same-day turnaround options available."
+          "text": "Professional headshot sessions in Washington DC typically range from $350-$700 depending on the package, number of looks, and turnaround time. At Get Ahead Shot Photography, we offer competitive pricing with same-day turnaround options available."
         }
       },
       {
@@ -225,7 +225,7 @@ export default function HeadshotsWashingtonDC() {
                 How much do professional headshots cost in Washington DC?
               </h3>
               <p className="text-gray-700">
-                Professional headshot sessions in Washington DC typically range from $200-$600 depending on the package,
+                Professional headshot sessions in Washington DC typically range from $350-$700 depending on the package,
                 number of looks, and turnaround time. At Get Ahead Shot Photography, we offer competitive pricing with
                 same-day turnaround options available. <a href="/more_info" className="text-red-500 hover:text-red-600">Get detailed pricing →</a>
               </p>
