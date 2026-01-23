@@ -168,7 +168,7 @@ export default function Home({ frontmatter, content }: { frontmatter: any; conte
           <div className="grid grid-cols-1 lg:grid-cols-2 gap-8 items-center">
             <div className="relative h-[400px] lg:h-[500px] rounded-lg overflow-hidden">
               <Image
-                src="/images/Kevin_about.jpg"
+                src="/images/ME_2026.5x4.jpg"
                 alt="Kevin Elwell - Professional headshot photographer in Washington DC with 10+ years experience"
                 fill
                 className="object-cover"
