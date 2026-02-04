@@ -168,7 +168,7 @@ export default function Home({ frontmatter, content }: { frontmatter: any; conte
           <div className="grid grid-cols-1 lg:grid-cols-2 gap-8 items-center">
             <div className="relative h-[400px] lg:h-[500px] rounded-lg overflow-hidden">
               <Image
-                src="/images/ME_2026.5x4.jpg"
+                src="/images/ME_2026_5x4.jpg"
                 alt="Kevin Elwell - Professional headshot photographer in Washington DC with 10+ years experience"
                 fill
                 className="object-cover"
@@ -202,7 +202,7 @@ export default function Home({ frontmatter, content }: { frontmatter: any; conte
       {/* Secondary Gallery Section */}
       <GalleryWithLightbox
         images={[
-          { src: '/images/SecondGallery/Allison.jpg', alt: 'Professional corporate headshot Washington DC - Business portrait photography near me' },
+          { src: '/images/SecondGallery/Lauren.jpg', alt: 'Professional corporate headshot Washington DC - Business portrait photography near me' },
           { src: '/images/SecondGallery/Ama.jpg', alt: 'Executive headshot DC - Professional business photography Washington DC' },
           { src: '/images/SecondGallery/Fabian.jpg', alt: 'Professional LinkedIn headshot photographer Washington DC - Corporate portrait' },
           { src: '/images/SecondGallery/Spiro.jpg', alt: 'Business headshot photography DC - Professional corporate photographer near me' }
@@ -294,7 +294,7 @@ export default function Home({ frontmatter, content }: { frontmatter: any; conte
           { src: '/images/ThirdGallery/Charles.jpg', alt: 'Professional headshot Washington DC - Executive portrait photographer near me' },
           { src: '/images/ThirdGallery/Kirsten.jpg', alt: 'Corporate headshot photography Washington DC - Business professional portrait' },
           { src: '/images/ThirdGallery/Rachel.jpg', alt: 'Professional business headshot DC - LinkedIn profile photography Washington DC' },
-          { src: '/images/ThirdGallery/Ryan.jpg', alt: 'Executive headshot photographer Washington DC - Professional corporate photography near me' }
+          { src: '/images/ThirdGallery/Arcelious.jpg', alt: 'Executive headshot photographer Washington DC - Professional corporate photography near me' }
         ]}
       />
 
