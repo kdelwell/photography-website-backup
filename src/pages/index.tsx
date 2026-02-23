@@ -21,13 +21,21 @@ import { X } from 'lucide-react'
 export default function Home({ frontmatter, content }: { frontmatter: any; content: string }) {
   const [scrollY, setScrollY] = useState(0)
   const [videoModalOpen, setVideoModalOpen] = useState(false)
+  const [videoReady, setVideoReady] = useState(false)
 
   useEffect(() => {
+    let ticking = false
     const handleScroll = () => {
-      setScrollY(window.scrollY)
+      if (!ticking) {
+        requestAnimationFrame(() => {
+          setScrollY(window.scrollY)
+          ticking = false
+        })
+        ticking = true
+      }
     }
 
-    window.addEventListener('scroll', handleScroll)
+    window.addEventListener('scroll', handleScroll, { passive: true })
     return () => window.removeEventListener('scroll', handleScroll)
   }, [])
 
@@ -101,17 +109,29 @@ export default function Home({ frontmatter, content }: { frontmatter: any; conte
             willChange: 'transform'
           }}
         >
+          {/* Optimized poster image for fast LCP */}
+          <Image
+            src="/images/hero-poster.jpg"
+            alt="Professional headshot photography"
+            fill
+            priority
+            sizes="100vw"
+            className={`object-cover transition-opacity duration-700 ${videoReady ? 'opacity-0' : 'opacity-100'}`}
+            style={{ transform: 'scale(1.2)' }}
+          />
+          {/* Video loads after page — fades in over poster */}
           <video
             autoPlay
             muted
             loop
             playsInline
-            className="absolute w-full h-full object-cover"
+            preload="none"
+            onCanPlay={() => setVideoReady(true)}
+            className={`absolute w-full h-full object-cover transition-opacity duration-700 ${videoReady ? 'opacity-100' : 'opacity-0'}`}
             style={{ transform: 'scale(1.2)' }}
           >
             <source src="/images/Web banner_small.mp4" type="video/mp4" />
             <track kind="captions" />
-            Your browser does not support the video tag.
           </video>
           
           {/* Dark overlay */}
