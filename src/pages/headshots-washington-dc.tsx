@@ -205,7 +205,16 @@ export default function HeadshotsWashingtonDC() {
             ))}
           </div>
           <p className="text-center text-gray-600 mt-8 text-lg">
-            Don't see your location? We travel throughout the DC metro area. <a href="/contact" className="text-red-500 hover:text-red-600 font-semibold">Contact us</a> to discuss your needs.
+            See our dedicated pages for{' '}
+            <a href="/headshots-northern-virginia" className="text-red-500 hover:text-red-600 font-semibold">Northern Virginia</a>,{' '}
+            <a href="/headshots-arlington-va" className="text-red-500 hover:text-red-600 font-semibold">Arlington</a>,{' '}
+            <a href="/headshots-tysons-corner-va" className="text-red-500 hover:text-red-600 font-semibold">Tysons Corner</a>,{' '}
+            <a href="/headshots-bethesda-md" className="text-red-500 hover:text-red-600 font-semibold">Bethesda</a>,{' '}
+            <a href="/headshots-alexandria-va" className="text-red-500 hover:text-red-600 font-semibold">Alexandria</a>,{' '}
+            <a href="/headshots-fairfax-va" className="text-red-500 hover:text-red-600 font-semibold">Fairfax</a>, and{' '}
+            <a href="/headshots-reston-va" className="text-red-500 hover:text-red-600 font-semibold">Reston</a>.{' '}
+            Looking for <a href="/linkedin-headshots" className="text-red-500 hover:text-red-600 font-semibold">LinkedIn headshots</a>?{' '}
+            Don't see your area? <a href="/contact" className="text-red-500 hover:text-red-600 font-semibold">Contact us</a>.
           </p>
         </div>
       </section>

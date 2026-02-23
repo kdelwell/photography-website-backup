@@ -173,11 +173,14 @@ export default function HeadshotsFairfaxVA() {
             ))}
           </div>
           <p className="text-center text-gray-600 mt-8 text-lg">
-            I also serve nearby areas including <a href="/headshots-centreville-va" className="text-red-500 hover:text-red-600 font-semibold">Centreville</a>,{' '}
+            I also serve nearby areas including{' '}
+            <a href="/headshots-tysons-corner-va" className="text-red-500 hover:text-red-600 font-semibold">Tysons Corner</a>,{' '}
+            <a href="/headshots-centreville-va" className="text-red-500 hover:text-red-600 font-semibold">Centreville</a>,{' '}
             <a href="/headshots-washington-dc" className="text-red-500 hover:text-red-600 font-semibold">Washington DC</a>,{' '}
             <a href="/headshots-arlington-va" className="text-red-500 hover:text-red-600 font-semibold">Arlington</a>,{' '}
             <a href="/headshots-reston-va" className="text-red-500 hover:text-red-600 font-semibold">Reston</a>, and{' '}
-            <a href="/headshots-alexandria-va" className="text-red-500 hover:text-red-600 font-semibold">Alexandria</a>.
+            <a href="/headshots-alexandria-va" className="text-red-500 hover:text-red-600 font-semibold">Alexandria</a>.{' '}
+            See all <a href="/headshots-northern-virginia" className="text-red-500 hover:text-red-600 font-semibold">Northern Virginia</a> locations.
           </p>
         </div>
       </section>
