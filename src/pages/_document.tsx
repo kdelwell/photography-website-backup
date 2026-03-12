@@ -97,6 +97,12 @@ export default function Document() {
         "closes": "18:00"
       }
     ],
+    "aggregateRating": {
+      "@type": "AggregateRating",
+      "ratingValue": "5.0",
+      "reviewCount": "200",
+      "bestRating": "5"
+    },
     "sameAs": [
       "https://www.instagram.com/getaheadshotwithkevin",
       "https://www.facebook.com/getaheadshot",

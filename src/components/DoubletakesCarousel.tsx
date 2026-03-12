@@ -4,17 +4,17 @@ import { ChevronLeft, ChevronRight, X } from 'lucide-react'
 
 const DoubletakesCarousel = () => {
   const images = [
-    { src: '/images/DoubleTakes/Chris.jpg', alt: 'Chris Professional Headshot' },
-    { src: '/images/DoubleTakes/Dan.jpg', alt: 'Dan Professional Headshot' },
-    { src: '/images/DoubleTakes/Derrick.jpg', alt: 'Derrick Professional Headshot' },
-    { src: '/images/DoubleTakes/Kristie.jpg', alt: 'Kristie Professional Headshot' },
-    { src: '/images/DoubleTakes/Kristin.jpg', alt: 'Kristin Professional Headshot' },
-    { src: '/images/DoubleTakes/Phillipe.jpg', alt: 'Phillipe Professional Headshot' },
-    { src: '/images/DoubleTakes/Raph.jpg', alt: 'Raph Professional Headshot' },
-    { src: '/images/DoubleTakes/Riz.jpg', alt: 'Riz Professional Headshot' },
-    { src: '/images/DoubleTakes/Tristan.jpg', alt: 'Tristan Professional Headshot' },
-    { src: '/images/DoubleTakes/Sophia.jpg', alt: 'Sophia Professional Headshot' },
-    { src: '/images/DoubleTakes/Cynthia.jpg', alt: 'Cynthia Professional Headshot' }
+    { src: '/images/DoubleTakes/Chris.jpg', alt: 'Chris branding portrait and headshot' },
+    { src: '/images/DoubleTakes/Dan.jpg', alt: 'Dan professional branding portrait' },
+    { src: '/images/DoubleTakes/Derrick.jpg', alt: 'Derrick personal branding portrait' },
+    { src: '/images/DoubleTakes/Kristie.jpg', alt: 'Kristie branding portrait session' },
+    { src: '/images/DoubleTakes/Kristin.jpg', alt: 'Kristin professional portrait and branding' },
+    { src: '/images/DoubleTakes/Phillipe.jpg', alt: 'Phillipe personal branding portrait' },
+    { src: '/images/DoubleTakes/Raph.jpg', alt: 'Raph branding portrait photography' },
+    { src: '/images/DoubleTakes/Riz.jpg', alt: 'Riz professional portrait session' },
+    { src: '/images/DoubleTakes/Tristan.jpg', alt: 'Tristan branding portrait headshot' },
+    { src: '/images/DoubleTakes/Sophia.jpg', alt: 'Sophia personal branding portrait' },
+    { src: '/images/DoubleTakes/Cynthia.jpg', alt: 'Cynthia professional portrait and branding' }
   ]
 
   const [currentIndex, setCurrentIndex] = useState(0)
@@ -150,6 +150,9 @@ const DoubletakesCarousel = () => {
             <h2 className="text-2xl md:text-3xl font-light text-gray-800">
               Need some help with branding or a portrait - check out these double takes!
             </h2>
+            <p className="text-gray-500 mt-2 text-base">
+              Personal branding portraits that tell your story and make a lasting impression.
+            </p>
           </div>
           <div className="relative">
             {/* Desktop view - Smooth scrolling carousel */}

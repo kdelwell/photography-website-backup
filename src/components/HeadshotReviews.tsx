@@ -7,6 +7,9 @@ export default function HeadshotReviews() {
         <h2 className="text-3xl md:text-4xl lg:text-5xl font-bold text-white text-center mb-12 leading-tight">
           200+ 5-Star Reviews
         </h2>
+        <p className="text-gray-300 text-center text-lg mb-12 max-w-2xl mx-auto">
+          Don't just take my word for it — here's what clients say in their reviews after their headshot sessions.
+        </p>
 
         <div className="grid grid-cols-1 lg:grid-cols-3 gap-12">
           {/* Peter's Review */}
@@ -14,7 +17,7 @@ export default function HeadshotReviews() {
             <div className="relative w-72 aspect-[5/4] mb-8 overflow-hidden rounded">
               <Image
                 src="/images/Reviews/Peter.jpg"
-                alt="Peter A."
+                alt="Peter A. - 5-star headshot review from a CEO"
                 fill
                 className="object-cover"
               />
@@ -33,7 +36,7 @@ export default function HeadshotReviews() {
             <div className="relative w-72 aspect-[5/4] mb-8 overflow-hidden rounded">
               <Image
                 src="/images/Reviews/Kerensa.jpg"
-                alt="Kerensa G."
+                alt="Kerensa G. - 5-star headshot photography review"
                 fill
                 className="object-cover object-[center_center]"
               />
@@ -52,7 +55,7 @@ export default function HeadshotReviews() {
             <div className="relative w-72 aspect-[5/4] mb-8 overflow-hidden rounded">
               <Image
                 src="/images/Reviews/Elizabeth.jpg"
-                alt="Elizabeth G."
+                alt="Elizabeth G. - 5-star review of professional headshot session"
                 fill
                 className="object-cover"
               />

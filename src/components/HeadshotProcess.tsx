@@ -17,14 +17,14 @@ export default function HeadshotProcess() {
               <div className="w-20 h-20 relative">
                 <Image
                   src="/images/ProcessIcons/Calendar.png"
-                  alt="Calendar Icon"
+                  alt="Schedule your headshot session online"
                   fill
                   className="object-contain"
                 />
               </div>
             </div>
             <p className="text-gray-900 text-lg leading-relaxed">
-              1. Match your schedule up with mine using my on-line appointment system – you choose a time that works for you.
+              1. Book your headshot session using my online appointment system – you choose a time that works for you.
             </p>
           </div>
 
@@ -34,7 +34,7 @@ export default function HeadshotProcess() {
               <div className="w-20 h-20 relative">
                 <Image
                   src="/images/ProcessIcons/Camera.png"
-                  alt="Camera Icon"
+                  alt="Professional headshot photography session"
                   fill
                   className="object-contain"
                 />
@@ -51,7 +51,7 @@ export default function HeadshotProcess() {
               <div className="w-20 h-20 relative">
                 <Image
                   src="/images/ProcessIcons/Sliders.png"
-                  alt="Sliders Icon"
+                  alt="Professionally retouched headshot delivery"
                   fill
                   className="object-contain"
                 />

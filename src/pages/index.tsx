@@ -88,8 +88,8 @@ export default function Home({ frontmatter, content }: { frontmatter: any; conte
 
   return (
     <Layout
-      title="Professional Headshots Washington DC | Get Ahead Shot Photography"
-      description="Washington DC's premier headshot photographer. Magazine-quality professional headshots for executives, entrepreneurs, and business professionals. Same-day turnaround. Studio or on-location. Book your session today!"
+      title="Professional Headshot Photography Washington DC | Get Ahead Shot Photography"
+      description="Washington DC's premier headshot photographer. Magazine-quality professional headshot photography for executives, entrepreneurs, and business professionals. Same-day turnaround. Studio or on-location. Book your session today!"
     >
       {/* FAQ Schema */}
       <script
@@ -141,10 +141,13 @@ export default function Home({ frontmatter, content }: { frontmatter: any; conte
         {/* Overlay Content */}
         <div className="relative h-full flex items-center justify-center">
           <div className="text-center text-white px-8 max-w-5xl">
-            <h1 className="text-4xl md:text-5xl lg:text-6xl font-bold mb-8 leading-tight">
-              Your image could be costing you opportunities.
+            <h1 className="text-4xl md:text-5xl lg:text-6xl font-bold mb-4 leading-tight">
+              Professional Headshot Photography That Opens Doors
             </h1>
-            
+            <p className="text-xl md:text-2xl mb-4 font-light opacity-90">
+              Your image could be costing you opportunities.
+            </p>
+
             <p className="text-2xl md:text-3xl mb-12 font-light leading-relaxed">
               In a digital world, your headshot is your first impression.<br />
               Let's make sure it's a powerful one.
@@ -175,6 +178,9 @@ export default function Home({ frontmatter, content }: { frontmatter: any; conte
           <h2 className="text-3xl md:text-4xl lg:text-5xl font-bold text-gray-900 text-center leading-tight">
             Washington DC's Premier Headshot & Portrait Photographer for Professionals
           </h2>
+          <p className="text-lg text-gray-600 text-center mt-4 max-w-3xl mx-auto">
+            As a headshot and portrait photographer serving professionals across Washington DC, I create images that command attention and open doors.
+          </p>
         </div>
       </section>
 
@@ -195,15 +201,15 @@ export default function Home({ frontmatter, content }: { frontmatter: any; conte
               />
             </div>
             <div>
-              <h3 className="text-4xl font-bold text-gray-900 mb-6">Meet Your Guide — Kevin Elwell</h3>
+              <h3 className="text-4xl font-bold text-gray-900 mb-6">Meet Your Headshot Photographer — Kevin Elwell</h3>
               <p className="text-lg text-gray-700 mb-6">
-                Bad images with strained expressions and poor lighting are the norm. This is a struggle, especially for entrepreneurs, the C-Suite, or companies that rely on those images for building their businesses.
+                Bad headshot photography with strained expressions and poor lighting is the norm. This is a struggle, especially for entrepreneurs, the C-Suite, or companies that rely on professional headshots for building their businesses.
               </p>
               <p className="text-lg text-gray-700 mb-6">
-                I've developed an easy process that creates images that ensures authentic results, where quality exceeds price and delivers an exceptional value.
+                As a headshot photographer with over 10 years of experience, I've developed an easy process that creates authentic results, where quality exceeds price and delivers exceptional value.
               </p>
               <p className="text-lg text-gray-700" style={{ marginBottom: '0px' }}>
-                I help busy professionals create magazine-quality images of themselves that lets them build their networks and present their best image to others. After more than 10 years of experience I have the talents, skills, and have developed the process that creates authentic expressions with great lighting. This includes a unique studio feedback-loop to get your instant reaction to ensure you love what we create together.
+                I help busy professionals create magazine-quality headshot photography that lets them build their networks and present their best image to others. My process creates authentic expressions with great lighting, and includes a unique studio feedback-loop to get your instant reaction so you love what we create together.
               </p>
               <Link 
                 href="/about" 
@@ -261,13 +267,13 @@ export default function Home({ frontmatter, content }: { frontmatter: any; conte
             {/* Center - Text Content */}
             <div className="text-center text-white">
               <h2 className="text-2xl md:text-3xl lg:text-4xl font-bold mb-6 leading-tight">
-                On-Location Groups
+                On-Location Group Headshot Photography
               </h2>
               <p className="text-lg md:text-xl font-light mb-8 leading-relaxed">
-                I bring my studio to your location for your group because you need your business to look like a team.
+                I bring my professional headshot studio to your location because your team needs to look like a team. Consistent, high-quality headshot photography for every member of your organization.
               </p>
               <p className="text-base md:text-lg font-light text-gray-100">
-                Consistency is the key.
+                Consistency is the key to great corporate headshots.
               </p>
               <a
                 href="https://getaheadshot.net/groups"
