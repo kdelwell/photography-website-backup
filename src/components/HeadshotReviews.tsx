@@ -5,7 +5,7 @@ export default function HeadshotReviews() {
     <section style={{ backgroundColor: '#242424', paddingTop: '48px', paddingBottom: '80px' }}>
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
         <h2 className="text-3xl md:text-4xl lg:text-5xl font-bold text-white text-center mb-12 leading-tight">
-          200+ 5-Star Reviews
+          230+ 5-Star Reviews
         </h2>
         <p className="text-gray-300 text-center text-lg mb-12 max-w-2xl mx-auto">
           Don't just take my word for it — here's what clients say in their reviews after their headshot sessions.

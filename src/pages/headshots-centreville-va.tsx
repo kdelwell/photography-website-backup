@@ -42,6 +42,14 @@ export default function HeadshotsCentrevilleVA() {
           "@type": "Answer",
           "text": "Individual headshot sessions take 30-45 minutes. For corporate groups, we can photograph 15-20 people per hour. All sessions include our instant feedback process so you see and love your images before we leave."
         }
+      },
+      {
+        "@type": "Question",
+        "name": "Do you do actor headshots in Centreville, VA?",
+        "acceptedAnswer": {
+          "@type": "Answer",
+          "text": "Yes! We photograph actor headshots for performers at all levels in Centreville and Western Fairfax County. Our sessions include expression coaching, multiple looks, and retouched finals formatted for casting sites and talent agency submissions. No need to drive into DC."
+        }
       }
     ]
   };
@@ -51,14 +59,14 @@ export default function HeadshotsCentrevilleVA() {
     "@type": "BreadcrumbList",
     "itemListElement": [
       { "@type": "ListItem", "position": 1, "name": "Home", "item": "https://getaheadshot.net" },
-      { "@type": "ListItem", "position": 2, "name": "Business Headshots Centreville VA", "item": "https://getaheadshot.net/headshots-centreville-va" }
+      { "@type": "ListItem", "position": 2, "name": "Business & Actor Headshots Centreville VA", "item": "https://getaheadshot.net/headshots-centreville-va" }
     ]
   };
 
   return (
     <Layout
-      title="Business Headshots Centreville VA | Executive & Corporate Headshot Photographer"
-      description="Business headshot photographer based in Centreville, VA. Professional business headshots, executive portraits, and corporate team photography. On-location in Centreville, Chantilly, Clifton & Westfields. Book today!"
+      title="Headshots Centreville VA | Business, Actor & Corporate Headshot Photographer"
+      description="Headshot photographer based in Centreville, VA. Professional business headshots, actor headshots, executive portraits, and corporate team photography. On-location in Centreville, Chantilly, Clifton & Westfields. Book today!"
     >
       <script type="application/ld+json" dangerouslySetInnerHTML={{ __html: JSON.stringify(faqSchema) }} />
       <script type="application/ld+json" dangerouslySetInnerHTML={{ __html: JSON.stringify(breadcrumbSchema) }} />
@@ -68,10 +76,10 @@ export default function HeadshotsCentrevilleVA() {
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
           <div className="text-center">
             <h1 className="text-4xl md:text-5xl lg:text-6xl font-bold mb-6 leading-tight text-gray-900">
-              Business Headshots in Centreville, VA
+              Business & Actor Headshots in Centreville, VA
             </h1>
             <p className="text-xl md:text-2xl mb-8 text-gray-700 max-w-4xl mx-auto">
-              Professional Business & Executive Headshot Photography Based Right Here in Centreville — Serving Western Fairfax County
+              Professional Business, Executive & Actor Headshot Photography Based Right Here in Centreville — Serving Western Fairfax County
             </p>
             <div className="flex flex-col sm:flex-row gap-4 justify-center">
               <a href="/more_info" className="bg-red-500 hover:bg-red-600 text-white px-8 py-4 rounded-lg text-lg font-semibold transition-colors">
@@ -91,7 +99,7 @@ export default function HeadshotsCentrevilleVA() {
           <div className="grid grid-cols-1 lg:grid-cols-2 gap-12 items-center">
             <div>
               <h2 className="text-3xl md:text-4xl font-bold text-gray-900 mb-6">
-                Centreville's Local Business Headshot Photographer
+                Centreville's Local Business & Actor Headshot Photographer
               </h2>
               <p className="text-lg text-gray-700 mb-4">
                 I'm not just a photographer who serves Centreville — I'm <strong>based here</strong>. That
@@ -130,6 +138,10 @@ export default function HeadshotsCentrevilleVA() {
                   <span className="text-red-500 mr-2">✓</span>
                   <span><strong>Tech & Cybersecurity Professionals</strong> — LinkedIn headshots for the Dulles tech corridor workforce</span>
                 </li>
+                <li className="flex items-start">
+                  <span className="text-red-500 mr-2">✓</span>
+                  <span><strong>Actors & Performers</strong> — Actor headshots for auditions, casting calls, and talent agency submissions</span>
+                </li>
               </ul>
             </div>
             <div className="relative h-[500px] rounded-lg overflow-hidden shadow-2xl">
@@ -151,6 +163,58 @@ export default function HeadshotsCentrevilleVA() {
             Business Headshot Portfolio — Centreville VA Area Clients
           </h2>
           <MainGallery />
+        </div>
+      </section>
+
+      {/* Actor Headshots Section */}
+      <section className="bg-white py-16">
+        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+          <h2 className="text-3xl md:text-4xl font-bold text-gray-900 mb-6">
+            Actor Headshots in Centreville, VA
+          </h2>
+          <div className="grid grid-cols-1 lg:grid-cols-2 gap-12 items-start">
+            <div>
+              <p className="text-lg text-gray-700 mb-4">
+                Whether you're auditioning for community theater, submitting to talent agencies in DC, or building your acting portfolio, a great actor headshot is the first thing casting directors see. I photograph actor headshots right here in Centreville with the same professional lighting and coaching I use for business clients — but tailored to what the acting industry needs.
+              </p>
+              <p className="text-lg text-gray-700 mb-4">
+                Actor headshots are different from corporate headshots. They need to show range, personality, and emotion — not just "professional." I'll coach you through multiple expressions and looks so you walk away with headshots that show casting directors exactly what you bring to a role.
+              </p>
+              <h3 className="text-2xl font-bold text-gray-900 mb-4 mt-8">
+                What You Get With Actor Headshots:
+              </h3>
+              <ul className="space-y-2 text-lg text-gray-700">
+                <li className="flex items-start">
+                  <span className="text-red-500 mr-2">✓</span>
+                  <span>Multiple looks and expressions for different casting types</span>
+                </li>
+                <li className="flex items-start">
+                  <span className="text-red-500 mr-2">✓</span>
+                  <span>Both studio and natural light options</span>
+                </li>
+                <li className="flex items-start">
+                  <span className="text-red-500 mr-2">✓</span>
+                  <span>Expression coaching to bring out authentic, castable looks</span>
+                </li>
+                <li className="flex items-start">
+                  <span className="text-red-500 mr-2">✓</span>
+                  <span>Retouched finals formatted for casting sites and agency submissions</span>
+                </li>
+                <li className="flex items-start">
+                  <span className="text-red-500 mr-2">✓</span>
+                  <span>No need to drive into DC — full studio setup right here in Centreville</span>
+                </li>
+              </ul>
+            </div>
+            <div>
+              <p className="text-lg text-gray-700 mb-4">
+                Northern Virginia has a thriving performing arts scene — from the Hylton Performing Arts Center in Manassas to theaters across Fairfax County. If you're an actor based in Centreville, Chantilly, or anywhere in Western Fairfax County, you no longer need to trek into DC or Baltimore for quality actor headshots.
+              </p>
+              <p className="text-lg text-gray-700">
+                I work with actors at every level — from first-timers building their initial portfolio to working actors who need updated headshots for a new look or age range. My instant feedback system means you see every shot in real-time, so you leave the session confident you have exactly what you need.
+              </p>
+            </div>
+          </div>
         </div>
       </section>
 
@@ -190,7 +254,7 @@ export default function HeadshotsCentrevilleVA() {
       <section className="bg-gray-50 py-16">
         <div className="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8">
           <h2 className="text-3xl md:text-4xl font-bold text-gray-900 text-center mb-12">
-            Headshot Photography FAQs — Centreville, VA
+            Business & Actor Headshot FAQs — Centreville, VA
           </h2>
           <div className="space-y-6">
             <div className="bg-white p-6 rounded-lg shadow-sm">
@@ -224,6 +288,15 @@ export default function HeadshotsCentrevilleVA() {
                 per hour. All sessions include our instant feedback process so you see and love your images before we leave.
               </p>
             </div>
+            <div className="bg-white p-6 rounded-lg shadow-sm">
+              <h3 className="text-xl font-bold text-gray-900 mb-3">Do you do actor headshots in Centreville, VA?</h3>
+              <p className="text-gray-700">
+                Yes! We photograph actor headshots for performers at all levels in Centreville and Western Fairfax County.
+                Our sessions include expression coaching, multiple looks, and retouched finals formatted for casting sites
+                and talent agency submissions. No need to drive into DC.{' '}
+                <a href="/more_info" className="text-red-500 hover:text-red-600">Get actor headshot pricing →</a>
+              </p>
+            </div>
           </div>
         </div>
       </section>
@@ -234,14 +307,14 @@ export default function HeadshotsCentrevilleVA() {
       <section className="bg-white py-16">
         <div className="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8">
           <h2 className="text-3xl font-bold text-gray-900 mb-6">
-            Why Centreville Businesses Choose Get Ahead Shot for Their Headshots
+            Why Centreville Professionals & Actors Choose Get Ahead Shot for Their Headshots
           </h2>
           <div className="prose prose-lg max-w-none text-gray-700">
             <p>
               Centreville sits at the intersection of opportunity. With the Dulles tech corridor to the north,
-              government agencies to the east, and a booming local business community, professionals here need
-              a business headshot that opens doors — whether that's a federal contract, a new client, or a LinkedIn connection
-              that turns into a career move.
+              government agencies to the east, and a thriving performing arts scene across Northern Virginia, professionals
+              and actors here need headshots that open doors — whether that's a federal contract, a casting call,
+              or a LinkedIn connection that turns into a career move.
             </p>
             <p>
               As your neighbor in Centreville, I've spent over a decade photographing the people who make this

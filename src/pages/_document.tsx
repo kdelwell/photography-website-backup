@@ -100,7 +100,7 @@ export default function Document() {
     "aggregateRating": {
       "@type": "AggregateRating",
       "ratingValue": "5.0",
-      "reviewCount": "200",
+      "reviewCount": "230",
       "bestRating": "5"
     },
     "sameAs": [
