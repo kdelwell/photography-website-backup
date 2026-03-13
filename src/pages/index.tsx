@@ -141,12 +141,9 @@ export default function Home({ frontmatter, content }: { frontmatter: any; conte
         {/* Overlay Content */}
         <div className="relative h-full flex items-center justify-center">
           <div className="text-center text-white px-8 max-w-5xl">
-            <h1 className="text-4xl md:text-5xl lg:text-6xl font-bold mb-4 leading-tight">
+            <h1 className="text-4xl md:text-5xl lg:text-6xl font-bold mb-8 leading-tight">
               Professional Headshot Photography That Opens Doors
             </h1>
-            <p className="text-xl md:text-2xl mb-4 font-light opacity-90">
-              Your image could be costing you opportunities.
-            </p>
 
             <p className="text-2xl md:text-3xl mb-12 font-light leading-relaxed">
               In a digital world, your headshot is your first impression.<br />
@@ -179,7 +176,7 @@ export default function Home({ frontmatter, content }: { frontmatter: any; conte
             Washington DC's Premier Headshot & Portrait Photographer for Professionals
           </h2>
           <p className="text-lg text-gray-600 text-center mt-4 max-w-3xl mx-auto">
-            As a headshot and portrait photographer serving professionals across Washington DC, I create images that command attention and open doors.
+            As a headshot and portrait photographer serving professionals across Washington DC, I create images that command attention.
           </p>
         </div>
       </section>
