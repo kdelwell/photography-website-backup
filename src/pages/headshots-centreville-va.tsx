@@ -13,18 +13,18 @@ export default function HeadshotsCentrevilleVA() {
     "mainEntity": [
       {
         "@type": "Question",
-        "name": "Where can I get corporate headshots in Centreville, VA?",
+        "name": "Where can I get business headshots in Centreville, VA?",
         "acceptedAnswer": {
           "@type": "Answer",
-          "text": "Get Ahead Shot Photography is based in Centreville, VA and specializes in corporate headshots for professionals and companies. We serve the surrounding areas including Chantilly, Clifton, Manassas, and the Westfields business corridor, bringing a full professional studio setup to your office, home, or any location."
+          "text": "Get Ahead Shot Photography is based in Centreville, VA and specializes in business and corporate headshots for professionals and companies. We serve the surrounding areas including Chantilly, Clifton, Manassas, and the Westfields business corridor, bringing a full professional studio setup to your office, home, or any location."
         }
       },
       {
         "@type": "Question",
-        "name": "How much do corporate headshots cost in Centreville, VA?",
+        "name": "How much do business headshots cost in Centreville, VA?",
         "acceptedAnswer": {
           "@type": "Answer",
-          "text": "Corporate headshot sessions in Centreville typically range from $350-$700 depending on the package, number of looks, and turnaround time. We offer competitive pricing with same-day delivery options."
+          "text": "Business headshot sessions in Centreville typically range from $350-$700 depending on the package, number of looks, and turnaround time. We offer competitive pricing with same-day delivery options."
         }
       },
       {
@@ -59,14 +59,14 @@ export default function HeadshotsCentrevilleVA() {
     "@type": "BreadcrumbList",
     "itemListElement": [
       { "@type": "ListItem", "position": 1, "name": "Home", "item": "https://getaheadshot.net" },
-      { "@type": "ListItem", "position": 2, "name": "Corporate Headshots Centreville VA", "item": "https://getaheadshot.net/headshots-centreville-va" }
+      { "@type": "ListItem", "position": 2, "name": "Business & Corporate Headshots Centreville VA", "item": "https://getaheadshot.net/headshots-centreville-va" }
     ]
   };
 
   return (
     <Layout
-      title="Corporate Headshots Centreville VA | Business & Executive Headshot Photographer"
-      description="Corporate headshot photographer based in Centreville, VA. Professional corporate headshots, business portraits, executive headshots, and team photography. On-location in Centreville, Chantilly, Clifton & Westfields. Book today!"
+      title="Business & Corporate Headshots Centreville VA | Executive Headshot Photographer"
+      description="Business headshot photographer based in Centreville, VA. Professional business headshots, corporate headshots, executive portraits, and team photography. On-location in Centreville, Chantilly, Clifton & Westfields. Book today!"
     >
       <script type="application/ld+json" dangerouslySetInnerHTML={{ __html: JSON.stringify(faqSchema) }} />
       <script type="application/ld+json" dangerouslySetInnerHTML={{ __html: JSON.stringify(breadcrumbSchema) }} />
@@ -76,10 +76,10 @@ export default function HeadshotsCentrevilleVA() {
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
           <div className="text-center">
             <h1 className="text-4xl md:text-5xl lg:text-6xl font-bold mb-6 leading-tight text-gray-900">
-              Corporate Headshots in Centreville, VA
+              Business & Corporate Headshots in Centreville, VA
             </h1>
             <p className="text-xl md:text-2xl mb-8 text-gray-700 max-w-4xl mx-auto">
-              Professional Corporate, Business & Executive Headshot Photography Based Right Here in Centreville — Serving Western Fairfax County
+              Professional Business, Corporate & Executive Headshot Photography Based Right Here in Centreville — Serving Western Fairfax County
             </p>
             <div className="flex flex-col sm:flex-row gap-4 justify-center">
               <a href="/more_info" className="bg-red-500 hover:bg-red-600 text-white px-8 py-4 rounded-lg text-lg font-semibold transition-colors">
@@ -106,7 +106,7 @@ export default function HeadshotsCentrevilleVA() {
                 means no travel fees, fast turnaround, and a photographer who actually knows the community.
                 From the professionals working along the <strong>Route 29 corridor</strong> to the growing
                 business parks near <strong>Westfields</strong> and <strong>Chantilly</strong>, I've been
-                photographing corporate headshots for people right here in Western Fairfax County for over a decade.
+                photographing business and corporate headshots for people right here in Western Fairfax County for over a decade.
               </p>
               <p className="text-lg text-gray-700 mb-4">
                 I bring a full professional studio setup — lighting, backgrounds, everything — directly to
@@ -160,7 +160,7 @@ export default function HeadshotsCentrevilleVA() {
       <section id="portfolio" className="bg-gray-50">
         <div className="py-8">
           <h2 className="text-3xl md:text-4xl font-bold text-gray-900 text-center mb-8">
-            Corporate Headshot Portfolio — Centreville VA Area Clients
+            Business & Corporate Headshot Portfolio — Centreville VA Area Clients
           </h2>
           <MainGallery />
         </div>
