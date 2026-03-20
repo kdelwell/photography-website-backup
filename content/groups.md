@@ -1,6 +1,6 @@
 ---
-title: "Groups"
-description: "Professional group photography services for teams, families, and special events"
+title: "Corporate Team Headshots On-Location | Washington DC Group Photography"
+description: "On-location corporate team headshots for Washington DC businesses. Professional group photography with consistent branding, composite team photos, and easy member substitution. Book your team session today."
 ---
 
 # Group Photography Services

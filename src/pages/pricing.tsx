@@ -1,5 +1,6 @@
 import LayoutNoPricing from '@/components/LayoutNoPricing'
 import Image from 'next/image'
+import Script from 'next/script'
 import matter from 'gray-matter'
 import fs from 'fs'
 import path from 'path'
@@ -7,6 +8,9 @@ import path from 'path'
 export default function Pricing({ frontmatter, content }: { frontmatter: any; content: string }) {
   return (
     <LayoutNoPricing title={frontmatter.title} description={frontmatter.description}>
+      <Script id="google-ads-lead-conversion" strategy="afterInteractive">
+        {`gtag('event', 'conversion', {'send_to': 'AW-399963959/yebXCI6G29oDELfu274B'});`}
+      </Script>
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-3">
         {/* Page Title */}
         <div className="text-center mb-8">

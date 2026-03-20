@@ -120,10 +120,10 @@ const Hair = ({ frontmatter }: HairProps) => {
           <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
             <div className="text-center">
               <h1 className="text-4xl md:text-5xl lg:text-6xl font-bold text-gray-900 mb-4 tracking-wide">
-                Professional Hair
+                Hair and Makeup
               </h1>
               <h2 className="text-3xl md:text-4xl lg:text-5xl font-bold text-gray-900 mb-6 tracking-wide">
-                and Makeup Services
+                for Professional Headshots
               </h2>
             </div>
           </div>
@@ -254,8 +254,8 @@ const Hair = ({ frontmatter }: HairProps) => {
 export async function getStaticProps() {
   const filePath = path.join(process.cwd(), 'content', 'hair.md')
   let frontmatter = {
-    title: 'Professional Hair and Makeup Services',
-    description: 'Transform your look with professional hair and makeup services. See dramatic before and after results from our expert styling team.'
+    title: 'Hair and Makeup for Professional Headshots | Washington DC',
+    description: 'Professional hair and makeup styling for your headshot session. See dramatic before-and-after transformations. On-site styling available for individual and corporate headshot sessions in Washington DC.'
   }
 
   try {

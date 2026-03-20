@@ -13,11 +13,13 @@ interface GalleryWithLightboxProps {
     mobile?: number
     desktop?: number
   }
+  priorityCount?: number
 }
 
 const GalleryWithLightbox = ({
   images,
-  columns = { mobile: 2, desktop: 4 }
+  columns = { mobile: 2, desktop: 4 },
+  priorityCount = 0
 }: GalleryWithLightboxProps) => {
   const [selectedImage, setSelectedImage] = useState<GalleryImage | null>(null)
 
@@ -73,6 +75,8 @@ const GalleryWithLightbox = ({
                 alt={image.alt}
                 fill
                 className="object-cover group-hover:scale-105 transition-transform duration-300"
+                sizes="(max-width: 768px) 50vw, 25vw"
+                {...(index < priorityCount ? { priority: true } : {})}
               />
               <div className="absolute inset-0 bg-black/0 group-hover:bg-black/20 transition-colors duration-300"></div>
             </div>

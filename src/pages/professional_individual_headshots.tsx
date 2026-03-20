@@ -31,8 +31,8 @@ export default function ProfessionalIndividualHeadshots({ frontmatter, content }
 
   return (
     <Layout
-      title="Professional Individual Headshots Washington DC | Corporate Photography"
-      description="Professional headshot photography for individuals in Washington DC. Perfect for LinkedIn, corporate websites, and personal branding. Get magazine-quality results with same-day turnaround. Book your headshot session now!"
+      title="Individual LinkedIn Headshots & Executive Portraits | Washington DC"
+      description="Individual LinkedIn headshots and executive portrait photography in Washington DC. Magazine-quality results for professionals, entrepreneurs, and business leaders. Same-day turnaround available."
     >
       {/* BreadcrumbList Schema */}
       <script
@@ -58,7 +58,7 @@ export default function ProfessionalIndividualHeadshots({ frontmatter, content }
       <section className="bg-white py-12">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
           <h1 className="text-3xl md:text-4xl lg:text-5xl font-bold text-gray-900 text-center leading-tight">
-            Washington DC's Premier Headshot & Portrait Photographer for Professionals
+            Individual LinkedIn Headshots & Executive Portraits in Washington DC
           </h1>
         </div>
       </section>

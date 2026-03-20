@@ -33,7 +33,7 @@ export default function Prep({ frontmatter, content }: { frontmatter: any; conte
         {/* Header Section */}
         <div className="bg-white py-6">
           <h1 className="text-4xl md:text-5xl font-bold text-center leading-tight">
-            Preparing for your session...
+            How to Prepare for Your Professional Headshot Session
           </h1>
         </div>
 

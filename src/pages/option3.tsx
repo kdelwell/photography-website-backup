@@ -109,7 +109,7 @@ export default function Option3({ frontmatter, content }: { frontmatter: any; co
             <div className="text-center group">
               <div className="relative h-64 mb-6 rounded-lg overflow-hidden">
                 <Image
-                  src="/images/Gallery/Joe.jpg"
+                  src="/images/Gallery/archive/Joe.jpg"
                   alt="Actor Headshots"
                   fill
                   className="object-cover group-hover:scale-105 transition-transform duration-300"
@@ -164,7 +164,7 @@ export default function Option3({ frontmatter, content }: { frontmatter: any; co
             </div>
             <div className="relative aspect-[3/4] rounded-lg overflow-hidden group">
               <Image
-                src="/images/Gallery/Sherif.jpg"
+                src="/images/Gallery/archive/Sherif.jpg"
                 alt="Professional Headshot"
                 fill
                 className="object-cover group-hover:scale-105 transition-transform duration-300"
