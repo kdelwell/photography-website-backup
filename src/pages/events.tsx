@@ -40,6 +40,16 @@ export default function Events({ frontmatter, content }: { frontmatter: any; con
           </div>
         </div>
 
+        {/* Scheduling Embed */}
+        <div className="w-full max-w-4xl mx-auto px-4 sm:px-6 lg:px-8">
+          <iframe
+            src="https://admin.getaheadshot.net/embed/schedule/0dLtwRjZQw2B"
+            style={{ width: '100%', minHeight: '700px', border: 'none' }}
+            allow="payment"
+            title="Book Your Time Slot"
+          />
+        </div>
+
       </div>
     </LayoutNoPricing>
   )
