@@ -117,6 +117,9 @@ const Privacy = ({ frontmatter }: PrivacyProps) => {
                 <li><strong>SMS Messages:</strong> We may send appointment reminders, confirmations, or marketing messages. Standard message and data rates may apply. You can opt out at any time by replying "STOP."</li>
                 <li><strong>Emails:</strong> You may unsubscribe at any time by clicking the "unsubscribe" link in our emails.</li>
               </ul>
+              <p className="text-gray-700 leading-relaxed mb-6">
+                No mobile data will be shared with third parties/affiliates for marketing/promotional purposes at any time.
+              </p>
 
               <h2 className="text-2xl font-bold text-gray-900 mb-4">5. Sharing Your Information</h2>
               <p className="text-gray-700 leading-relaxed mb-4">We do not sell your personal information. We may share it only in the following cases:</p>
