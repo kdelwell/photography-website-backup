@@ -102,10 +102,13 @@ export default function Home({ frontmatter, content }: { frontmatter: any; conte
       {/* Video Hero Section with Parallax */}
       <section className="relative h-screen overflow-hidden">
         {/* Video Background with Parallax */}
-        <div 
-          className="absolute inset-0 w-full h-full"
-          style={{ 
-            transform: `translateY(${scrollY * 0.5}px)`,
+        <div
+          className="absolute w-full"
+          style={{
+            top: 0,
+            left: 0,
+            height: '150%',
+            transform: `translateY(${scrollY * -0.5}px)`,
             willChange: 'transform'
           }}
         >
