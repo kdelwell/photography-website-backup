@@ -149,6 +149,8 @@ export default function HeadshotsCentrevilleVA() {
                 src="/images/Kevin_about.jpg"
                 alt="Kevin Elwell - Business headshot photographer based in Centreville VA"
                 fill
+                priority
+                sizes="(max-width: 1024px) 100vw, 50vw"
                 className="object-cover"
               />
             </div>

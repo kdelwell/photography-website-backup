@@ -135,6 +135,8 @@ export default function HeadshotsAlexandriaVA() {
                 src="/images/Kevin_about.jpg"
                 alt="Professional headshot photographer Kevin Elwell serving Alexandria VA"
                 fill
+                priority
+                sizes="(max-width: 1024px) 100vw, 50vw"
                 className="object-cover"
               />
             </div>

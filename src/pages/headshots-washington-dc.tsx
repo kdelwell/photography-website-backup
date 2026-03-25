@@ -148,6 +148,8 @@ export default function HeadshotsWashingtonDC() {
                 src="/images/Kevin_about.jpg"
                 alt="Professional headshot photographer Kevin Elwell in Washington DC studio"
                 fill
+                priority
+                sizes="(max-width: 1024px) 100vw, 50vw"
                 className="object-cover"
               />
             </div>

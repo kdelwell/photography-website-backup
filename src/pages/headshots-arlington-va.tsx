@@ -135,6 +135,8 @@ export default function HeadshotsArlingtonVA() {
                 src="/images/Kevin_about.jpg"
                 alt="Professional headshot photographer Kevin Elwell serving Arlington VA"
                 fill
+                priority
+                sizes="(max-width: 1024px) 100vw, 50vw"
                 className="object-cover"
               />
             </div>
