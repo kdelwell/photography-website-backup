@@ -28,7 +28,7 @@ export default function SMSConsent() {
     }
 
     try {
-      const resp = await fetch('https://admin.getaheadshot.net/api/webhooks/contact?key=tldOkBmVbGyjcIMEkcRm9LjBiQeNmclk', {
+      const resp = await fetch('/api/sms-signup', {
         method: 'POST',
         headers: { 'Content-Type': 'application/json' },
         body: JSON.stringify({
@@ -36,7 +36,6 @@ export default function SMSConsent() {
           lastName: data.lastName,
           email: data.email,
           phone: data.phone,
-          addTags: ['sms-optin'],
         }),
       })
       if (!resp.ok) throw new Error('Submission failed')
