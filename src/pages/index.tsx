@@ -339,6 +339,42 @@ export default function Home({ frontmatter, content }: { frontmatter: any; conte
       {/* Business Single Segment Section */}
       <BusinessSingleSegment />
 
+      {/* Location Pages */}
+      <section className="bg-gray-50 py-16">
+        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 text-center">
+          <h2 className="text-3xl md:text-4xl font-bold text-gray-900 mb-4">
+            Professional Headshots Across the DC Metro Area
+          </h2>
+          <p className="text-lg text-gray-700 mb-10 max-w-3xl mx-auto">
+            Based in <strong>Centreville, VA</strong>, I bring professional headshot photography to offices and locations throughout Northern Virginia and Washington DC.
+          </p>
+          <div className="grid grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-4">
+            {[
+              { name: 'Centreville, VA', href: '/headshots-centreville-va', featured: true },
+              { name: 'Fairfax, VA', href: '/headshots-fairfax-va' },
+              { name: 'Reston, VA', href: '/headshots-reston-va' },
+              { name: 'Arlington, VA', href: '/headshots-arlington-va' },
+              { name: 'Alexandria, VA', href: '/headshots-alexandria-va' },
+              { name: 'Tysons Corner, VA', href: '/headshots-tysons-corner-va' },
+              { name: 'Northern Virginia', href: '/headshots-northern-virginia' },
+              { name: 'Washington, DC', href: '/headshots-washington-dc' },
+            ].map((loc) => (
+              <a
+                key={loc.href}
+                href={loc.href}
+                className={`p-4 rounded-lg font-medium transition-colors ${
+                  loc.featured
+                    ? 'bg-red-500 text-white hover:bg-red-600'
+                    : 'bg-white text-gray-800 hover:bg-red-50 hover:text-red-600'
+                }`}
+              >
+                {loc.name}
+              </a>
+            ))}
+          </div>
+        </div>
+      </section>
+
       {/* Video Modal */}
       {videoModalOpen && (
         <div 

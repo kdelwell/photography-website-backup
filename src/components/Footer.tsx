@@ -45,7 +45,7 @@ export default function Footer() {
 
           <div className="text-center md:text-left text-sm">
             <div className="font-semibold">Get Ahead Shot Photography</div>
-            <div className="text-gray-100">Washington DC Metro Area</div>
+            <div className="text-gray-100"><a href="/headshots-centreville-va" className="hover:text-white">Centreville, VA</a> · Washington DC Metro Area</div>
             <div className="text-cyan-200">
               <a href="mailto:kevin@getaheadshot.net">kevin@getaheadshot.net</a>
             </div>
