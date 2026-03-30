@@ -176,10 +176,10 @@ export default function Home({ frontmatter, content }: { frontmatter: any; conte
       <section className="bg-white py-12">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
           <h2 className="text-3xl md:text-4xl lg:text-5xl font-bold text-gray-900 text-center leading-tight">
-            Washington DC's Premier Headshot & Portrait Photographer for Professionals
+            Headshot Photography That Commands Attention
           </h2>
           <p className="text-lg text-gray-600 text-center mt-4 max-w-3xl mx-auto">
-            As a headshot and portrait photographer serving professionals across Washington DC, I create images that command attention.
+            Serving professionals across Washington DC and Northern Virginia, I create headshots that make a powerful first impression.
           </p>
         </div>
       </section>
@@ -195,7 +195,7 @@ export default function Home({ frontmatter, content }: { frontmatter: any; conte
             <div className="relative h-[400px] lg:h-[500px] rounded-lg overflow-hidden">
               <Image
                 src="/images/ME_2026_5x4.jpg"
-                alt="Kevin Elwell - Professional headshot photographer in Washington DC with 10+ years experience"
+                alt="Kevin Elwell - headshot photographer"
                 fill
                 className="object-cover"
               />
@@ -228,10 +228,10 @@ export default function Home({ frontmatter, content }: { frontmatter: any; conte
       {/* Secondary Gallery Section */}
       <GalleryWithLightbox
         images={[
-          { src: '/images/SecondGallery/Lauren.jpg', alt: 'Professional corporate headshot Washington DC - Business portrait photography near me' },
-          { src: '/images/SecondGallery/Ama.jpg', alt: 'Executive headshot DC - Professional business photography Washington DC' },
-          { src: '/images/SecondGallery/Fabian.jpg', alt: 'Professional LinkedIn headshot photographer Washington DC - Corporate portrait' },
-          { src: '/images/SecondGallery/Spiro.jpg', alt: 'Business headshot photography DC - Professional corporate photographer near me' }
+          { src: '/images/SecondGallery/Lauren.jpg', alt: 'Lauren - professional corporate headshot' },
+          { src: '/images/SecondGallery/Ama.jpg', alt: 'Ama - executive portrait' },
+          { src: '/images/SecondGallery/Fabian.jpg', alt: 'Fabian - business professional headshot' },
+          { src: '/images/SecondGallery/Spiro.jpg', alt: 'Spiro - corporate headshot' }
         ]}
       />
 
@@ -317,10 +317,10 @@ export default function Home({ frontmatter, content }: { frontmatter: any; conte
       {/* Third Gallery Section */}
       <GalleryWithLightbox
         images={[
-          { src: '/images/ThirdGallery/Charles.jpg', alt: 'Professional headshot Washington DC - Executive portrait photographer near me' },
-          { src: '/images/ThirdGallery/Kirsten.jpg', alt: 'Corporate headshot photography Washington DC - Business professional portrait' },
-          { src: '/images/ThirdGallery/Rachel.jpg', alt: 'Professional business headshot DC - LinkedIn profile photography Washington DC' },
-          { src: '/images/ThirdGallery/Arcelious.jpg', alt: 'Executive headshot photographer Washington DC - Professional corporate photography near me' }
+          { src: '/images/ThirdGallery/Charles.jpg', alt: 'Charles - executive headshot' },
+          { src: '/images/ThirdGallery/Kirsten.jpg', alt: 'Kirsten - professional portrait' },
+          { src: '/images/ThirdGallery/Rachel.jpg', alt: 'Rachel - business headshot' },
+          { src: '/images/ThirdGallery/Arcelious.jpg', alt: 'Arcelious - corporate portrait' }
         ]}
       />
 
