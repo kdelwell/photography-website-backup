@@ -186,12 +186,11 @@ export default function Home({ frontmatter, content }: { frontmatter: any; conte
         </div>
       </section>
 
-      {/* Pain Points - Address visitor objections */}
-      <PainPoints />
-
       {/* Full Width Gallery Section */}
       <MainGallery />
 
+      {/* Pain Points - Address visitor objections */}
+      <PainPoints />
 
       {/* About Preview */}
       <section className="bg-white" style={{ paddingTop: '30px', paddingBottom: '30px' }}>
