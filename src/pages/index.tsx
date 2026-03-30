@@ -6,6 +6,8 @@ import fs from 'fs'
 import path from 'path'
 import { useEffect, useState } from 'react'
 import PricingCTA from '@/components/PricingCTA'
+import PainPoints from '@/components/PainPoints'
+import GoogleReviewsBadge from '@/components/GoogleReviewsBadge'
 import DoubletakesCarousel from '@/components/DoubletakesCarousel'
 import DarkSingleSegment from '@/components/DarkSingleSegment'
 import LightSingleSegment from '@/components/LightSingleSegment'
@@ -184,6 +186,9 @@ export default function Home({ frontmatter, content }: { frontmatter: any; conte
         </div>
       </section>
 
+      {/* Pain Points - Address visitor objections */}
+      <PainPoints />
+
       {/* Full Width Gallery Section */}
       <MainGallery />
 
@@ -243,6 +248,9 @@ export default function Home({ frontmatter, content }: { frontmatter: any; conte
 
       {/* Reviews Section */}
       <HeadshotReviews />
+
+      {/* Google Reviews Badge */}
+      <GoogleReviewsBadge />
 
       {/* Pricing CTA Section */}
       <PricingCTA />
