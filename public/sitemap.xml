@@ -2,10 +2,10 @@
 <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9"
         xmlns:image="http://www.google.com/schemas/sitemap-image/1.1">
 
-  <!-- Homepage - Highest Priority -->
+  <!-- Homepage -->
   <url>
     <loc>https://getaheadshot.net/</loc>
-    <lastmod>2026-02-19</lastmod>
+    <lastmod>2026-03-30</lastmod>
     <changefreq>weekly</changefreq>
     <priority>1.0</priority>
     <image:image>
@@ -20,277 +20,271 @@
     </image:image>
   </url>
 
-  <!-- SEO Landing Pages - High Priority -->
+  <!-- SEO Landing Pages -->
   <url>
     <loc>https://getaheadshot.net/headshots-washington-dc</loc>
-    <lastmod>2026-02-19</lastmod>
+    <lastmod>2026-03-30</lastmod>
     <changefreq>weekly</changefreq>
     <priority>1.0</priority>
-    <image:image>
-      <image:loc>https://getaheadshot.net/images/Logo.jpg</image:loc>
-      <image:title>Professional Headshots Washington DC</image:title>
-      <image:caption>Professional headshot photography services in Washington DC metro area</image:caption>
-    </image:image>
   </url>
 
-  <!-- Location Landing Pages - High Priority -->
+  <url>
+    <loc>https://getaheadshot.net/headshots-northern-virginia</loc>
+    <lastmod>2026-03-30</lastmod>
+    <changefreq>weekly</changefreq>
+    <priority>0.95</priority>
+  </url>
+
+  <!-- Location Landing Pages -->
   <url>
     <loc>https://getaheadshot.net/headshots-arlington-va</loc>
-    <lastmod>2026-02-23</lastmod>
+    <lastmod>2026-03-30</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.9</priority>
   </url>
 
   <url>
     <loc>https://getaheadshot.net/headshots-bethesda-md</loc>
-    <lastmod>2026-02-23</lastmod>
+    <lastmod>2026-03-30</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.9</priority>
   </url>
 
   <url>
     <loc>https://getaheadshot.net/headshots-alexandria-va</loc>
-    <lastmod>2026-02-23</lastmod>
+    <lastmod>2026-03-30</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.9</priority>
   </url>
 
   <url>
     <loc>https://getaheadshot.net/headshots-fairfax-va</loc>
-    <lastmod>2026-02-23</lastmod>
+    <lastmod>2026-03-30</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.9</priority>
   </url>
 
   <url>
     <loc>https://getaheadshot.net/headshots-reston-va</loc>
-    <lastmod>2026-02-23</lastmod>
+    <lastmod>2026-03-30</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.9</priority>
   </url>
 
   <url>
     <loc>https://getaheadshot.net/headshots-centreville-va</loc>
-    <lastmod>2026-02-23</lastmod>
+    <lastmod>2026-03-30</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.9</priority>
   </url>
 
   <url>
     <loc>https://getaheadshot.net/headshots-tysons-corner-va</loc>
-    <lastmod>2026-02-23</lastmod>
+    <lastmod>2026-03-30</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.9</priority>
   </url>
 
-  <!-- Regional Landing Pages - High Priority -->
-  <url>
-    <loc>https://getaheadshot.net/headshots-northern-virginia</loc>
-    <lastmod>2026-02-23</lastmod>
-    <changefreq>weekly</changefreq>
-    <priority>0.95</priority>
-  </url>
-
-  <!-- Service-Specific Landing Pages - High Priority -->
+  <!-- Service-Specific Landing Pages -->
   <url>
     <loc>https://getaheadshot.net/linkedin-headshots</loc>
-    <lastmod>2026-02-23</lastmod>
+    <lastmod>2026-03-30</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.9</priority>
   </url>
 
-  <!-- Main Service Pages - High Priority -->
+  <!-- Main Service Pages -->
   <url>
     <loc>https://getaheadshot.net/professional_individual_headshots</loc>
-    <lastmod>2026-02-19</lastmod>
+    <lastmod>2026-03-30</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.9</priority>
-    <image:image>
-      <image:loc>https://getaheadshot.net/images/Logo.jpg</image:loc>
-      <image:title>Professional Individual Headshots</image:title>
-      <image:caption>Magazine-quality professional individual headshot photography</image:caption>
-    </image:image>
   </url>
 
   <url>
     <loc>https://getaheadshot.net/corporate</loc>
-    <lastmod>2026-02-19</lastmod>
+    <lastmod>2026-03-30</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.9</priority>
-    <image:image>
-      <image:loc>https://getaheadshot.net/images/Logo.jpg</image:loc>
-      <image:title>Corporate Headshot Photography</image:title>
-      <image:caption>Professional corporate headshots for businesses and teams</image:caption>
-    </image:image>
   </url>
 
   <url>
     <loc>https://getaheadshot.net/groups</loc>
-    <lastmod>2026-02-19</lastmod>
+    <lastmod>2026-03-30</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.9</priority>
-    <image:image>
-      <image:loc>https://getaheadshot.net/images/groups/composites/V2X.jpg</image:loc>
-      <image:title>Group Headshot Photography</image:title>
-      <image:caption>On-location group headshot photography services</image:caption>
-    </image:image>
   </url>
 
-  <!-- Important Information Pages -->
   <url>
-    <loc>https://getaheadshot.net/about</loc>
-    <lastmod>2026-02-19</lastmod>
+    <loc>https://getaheadshot.net/events</loc>
+    <lastmod>2026-03-30</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.7</priority>
+  </url>
+
+  <!-- Booking & Consultation -->
+  <url>
+    <loc>https://getaheadshot.net/consultation</loc>
+    <lastmod>2026-03-30</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.8</priority>
   </url>
 
   <url>
-    <loc>https://getaheadshot.net/pricing</loc>
-    <lastmod>2026-02-19</lastmod>
-    <changefreq>monthly</changefreq>
-    <priority>0.9</priority>
-  </url>
-
-  <url>
-    <loc>https://getaheadshot.net/more_info</loc>
-    <lastmod>2026-02-19</lastmod>
-    <changefreq>monthly</changefreq>
-    <priority>0.8</priority>
-  </url>
-
-  <url>
-    <loc>https://getaheadshot.net/contact</loc>
-    <lastmod>2026-02-19</lastmod>
+    <loc>https://getaheadshot.net/consult</loc>
+    <lastmod>2026-03-30</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.8</priority>
   </url>
 
   <url>
     <loc>https://getaheadshot.net/schedule</loc>
-    <lastmod>2026-02-19</lastmod>
+    <lastmod>2026-03-30</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.8</priority>
   </url>
 
   <url>
-    <loc>https://getaheadshot.net/consultation</loc>
-    <lastmod>2026-02-19</lastmod>
+    <loc>https://getaheadshot.net/pricing</loc>
+    <lastmod>2026-03-30</lastmod>
     <changefreq>monthly</changefreq>
-    <priority>0.7</priority>
+    <priority>0.9</priority>
   </url>
 
+  <!-- Information Pages -->
   <url>
-    <loc>https://getaheadshot.net/consult</loc>
-    <lastmod>2026-02-19</lastmod>
-    <changefreq>monthly</changefreq>
-    <priority>0.7</priority>
-  </url>
-
-  <!-- Preparation & Info Pages -->
-  <url>
-    <loc>https://getaheadshot.net/prep</loc>
-    <lastmod>2026-02-19</lastmod>
+    <loc>https://getaheadshot.net/about</loc>
+    <lastmod>2026-03-30</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.8</priority>
   </url>
 
   <url>
-    <loc>https://getaheadshot.net/prep_short</loc>
-    <lastmod>2026-02-19</lastmod>
+    <loc>https://getaheadshot.net/more_info</loc>
+    <lastmod>2026-03-30</lastmod>
     <changefreq>monthly</changefreq>
-    <priority>0.6</priority>
+    <priority>0.8</priority>
   </url>
 
   <url>
-    <loc>https://getaheadshot.net/hair</loc>
-    <lastmod>2026-02-19</lastmod>
+    <loc>https://getaheadshot.net/contact</loc>
+    <lastmod>2026-03-30</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.8</priority>
   </url>
 
   <url>
     <loc>https://getaheadshot.net/faqs</loc>
-    <lastmod>2026-02-19</lastmod>
+    <lastmod>2026-03-30</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.7</priority>
   </url>
 
-  <!-- Articles Section - SEO Gold -->
+  <!-- Preparation Pages -->
+  <url>
+    <loc>https://getaheadshot.net/prep</loc>
+    <lastmod>2026-03-30</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.8</priority>
+  </url>
+
+  <url>
+    <loc>https://getaheadshot.net/prep_short</loc>
+    <lastmod>2026-03-30</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.6</priority>
+  </url>
+
+  <url>
+    <loc>https://getaheadshot.net/hair</loc>
+    <lastmod>2026-03-30</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.8</priority>
+  </url>
+
+  <!-- Articles -->
   <url>
     <loc>https://getaheadshot.net/articles</loc>
-    <lastmod>2026-02-19</lastmod>
+    <lastmod>2026-03-30</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.8</priority>
   </url>
 
   <url>
     <loc>https://getaheadshot.net/articles/time</loc>
-    <lastmod>2026-02-19</lastmod>
+    <lastmod>2026-03-30</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.7</priority>
   </url>
 
   <url>
     <loc>https://getaheadshot.net/articles/expression</loc>
-    <lastmod>2026-02-19</lastmod>
+    <lastmod>2026-03-30</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.7</priority>
   </url>
 
   <url>
     <loc>https://getaheadshot.net/articles/face</loc>
-    <lastmod>2026-02-19</lastmod>
+    <lastmod>2026-03-30</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.7</priority>
   </url>
 
   <url>
     <loc>https://getaheadshot.net/articles/heads</loc>
-    <lastmod>2026-02-19</lastmod>
+    <lastmod>2026-03-30</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.7</priority>
   </url>
 
   <url>
     <loc>https://getaheadshot.net/articles/color</loc>
-    <lastmod>2026-02-19</lastmod>
+    <lastmod>2026-03-30</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.7</priority>
   </url>
 
   <url>
     <loc>https://getaheadshot.net/articles/glasses</loc>
-    <lastmod>2026-02-19</lastmod>
+    <lastmod>2026-03-30</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.7</priority>
   </url>
 
-  <!-- Additional Services -->
+  <!-- Additional Pages -->
   <url>
-    <loc>https://getaheadshot.net/events</loc>
-    <lastmod>2026-02-19</lastmod>
+    <loc>https://getaheadshot.net/applications</loc>
+    <lastmod>2026-03-30</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.5</priority>
+  </url>
+
+  <url>
+    <loc>https://getaheadshot.net/gallery</loc>
+    <lastmod>2026-03-30</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.6</priority>
   </url>
 
   <url>
-    <loc>https://getaheadshot.net/applications</loc>
-    <lastmod>2026-02-19</lastmod>
-    <changefreq>monthly</changefreq>
-    <priority>0.5</priority>
+    <loc>https://getaheadshot.net/sms-consent</loc>
+    <lastmod>2026-03-30</lastmod>
+    <changefreq>yearly</changefreq>
+    <priority>0.3</priority>
   </url>
 
   <!-- Legal Pages -->
   <url>
     <loc>https://getaheadshot.net/terms</loc>
-    <lastmod>2026-02-19</lastmod>
+    <lastmod>2026-03-30</lastmod>
     <changefreq>yearly</changefreq>
     <priority>0.3</priority>
   </url>
 
   <url>
     <loc>https://getaheadshot.net/privacy</loc>
-    <lastmod>2026-02-19</lastmod>
+    <lastmod>2026-03-30</lastmod>
     <changefreq>yearly</changefreq>
     <priority>0.3</priority>
   </url>
