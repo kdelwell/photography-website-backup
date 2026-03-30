@@ -17,7 +17,7 @@ export default function HeadshotsWashingtonDC() {
         "name": "How much do professional headshots cost in Washington DC?",
         "acceptedAnswer": {
           "@type": "Answer",
-          "text": "Professional headshot sessions in Washington DC typically range from $350-$700 depending on the package, number of looks, and turnaround time. At Get Ahead Shot Photography, we offer competitive pricing with same-day turnaround options available."
+          "text": "Professional headshot sessions in Washington DC typically range from $350-$700 depending on the package, number of looks, and turnaround time. At Get aHead Shot, we offer competitive pricing with same-day turnaround options available."
         }
       },
       {
@@ -58,7 +58,7 @@ export default function HeadshotsWashingtonDC() {
   return (
     <Layout
       title="Professional Headshots Washington DC | #1 Rated Headshot Photographer Near Me"
-      description="Looking for professional headshots in Washington DC? Get Ahead Shot Photography specializes in executive headshots, corporate portraits, and LinkedIn photos. Serving DC, Arlington, Alexandria, Bethesda. Book today!"
+      description="Looking for professional headshots in Washington DC? Get aHead Shot specializes in executive headshots, corporate portraits, and LinkedIn photos. Serving DC, Arlington, Alexandria, Bethesda. Book today!"
     >
       {/* FAQ Schema */}
       <script
@@ -237,7 +237,7 @@ export default function HeadshotsWashingtonDC() {
               </h3>
               <p className="text-gray-700">
                 Professional headshot sessions in Washington DC typically range from $350-$700 depending on the package,
-                number of looks, and turnaround time. At Get Ahead Shot Photography, we offer competitive pricing with
+                number of looks, and turnaround time. At Get aHead Shot, we offer competitive pricing with
                 same-day turnaround options available. <a href="/more_info" className="text-red-500 hover:text-red-600">Get detailed pricing →</a>
               </p>
             </div>
@@ -293,7 +293,7 @@ export default function HeadshotsWashingtonDC() {
       <section className="bg-white py-16">
         <div className="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8">
           <h2 className="text-3xl font-bold text-gray-900 mb-6">
-            Why Choose Get Ahead Shot Photography for Your DC Headshots?
+            Why Choose Get aHead Shot for Your DC Headshots?
           </h2>
           <div className="prose prose-lg max-w-none text-gray-700">
             <p>

@@ -13,7 +13,7 @@ export default function SimpleHeader() {
               <Link href="/">
                 <Image
                   src="/images/Logo.jpg"
-                  alt="Get Ahead Shot Logo"
+                  alt="Get aHead Shot Logo"
                   width={128}
                   height={80}
                   className="object-contain w-20 h-12 md:w-24 md:h-16 lg:w-32 lg:h-20"

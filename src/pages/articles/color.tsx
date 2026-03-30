@@ -6,7 +6,7 @@ import { ChevronLeft } from 'lucide-react'
 const ColorArticle = () => {
   return (
     <Layout
-      title="Need to Add Color to Your Brand? - Get Ahead Shot"
+      title="Need to Add Color to Your Brand? - Get aHead Shot"
       description="Color is undeniably powerful. It possesses the ability to captivate the eye, commanding attention amidst the endless scroll of digital content. Learn how to harness color in photography."
     >
       <div className="min-h-screen bg-white">

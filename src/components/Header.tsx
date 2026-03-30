@@ -28,10 +28,10 @@ export default function Header({ hideMenu = false }: HeaderProps) {
           <div className="flex justify-between items-center">
             {/* Logo section */}
             <div className="flex items-center space-x-0 md:space-x-2">
-              <Link href="/" aria-label="Get Ahead Shot - Home">
+              <Link href="/" aria-label="Get aHead Shot - Home">
                 <Image
                   src="/images/Logo.jpg"
-                  alt="Get Ahead Shot Logo"
+                  alt="Get aHead Shot Logo"
                   width={128}
                   height={80}
                   className="object-contain w-20 h-12 md:w-24 md:h-16 lg:w-32 lg:h-20"

@@ -26,7 +26,7 @@ export default function LayoutNoPricing({ children, title, description }: Layout
           description,
           type: 'website',
           url: canonicalUrl,
-          site_name: 'Get Ahead Shot Photography',
+          site_name: 'Get aHead Shot',
         }}
       />
 

@@ -1,5 +1,5 @@
 ---
-title: "Professional Headshots Washington DC | Get Ahead Shot Photography"
+title: "Professional Headshots Washington DC | Get aHead Shot"
 description: "Washington DC's premier headshot photographer. Magazine-quality professional headshots for executives, entrepreneurs, and business professionals. Same-day turnaround available."
 heroTitle: "Your image could be costing you opportunities."
 heroSubtitle: "In a digital world, your headshot is your first impression. Let's make sure it's a powerful one."

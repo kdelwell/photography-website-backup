@@ -18,7 +18,7 @@ export default function Option3({ frontmatter, content }: { frontmatter: any; co
             <div className="flex items-center space-x-3 mb-8">
               <Image
                 src="/images/Logo.jpg"
-                alt="Get Ahead Shot Logo"
+                alt="Get aHead Shot Logo"
                 width={60}
                 height={60}
                 className="object-contain"

@@ -1,5 +1,5 @@
 ---
-title: "How to Prepare for a Professional Headshot Session | Get Ahead Shot"
+title: "How to Prepare for a Professional Headshot Session | Get aHead Shot"
 description: "Expert tips on how to prepare for headshots — what to wear, grooming, makeup, and what to expect. Get the most out of your professional headshot session in Washington DC."
 ---
 

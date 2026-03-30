@@ -1,8 +1,8 @@
 # llms.txt
-# Get Ahead Shot Photography - Professional Headshot Photography in Washington DC
+# Get aHead Shot - Professional Headshot Photography in Washington DC
 
 # Site Information
-Site Name: Get Ahead Shot Photography
+Site Name: Get aHead Shot
 Description: Washington DC's premier headshot photographer. Magazine-quality professional headshots for executives, entrepreneurs, and business professionals. Same-day turnaround available.
 Business Type: Professional Photography Services - Specializing in Corporate Headshots
 Location: Washington DC Metro Area

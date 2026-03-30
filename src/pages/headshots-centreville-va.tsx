@@ -16,7 +16,7 @@ export default function HeadshotsCentrevilleVA() {
         "name": "Where can I get business headshots in Centreville, VA?",
         "acceptedAnswer": {
           "@type": "Answer",
-          "text": "Get Ahead Shot Photography is based in Centreville, VA and specializes in business and corporate headshots for professionals and companies. We serve the surrounding areas including Chantilly, Clifton, Manassas, and the Westfields business corridor, bringing a full professional studio setup to your office, home, or any location."
+          "text": "Get aHead Shot is based in Centreville, VA and specializes in business and corporate headshots for professionals and companies. We serve the surrounding areas including Chantilly, Clifton, Manassas, and the Westfields business corridor, bringing a full professional studio setup to your office, home, or any location."
         }
       },
       {
@@ -262,7 +262,7 @@ export default function HeadshotsCentrevilleVA() {
             <div className="bg-white p-6 rounded-lg shadow-sm">
               <h3 className="text-xl font-bold text-gray-900 mb-3">Where can I get business headshots in Centreville, VA?</h3>
               <p className="text-gray-700">
-                Get Ahead Shot Photography is based in Centreville, VA and specializes in business headshots for
+                Get aHead Shot is based in Centreville, VA and specializes in business headshots for
                 professionals and companies. We serve the surrounding areas including Chantilly, Clifton, Manassas,
                 and the Westfields business corridor, bringing our full studio setup to your office or any location.
               </p>
@@ -309,7 +309,7 @@ export default function HeadshotsCentrevilleVA() {
       <section className="bg-white py-16">
         <div className="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8">
           <h2 className="text-3xl font-bold text-gray-900 mb-6">
-            Why Centreville Professionals & Actors Choose Get Ahead Shot for Their Headshots
+            Why Centreville Professionals & Actors Choose Get aHead Shot for Their Headshots
           </h2>
           <div className="prose prose-lg max-w-none text-gray-700">
             <p>

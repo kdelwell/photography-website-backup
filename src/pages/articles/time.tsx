@@ -17,7 +17,7 @@ const TimeArticle = () => {
     },
     "publisher": {
       "@type": "Organization",
-      "name": "Get Ahead Shot Photography",
+      "name": "Get aHead Shot",
       "logo": {
         "@type": "ImageObject",
         "url": "https://getaheadshot.net/images/Logo.jpg"
@@ -58,7 +58,7 @@ const TimeArticle = () => {
 
   return (
     <Layout
-      title="The Sands of Time - Get Ahead Shot"
+      title="The Sands of Time - Get aHead Shot"
       description="Time is a relentless force, etching its mark on all of us. Learn why updating your professional photos regularly is essential in our ever-changing world."
     >
       {/* Article Schema */}

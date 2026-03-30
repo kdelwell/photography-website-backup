@@ -6,7 +6,7 @@ import { ChevronLeft } from 'lucide-react'
 const GlassesArticle = () => {
   return (
     <Layout
-      title="Glasses or No Glasses? - Get Ahead Shot"
+      title="Glasses or No Glasses? - Get aHead Shot"
       description="When it comes to the age-old question of whether to wear glasses for a photoshoot, there are a few factors to consider. Learn how to make the right choice for your headshots."
     >
       <div className="min-h-screen bg-white">

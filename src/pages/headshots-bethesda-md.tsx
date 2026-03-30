@@ -16,7 +16,7 @@ export default function HeadshotsBethesdaMD() {
         "name": "Where can I get professional headshots in Bethesda, MD?",
         "acceptedAnswer": {
           "@type": "Answer",
-          "text": "Get Ahead Shot Photography serves Bethesda, MD and surrounding areas including Chevy Chase, Potomac, North Bethesda, and Rockville. We bring our professional studio setup to your office, home, or any location that works for you."
+          "text": "Get aHead Shot serves Bethesda, MD and surrounding areas including Chevy Chase, Potomac, North Bethesda, and Rockville. We bring our professional studio setup to your office, home, or any location that works for you."
         }
       },
       {
@@ -192,7 +192,7 @@ export default function HeadshotsBethesdaMD() {
             <div className="bg-white p-6 rounded-lg shadow-sm">
               <h3 className="text-xl font-bold text-gray-900 mb-3">Where can I get professional headshots in Bethesda, MD?</h3>
               <p className="text-gray-700">
-                Get Ahead Shot Photography serves Bethesda, MD and surrounding areas including Chevy Chase, Potomac, North
+                Get aHead Shot serves Bethesda, MD and surrounding areas including Chevy Chase, Potomac, North
                 Bethesda, and Rockville. We bring our professional studio setup to your office, home, or any location.
               </p>
             </div>
@@ -228,7 +228,7 @@ export default function HeadshotsBethesdaMD() {
       <section className="bg-white py-16">
         <div className="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8">
           <h2 className="text-3xl font-bold text-gray-900 mb-6">
-            Why Bethesda Professionals Choose Get Ahead Shot
+            Why Bethesda Professionals Choose Get aHead Shot
           </h2>
           <div className="prose prose-lg max-w-none text-gray-700">
             <p>

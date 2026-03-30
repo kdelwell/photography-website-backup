@@ -6,7 +6,7 @@ import { ChevronLeft } from 'lucide-react'
 const FaceArticle = () => {
   return (
     <Layout
-      title="Which Side of My Face is Better? - Get Ahead Shot"
+      title="Which Side of My Face is Better? - Get aHead Shot"
       description="The question of which side of the face is more flattering is a common inquiry during photography sessions. Learn about facial symmetry and presenting your best angle."
     >
       <div className="min-h-screen bg-white">

@@ -16,7 +16,7 @@ export default function HeadshotsAlexandriaVA() {
         "name": "Where can I get professional headshots in Alexandria, VA?",
         "acceptedAnswer": {
           "@type": "Answer",
-          "text": "Get Ahead Shot Photography serves Alexandria, VA including Old Town, Del Ray, Eisenhower Valley, Carlyle, and the West End. We come to your office or any Alexandria location with our full professional studio setup."
+          "text": "Get aHead Shot serves Alexandria, VA including Old Town, Del Ray, Eisenhower Valley, Carlyle, and the West End. We come to your office or any Alexandria location with our full professional studio setup."
         }
       },
       {
@@ -195,7 +195,7 @@ export default function HeadshotsAlexandriaVA() {
             <div className="bg-white p-6 rounded-lg shadow-sm">
               <h3 className="text-xl font-bold text-gray-900 mb-3">Where can I get professional headshots in Alexandria, VA?</h3>
               <p className="text-gray-700">
-                Get Ahead Shot Photography serves Alexandria, VA including Old Town, Del Ray, Eisenhower Valley, Carlyle,
+                Get aHead Shot serves Alexandria, VA including Old Town, Del Ray, Eisenhower Valley, Carlyle,
                 and the West End. We come to your office or any location with our full professional studio setup.
               </p>
             </div>
@@ -231,7 +231,7 @@ export default function HeadshotsAlexandriaVA() {
       <section className="bg-white py-16">
         <div className="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8">
           <h2 className="text-3xl font-bold text-gray-900 mb-6">
-            Why Alexandria Professionals Choose Get Ahead Shot
+            Why Alexandria Professionals Choose Get aHead Shot
           </h2>
           <div className="prose prose-lg max-w-none text-gray-700">
             <p>

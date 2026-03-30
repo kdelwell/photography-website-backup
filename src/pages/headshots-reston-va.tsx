@@ -16,7 +16,7 @@ export default function HeadshotsRestonVA() {
         "name": "Where can I get professional headshots in Reston, VA?",
         "acceptedAnswer": {
           "@type": "Answer",
-          "text": "Get Ahead Shot Photography serves Reston, VA including Reston Town Center, Lake Anne, South Reston, North Reston, and the Dulles Corridor. We bring our full professional studio setup to your office or any location."
+          "text": "Get aHead Shot serves Reston, VA including Reston Town Center, Lake Anne, South Reston, North Reston, and the Dulles Corridor. We bring our full professional studio setup to your office or any location."
         }
       },
       {
@@ -198,7 +198,7 @@ export default function HeadshotsRestonVA() {
             <div className="bg-white p-6 rounded-lg shadow-sm">
               <h3 className="text-xl font-bold text-gray-900 mb-3">Where can I get professional headshots in Reston, VA?</h3>
               <p className="text-gray-700">
-                Get Ahead Shot Photography serves Reston, VA including Reston Town Center, Lake Anne, South Reston,
+                Get aHead Shot serves Reston, VA including Reston Town Center, Lake Anne, South Reston,
                 North Reston, and the Dulles Corridor. We bring our full studio setup to your office or any location.
               </p>
             </div>
@@ -234,7 +234,7 @@ export default function HeadshotsRestonVA() {
       <section className="bg-white py-16">
         <div className="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8">
           <h2 className="text-3xl font-bold text-gray-900 mb-6">
-            Why Reston Professionals Choose Get Ahead Shot
+            Why Reston Professionals Choose Get aHead Shot
           </h2>
           <div className="prose prose-lg max-w-none text-gray-700">
             <p>

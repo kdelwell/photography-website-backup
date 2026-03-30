@@ -88,7 +88,7 @@ export default function Home({ frontmatter, content }: { frontmatter: any; conte
 
   return (
     <Layout
-      title="Professional Headshot Photography Washington DC | Get Ahead Shot Photography"
+      title="Professional Headshot Photography Washington DC | Get aHead Shot"
       description="Washington DC's premier headshot photographer. Magazine-quality professional headshot photography for executives, entrepreneurs, and business professionals. Same-day turnaround. Studio or on-location. Book your session today!"
     >
       {/* FAQ Schema */}

@@ -37,7 +37,7 @@ export default function Layout({
           description,
           type: 'website',
           url: canonicalUrl,
-          site_name: 'Get Ahead Shot Photography',
+          site_name: 'Get aHead Shot',
           images: [
             {
               url: image,

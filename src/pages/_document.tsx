@@ -4,7 +4,7 @@ export default function Document() {
   const organizationSchema = {
     "@context": "https://schema.org",
     "@type": "Organization",
-    "name": "Get Ahead Shot Photography",
+    "name": "Get aHead Shot",
     "url": "https://getaheadshot.net",
     "logo": "https://getaheadshot.net/images/Logo.jpg",
     "description": "Washington DC's premier professional headshot photographer. Magazine-quality headshots for executives, entrepreneurs, and business professionals.",
@@ -28,7 +28,7 @@ export default function Document() {
   const localBusinessSchema = {
     "@context": "https://schema.org",
     "@type": "ProfessionalService",
-    "name": "Get Ahead Shot Photography",
+    "name": "Get aHead Shot",
     "image": "https://getaheadshot.net/images/Logo.jpg",
     "priceRange": "$$",
     "@id": "https://getaheadshot.net",
@@ -116,7 +116,7 @@ export default function Document() {
     "serviceType": "Professional Headshot Photography",
     "provider": {
       "@type": "ProfessionalService",
-      "name": "Get Ahead Shot Photography",
+      "name": "Get aHead Shot",
       "areaServed": "Washington, DC Metro Area"
     },
     "offers": {
@@ -175,7 +175,7 @@ export default function Document() {
         {/* Apple Mobile Web App */}
         <meta name="apple-mobile-web-app-capable" content="yes" />
         <meta name="apple-mobile-web-app-status-bar-style" content="default" />
-        <meta name="apple-mobile-web-app-title" content="Get Ahead Shot" />
+        <meta name="apple-mobile-web-app-title" content="Get aHead Shot" />
 
         {/* Google Search Console Verification */}
         <meta name="google-site-verification" content="gXklOuDGOMYfYLh6s806C9uOfObEU-fDn_H15yK0BZA" />

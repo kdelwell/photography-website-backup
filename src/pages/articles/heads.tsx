@@ -6,7 +6,7 @@ import { ChevronLeft } from 'lucide-react'
 const HeadsArticle = () => {
   return (
     <Layout
-      title="Off With Their Head! - Get Ahead Shot"
+      title="Off With Their Head! - Get aHead Shot"
       description="Why did you chop off the top of my head? Learn about the deliberate art of cropping in professional photography and why tight framing creates more powerful portraits."
     >
       <div className="min-h-screen bg-white">

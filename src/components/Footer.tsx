@@ -10,7 +10,7 @@ export default function Footer() {
               <div className="relative w-12 h-12 md:w-14 md:h-14">
                 <Image
                   src="/images/Logo.jpg"
-                  alt="Get Ahead Shot Logo"
+                  alt="Get aHead Shot Logo"
                   width={56}
                   height={56}
                   className="object-contain w-full h-full"
@@ -44,7 +44,7 @@ export default function Footer() {
           </div>
 
           <div className="text-center md:text-left text-sm">
-            <div className="font-semibold">Get Ahead Shot Photography</div>
+            <div className="font-semibold">Get aHead Shot</div>
             <div className="text-gray-100"><a href="/headshots-centreville-va" className="hover:text-white">Centreville, VA</a> · Washington DC Metro Area</div>
             <div className="text-cyan-200">
               <a href="mailto:kevin@getaheadshot.net">kevin@getaheadshot.net</a>

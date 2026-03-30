@@ -17,7 +17,7 @@ const ExpressionArticle = () => {
     },
     "publisher": {
       "@type": "Organization",
-      "name": "Get Ahead Shot Photography",
+      "name": "Get aHead Shot",
       "logo": {
         "@type": "ImageObject",
         "url": "https://getaheadshot.net/images/Logo.jpg"
@@ -58,7 +58,7 @@ const ExpressionArticle = () => {
 
   return (
     <Layout
-      title="Expression is the Currency of Photography - Get Ahead Shot"
+      title="Expression is the Currency of Photography - Get aHead Shot"
       description="Expression is the heartbeat of portrait photography—a currency more valuable than any technical prowess or artistic finesse. Learn how authentic emotion transforms photography."
     >
       {/* Article Schema */}

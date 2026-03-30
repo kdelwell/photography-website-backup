@@ -17,7 +17,7 @@ export default function HeadshotsNorthernVirginia() {
         "name": "Where can I get professional headshots in Northern Virginia?",
         "acceptedAnswer": {
           "@type": "Answer",
-          "text": "Get Ahead Shot Photography is based in Northern Virginia and serves the entire NoVA region including Arlington, Alexandria, Fairfax, Tysons Corner, Reston, Centreville, McLean, and Vienna. We bring a full professional studio setup to your office, home, or any location — no need to drive into DC."
+          "text": "Get aHead Shot is based in Northern Virginia and serves the entire NoVA region including Arlington, Alexandria, Fairfax, Tysons Corner, Reston, Centreville, McLean, and Vienna. We bring a full professional studio setup to your office, home, or any location — no need to drive into DC."
         }
       },
       {
@@ -211,7 +211,7 @@ export default function HeadshotsNorthernVirginia() {
             <div className="bg-white p-6 rounded-lg shadow-sm">
               <h3 className="text-xl font-bold text-gray-900 mb-3">Where can I get professional headshots in Northern Virginia?</h3>
               <p className="text-gray-700">
-                Get Ahead Shot Photography is based in Northern Virginia and serves the entire NoVA region including
+                Get aHead Shot is based in Northern Virginia and serves the entire NoVA region including
                 Arlington, Alexandria, Fairfax, Tysons Corner, Reston, Centreville, McLean, and Vienna. We bring
                 our full studio setup to your office or any location — no need to drive into DC.
               </p>
@@ -252,7 +252,7 @@ export default function HeadshotsNorthernVirginia() {
       <section className="bg-white py-16">
         <div className="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8">
           <h2 className="text-3xl font-bold text-gray-900 mb-6">
-            Why Northern Virginia Professionals Choose Get Ahead Shot
+            Why Northern Virginia Professionals Choose Get aHead Shot
           </h2>
           <div className="prose prose-lg max-w-none text-gray-700">
             <p>

@@ -16,7 +16,7 @@ export default function HeadshotsTysonsCornerVA() {
         "name": "Where can I get professional headshots in Tysons Corner, VA?",
         "acceptedAnswer": {
           "@type": "Answer",
-          "text": "Get Ahead Shot Photography serves Tysons Corner and the surrounding areas including McLean, Vienna, Falls Church, and Merrifield. We bring a full professional studio setup directly to your office — no need to leave your building. Perfect for busy Tysons professionals and corporate teams."
+          "text": "Get aHead Shot serves Tysons Corner and the surrounding areas including McLean, Vienna, Falls Church, and Merrifield. We bring a full professional studio setup directly to your office — no need to leave your building. Perfect for busy Tysons professionals and corporate teams."
         }
       },
       {
@@ -200,7 +200,7 @@ export default function HeadshotsTysonsCornerVA() {
             <div className="bg-white p-6 rounded-lg shadow-sm">
               <h3 className="text-xl font-bold text-gray-900 mb-3">Where can I get professional headshots in Tysons Corner, VA?</h3>
               <p className="text-gray-700">
-                Get Ahead Shot Photography serves Tysons Corner and the surrounding areas including McLean,
+                Get aHead Shot serves Tysons Corner and the surrounding areas including McLean,
                 Vienna, Falls Church, and Merrifield. We bring our full studio setup directly to your
                 office — no need to leave your building.
               </p>
@@ -240,7 +240,7 @@ export default function HeadshotsTysonsCornerVA() {
       <section className="bg-white py-16">
         <div className="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8">
           <h2 className="text-3xl font-bold text-gray-900 mb-6">
-            Why Tysons Corner Professionals Choose Get Ahead Shot
+            Why Tysons Corner Professionals Choose Get aHead Shot
           </h2>
           <div className="prose prose-lg max-w-none text-gray-700">
             <p>
