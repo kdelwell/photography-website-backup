@@ -1,22 +1,18 @@
 export default function PainPoints() {
   const points = [
     {
-      emoji: '😬',
       title: 'Camera shy?',
       text: "I coach you through every expression — most clients say it was actually fun.",
     },
     {
-      emoji: '⏱️',
       title: 'Short on time?',
       text: 'Sessions are efficient and your retouched images are delivered within days.',
     },
     {
-      emoji: '👥',
       title: 'Need team consistency?',
       text: 'Group sessions with matching lighting and style across your entire organization.',
     },
     {
-      emoji: '👔',
       title: 'Not sure what to wear?',
       text: "Prep guidance included — you'll show up confident and ready.",
     },
@@ -28,7 +24,6 @@ export default function PainPoints() {
         <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-8">
           {points.map((point) => (
             <div key={point.title} className="text-center">
-              <div className="text-4xl mb-4">{point.emoji}</div>
               <h3 className="text-lg font-bold text-gray-900 mb-2">{point.title}</h3>
               <p className="text-gray-600 text-sm leading-relaxed">{point.text}</p>
             </div>
