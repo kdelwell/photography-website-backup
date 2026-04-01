@@ -1,7 +1,11 @@
 import Layout from '@/components/Layout'
 import Link from 'next/link'
 import { useState } from 'react'
+import Image from 'next/image'
 import allReviews from '@/data/reviews.json'
+import reviewImages from '@/data/review-images.json'
+
+const imageMap: Record<string, string> = reviewImages as Record<string, string>
 
 type Review = { name: string; rating: string; comment: string; date: string }
 
@@ -185,21 +189,31 @@ export default function ReviewsPage() {
       <section className="bg-gray-50 py-8 md:py-12">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
           <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
-            {visible.map((r, i) => (
-              <div key={r.name + r.date + i} className="bg-white rounded-lg p-6 shadow-sm">
-                <div className="flex items-center gap-3 mb-3">
-                  <Initials name={r.name} />
-                  <div>
-                    <div className="font-medium text-gray-900 text-sm">{r.name}</div>
-                    <div className="text-gray-400 text-xs">{formatDate(r.date)}</div>
+            {visible.map((r, i) => {
+              const img = imageMap[r.name]
+              return (
+                <div key={r.name + r.date + i} className={`bg-white rounded-lg shadow-sm overflow-hidden ${img ? '' : 'p-6'}`}>
+                  {img && (
+                    <div className="relative w-full aspect-[4/3]">
+                      <Image src={img} alt={`${r.name} headshot`} fill className="object-cover" />
+                    </div>
+                  )}
+                  <div className={img ? 'p-6' : ''}>
+                    <div className="flex items-center gap-3 mb-3">
+                      {!img && <Initials name={r.name} />}
+                      <div>
+                        <div className="font-medium text-gray-900 text-sm">{r.name}</div>
+                        <div className="text-gray-400 text-xs">{formatDate(r.date)}</div>
+                      </div>
+                    </div>
+                    <Stars />
+                    <p className="text-gray-700 text-sm leading-relaxed mt-3">
+                      {r.comment.length > 300 ? r.comment.slice(0, 300) + '...' : r.comment}
+                    </p>
                   </div>
                 </div>
-                <Stars />
-                <p className="text-gray-700 text-sm leading-relaxed mt-3">
-                  {r.comment.length > 300 ? r.comment.slice(0, 300) + '...' : r.comment}
-                </p>
-              </div>
-            ))}
+              )
+            })}
           </div>
 
           {hasMore && (

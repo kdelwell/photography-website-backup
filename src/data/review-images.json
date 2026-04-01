@@ -1,0 +1,6 @@
+{
+  "_instructions": "Map reviewer names to image paths. Images should be in /public/images/Reviews/. Add entries like: \"Peter A.\": \"/images/Reviews/Peter.jpg\"",
+  "Peter A.": "/images/Reviews/Peter.jpg",
+  "Kerensa G.": "/images/Reviews/Kerensa.jpg",
+  "Elizabeth G.": "/images/Reviews/Elizabeth.jpg"
+}
