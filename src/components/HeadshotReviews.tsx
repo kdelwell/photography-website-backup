@@ -1,4 +1,5 @@
 import Image from 'next/image'
+import Link from 'next/link'
 
 export default function HeadshotReviews() {
   return (
@@ -68,6 +69,11 @@ export default function HeadshotReviews() {
               <p className="text-gray-300 text-sm font-light">Chief Strategy Officer</p>
             </div>
           </div>
+        </div>
+        <div className="text-center mt-12">
+          <Link href="/reviews" className="text-red-400 hover:text-red-300 font-semibold text-lg transition-colors">
+            Read all 230+ reviews &rarr;
+          </Link>
         </div>
       </div>
     </section>
