@@ -224,7 +224,7 @@ export default function AuthenticHeadshots() {
               },
               {
                 step: '3',
-                title: 'Get Photos You'll Actually Use',
+                title: "Get Photos You'll Actually Use",
                 body: "You'll walk away with polished, authentic images you feel good about sharing.",
               },
             ].map((s) => (
