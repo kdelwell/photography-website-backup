@@ -23,7 +23,19 @@ function categorize(r: Review): string[] {
   return tags
 }
 
-const reviews: (Review & { tags: string[] })[] = (allReviews as Review[]).map(r => ({ ...r, tags: categorize(r) }))
+// Names featured in the corporate section — exclude from main grid
+const FEATURED_NAMES = ['Noah Fye']
+
+/** Format name as "FirstName L." */
+function formatName(name: string): string {
+  const parts = name.trim().split(/\s+/)
+  if (parts.length < 2) return name
+  return `${parts[0]} ${parts[parts.length - 1][0]}.`
+}
+
+const reviews: (Review & { tags: string[] })[] = (allReviews as Review[])
+  .filter(r => !FEATURED_NAMES.includes(r.name))
+  .map(r => ({ ...r, tags: categorize(r) }))
 
 const FILTERS = [
   { id: 'all', label: 'All Reviews' },
@@ -70,6 +82,7 @@ function formatDate(d: string) {
 export default function ReviewsPage() {
   const [filter, setFilter] = useState('all')
   const [showCount, setShowCount] = useState(24)
+  const [lightboxImage, setLightboxImage] = useState<string | null>(null)
 
   const filtered = filter === 'all' ? reviews : reviews.filter(r => r.tags.includes(filter))
   const visible = filtered.slice(0, showCount)
@@ -125,25 +138,41 @@ export default function ReviewsPage() {
                 quote: "He got more than 40 people done in less than one workday, to the tune of rave reviews from all the participants. Turnaround time for the edited images was less than a week.",
                 name: "Noah F.",
                 context: "Leadership team summit",
+                image: "/images/Reviews/TriaFed.jpg",
+                type: "composite" as const,
               },
               {
                 quote: "We did our full leadership suite headshots with Kevin and plan to continue sending our team members to him as we grow.",
                 name: "Lane C.",
                 context: "Corporate headshots",
+                image: "/images/Reviews/QBE.jpg",
+                type: "composite" as const,
               },
               {
                 quote: "Our whole company has been photographed by Kevin and we highly recommend him. Kevin really pays attention to detail and provides guidance whenever you need it.",
                 name: "Princy M.",
                 context: "Company-wide headshots",
+                image: "/images/Reviews/Princy_5009.jpg",
+                type: "person" as const,
               },
             ].map((t) => (
-              <div key={t.name} className="bg-white/5 rounded-lg p-6">
-                <p className="text-white text-sm italic leading-relaxed mb-4">
-                  &ldquo;{t.quote}&rdquo;
-                </p>
-                <div className="flex items-center justify-between">
-                  <span className="text-gray-400 text-sm font-medium">— {t.name}</span>
-                  <span className="text-gray-500 text-xs">{t.context}</span>
+              <div key={t.name} className="bg-white/5 rounded-lg p-6 flex gap-4">
+                <button
+                  onClick={() => setLightboxImage(t.image)}
+                  className={`relative flex-shrink-0 overflow-hidden cursor-pointer hover:opacity-80 transition-opacity ${
+                    t.type === 'composite' ? 'w-24 h-24 rounded-lg' : 'w-20 h-20 rounded-full'
+                  }`}
+                >
+                  <Image src={t.image} alt={`${t.name} headshot`} fill className="object-cover" />
+                </button>
+                <div className="flex-1">
+                  <p className="text-white text-sm italic leading-relaxed mb-4">
+                    &ldquo;{t.quote}&rdquo;
+                  </p>
+                  <div className="flex items-center justify-between">
+                    <span className="text-gray-400 text-sm font-medium">— {t.name}</span>
+                    <span className="text-gray-500 text-xs">{t.context}</span>
+                  </div>
                 </div>
               </div>
             ))}
@@ -202,7 +231,7 @@ export default function ReviewsPage() {
                     <div className="flex items-center gap-3 mb-3">
                       {!img && <Initials name={r.name} />}
                       <div>
-                        <div className="font-medium text-gray-900 text-sm">{r.name}</div>
+                        <div className="font-medium text-gray-900 text-sm">{formatName(r.name)}</div>
                         <div className="text-gray-400 text-xs">{formatDate(r.date)}</div>
                       </div>
                     </div>
@@ -241,6 +270,31 @@ export default function ReviewsPage() {
           </div>
         </div>
       </section>
+
+      {/* Lightbox modal */}
+      {lightboxImage && (
+        <div
+          className="fixed inset-0 z-50 flex items-center justify-center bg-black/80 cursor-pointer"
+          onClick={() => setLightboxImage(null)}
+        >
+          <button
+            onClick={() => setLightboxImage(null)}
+            className="absolute top-4 right-4 text-white text-3xl font-light hover:text-gray-300"
+          >
+            &times;
+          </button>
+          <div className="relative max-w-3xl max-h-[85vh] w-full mx-4">
+            <Image
+              src={lightboxImage}
+              alt="Enlarged view"
+              width={1200}
+              height={900}
+              className="object-contain w-full h-auto rounded-lg"
+              onClick={(e) => e.stopPropagation()}
+            />
+          </div>
+        </div>
+      )}
 
       <style jsx>{`
         .no-scrollbar::-webkit-scrollbar { display: none; }
