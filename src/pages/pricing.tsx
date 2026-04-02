@@ -7,7 +7,7 @@ import path from 'path'
 
 export default function Pricing({ frontmatter, content }: { frontmatter: any; content: string }) {
   return (
-    <LayoutNoPricing title={frontmatter.title} description={frontmatter.description}>
+    <LayoutNoPricing title={frontmatter.title} description={frontmatter.description} noindex nofollow>
       <Script id="google-ads-lead-conversion" strategy="afterInteractive">
         {`gtag('event', 'conversion', {'send_to': 'AW-399963959/yebXCI6G29oDELfu274B'});`}
       </Script>

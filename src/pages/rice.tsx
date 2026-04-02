@@ -7,7 +7,7 @@ import path from 'path'
 
 export default function Rice({ frontmatter, content }: { frontmatter: any; content: string }) {
   return (
-    <LayoutNoPricing title={frontmatter.title} description={frontmatter.description}>
+    <LayoutNoPricing title={frontmatter.title} description={frontmatter.description} noindex nofollow>
       <div className="w-full">
         {/* Page Title */}
         <div className="text-center mt-5 mb-1 px-4">

@@ -7,9 +7,11 @@ interface LayoutProps {
   children: React.ReactNode
   title: string
   description: string
+  noindex?: boolean
+  nofollow?: boolean
 }
 
-export default function LayoutNoPricing({ children, title, description }: LayoutProps) {
+export default function LayoutNoPricing({ children, title, description, noindex = false, nofollow = false }: LayoutProps) {
   const router = useRouter()
   const canonicalUrl = `https://getaheadshot.net${router.asPath}`
 
@@ -19,8 +21,8 @@ export default function LayoutNoPricing({ children, title, description }: Layout
         title={title}
         description={description}
         canonical={canonicalUrl}
-        noindex={true}
-        nofollow={true}
+        noindex={noindex}
+        nofollow={nofollow}
         openGraph={{
           title,
           description,
