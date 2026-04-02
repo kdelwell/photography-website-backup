@@ -19,6 +19,7 @@ import HeadshotProcess from '@/components/HeadshotProcess'
 import HeadshotReviews from '@/components/HeadshotReviews'
 import BeforeAfter from '@/components/BeforeAfter'
 import { X } from 'lucide-react'
+import ScrollReveal from '@/components/ScrollReveal'
 
 export default function Home({ frontmatter, content }: { frontmatter: any; content: string }) {
   const [scrollY, setScrollY] = useState(0)
@@ -174,84 +175,108 @@ export default function Home({ frontmatter, content }: { frontmatter: any; conte
       </section>
 
       {/* H2 Heading Section */}
-      <section className="bg-white py-12">
-        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-          <h2 className="text-3xl md:text-4xl lg:text-5xl font-bold text-gray-900 text-center leading-tight">
-            Headshot Photography That Commands Attention
-          </h2>
-          <p className="text-lg text-gray-600 text-center mt-4 max-w-3xl mx-auto">
-            Serving professionals across Washington DC and Northern Virginia, I create headshots that make a powerful first impression.
-          </p>
-        </div>
-      </section>
+      <ScrollReveal animation="fade-up">
+        <section className="bg-white py-12">
+          <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <h2 className="text-3xl md:text-4xl lg:text-5xl font-bold text-gray-900 text-center leading-tight">
+              Headshot Photography That Commands Attention
+            </h2>
+            <p className="text-lg text-gray-600 text-center mt-4 max-w-3xl mx-auto">
+              Serving professionals across Washington DC and Northern Virginia, I create headshots that make a powerful first impression.
+            </p>
+          </div>
+        </section>
+      </ScrollReveal>
 
       {/* Full Width Gallery Section */}
-      <MainGallery />
+      <ScrollReveal animation="fade-in">
+        <MainGallery />
+      </ScrollReveal>
 
       {/* Pain Points - Address visitor objections */}
-      <PainPoints />
+      <ScrollReveal animation="fade-up">
+        <PainPoints />
+      </ScrollReveal>
 
       {/* About Preview */}
       <section className="bg-white" style={{ paddingTop: '30px', paddingBottom: '30px' }}>
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
           <div className="grid grid-cols-1 lg:grid-cols-2 gap-8 items-center">
-            <div className="relative h-[400px] lg:h-[500px] rounded-lg overflow-hidden">
-              <Image
-                src="/images/ME_2026_5x4.jpg"
-                alt="Kevin Elwell - headshot photographer"
-                fill
-                className="object-cover"
-              />
-            </div>
-            <div>
-              <h3 className="text-4xl font-bold text-gray-900 mb-6">Meet Your Headshot Photographer — Kevin Elwell</h3>
-              <p className="text-lg text-gray-700 mb-6">
-                Bad headshot photography with strained expressions and poor lighting is the norm. This is a struggle, especially for entrepreneurs, the C-Suite, or companies that rely on professional headshots for building their businesses.
-              </p>
-              <p className="text-lg text-gray-700 mb-6">
-                As a headshot photographer with over 10 years of experience, I've developed an easy process that creates authentic results, where quality exceeds price and delivers exceptional value.
-              </p>
-              <p className="text-lg text-gray-700" style={{ marginBottom: '0px' }}>
-                I help busy professionals create magazine-quality headshot photography that lets them build their networks and present their best image to others. My process creates authentic expressions with great lighting, and includes a unique studio feedback-loop to get your instant reaction so you love what we create together.
-              </p>
-              <Link 
-                href="/about" 
-                className="text-red-500 hover:text-red-600 text-lg font-semibold"
-              >
-                Read My Full Story →
-              </Link>
-            </div>
+            <ScrollReveal animation="fade-left">
+              <div className="relative h-[400px] lg:h-[500px] rounded-lg overflow-hidden">
+                <Image
+                  src="/images/ME_2026_5x4.jpg"
+                  alt="Kevin Elwell - headshot photographer"
+                  fill
+                  className="object-cover"
+                />
+              </div>
+            </ScrollReveal>
+            <ScrollReveal animation="fade-right" delay={150}>
+              <div>
+                <h3 className="text-4xl font-bold text-gray-900 mb-6">Meet Your Headshot Photographer — Kevin Elwell</h3>
+                <p className="text-lg text-gray-700 mb-6">
+                  Bad headshot photography with strained expressions and poor lighting is the norm. This is a struggle, especially for entrepreneurs, the C-Suite, or companies that rely on professional headshots for building their businesses.
+                </p>
+                <p className="text-lg text-gray-700 mb-6">
+                  As a headshot photographer with over 10 years of experience, I've developed an easy process that creates authentic results, where quality exceeds price and delivers exceptional value.
+                </p>
+                <p className="text-lg text-gray-700" style={{ marginBottom: '0px' }}>
+                  I help busy professionals create magazine-quality headshot photography that lets them build their networks and present their best image to others. My process creates authentic expressions with great lighting, and includes a unique studio feedback-loop to get your instant reaction so you love what we create together.
+                </p>
+                <Link
+                  href="/about"
+                  className="text-red-500 hover:text-red-600 text-lg font-semibold"
+                >
+                  Read My Full Story →
+                </Link>
+              </div>
+            </ScrollReveal>
           </div>
         </div>
       </section>
 
       {/* Pricing CTA Section */}
-      <PricingCTA />
+      <ScrollReveal animation="fade-up">
+        <PricingCTA />
+      </ScrollReveal>
 
       {/* Secondary Gallery Section */}
-      <GalleryWithLightbox
-        images={[
-          { src: '/images/SecondGallery/Lauren.jpg', alt: 'Lauren - professional corporate headshot' },
-          { src: '/images/SecondGallery/Ama.jpg', alt: 'Ama - executive portrait' },
-          { src: '/images/SecondGallery/Fabian.jpg', alt: 'Fabian - business professional headshot' },
-          { src: '/images/SecondGallery/Spiro.jpg', alt: 'Spiro - corporate headshot' }
-        ]}
-      />
+      <ScrollReveal animation="fade-in">
+        <GalleryWithLightbox
+          images={[
+            { src: '/images/SecondGallery/Lauren.jpg', alt: 'Lauren - professional corporate headshot' },
+            { src: '/images/SecondGallery/Ama.jpg', alt: 'Ama - executive portrait' },
+            { src: '/images/SecondGallery/Fabian.jpg', alt: 'Fabian - business professional headshot' },
+            { src: '/images/SecondGallery/Spiro.jpg', alt: 'Spiro - corporate headshot' }
+          ]}
+        />
+      </ScrollReveal>
 
       {/* Process Section */}
-      <HeadshotProcess />
+      <ScrollReveal animation="fade-up">
+        <HeadshotProcess />
+      </ScrollReveal>
 
       {/* Transformations Gallery Section */}
-      <BeforeAfter />
+      <ScrollReveal animation="fade-in">
+        <BeforeAfter />
+      </ScrollReveal>
 
       {/* Reviews Section */}
-      <HeadshotReviews />
+      <ScrollReveal animation="fade-up">
+        <HeadshotReviews />
+      </ScrollReveal>
 
       {/* Google Reviews Badge */}
-      <GoogleReviewsBadge />
+      <ScrollReveal animation="scale">
+        <GoogleReviewsBadge />
+      </ScrollReveal>
 
       {/* Pricing CTA Section */}
-      <PricingCTA />
+      <ScrollReveal animation="fade-up">
+        <PricingCTA />
+      </ScrollReveal>
 
       {/* Groups Section */}
       <section className="bg-[#242424] py-16">
@@ -318,35 +343,50 @@ export default function Home({ frontmatter, content }: { frontmatter: any; conte
       </section>
 
       {/* Doubletakes Carousel Section */}
-      <DoubletakesCarousel />
+      <ScrollReveal animation="fade-up">
+        <DoubletakesCarousel />
+      </ScrollReveal>
 
       {/* Third Gallery Section */}
-      <GalleryWithLightbox
-        images={[
-          { src: '/images/ThirdGallery/Charles.jpg', alt: 'Charles - executive headshot' },
-          { src: '/images/ThirdGallery/Kirsten.jpg', alt: 'Kirsten - professional portrait' },
-          { src: '/images/ThirdGallery/Rachel.jpg', alt: 'Rachel - business headshot' },
-          { src: '/images/ThirdGallery/Arcelious.jpg', alt: 'Arcelious - corporate portrait' }
-        ]}
-      />
+      <ScrollReveal animation="fade-in">
+        <GalleryWithLightbox
+          images={[
+            { src: '/images/ThirdGallery/Charles.jpg', alt: 'Charles - executive headshot' },
+            { src: '/images/ThirdGallery/Kirsten.jpg', alt: 'Kirsten - professional portrait' },
+            { src: '/images/ThirdGallery/Rachel.jpg', alt: 'Rachel - business headshot' },
+            { src: '/images/ThirdGallery/Arcelious.jpg', alt: 'Arcelious - corporate portrait' }
+          ]}
+        />
+      </ScrollReveal>
 
       {/* Pricing CTA Section */}
-      <PricingCTA />
+      <ScrollReveal animation="fade-up">
+        <PricingCTA />
+      </ScrollReveal>
 
       {/* Dark Single Segment Section */}
-      <DarkSingleSegment />
+      <ScrollReveal animation="fade-up">
+        <DarkSingleSegment />
+      </ScrollReveal>
 
       {/* Light Single Segment Section */}
-      <LightSingleSegment />
+      <ScrollReveal animation="fade-up">
+        <LightSingleSegment />
+      </ScrollReveal>
 
       {/* Doctor Single Segment Section */}
-      <DoctorSingleSegment />
+      <ScrollReveal animation="fade-up">
+        <DoctorSingleSegment />
+      </ScrollReveal>
 
       {/* Business Single Segment Section */}
-      <BusinessSingleSegment />
+      <ScrollReveal animation="fade-up">
+        <BusinessSingleSegment />
+      </ScrollReveal>
 
       {/* Location Pages */}
-      <section className="bg-gray-50 py-16">
+      <ScrollReveal animation="fade-up">
+      <section className="bg-gray-100 py-16">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 text-center">
           <h2 className="text-3xl md:text-4xl font-bold text-gray-900 mb-4">
             Professional Headshots Across the DC Metro Area
@@ -380,6 +420,7 @@ export default function Home({ frontmatter, content }: { frontmatter: any; conte
           </div>
         </div>
       </section>
+      </ScrollReveal>
 
       {/* Video Modal */}
       {videoModalOpen && (

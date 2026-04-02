@@ -55,7 +55,7 @@ export default function Header({ hideMenu = false }: HeaderProps) {
 
       {/* Navigation bar */}
       {!hideMenu && (
-        <div className="bg-gray-300">
+        <div className="bg-gray-100">
           <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
             {/* Mobile menu button */}
             <div className="md:hidden flex justify-center items-center py-2">

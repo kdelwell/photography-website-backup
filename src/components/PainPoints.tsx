@@ -25,7 +25,7 @@ export default function PainPoints() {
   ]
 
   return (
-    <section className="bg-gray-50 py-16">
+    <section className="bg-gray-100 py-16">
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
         <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-8">
           {points.map((point) => {
