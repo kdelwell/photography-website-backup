@@ -188,6 +188,83 @@ export default function ReviewsPage() {
         </div>
       </section>
 
+      {/* Client profile summaries — SEO-rich category descriptions */}
+      <section className="bg-white py-12 md:py-16">
+        <div className="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8">
+          <h2 className="text-2xl md:text-3xl font-bold text-gray-900 text-center mb-4">
+            What Different Clients Say
+          </h2>
+          <p className="text-gray-600 text-center mb-12 max-w-2xl mx-auto">
+            Over 200 professionals from every background have shared their experience. Here&apos;s what stands out by client type.
+          </p>
+
+          <div className="space-y-10">
+            <div>
+              <h3 className="text-xl font-bold text-gray-900 mb-2">
+                Teams &amp; Organizations <span className="text-gray-400 font-normal text-base">(8 reviews)</span>
+              </h3>
+              <p className="text-gray-700 leading-relaxed">
+                Coordinators of team and corporate photography sessions &mdash; from five-person leadership suites to 40+ employee company-wide shoots &mdash; describe organized, efficient processes that produce visually cohesive results across a wide range of comfort levels. Reviewers include operations directors, company owners, and team leads who specifically praise the fast turnaround (under one week for 40+ headshots), multiple delivery formats, and the ability to maintain visual consistency across team members. Several plan to continue sending new hires as their organizations grow, and one notes that new images integrate seamlessly with existing brand photography.
+              </p>
+            </div>
+
+            <div>
+              <h3 className="text-xl font-bold text-gray-900 mb-2">
+                Executives &amp; Senior Professionals <span className="text-gray-400 font-normal text-base">(15 reviews)</span>
+              </h3>
+              <p className="text-gray-700 leading-relaxed">
+                Executives and senior professionals &mdash; including a CEO, senior leaders, managing partners, and seasoned consultants &mdash; consistently describe sessions that balance efficiency with genuine comfort. Several note that Kevin&apos;s consultation process addresses how they want to be perceived before a camera is involved, producing headshots that communicate authority and credibility without appearing stiff or generic. Reviewers describe images that have directly supported their professional presence, with one noting regular compliments from colleagues, board members, and speaking engagement organizers. A repeat client who does extensive public speaking credits Kevin with capturing headshots that authentically represent her at scale.
+              </p>
+            </div>
+
+            <div>
+              <h3 className="text-xl font-bold text-gray-900 mb-2">
+                Entrepreneurs, Business Owners &amp; Independent Professionals <span className="text-gray-400 font-normal text-base">(20 reviews)</span>
+              </h3>
+              <p className="text-gray-700 leading-relaxed">
+                Independent professionals, business owners, and emerging leaders &mdash; including attorneys, coaches, consultants, architects, authors, and practice owners &mdash; describe headshots that communicate credibility and approachability during career-defining moments: practice launches, book publications, company formations, and professional pivots. Reviews highlight Kevin&apos;s ability to understand the specific visual needs of each field, from legal marketing materials to author publicity photos. An attorney recommends Kevin specifically to &ldquo;fellow attorneys, coaches, consultants, and business owners.&rdquo; An author preparing to market her first book valued Kevin&apos;s knowledge of commercial licensing for photography. Multiple entrepreneurs note that the investment paid for itself in the professional image it projected.
+              </p>
+            </div>
+
+            <div>
+              <h3 className="text-xl font-bold text-gray-900 mb-2">
+                Career Changers &amp; Job Seekers <span className="text-gray-400 font-normal text-base">(18 reviews)</span>
+              </h3>
+              <p className="text-gray-700 leading-relaxed">
+                Professionals in career transition &mdash; including those starting new positions, updating LinkedIn profiles for job searches, furloughed employees re-entering the workforce, and military members transitioning to civilian careers &mdash; describe Kevin&apos;s headshots as a critical tool in presenting their best professional self during a pivotal moment. A veteran with partial facial paralysis credits Kevin&apos;s patient coaching with producing two photographs he&apos;s proud to use in his post-military career. A furloughed employee who received a donated session notes that Kevin&apos;s posing tips were valuable not just for the photo but for interview body language. Multiple reviewers specifically mention updating LinkedIn profile photos that were years &mdash; sometimes decades &mdash; overdue.
+              </p>
+            </div>
+
+            <div>
+              <h3 className="text-xl font-bold text-gray-900 mb-2">
+                Camera-Shy &amp; First-Timers <span className="text-gray-400 font-normal text-base">(35+ reviews)</span>
+              </h3>
+              <p className="text-gray-700 leading-relaxed">
+                Clients who describe themselves as people who &ldquo;hate having their picture taken,&rdquo; feel &ldquo;awkward in front of the camera,&rdquo; or had never sat for a professional headshot &mdash; consistently describe a transformation in how they feel during and after their session. Kevin&apos;s coaching style, patience, and encouraging demeanor put even the most camera-averse clients at ease, with several stating these are &ldquo;the best photos ever taken of me.&rdquo; A client who describes herself as someone who &ldquo;blinks in every photo&rdquo; &mdash; to the point of hiring a sports photographer for her wedding &mdash; notes that Kevin adjusted his lighting technique until the problem disappeared entirely. Multiple first-timers purchased additional photos beyond their original plan because they couldn&apos;t narrow down the results.
+              </p>
+            </div>
+
+            <div>
+              <h3 className="text-xl font-bold text-gray-900 mb-2">
+                Repeat &amp; Returning Clients <span className="text-gray-400 font-normal text-base">(10 reviews)</span>
+              </h3>
+              <p className="text-gray-700 leading-relaxed">
+                Clients who have returned to Kevin two and three times over multiple years &mdash; some spanning a four-year period &mdash; cite the consistency of both experience and results as their reason for coming back. A three-time client over several years calls Kevin &ldquo;a wonderful photographer with a true gift for headshots.&rdquo; Another returning after three years notes that &ldquo;the consistency, quality, and professionalism are unmatched.&rdquo; Several describe referring colleagues and family members who then also became clients, creating networks of referrals built on firsthand experience rather than marketing.
+              </p>
+            </div>
+
+            <div>
+              <h3 className="text-xl font-bold text-gray-900 mb-2">
+                Hair &amp; Makeup Clients <span className="text-gray-400 font-normal text-base">(10 reviews)</span>
+              </h3>
+              <p className="text-gray-700 leading-relaxed">
+                Clients who booked the full hair, makeup, and photo package with Mallory describe a complete, elevated experience. Reviewers note she listened to their preferences &mdash; from natural, minimal looks to polished professional styling &mdash; and delivered results that built confidence before the camera was even picked up. A client who &ldquo;seldom wears much makeup&rdquo; appreciated Mallory&apos;s ability to enhance without transforming. Several mention that having hair and makeup done on-site eliminated the stress of arriving &ldquo;photo-ready&rdquo; and created a seamless, white-glove experience from arrival to final image selection.
+              </p>
+            </div>
+          </div>
+        </div>
+      </section>
+
       {/* Filter bar */}
       <section className="bg-gray-50 border-b border-gray-200 sticky top-0 z-10">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">

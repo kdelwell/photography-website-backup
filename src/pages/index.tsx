@@ -147,12 +147,11 @@ export default function Home({ frontmatter, content }: { frontmatter: any; conte
         <div className="relative h-full flex items-center justify-center">
           <div className="text-center text-white px-8 max-w-5xl">
             <h1 className="text-4xl md:text-5xl lg:text-6xl font-bold mb-8 leading-tight">
-              Professional Headshot Photography That Opens Doors
+              Magazine-Quality Headshots with Expert Coaching
             </h1>
 
             <p className="text-2xl md:text-3xl mb-12 font-light leading-relaxed">
-              In a digital world, your headshot is your first impression.<br />
-              Let's make sure it's a powerful one.
+              Headshots for professionals who can&apos;t afford to look average.
             </p>
             
             <div className="flex justify-center">

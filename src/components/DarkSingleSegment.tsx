@@ -42,9 +42,15 @@ const DarkSingleSegment = () => {
             <h2 className="text-3xl md:text-4xl lg:text-5xl font-bold text-white mb-6 leading-tight">
               Actor Headshots
             </h2>
-            <p className="text-lg md:text-xl text-gray-200 leading-relaxed">
+            <p className="text-lg md:text-xl text-gray-200 leading-relaxed mb-6">
               As an Actor, your headshot is the single-most important marketing tool for your career. Casting Directors look for authentic expressions, professional results, and accurate representations.
             </p>
+            <blockquote className="border-l-2 border-red-500 pl-4">
+              <p className="text-gray-300 text-sm italic leading-relaxed">
+                &ldquo;We hired Kevin to take commercial/acting headshots for my 10yo twin girls who are aspiring actresses. He was welcoming, patient, motivating... be prepared because you will want to buy every single photo!&rdquo;
+              </p>
+              <cite className="text-gray-500 text-xs not-italic mt-2 block">— Ryan S.</cite>
+            </blockquote>
           </div>
         </div>
       </div>

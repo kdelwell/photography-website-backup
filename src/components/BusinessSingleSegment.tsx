@@ -27,9 +27,15 @@ const BusinessSingleSegment = () => {
             <h2 className="text-3xl md:text-4xl lg:text-5xl font-bold text-gray-900 mb-6 leading-tight">
               Business Headshots
             </h2>
-            <p className="text-lg md:text-xl text-gray-700 leading-relaxed">
+            <p className="text-lg md:text-xl text-gray-700 leading-relaxed mb-6">
               For Business Executives that first impression is your digital handshake nowadays. You need an image that is unmistakably professional and will stop the scroll in Facebook, LinkedIn, and Twitter.
             </p>
+            <blockquote className="border-l-2 border-red-500 pl-4">
+              <p className="text-gray-600 text-sm italic leading-relaxed">
+                &ldquo;Kevin presents a balance of professionalism and friendliness. He has honed his craft and will work with you to find the head shot that is not only polished, but makes you look great.&rdquo;
+              </p>
+              <cite className="text-gray-400 text-xs not-italic mt-2 block">— Eric N., CEO</cite>
+            </blockquote>
           </div>
           
           {/* Right - Image */}

@@ -27,9 +27,15 @@ const LightSingleSegment = () => {
             <h2 className="text-3xl md:text-4xl lg:text-5xl font-bold text-gray-900 mb-6 leading-tight">
               Attorney Headshots
             </h2>
-            <p className="text-lg md:text-xl text-gray-700 leading-relaxed">
-              Headshots for Attorneys that project confidence to your clients that you can deliver the results they expect while still saying "I'm easy to work with."
+            <p className="text-lg md:text-xl text-gray-700 leading-relaxed mb-6">
+              Headshots for Attorneys that project confidence to your clients that you can deliver the results they expect while still saying &ldquo;I&apos;m easy to work with.&rdquo;
             </p>
+            <blockquote className="border-l-2 border-red-500 pl-4">
+              <p className="text-gray-600 text-sm italic leading-relaxed">
+                &ldquo;To my fellow attorneys, coaches, consultants, and business owners... If you&apos;re looking for an experienced top-rated headshot photographer, I would highly recommend Kevin. He is professional, passionate, friendly, and great to work with.&rdquo;
+              </p>
+              <cite className="text-gray-400 text-xs not-italic mt-2 block">— Philippe F.</cite>
+            </blockquote>
           </div>
           
           {/* Right - Image */}
