@@ -33,10 +33,10 @@ function MiniStars() {
 }
 
 const GALLERY_IMAGES = [
-  { src: '/images/schedule/Adam.jpg', alt: 'Adam — professional headshot' },
-  { src: '/images/schedule/Jessica.jpg', alt: 'Jessica — professional headshot' },
-  { src: '/images/schedule/Priyanka.jpg', alt: 'Priyanka — professional headshot' },
-  { src: '/images/schedule/Willis.jpg', alt: 'Willis — professional headshot' },
+  { src: '/images/Schedule/Adam.jpg', alt: 'Adam — professional headshot' },
+  { src: '/images/Schedule/Jessica.jpg', alt: 'Jessica — professional headshot' },
+  { src: '/images/Schedule/Priyanka.jpg', alt: 'Priyanka — professional headshot' },
+  { src: '/images/Schedule/Willis.jpg', alt: 'Willis — professional headshot' },
 ]
 
 export default function Schedule() {
