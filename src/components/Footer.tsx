@@ -1,4 +1,5 @@
 import Image from 'next/image'
+import Link from 'next/link'
 
 export default function Footer() {
   return (
@@ -63,6 +64,16 @@ export default function Footer() {
               className="object-cover w-full h-full"
             />
           </div>
+        </div>
+
+        {/* Footer Links */}
+        <div className="border-t border-gray-700 mt-4 pt-3 flex flex-wrap justify-center gap-x-6 gap-y-1 text-xs text-gray-400">
+          <Link href="/faqs" className="hover:text-white transition-colors">FAQs</Link>
+          <Link href="/articles" className="hover:text-white transition-colors">Articles</Link>
+          <Link href="/prep" className="hover:text-white transition-colors">Prep Tips</Link>
+          <Link href="/terms" className="hover:text-white transition-colors">Terms</Link>
+          <Link href="/privacy" className="hover:text-white transition-colors">Privacy</Link>
+          <Link href="/sms-consent" className="hover:text-white transition-colors">SMS Consent</Link>
         </div>
       </div>
     </footer>

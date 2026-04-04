@@ -13,10 +13,8 @@ export default function Header({ hideMenu = false }: HeaderProps) {
   const navigation = [
     { name: 'HEADSHOTS', href: '/professional_individual_headshots', external: false },
     { name: 'GROUPS', href: '/groups', external: false },
+    { name: 'EVENTS', href: '/studiogo', external: false },
     { name: 'HAIR & MAKEUP', href: '/hair', external: false },
-    { name: 'PREP TIPS', href: '/prep', external: false },
-    { name: 'ARTICLES', href: '/articles', external: false },
-    { name: 'FAQS', href: '/faqs', external: false },
     { name: 'ABOUT', href: '/about', external: false },
   ]
 
