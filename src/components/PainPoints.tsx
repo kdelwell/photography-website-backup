@@ -4,22 +4,22 @@ export default function PainPoints() {
   const points = [
     {
       title: 'Camera shy?',
-      text: "I coach you through every expression — most clients say it was actually fun.",
+      text: "Most of my clients tell me they hate being photographed. My coaching process has helped over 200 professionals look natural and confident — many say it was the best headshot photography experience they've ever had.",
       icon: ShieldCheck,
     },
     {
       title: 'Short on time?',
-      text: 'Sessions are efficient and your retouched images are delivered within days.',
+      text: "Sessions are efficient and focused. You'll have professionally retouched images delivered within days — not weeks. Same-day delivery available for rush orders.",
       icon: Clock,
     },
     {
       title: 'Need team consistency?',
-      text: 'Group sessions with matching lighting and style across your entire organization.',
+      text: "I bring my professional headshot studio to your location. Matching lighting, style, and background across your entire organization — and new hires can be added anytime.",
       icon: Users,
     },
     {
       title: 'Not sure what to wear?',
-      text: "Prep guidance included — you'll show up confident and ready.",
+      text: "You'll receive detailed prep guidance before your session covering wardrobe, grooming, and what to expect. Bring 2-3 outfit options and I'll help you choose what works best on camera.",
       icon: Shirt,
     },
   ]

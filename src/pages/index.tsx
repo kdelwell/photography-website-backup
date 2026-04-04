@@ -159,7 +159,7 @@ export default function Home({ frontmatter, content }: { frontmatter: any; conte
         <div className="relative h-full flex items-center justify-center">
           <div className="text-center text-white px-8 max-w-5xl">
             <h1 className="text-4xl md:text-5xl lg:text-6xl font-bold mb-8 leading-tight">
-              Magazine-Quality Headshots with Expert Coaching
+              Magazine-Quality Headshot Photography with Expert Coaching
             </h1>
 
             <p className="text-2xl md:text-3xl mb-12 font-light leading-relaxed">
@@ -373,6 +373,20 @@ export default function Home({ frontmatter, content }: { frontmatter: any; conte
       {/* Pricing CTA Section */}
       <ScrollReveal animation="fade-up">
         <PricingCTA />
+      </ScrollReveal>
+
+      {/* Types of Headshot Photography */}
+      <ScrollReveal animation="fade-up">
+        <section className="bg-white py-12">
+          <div className="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8 text-center">
+            <h2 className="text-3xl md:text-4xl font-bold text-gray-900 mb-4">
+              Headshot Photography for Every Professional
+            </h2>
+            <p className="text-lg text-gray-600 leading-relaxed">
+              Whether you&apos;re an executive updating your LinkedIn, an actor building a portfolio, an attorney projecting confidence, or a physician building trust with patients — the right headshot photography makes the difference. I specialize in creating authentic, professional images tailored to your industry and how you want to be perceived.
+            </p>
+          </div>
+        </section>
       </ScrollReveal>
 
       {/* Dark Single Segment Section */}
