@@ -25,6 +25,7 @@ export default function Home({ frontmatter, content }: { frontmatter: any; conte
   const [scrollY, setScrollY] = useState(0)
   const [videoModalOpen, setVideoModalOpen] = useState(false)
   const [videoReady, setVideoReady] = useState(false)
+  const [videoSrc, setVideoSrc] = useState('')
 
   useEffect(() => {
     let ticking = false
@@ -40,6 +41,14 @@ export default function Home({ frontmatter, content }: { frontmatter: any; conte
 
     window.addEventListener('scroll', handleScroll, { passive: true })
     return () => window.removeEventListener('scroll', handleScroll)
+  }, [])
+
+  // Defer hero video loading until after LCP
+  useEffect(() => {
+    const timer = setTimeout(() => {
+      setVideoSrc('/images/Web banner_small.mp4')
+    }, 2000)
+    return () => clearTimeout(timer)
   }, [])
 
   const faqSchema = {
@@ -126,19 +135,21 @@ export default function Home({ frontmatter, content }: { frontmatter: any; conte
             style={{ transform: 'scale(1.2)' }}
           />
           {/* Video loads after page — fades in over poster */}
-          <video
-            autoPlay
-            muted
-            loop
-            playsInline
-            preload="none"
-            onCanPlay={() => setVideoReady(true)}
-            className={`absolute w-full h-full object-cover transition-opacity duration-700 ${videoReady ? 'opacity-100' : 'opacity-0'}`}
-            style={{ transform: 'scale(1.2)' }}
-          >
-            <source src="/images/Web banner_small.mp4" type="video/mp4" />
-            <track kind="captions" />
-          </video>
+          {videoSrc && (
+            <video
+              autoPlay
+              muted
+              loop
+              playsInline
+              preload="none"
+              onCanPlay={() => setVideoReady(true)}
+              className={`absolute w-full h-full object-cover transition-opacity duration-700 ${videoReady ? 'opacity-100' : 'opacity-0'}`}
+              style={{ transform: 'scale(1.2)' }}
+            >
+              <source src={videoSrc} type="video/mp4" />
+              <track kind="captions" />
+            </video>
+          )}
           
           {/* Dark overlay */}
           <div className="absolute inset-0 bg-black/50"></div>
