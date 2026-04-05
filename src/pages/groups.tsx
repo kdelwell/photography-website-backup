@@ -11,6 +11,14 @@ interface GroupsProps {
   content: string
 }
 
+interface PricingTier { size: number; perPerson: number }
+interface PricingConfig {
+  destinationFee: number
+  inStudioRate: number
+  addOns: { extraImage: number; additionalDay: number; groupComposite: number; candidHour: number; hairMakeup: number; makeupTouchup: number }
+  tiers: PricingTier[]
+}
+
 const Groups = ({ frontmatter }: GroupsProps) => {
   const [lightboxOpen, setLightboxOpen] = useState(false)
   const [currentImageIndex, setCurrentImageIndex] = useState(0)
@@ -18,19 +26,13 @@ const Groups = ({ frontmatter }: GroupsProps) => {
   const [lightboxVideo, setLightboxVideo] = useState('')
 
   // Pricing config from API
-  interface PricingTier { size: number; perPerson: number }
-  interface PricingConfig {
-    destinationFee: number
-    addOns: { extraImage: number; additionalDay: number; groupComposite: number; candidHour: number; hairMakeup: number; makeupTouchup: number }
-    tiers: PricingTier[]
-  }
   const [pricing, setPricing] = useState<PricingConfig | null>(null)
 
   useEffect(() => {
-    fetch((typeof window !== 'undefined' && window.location.hostname === 'localhost') ? 'http://localhost:3300/api/group-pricing' : 'https://api.getaheadshot.net/api/group-pricing')
-      .then(r => r.json())
-      .then(data => { if (data.tiers) setPricing(data) })
-      .catch(() => {})
+    fetch('/api/group-pricing')
+      .then(r => { if (!r.ok) throw new Error(`HTTP ${r.status}`); return r.json() })
+      .then(data => { if (data.tiers) { setPricing(data); console.log('Group pricing loaded:', data.tiers.length, 'tiers') } })
+      .catch(err => console.error('Failed to load group pricing:', err))
   }, [])
 
   // Calculator state
@@ -70,7 +72,8 @@ const Groups = ({ frontmatter }: GroupsProps) => {
   const destFee = pricing?.destinationFee || 750
 
   // Price calculations
-  const ratePerPerson = getPerPersonRate(teamSize)
+  const inStudioRate = pricing?.inStudioRate || 350
+  const ratePerPerson = onLocation ? getPerPersonRate(teamSize) : inStudioRate
   const sittingSubtotal = teamSize * ratePerPerson
   const travelFee = onLocation ? destFee : 0
   const extraImageCost = extraImages * addOns.extraImage
@@ -467,7 +470,7 @@ const Groups = ({ frontmatter }: GroupsProps) => {
             {/* Two Column Layout - Text Left, Image Right */}
             <div className="grid grid-cols-1 lg:grid-cols-2 gap-4 lg:gap-8 items-center">
               {/* Left Column - Text Content */}
-              <div className="text-white">
+              <div className="text-white min-h-[200px] lg:min-h-[250px]">
                 <h3 className="text-2xl md:text-3xl font-bold mb-3 lg:mb-6 text-white">
                   {compositeSteps[currentStep].title}
                 </h3>
@@ -543,7 +546,7 @@ const Groups = ({ frontmatter }: GroupsProps) => {
                 <div className="grid grid-cols-2 gap-4 mb-4">
                   <div>
                     <label className="block text-xs font-semibold text-gray-700 mb-1 uppercase tracking-wide">Team Members *</label>
-                    <input type="number" min={3} value={teamSize} onChange={e => { const v = Math.max(3, parseInt(e.target.value) || 3); setTeamSize(v); if (v > 15 && !onLocation) setOnLocation(true); }}
+                    <input type="number" min={3} value={teamSize} onChange={e => { const v = Math.max(3, parseInt(e.target.value) || 3); setTeamSize(v); if (v > 10 && !onLocation) setOnLocation(true); }}
                       className="w-full border border-gray-300 rounded-md px-3 py-2 text-gray-900" />
                     <p className="text-gray-400 text-xs mt-1">Minimum 3 people</p>
                   </div>
@@ -552,7 +555,7 @@ const Groups = ({ frontmatter }: GroupsProps) => {
                     <select value={onLocation ? 'on-location' : 'in-studio'} onChange={e => setOnLocation(e.target.value === 'on-location')}
                       className="w-full border border-gray-300 rounded-md px-3 py-2 text-gray-900">
                       <option value="on-location">On-Location</option>
-                      <option value="in-studio" disabled={teamSize > 15}>In-Studio{teamSize > 15 ? ' (15 max)' : ''}</option>
+                      <option value="in-studio" disabled={teamSize > 10}>In-Studio{teamSize > 10 ? ' (10 max)' : ''}</option>
                     </select>
                   </div>
                 </div>
