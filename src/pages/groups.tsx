@@ -17,6 +17,105 @@ const Groups = ({ frontmatter }: GroupsProps) => {
   const [videoLightboxOpen, setVideoLightboxOpen] = useState(false)
   const [lightboxVideo, setLightboxVideo] = useState('')
 
+  // Pricing config from API
+  interface PricingTier { size: number; perPerson: number }
+  interface PricingConfig {
+    destinationFee: number
+    addOns: { extraImage: number; additionalDay: number; groupComposite: number; candidHour: number; hairMakeup: number; makeupTouchup: number }
+    tiers: PricingTier[]
+  }
+  const [pricing, setPricing] = useState<PricingConfig | null>(null)
+
+  useEffect(() => {
+    fetch((typeof window !== 'undefined' && window.location.hostname === 'localhost') ? 'http://localhost:3300/api/group-pricing' : 'https://api.getaheadshot.net/api/group-pricing')
+      .then(r => r.json())
+      .then(data => { if (data.tiers) setPricing(data) })
+      .catch(() => {})
+  }, [])
+
+  // Calculator state
+  const [teamSize, setTeamSize] = useState(3)
+  const [onLocation, setOnLocation] = useState(true)
+  const [extraImages, setExtraImages] = useState(0)
+  const [additionalDays, setAdditionalDays] = useState(0)
+  const [groupComposite, setGroupComposite] = useState(false)
+  const [candidHours, setCandidHours] = useState(0)
+  const [hairMakeupCount, setHairMakeupCount] = useState(0)
+  const [touchupCount, setTouchupCount] = useState(0)
+
+  // Contact form
+  const [quoteForm, setQuoteForm] = useState({ firstName: '', lastName: '', email: '', phone: '', company: '' })
+  const [quoteSubmitting, setQuoteSubmitting] = useState(false)
+  const [quoteSubmitted, setQuoteSubmitted] = useState(false)
+  const [quoteError, setQuoteError] = useState('')
+
+  // Look up per-person rate from tiered pricing
+  function getPerPersonRate(size: number): number {
+    if (!pricing || !pricing.tiers.length) return 275 // fallback
+    // Find exact match or closest tier that doesn't exceed the size
+    const tier = pricing.tiers.find(t => t.size === size)
+    if (tier) return tier.perPerson
+    // For sizes beyond max tier, use the last tier's rate
+    const sorted = [...pricing.tiers].sort((a, b) => a.size - b.size)
+    const last = sorted[sorted.length - 1]
+    if (size > last.size) return last.perPerson
+    // For sizes between tiers, use the lower tier
+    for (let i = sorted.length - 1; i >= 0; i--) {
+      if (sorted[i].size <= size) return sorted[i].perPerson
+    }
+    return sorted[0].perPerson
+  }
+
+  const addOns = pricing?.addOns || { extraImage: 150, additionalDay: 750, groupComposite: 400, candidHour: 400, hairMakeup: 200, makeupTouchup: 100 }
+  const destFee = pricing?.destinationFee || 750
+
+  // Price calculations
+  const ratePerPerson = getPerPersonRate(teamSize)
+  const sittingSubtotal = teamSize * ratePerPerson
+  const travelFee = onLocation ? destFee : 0
+  const extraImageCost = extraImages * addOns.extraImage
+  const additionalDayCost = additionalDays * addOns.additionalDay
+  const compositeCost = groupComposite ? addOns.groupComposite : 0
+  const candidCost = candidHours * addOns.candidHour
+  const hairMakeupCost = hairMakeupCount * addOns.hairMakeup
+  const touchupCost = touchupCount * addOns.makeupTouchup
+  const total = sittingSubtotal + travelFee + extraImageCost + additionalDayCost + compositeCost + candidCost + hairMakeupCost + touchupCost
+
+  function buildQuoteNotes() {
+    const lines = [`Team Size: ${teamSize}`, `Location: ${onLocation ? 'On-Location' : 'In-Studio'}`]
+    lines.push(`Sitting: $${sittingSubtotal.toLocaleString()} ($${ratePerPerson} x ${teamSize})`)
+    if (travelFee) lines.push(`Destination Fee: $${travelFee.toLocaleString()}`)
+    if (extraImages) lines.push(`Extra Images: $${extraImageCost.toLocaleString()} ($${addOns.extraImage} x ${extraImages})`)
+    if (additionalDays) lines.push(`Additional Days: $${additionalDayCost.toLocaleString()} ($${addOns.additionalDay} x ${additionalDays})`)
+    if (groupComposite) lines.push(`Group Composite: $${compositeCost.toLocaleString()}`)
+    if (candidHours) lines.push(`Candids: $${candidCost.toLocaleString()} ($${addOns.candidHour} x ${candidHours} hr)`)
+    if (hairMakeupCount) lines.push(`Hair & Makeup: $${hairMakeupCost.toLocaleString()} ($${addOns.hairMakeup} x ${hairMakeupCount})`)
+    if (touchupCount) lines.push(`Makeup Touch-ups: $${touchupCost.toLocaleString()} ($${addOns.makeupTouchup} x ${touchupCount})`)
+    lines.push(`\nEstimated Total: $${total.toLocaleString()}`)
+    return lines.join('\n')
+  }
+
+  async function handleQuoteSubmit(e: React.FormEvent) {
+    e.preventDefault()
+    setQuoteSubmitting(true)
+    setQuoteError('')
+    try {
+      const resp = await fetch('/api/group-quote', {
+        method: 'POST',
+        headers: { 'Content-Type': 'application/json' },
+        body: JSON.stringify({ ...quoteForm, notes: buildQuoteNotes() }),
+      })
+      if (!resp.ok) {
+        const data = await resp.json().catch(() => ({}))
+        throw new Error(data.error || 'Submission failed')
+      }
+      setQuoteSubmitted(true)
+    } catch (err) {
+      setQuoteError((err as Error).message || 'Something went wrong. Please try again.')
+    }
+    setQuoteSubmitting(false)
+  }
+
   const compositeImages = [
     { src: '/images/groups/composites/Copper_River.jpg', alt: 'Copper River Company Team Photography' },
     { src: '/images/groups/composites/SCORE.jpg', alt: 'Score Company Team Photography' },
@@ -416,13 +515,239 @@ const Groups = ({ frontmatter }: GroupsProps) => {
                 Are you ready?
               </h2>
               <a
-                href="/more_info"
+                href="#calculator"
                 className="bg-red-600 hover:bg-red-700 text-white px-4 py-2 sm:px-8 sm:py-3 rounded-md font-semibold text-sm sm:text-lg transition-colors duration-200 whitespace-nowrap"
               >
-                Get Pricing
+                Get an Estimate
               </a>
             </div>
           </div>
+        </div>
+
+        {/* Team Pricing Calculator */}
+        <div id="calculator" className="bg-[#242424]" style={{ paddingTop: '48px', paddingBottom: '48px' }}>
+          <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <h2 className="text-3xl md:text-4xl font-bold text-white text-center mb-2 tracking-wide">
+              Team Pricing Calculator
+            </h2>
+            <p className="text-gray-400 text-center text-sm mb-10">
+              Your estimate updates instantly. This is an estimate for budgeting and planning.
+            </p>
+
+            <div className="grid grid-cols-1 lg:grid-cols-3 gap-8">
+              {/* Column 1: Inputs */}
+              <div className="bg-white rounded-lg p-6">
+                <h3 className="text-lg font-bold text-gray-900 mb-1">1. Start Here</h3>
+                <p className="text-gray-500 text-xs mb-5">Enter your basics. Your estimate updates instantly.</p>
+
+                <div className="grid grid-cols-2 gap-4 mb-4">
+                  <div>
+                    <label className="block text-xs font-semibold text-gray-700 mb-1 uppercase tracking-wide">Team Members *</label>
+                    <input type="number" min={3} value={teamSize} onChange={e => setTeamSize(Math.max(3, parseInt(e.target.value) || 3))}
+                      className="w-full border border-gray-300 rounded-md px-3 py-2 text-gray-900" />
+                    <p className="text-gray-400 text-xs mt-1">Minimum 3 people</p>
+                  </div>
+                  <div>
+                    <label className="block text-xs font-semibold text-gray-700 mb-1 uppercase tracking-wide">Session Location</label>
+                    <select value={onLocation ? 'on-location' : 'in-studio'} onChange={e => setOnLocation(e.target.value === 'on-location')}
+                      className="w-full border border-gray-300 rounded-md px-3 py-2 text-gray-900">
+                      <option value="on-location">On-Location</option>
+                      <option value="in-studio">In-Studio</option>
+                    </select>
+                  </div>
+                </div>
+
+                <div className="grid grid-cols-2 gap-4 mb-4">
+                  <div>
+                    <label className="block text-xs font-semibold text-gray-700 mb-1 uppercase tracking-wide">Extra Retouched Images</label>
+                    <input type="number" min={0} value={extraImages} onChange={e => setExtraImages(Math.max(0, parseInt(e.target.value) || 0))}
+                      className="w-full border border-gray-300 rounded-md px-3 py-2 text-gray-900" />
+                    <p className="text-gray-400 text-xs mt-1">1 included per person. ${addOns.extraImage} each additional.</p>
+                  </div>
+                  <div>
+                    <label className="block text-xs font-semibold text-gray-700 mb-1 uppercase tracking-wide">Additional Shoot Days</label>
+                    <input type="number" min={0} value={additionalDays} onChange={e => setAdditionalDays(Math.max(0, parseInt(e.target.value) || 0))}
+                      className="w-full border border-gray-300 rounded-md px-3 py-2 text-gray-900" />
+                    <p className="text-gray-400 text-xs mt-1">${addOns.additionalDay}/day</p>
+                  </div>
+                </div>
+
+                <h4 className="text-xs font-bold text-gray-700 uppercase tracking-wide mb-3 mt-6 border-t border-gray-200 pt-4">Optional Add-Ons</h4>
+
+                <div className="space-y-4">
+                  <label className="flex items-center justify-between">
+                    <div className="flex items-center gap-2">
+                      <input type="checkbox" checked={groupComposite} onChange={e => setGroupComposite(e.target.checked)}
+                        className="rounded border-gray-300 text-red-600 focus:ring-red-500" />
+                      <span className="text-sm text-gray-700">Group Composite Photo</span>
+                    </div>
+                    <span className="text-sm text-gray-500">${addOns.groupComposite}</span>
+                  </label>
+
+                  <div className="grid grid-cols-2 gap-4">
+                    <div>
+                      <label className="block text-xs font-semibold text-gray-700 mb-1 uppercase tracking-wide">Candid Hours</label>
+                      <input type="number" min={0} value={candidHours} onChange={e => setCandidHours(Math.max(0, parseInt(e.target.value) || 0))}
+                        className="w-full border border-gray-300 rounded-md px-3 py-2 text-gray-900" />
+                      <p className="text-gray-400 text-xs mt-1">${addOns.candidHour}/hour</p>
+                    </div>
+                    <div>
+                      <label className="block text-xs font-semibold text-gray-700 mb-1 uppercase tracking-wide">Hair &amp; Makeup</label>
+                      <input type="number" min={0} value={hairMakeupCount} onChange={e => setHairMakeupCount(Math.max(0, parseInt(e.target.value) || 0))}
+                        className="w-full border border-gray-300 rounded-md px-3 py-2 text-gray-900" />
+                      <p className="text-gray-400 text-xs mt-1">${addOns.hairMakeup}/person</p>
+                    </div>
+                  </div>
+
+                  <div className="grid grid-cols-2 gap-4">
+                    <div>
+                      <label className="block text-xs font-semibold text-gray-700 mb-1 uppercase tracking-wide">Makeup Touch-ups</label>
+                      <input type="number" min={0} value={touchupCount} onChange={e => setTouchupCount(Math.max(0, parseInt(e.target.value) || 0))}
+                        className="w-full border border-gray-300 rounded-md px-3 py-2 text-gray-900" />
+                      <p className="text-gray-400 text-xs mt-1">${addOns.makeupTouchup}/person</p>
+                    </div>
+                  </div>
+                </div>
+              </div>
+
+              {/* Column 2: Estimate */}
+              <div className="bg-gray-800 rounded-lg p-6 text-white">
+                <h3 className="text-lg font-bold mb-1">2. Your Estimate</h3>
+                <p className="text-gray-400 text-xs mb-5">Clear numbers for budgeting and planning.</p>
+
+                <div className="bg-gray-700/50 rounded-lg p-4 mb-6">
+                  <p className="text-gray-400 text-xs uppercase tracking-wide mb-1">Estimated Total</p>
+                  <p className="text-3xl font-bold text-white">${total.toLocaleString()}.00</p>
+                  <p className="text-gray-400 text-xs mt-1">This is an estimate for budgeting and planning.</p>
+                </div>
+
+                <div className="bg-gray-700/30 rounded-lg p-4 mb-6">
+                  <p className="text-gray-400 text-xs uppercase tracking-wide mb-1">Per Team Member (Sitting + Images)</p>
+                  <p className="text-2xl font-bold text-white">${ratePerPerson.toLocaleString()}</p>
+                  <p className="text-gray-400 text-xs mt-1">Rate based on team size. Excludes travel, composite, and candids.</p>
+                </div>
+
+                <div className="flex flex-wrap gap-2 mb-6 text-xs">
+                  <span className="bg-gray-700 rounded-full px-3 py-1">{teamSize} team members</span>
+                  <span className="bg-gray-700 rounded-full px-3 py-1">{1 + extraImages} image{1 + extraImages !== 1 ? 's' : ''} each</span>
+                  <span className="bg-gray-700 rounded-full px-3 py-1">{onLocation ? 'On-Location' : 'In-Studio'}</span>
+                  {additionalDays > 0 && <span className="bg-gray-700 rounded-full px-3 py-1">{1 + additionalDays} day{additionalDays > 0 ? 's' : ''}</span>}
+                </div>
+
+                <h4 className="text-xs font-bold uppercase tracking-wide text-gray-400 mb-3">Quick Breakdown</h4>
+                <div className="space-y-2 text-sm">
+                  <div className="flex justify-between">
+                    <span className="text-gray-300">Sitting subtotal</span>
+                    <span>${sittingSubtotal.toLocaleString()}.00</span>
+                  </div>
+                  {travelFee > 0 && <div className="flex justify-between">
+                    <span className="text-gray-300">Travel fee</span>
+                    <span>${travelFee.toLocaleString()}.00</span>
+                  </div>}
+                  {extraImageCost > 0 && <div className="flex justify-between">
+                    <span className="text-gray-300">Extra images</span>
+                    <span>${extraImageCost.toLocaleString()}.00</span>
+                  </div>}
+                  {additionalDayCost > 0 && <div className="flex justify-between">
+                    <span className="text-gray-300">Additional days</span>
+                    <span>${additionalDayCost.toLocaleString()}.00</span>
+                  </div>}
+                  {compositeCost > 0 && <div className="flex justify-between">
+                    <span className="text-gray-300">Group composite</span>
+                    <span>${compositeCost.toLocaleString()}.00</span>
+                  </div>}
+                  {candidCost > 0 && <div className="flex justify-between">
+                    <span className="text-gray-300">Candids</span>
+                    <span>${candidCost.toLocaleString()}.00</span>
+                  </div>}
+                  {hairMakeupCost > 0 && <div className="flex justify-between">
+                    <span className="text-gray-300">Hair &amp; makeup</span>
+                    <span>${hairMakeupCost.toLocaleString()}.00</span>
+                  </div>}
+                  {touchupCost > 0 && <div className="flex justify-between">
+                    <span className="text-gray-300">Makeup touch-ups</span>
+                    <span>${touchupCost.toLocaleString()}.00</span>
+                  </div>}
+                  <div className="flex justify-between border-t border-gray-600 pt-2 font-bold">
+                    <span>Estimated total</span>
+                    <span>${total.toLocaleString()}.00</span>
+                  </div>
+                </div>
+              </div>
+
+              {/* Column 3: Contact Form */}
+              <div className="bg-white rounded-lg p-6">
+                <h3 className="text-lg font-bold text-gray-900 mb-1">3. Get This Quote Sent to Me</h3>
+                <p className="text-gray-500 text-xs mb-5">Private, no spam, used only to send your quote.</p>
+
+                {quoteSubmitted ? (
+                  <div className="text-center py-8">
+                    <div className="text-green-600 text-4xl mb-3">&#10003;</div>
+                    <h4 className="text-lg font-bold text-gray-900 mb-2">Quote Sent!</h4>
+                    <p className="text-gray-600 text-sm">Check your email for a copy of your estimate. Kevin will follow up with you shortly.</p>
+                  </div>
+                ) : (
+                  <form onSubmit={handleQuoteSubmit} className="space-y-4">
+                    <div className="grid grid-cols-2 gap-4">
+                      <div>
+                        <label className="block text-xs font-semibold text-gray-700 mb-1">Full Name *</label>
+                        <input type="text" required placeholder="First name"
+                          value={quoteForm.firstName} onChange={e => setQuoteForm(f => ({ ...f, firstName: e.target.value }))}
+                          className="w-full border border-gray-300 rounded-md px-3 py-2 text-gray-900 text-sm" />
+                      </div>
+                      <div>
+                        <label className="block text-xs font-semibold text-gray-700 mb-1">&nbsp;</label>
+                        <input type="text" required placeholder="Last name"
+                          value={quoteForm.lastName} onChange={e => setQuoteForm(f => ({ ...f, lastName: e.target.value }))}
+                          className="w-full border border-gray-300 rounded-md px-3 py-2 text-gray-900 text-sm" />
+                      </div>
+                    </div>
+                    <div className="grid grid-cols-2 gap-4">
+                      <div>
+                        <label className="block text-xs font-semibold text-gray-700 mb-1">Email *</label>
+                        <input type="email" required placeholder="you@company.com"
+                          value={quoteForm.email} onChange={e => setQuoteForm(f => ({ ...f, email: e.target.value }))}
+                          className="w-full border border-gray-300 rounded-md px-3 py-2 text-gray-900 text-sm" />
+                      </div>
+                      <div>
+                        <label className="block text-xs font-semibold text-gray-700 mb-1">Phone</label>
+                        <input type="tel" placeholder="(555) 555-5555"
+                          value={quoteForm.phone} onChange={e => setQuoteForm(f => ({ ...f, phone: e.target.value }))}
+                          className="w-full border border-gray-300 rounded-md px-3 py-2 text-gray-900 text-sm" />
+                      </div>
+                    </div>
+                    <div>
+                      <label className="block text-xs font-semibold text-gray-700 mb-1">Company</label>
+                      <input type="text" placeholder="Company name"
+                        value={quoteForm.company} onChange={e => setQuoteForm(f => ({ ...f, company: e.target.value }))}
+                        className="w-full border border-gray-300 rounded-md px-3 py-2 text-gray-900 text-sm" />
+                    </div>
+
+                    {quoteError && <p className="text-red-600 text-sm">{quoteError}</p>}
+
+                    <button type="submit" disabled={quoteSubmitting}
+                      className="w-full bg-red-600 hover:bg-red-700 disabled:bg-gray-400 text-white py-3 rounded-md font-semibold text-sm uppercase tracking-wide transition-colors">
+                      {quoteSubmitting ? 'Sending...' : 'Get This Quote Sent to Me'}
+                    </button>
+
+                    <p className="text-gray-400 text-xs">
+                      <strong>Privacy:</strong> We do not sell or share your information — ever. Your details are used only to send your quote and help coordinate your session.
+                    </p>
+                  </form>
+                )}
+              </div>
+            </div>
+          </div>
+          <style jsx>{`
+            #calculator {
+              scroll-margin-top: 60px;
+            }
+            @media (min-width: 768px) {
+              #calculator {
+                scroll-margin-top: 100px;
+              }
+            }
+          `}</style>
         </div>
 
         {/* Image Lightbox */}
