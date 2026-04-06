@@ -28,7 +28,7 @@ export default async function handler(req: NextApiRequest, res: NextApiResponse)
     return res.status(429).json({ error: 'Too many requests. Please try again later.' })
   }
 
-  const { firstName, lastName, email, phone, company, notes } = req.body
+  const { firstName, lastName, email, phone, company, notes, quoteData } = req.body
 
   if (!firstName || !lastName || !email) {
     return res.status(400).json({ error: 'Name and email are required' })
@@ -55,6 +55,7 @@ export default async function handler(req: NextApiRequest, res: NextApiResponse)
         company: company || '',
         addTags: ['group-quote'],
         notes: notes || '',
+        quoteData: quoteData || {},
       }),
     })
 

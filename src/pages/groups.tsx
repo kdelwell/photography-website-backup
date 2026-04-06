@@ -106,7 +106,30 @@ const Groups = ({ frontmatter }: GroupsProps) => {
       const resp = await fetch('/api/group-quote', {
         method: 'POST',
         headers: { 'Content-Type': 'application/json' },
-        body: JSON.stringify({ ...quoteForm, notes: buildQuoteNotes() }),
+        body: JSON.stringify({
+          ...quoteForm,
+          notes: buildQuoteNotes(),
+          quoteData: {
+            teamSize,
+            onLocation,
+            ratePerPerson,
+            total,
+            sittingSubtotal,
+            travelFee,
+            extraImages,
+            extraImageCost,
+            additionalDays,
+            additionalDayCost,
+            groupComposite,
+            compositeCost,
+            candidHours,
+            candidCost,
+            hairMakeupCount,
+            hairMakeupCost,
+            touchupCount,
+            touchupCost,
+          },
+        }),
       })
       if (!resp.ok) {
         const data = await resp.json().catch(() => ({}))
@@ -693,14 +716,14 @@ const Groups = ({ frontmatter }: GroupsProps) => {
                   <form onSubmit={handleQuoteSubmit} className="space-y-4">
                     <div className="grid grid-cols-2 gap-4">
                       <div>
-                        <label className="block text-xs font-semibold text-gray-700 mb-1">Full Name *</label>
-                        <input type="text" required placeholder="First name"
+                        <label className="block text-xs font-semibold text-gray-700 mb-1">First Name *</label>
+                        <input type="text" required placeholder="First name" name="given-name" autoComplete="given-name"
                           value={quoteForm.firstName} onChange={e => setQuoteForm(f => ({ ...f, firstName: e.target.value }))}
                           className="w-full border border-gray-300 rounded-md px-3 py-2 text-gray-900 text-sm" />
                       </div>
                       <div>
-                        <label className="block text-xs font-semibold text-gray-700 mb-1">&nbsp;</label>
-                        <input type="text" required placeholder="Last name"
+                        <label className="block text-xs font-semibold text-gray-700 mb-1">Last Name *</label>
+                        <input type="text" required placeholder="Last name" name="family-name" autoComplete="family-name"
                           value={quoteForm.lastName} onChange={e => setQuoteForm(f => ({ ...f, lastName: e.target.value }))}
                           className="w-full border border-gray-300 rounded-md px-3 py-2 text-gray-900 text-sm" />
                       </div>
@@ -708,20 +731,20 @@ const Groups = ({ frontmatter }: GroupsProps) => {
                     <div className="grid grid-cols-2 gap-4">
                       <div>
                         <label className="block text-xs font-semibold text-gray-700 mb-1">Email *</label>
-                        <input type="email" required placeholder="you@company.com"
+                        <input type="email" required placeholder="you@company.com" name="email" autoComplete="email"
                           value={quoteForm.email} onChange={e => setQuoteForm(f => ({ ...f, email: e.target.value }))}
                           className="w-full border border-gray-300 rounded-md px-3 py-2 text-gray-900 text-sm" />
                       </div>
                       <div>
                         <label className="block text-xs font-semibold text-gray-700 mb-1">Phone</label>
-                        <input type="tel" placeholder="(555) 555-5555"
+                        <input type="tel" placeholder="(555) 555-5555" name="tel" autoComplete="tel"
                           value={quoteForm.phone} onChange={e => setQuoteForm(f => ({ ...f, phone: e.target.value }))}
                           className="w-full border border-gray-300 rounded-md px-3 py-2 text-gray-900 text-sm" />
                       </div>
                     </div>
                     <div>
                       <label className="block text-xs font-semibold text-gray-700 mb-1">Company</label>
-                      <input type="text" placeholder="Company name"
+                      <input type="text" placeholder="Company name" name="organization" autoComplete="organization"
                         value={quoteForm.company} onChange={e => setQuoteForm(f => ({ ...f, company: e.target.value }))}
                         className="w-full border border-gray-300 rounded-md px-3 py-2 text-gray-900 text-sm" />
                     </div>
