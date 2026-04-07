@@ -1,6 +1,6 @@
 import type { NextApiRequest, NextApiResponse } from 'next'
 
-const API_URL = process.env.STUDIGO_API_URL || 'https://api.getaheadshot.net'
+const API_URL = process.env.STUDIGO_API_URL || 'https://admin.getaheadshot.net'
 
 export default async function handler(req: NextApiRequest, res: NextApiResponse) {
   if (req.method !== 'GET') {

@@ -1,7 +1,7 @@
 import type { NextApiRequest, NextApiResponse } from 'next'
 import { validateToken } from './admin-auth'
 
-const API_URL = process.env.STUDIGO_API_URL || 'https://api.getaheadshot.net'
+const API_URL = process.env.STUDIGO_API_URL || 'https://admin.getaheadshot.net'
 
 export default async function handler(req: NextApiRequest, res: NextApiResponse) {
   if (req.method !== 'GET') return res.status(405).json({ error: 'Method not allowed' })
