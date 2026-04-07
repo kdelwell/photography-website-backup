@@ -538,13 +538,13 @@ const Groups = ({ frontmatter }: GroupsProps) => {
           <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
             <div className="flex items-center justify-center gap-3 sm:gap-8">
               <h2 className="text-xl sm:text-3xl md:text-4xl font-bold text-gray-900 tracking-wide">
-                Are you ready?
+                Questions?
               </h2>
               <a
-                href="#calculator"
+                href="/consult"
                 className="bg-red-600 hover:bg-red-700 text-white px-4 py-2 sm:px-8 sm:py-3 rounded-md font-semibold text-sm sm:text-lg transition-colors duration-200 whitespace-nowrap"
               >
-                Get an Estimate
+                Schedule a Call
               </a>
             </div>
           </div>
