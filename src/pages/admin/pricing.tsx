@@ -178,7 +178,10 @@ export default function AdminPricing() {
           {/* Header */}
           <div className="flex items-center justify-between mb-8">
             <div>
-              <Link href="/groups" className="text-red-400 hover:text-red-300 text-sm mb-1 inline-block">&larr; Back to Groups</Link>
+              <div className="flex gap-4 mb-1">
+                <Link href="/groups" className="text-red-400 hover:text-red-300 text-sm">&larr; Groups</Link>
+                <Link href="/admin/proposals" className="text-white/60 hover:text-white text-sm">Proposals</Link>
+              </div>
               <h1 className="text-3xl font-bold text-white">Group Pricing Admin</h1>
             </div>
             <button
@@ -254,7 +257,7 @@ export default function AdminPricing() {
                     <tr className="border-b border-gray-200 text-gray-500 uppercase text-xs tracking-wider">
                       <th className="pb-2 pr-4">Group Size</th>
                       <th className="pb-2 pr-4">Per Person</th>
-                      <th className="pb-2 pr-4">Sitting Total</th>
+                      <th className="pb-2 pr-4">Session Total</th>
                       <th className="pb-2 pr-4">With Travel</th>
                       <th className="pb-2 w-10"></th>
                     </tr>
@@ -287,7 +290,7 @@ export default function AdminPricing() {
                             </div>
                           </td>
                           <td className="py-2 pr-4 text-gray-600 tabular-nums">${sittingTotal.toLocaleString()}</td>
-                          <td className="py-2 pr-4 text-gray-600 tabular-nums">${withTravel.toLocaleString()}</td>
+                          <td className="py-2 pr-4 text-gray-600 tabular-nums">{tier.size >= 5 ? `$${withTravel.toLocaleString()}` : <span className="text-gray-300">—</span>}</td>
                           <td className="py-2">
                             <button
                               onClick={() => removeTier(idx)}

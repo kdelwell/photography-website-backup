@@ -36,7 +36,7 @@ const Groups = ({ frontmatter }: GroupsProps) => {
   }, [])
 
   // Calculator state
-  const [teamSize, setTeamSize] = useState(3)
+  const [teamSize, setTeamSize] = useState(5)
   const [onLocation, setOnLocation] = useState(true)
   const [extraImages, setExtraImages] = useState(0)
   const [additionalDays, setAdditionalDays] = useState(0)
@@ -86,8 +86,8 @@ const Groups = ({ frontmatter }: GroupsProps) => {
 
   function buildQuoteNotes() {
     const lines = [`Team Size: ${teamSize}`, `Location: ${onLocation ? 'On-Location' : 'In-Studio'}`]
-    lines.push(`Sitting: $${sittingSubtotal.toLocaleString()} ($${ratePerPerson} x ${teamSize})`)
-    if (travelFee) lines.push(`Destination Fee: $${travelFee.toLocaleString()}`)
+    lines.push(`Session: $${sittingSubtotal.toLocaleString()} ($${ratePerPerson} x ${teamSize})`)
+    if (travelFee) lines.push(`Travel Fee: $${travelFee.toLocaleString()}`)
     if (extraImages) lines.push(`Extra Images: $${extraImageCost.toLocaleString()} ($${addOns.extraImage} x ${extraImages})`)
     if (additionalDays) lines.push(`Additional Days: $${additionalDayCost.toLocaleString()} ($${addOns.additionalDay} x ${additionalDays})`)
     if (groupComposite) lines.push(`Group Composite: $${compositeCost.toLocaleString()}`)
@@ -569,15 +569,15 @@ const Groups = ({ frontmatter }: GroupsProps) => {
                 <div className="grid grid-cols-2 gap-4 mb-4">
                   <div>
                     <label className="block text-xs font-semibold text-gray-700 mb-1 uppercase tracking-wide">Team Members *</label>
-                    <input type="number" min={3} value={teamSize} onChange={e => { const v = Math.max(3, parseInt(e.target.value) || 3); setTeamSize(v); if (v > 10 && !onLocation) setOnLocation(true); }}
+                    <input type="number" min={2} value={teamSize} onChange={e => { const v = Math.max(2, parseInt(e.target.value) || 2); setTeamSize(v); if (v > 10 && !onLocation) setOnLocation(true); if (v < 5 && onLocation) setOnLocation(false); }}
                       className="w-full border border-gray-300 rounded-md px-3 py-2 text-gray-900" />
-                    <p className="text-gray-400 text-xs mt-1">Minimum 3 people</p>
+                    <p className="text-gray-400 text-xs mt-1">Minimum 2 people</p>
                   </div>
                   <div>
                     <label className="block text-xs font-semibold text-gray-700 mb-1 uppercase tracking-wide">Session Location</label>
                     <select value={onLocation ? 'on-location' : 'in-studio'} onChange={e => setOnLocation(e.target.value === 'on-location')}
                       className="w-full border border-gray-300 rounded-md px-3 py-2 text-gray-900">
-                      <option value="on-location">On-Location</option>
+                      <option value="on-location" disabled={teamSize < 5}>On-Location{teamSize < 5 ? ' (5+ only)' : ''}</option>
                       <option value="in-studio" disabled={teamSize > 10}>In-Studio{teamSize > 10 ? ' (10 max)' : ''}</option>
                     </select>
                   </div>
@@ -663,7 +663,7 @@ const Groups = ({ frontmatter }: GroupsProps) => {
                 <h4 className="text-xs font-bold uppercase tracking-wide text-gray-500 mb-3">Quick Breakdown</h4>
                 <div className="space-y-2 text-sm">
                   <div className="flex justify-between">
-                    <span className="text-gray-600">Sitting subtotal</span>
+                    <span className="text-gray-600">Session subtotal</span>
                     <span className="text-gray-900">${sittingSubtotal.toLocaleString()}.00</span>
                   </div>
                   {travelFee > 0 && <div className="flex justify-between">

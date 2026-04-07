@@ -218,8 +218,9 @@ export default function AdminProposals() {
         )}
 
         <div className="bg-[#1a1a1a] border-b border-white/10 px-6 py-4 flex items-center gap-4">
-          <Link href="/admin/pricing" className="text-white/60 hover:text-white text-sm">&larr; Pricing</Link>
+          <Link href="/groups" className="text-white/60 hover:text-white text-sm">&larr; Groups</Link>
           <h1 className="text-white text-lg font-light flex-1">Proposal Email Configuration</h1>
+          <Link href="/admin/pricing" className="text-white/60 hover:text-white text-sm">Pricing</Link>
           <button onClick={() => { sessionStorage.removeItem('admin_token'); setToken(null) }}
             className="text-white/40 hover:text-white text-sm">Logout</button>
         </div>
