@@ -448,15 +448,15 @@ export default function Home({ frontmatter, content }: { frontmatter: any; conte
       </ScrollReveal>
 
       {/* Google Maps */}
-      <section className="bg-white py-12">
+      <section className="bg-white pt-12 pb-0">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
           <h2 className="text-2xl md:text-3xl font-bold text-gray-900 text-center mb-2">
-            Visit Our Studio
+            Conveniently Located Studio
           </h2>
           <p className="text-gray-500 text-center text-sm mb-6">
             6720 Hartwood Lane, Centreville, VA 20121
           </p>
-          <div className="rounded-lg overflow-hidden shadow-md" style={{ height: '350px' }}>
+          <div className="overflow-hidden" style={{ height: '350px' }}>
             <iframe
               src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3109.8!2d-77.4478!3d38.8395!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x89b64e3a5b4c1b2d%3A0x1234567890abcdef!2s6720+Hartwood+Ln%2C+Centreville%2C+VA+20121!5e0!3m2!1sen!2sus!4v1"
               width="100%"
