@@ -58,7 +58,7 @@ export default function Footer() {
           {/* Right: Contact info */}
           <div className="text-center md:text-right text-sm">
             <div className="font-semibold">Get aHead Shot</div>
-            <div><a href="/headshots-centreville-va" className="text-white hover:text-red-500 transition-colors">Centreville, VA</a> · Washington DC Metro Area</div>
+            <div><a href="https://maps.google.com/?q=6720+Hartwood+Ln,+Centreville,+VA+20121" target="_blank" rel="noopener noreferrer" className="text-white hover:text-red-500 transition-colors">Centreville, VA</a> · Washington DC Metro Area</div>
             <div>
               <a href="mailto:kevin@getaheadshot.net" className="text-white hover:text-red-500 transition-colors">kevin@getaheadshot.net</a>
             </div>
