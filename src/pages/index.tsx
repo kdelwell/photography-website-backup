@@ -112,7 +112,7 @@ export default function Home({ frontmatter, content }: { frontmatter: any; conte
       {/* Option 3: Split Layout */}
       
       {/* Video Hero Section with Parallax */}
-      <section className="relative h-screen overflow-hidden">
+      <section className="relative h-[50vh] overflow-hidden">
         {/* Video Background with Parallax */}
         <div
           className="absolute w-full"
