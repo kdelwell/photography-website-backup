@@ -71,6 +71,25 @@ const Groups = ({ frontmatter }: GroupsProps) => {
   const addOns = pricing?.addOns || { extraImage: 150, additionalDay: 750, groupComposite: 400, candidHour: 400, hairMakeup: 200, makeupTouchup: 100 }
   const destFee = pricing?.destinationFee || 750
 
+  // Per-person duration based on team size (from spreadsheet)
+  function getMinutesPerPerson(size: number): number {
+    if (size <= 5) return 15
+    if (size <= 13) return 10
+    if (size <= 18) return 10
+    if (size <= 39) return 9
+    if (size <= 59) return 8
+    if (size <= 74) return 7
+    return 6
+  }
+
+  const minutesPerPerson = getMinutesPerPerson(teamSize)
+  const totalMinutes = teamSize * minutesPerPerson
+  const shootHours = Math.floor(totalMinutes / 60)
+  const shootMins = totalMinutes % 60
+  const shootTimeDisplay = shootHours > 0
+    ? `${shootHours}h ${shootMins > 0 ? `${shootMins}m` : ''}`
+    : `${shootMins}m`
+
   // Price calculations
   const inStudioRate = pricing?.inStudioRate || 350
   const ratePerPerson = onLocation ? getPerPersonRate(teamSize) : inStudioRate
@@ -85,7 +104,7 @@ const Groups = ({ frontmatter }: GroupsProps) => {
   const total = sittingSubtotal + travelFee + extraImageCost + additionalDayCost + compositeCost + candidCost + hairMakeupCost + touchupCost
 
   function buildQuoteNotes() {
-    const lines = [`Team Size: ${teamSize}`, `Location: ${onLocation ? 'On-Location' : 'In-Studio'}`]
+    const lines = [`Team Size: ${teamSize}`, `Location: ${onLocation ? 'On-Location' : 'In-Studio'}`, `Estimated Shoot Time: ${shootTimeDisplay} (${minutesPerPerson} min/person)`]
     lines.push(`Session: $${sittingSubtotal.toLocaleString()} ($${ratePerPerson} x ${teamSize})`)
     if (travelFee) lines.push(`Travel Fee: $${travelFee.toLocaleString()}`)
     if (extraImages) lines.push(`Extra Images: $${extraImageCost.toLocaleString()} ($${addOns.extraImage} x ${extraImages})`)
@@ -128,6 +147,9 @@ const Groups = ({ frontmatter }: GroupsProps) => {
             hairMakeupCost,
             touchupCount,
             touchupCost,
+            shootTimeDisplay,
+            minutesPerPerson,
+            totalMinutes,
           },
         }),
       })
@@ -658,6 +680,12 @@ const Groups = ({ frontmatter }: GroupsProps) => {
                   <span className="bg-gray-200 text-gray-700 rounded-full px-3 py-1">{1 + extraImages} image{1 + extraImages !== 1 ? 's' : ''} each</span>
                   <span className="bg-gray-200 text-gray-700 rounded-full px-3 py-1">{onLocation ? 'On-Location' : 'In-Studio'}</span>
                   {additionalDays > 0 && <span className="bg-gray-200 text-gray-700 rounded-full px-3 py-1">{1 + additionalDays} day{additionalDays > 0 ? 's' : ''}</span>}
+                </div>
+
+                <div className="bg-gray-50 rounded-lg p-4 mb-6">
+                  <p className="text-gray-500 text-xs uppercase tracking-wide mb-1">Estimated Shoot Time</p>
+                  <p className="text-xl font-bold text-gray-900">{shootTimeDisplay}</p>
+                  <p className="text-gray-400 text-xs mt-1">{minutesPerPerson} min per person &times; {teamSize} people</p>
                 </div>
 
                 <h4 className="text-xs font-bold uppercase tracking-wide text-gray-500 mb-3">Quick Breakdown</h4>
