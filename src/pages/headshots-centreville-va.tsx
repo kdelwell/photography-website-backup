@@ -102,11 +102,9 @@ export default function HeadshotsCentrevilleVA() {
                 Centreville's Local Corporate & Business Headshot Photographer
               </h2>
               <p className="text-lg text-gray-700 mb-4">
-                I'm not just a photographer who serves Centreville — I'm <strong>based here</strong>. That
-                means no travel fees, fast turnaround, and a photographer who actually knows the community.
+                As a <strong>business headshot photographer based in Centreville, VA</strong>, I bring over a decade of experience photographing professionals right here in Western Fairfax County. I'm not just a photographer who serves the area — I'm <strong>based here</strong>, which means no travel fees, fast turnaround, and a photographer who actually knows the community.
                 From the professionals working along the <strong>Route 29 corridor</strong> to the growing
-                business parks near <strong>Westfields</strong> and <strong>Chantilly</strong>, I've been
-                photographing business and corporate headshots for people right here in Western Fairfax County for over a decade.
+                business parks near <strong>Westfields</strong> and <strong>Chantilly</strong>, I've been the go-to headshot photographer for Centreville businesses and professionals.
               </p>
               <p className="text-lg text-gray-700 mb-4">
                 I bring a full professional studio setup — lighting, backgrounds, everything — directly to
@@ -246,6 +244,10 @@ export default function HeadshotsCentrevilleVA() {
             <a href="/headshots-reston-va" className="text-red-500 hover:text-red-600 font-semibold">Reston</a>,{' '}
             <a href="/headshots-arlington-va" className="text-red-500 hover:text-red-600 font-semibold">Arlington</a>, and{' '}
             <a href="/headshots-washington-dc" className="text-red-500 hover:text-red-600 font-semibold">Washington DC</a>.
+          </p>
+          <p className="text-center text-gray-500 mt-4 text-sm">
+            Get aHead Shot · 6720 Hartwood Lane, Centreville, VA 20121 ·{' '}
+            <a href="tel:703-802-9379" className="text-red-500 hover:text-red-400">703-802-9379</a>
           </p>
         </div>
       </section>
