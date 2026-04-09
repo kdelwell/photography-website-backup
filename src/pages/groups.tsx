@@ -515,16 +515,20 @@ const Groups = ({ frontmatter }: GroupsProps) => {
             {/* Two Column Layout - Text Left, Image Right */}
             <div className="grid grid-cols-1 lg:grid-cols-2 gap-4 lg:gap-8 items-center">
               {/* Left Column - Text Content */}
-              <div className="text-white min-h-[200px] lg:min-h-[250px]">
-                <h3 className="text-2xl md:text-3xl font-bold mb-3 lg:mb-6 text-white">
-                  {compositeSteps[currentStep].title}
-                </h3>
-                <p className="text-lg leading-relaxed mb-4 lg:mb-8 text-gray-200">
-                  {compositeSteps[currentStep].description}
-                </p>
+              <div className="text-white min-h-[250px] lg:min-h-[250px] relative">
+                {compositeSteps.map((step, index) => (
+                  <div key={index} className={`transition-opacity duration-500 ${index === currentStep ? 'opacity-100' : 'opacity-0 absolute inset-0'}`}>
+                    <h3 className="text-2xl md:text-3xl font-bold mb-3 lg:mb-6 text-white">
+                      {step.title}
+                    </h3>
+                    <p className="text-lg leading-relaxed mb-4 lg:mb-8 text-gray-200">
+                      {step.description}
+                    </p>
+                  </div>
+                ))}
 
                 {/* Step Indicators */}
-                <div className="flex gap-3">
+                <div className="absolute bottom-0 left-0 flex gap-3">
                   {compositeSteps.map((_, index) => (
                     <button
                       key={index}
