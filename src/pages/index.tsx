@@ -112,7 +112,7 @@ export default function Home({ frontmatter, content }: { frontmatter: any; conte
       {/* Option 3: Split Layout */}
       
       {/* Video Hero Section with Parallax */}
-      <section className="relative h-[50vh] overflow-hidden">
+      <section className="relative h-[70vh] md:h-[50vh] overflow-hidden">
         {/* Video Background with Parallax */}
         <div
           className="absolute w-full"
@@ -158,11 +158,11 @@ export default function Home({ frontmatter, content }: { frontmatter: any; conte
         {/* Overlay Content */}
         <div className="relative h-full flex items-center justify-center">
           <div className="text-center text-white px-8 max-w-5xl">
-            <h1 className="text-4xl md:text-5xl lg:text-6xl font-bold mb-8 leading-tight">
+            <h1 className="text-3xl md:text-5xl lg:text-6xl font-bold mb-4 md:mb-8 leading-tight">
               Magazine-Quality Headshot Photography with Expert Coaching
             </h1>
 
-            <p className="text-2xl md:text-3xl mb-12 font-light leading-relaxed">
+            <p className="text-xl md:text-3xl mb-6 md:mb-12 font-light leading-relaxed">
               Headshots for professionals who can&apos;t afford to look average.
             </p>
             
