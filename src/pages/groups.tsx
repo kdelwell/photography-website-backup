@@ -238,7 +238,7 @@ const Groups = ({ frontmatter }: GroupsProps) => {
 
   return (
     <Layout title={frontmatter.title} description={frontmatter.description}>
-      <div className="min-h-screen">
+      <div className="min-h-screen overflow-x-hidden">
         {/* Hero Section */}
         <section className="bg-gray-100 py-6">
           <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
@@ -573,8 +573,8 @@ const Groups = ({ frontmatter }: GroupsProps) => {
         </div>
 
         {/* Team Pricing Calculator */}
-        <div id="calculator" className="bg-[#242424]" style={{ paddingTop: '48px', paddingBottom: '48px' }}>
-          <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+        <div id="calculator" className="bg-[#242424] overflow-hidden" style={{ paddingTop: '48px', paddingBottom: '48px' }}>
+          <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 overflow-hidden">
             <h2 className="text-3xl md:text-4xl font-bold text-white text-center mb-2 tracking-wide">
               Team Pricing Calculator
             </h2>
@@ -591,8 +591,14 @@ const Groups = ({ frontmatter }: GroupsProps) => {
                 <div className="grid grid-cols-2 gap-4 mb-4">
                   <div>
                     <label className="block text-xs font-semibold text-gray-700 mb-1 uppercase tracking-wide">Team Members *</label>
-                    <input type="number" min={2} value={teamSize} onChange={e => { const v = Math.max(2, parseInt(e.target.value) || 2); setTeamSize(v); if (v > 10 && !onLocation) setOnLocation(true); if (v < 5 && onLocation) setOnLocation(false); }}
-                      className="w-full border border-gray-300 rounded-md px-3 py-2 text-gray-900" />
+                    <div className="flex items-center gap-0">
+                      <button type="button" onClick={() => { const v = Math.max(2, teamSize - 1); setTeamSize(v); if (v < 5 && onLocation) setOnLocation(false); }}
+                        className="border border-gray-300 rounded-l-md px-3 py-2 text-gray-700 bg-gray-50 hover:bg-gray-100 text-lg font-bold leading-none select-none">&minus;</button>
+                      <input type="number" min={2} value={teamSize} onChange={e => { const v = Math.max(2, parseInt(e.target.value) || 2); setTeamSize(v); if (v > 10 && !onLocation) setOnLocation(true); if (v < 5 && onLocation) setOnLocation(false); }}
+                        className="w-full border-y border-gray-300 px-3 py-2 text-gray-900 text-center [appearance:textfield] [&::-webkit-outer-spin-button]:appearance-none [&::-webkit-inner-spin-button]:appearance-none" />
+                      <button type="button" onClick={() => { const v = teamSize + 1; setTeamSize(v); if (v > 10 && !onLocation) setOnLocation(true); }}
+                        className="border border-gray-300 rounded-r-md px-3 py-2 text-gray-700 bg-gray-50 hover:bg-gray-100 text-lg font-bold leading-none select-none">+</button>
+                    </div>
                     <p className="text-gray-400 text-xs mt-1">Minimum 2 people</p>
                   </div>
                   <div>
@@ -694,34 +700,34 @@ const Groups = ({ frontmatter }: GroupsProps) => {
                     <span className="text-gray-600">Session subtotal</span>
                     <span className="text-gray-900">${sittingSubtotal.toLocaleString()}.00</span>
                   </div>
-                  {travelFee > 0 && <div className="flex justify-between">
-                    <span className="text-gray-600">Travel fee</span>
-                    <span className="text-gray-900">${travelFee.toLocaleString()}.00</span>
-                  </div>}
-                  {extraImageCost > 0 && <div className="flex justify-between">
-                    <span className="text-gray-600">Extra images</span>
-                    <span className="text-gray-900">${extraImageCost.toLocaleString()}.00</span>
-                  </div>}
-                  {additionalDayCost > 0 && <div className="flex justify-between">
-                    <span className="text-gray-600">Additional days</span>
-                    <span className="text-gray-900">${additionalDayCost.toLocaleString()}.00</span>
-                  </div>}
-                  {compositeCost > 0 && <div className="flex justify-between">
-                    <span className="text-gray-600">Group composite</span>
-                    <span className="text-gray-900">${compositeCost.toLocaleString()}.00</span>
-                  </div>}
-                  {candidCost > 0 && <div className="flex justify-between">
-                    <span className="text-gray-600">Candids</span>
-                    <span className="text-gray-900">${candidCost.toLocaleString()}.00</span>
-                  </div>}
-                  {hairMakeupCost > 0 && <div className="flex justify-between">
-                    <span className="text-gray-600">Hair &amp; makeup</span>
-                    <span className="text-gray-900">${hairMakeupCost.toLocaleString()}.00</span>
-                  </div>}
-                  {touchupCost > 0 && <div className="flex justify-between">
-                    <span className="text-gray-600">Makeup touch-ups</span>
-                    <span className="text-gray-900">${touchupCost.toLocaleString()}.00</span>
-                  </div>}
+                  <div className={`flex justify-between ${travelFee === 0 ? 'text-gray-300' : ''}`}>
+                    <span className={travelFee > 0 ? 'text-gray-600' : ''}>Travel fee</span>
+                    <span className={travelFee > 0 ? 'text-gray-900' : ''}>${travelFee.toLocaleString()}.00</span>
+                  </div>
+                  <div className={`flex justify-between ${extraImageCost === 0 ? 'text-gray-300' : ''}`}>
+                    <span className={extraImageCost > 0 ? 'text-gray-600' : ''}>Extra images</span>
+                    <span className={extraImageCost > 0 ? 'text-gray-900' : ''}>${extraImageCost.toLocaleString()}.00</span>
+                  </div>
+                  <div className={`flex justify-between ${additionalDayCost === 0 ? 'text-gray-300' : ''}`}>
+                    <span className={additionalDayCost > 0 ? 'text-gray-600' : ''}>Additional days</span>
+                    <span className={additionalDayCost > 0 ? 'text-gray-900' : ''}>${additionalDayCost.toLocaleString()}.00</span>
+                  </div>
+                  <div className={`flex justify-between ${compositeCost === 0 ? 'text-gray-300' : ''}`}>
+                    <span className={compositeCost > 0 ? 'text-gray-600' : ''}>Group composite</span>
+                    <span className={compositeCost > 0 ? 'text-gray-900' : ''}>${compositeCost.toLocaleString()}.00</span>
+                  </div>
+                  <div className={`flex justify-between ${candidCost === 0 ? 'text-gray-300' : ''}`}>
+                    <span className={candidCost > 0 ? 'text-gray-600' : ''}>Candids</span>
+                    <span className={candidCost > 0 ? 'text-gray-900' : ''}>${candidCost.toLocaleString()}.00</span>
+                  </div>
+                  <div className={`flex justify-between ${hairMakeupCost === 0 ? 'text-gray-300' : ''}`}>
+                    <span className={hairMakeupCost > 0 ? 'text-gray-600' : ''}>Hair &amp; makeup</span>
+                    <span className={hairMakeupCost > 0 ? 'text-gray-900' : ''}>${hairMakeupCost.toLocaleString()}.00</span>
+                  </div>
+                  <div className={`flex justify-between ${touchupCost === 0 ? 'text-gray-300' : ''}`}>
+                    <span className={touchupCost > 0 ? 'text-gray-600' : ''}>Makeup touch-ups</span>
+                    <span className={touchupCost > 0 ? 'text-gray-900' : ''}>${touchupCost.toLocaleString()}.00</span>
+                  </div>
                   <div className="flex justify-between border-t border-gray-200 pt-2 font-bold text-gray-900">
                     <span>Estimated total</span>
                     <span>${total.toLocaleString()}.00</span>
