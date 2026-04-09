@@ -669,7 +669,7 @@ const Groups = ({ frontmatter }: GroupsProps) => {
                 <h3 className="text-lg font-bold text-gray-900 mb-1">2. Your Estimate</h3>
                 <p className="text-gray-500 text-xs mb-5">Clear numbers for budgeting and planning.</p>
 
-                <div className="bg-gray-100 rounded-lg p-4 mb-6">
+                <div className="bg-gray-100 rounded-lg p-4 mb-6" style={{ minHeight: '100px' }}>
                   <p className="text-gray-500 text-xs uppercase tracking-wide mb-1">Estimated Total</p>
                   <p className="text-3xl font-bold text-gray-900">${total.toLocaleString()}.00</p>
                   <p className="text-gray-400 text-xs mt-1">This is an estimate for budgeting and planning.</p>
@@ -681,11 +681,11 @@ const Groups = ({ frontmatter }: GroupsProps) => {
                   <p className="text-gray-400 text-xs mt-1">Rate based on team size. Excludes travel, composite, and candids.</p>
                 </div>
 
-                <div className="flex flex-wrap gap-2 mb-6 text-xs">
+                <div className="flex flex-wrap gap-2 mb-6 text-xs min-h-[28px]">
                   <span className="bg-gray-200 text-gray-700 rounded-full px-3 py-1">{teamSize} team members</span>
                   <span className="bg-gray-200 text-gray-700 rounded-full px-3 py-1">{1 + extraImages} image{1 + extraImages !== 1 ? 's' : ''} each</span>
                   <span className="bg-gray-200 text-gray-700 rounded-full px-3 py-1">{onLocation ? 'On-Location' : 'In-Studio'}</span>
-                  {additionalDays > 0 && <span className="bg-gray-200 text-gray-700 rounded-full px-3 py-1">{1 + additionalDays} day{additionalDays > 0 ? 's' : ''}</span>}
+                  <span className={`rounded-full px-3 py-1 ${additionalDays > 0 ? 'bg-gray-200 text-gray-700' : 'bg-gray-100 text-gray-300'}`}>{Math.max(1, 1 + additionalDays)} day{additionalDays > 0 ? 's' : ''}</span>
                 </div>
 
                 <div className="bg-gray-50 rounded-lg p-4 mb-6">
