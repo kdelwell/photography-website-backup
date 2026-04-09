@@ -5,10 +5,10 @@ export default function Footer() {
   return (
     <footer className="bg-[#242424] text-white">
       <div className="max-w-7xl mx-auto py-6 px-4 sm:px-6 lg:px-8">
-        <div className="flex flex-col md:flex-row justify-between items-start gap-6">
+        <div className="flex flex-col md:flex-row justify-between items-center md:items-start gap-6">
           {/* Left: Logo + tagline + social icons inline */}
           <div className="flex flex-col items-center md:items-start gap-3">
-            <div className="flex items-center space-x-2">
+            <div className="flex items-center justify-center space-x-2">
               <div className="relative w-16 h-16 md:w-20 md:h-20">
                 <Image
                   src="/images/Logo.jpg"
@@ -46,7 +46,7 @@ export default function Footer() {
           </div>
 
           {/* Center: Navigation links in columns, pushed down */}
-          <div className="grid grid-cols-2 gap-x-12 gap-y-1 text-sm text-white mt-2 md:mt-4">
+          <div className="grid grid-cols-2 gap-x-12 gap-y-1 text-sm text-white mt-2 md:mt-4 text-center md:text-left">
             <Link href="/faqs" className="hover:text-red-500 transition-colors">FAQs</Link>
             <Link href="/terms" className="hover:text-red-500 transition-colors">Terms</Link>
             <Link href="/articles" className="hover:text-red-500 transition-colors">Articles</Link>
