@@ -2,65 +2,81 @@ import LayoutNoPricing from '@/components/LayoutNoPricing'
 import Image from 'next/image'
 import Link from 'next/link'
 import { Sparkles, Clock, Users, CheckCircle } from 'lucide-react'
-import { useState, useRef, useCallback } from 'react'
+import { useRef, useEffect } from 'react'
 
 function ComparisonSlider({ before, after, alt }: { before: string; after: string; alt: string }) {
   const containerRef = useRef<HTMLDivElement>(null)
-  const beforeRef = useRef<HTMLImageElement>(null)
-  const lineRef = useRef<HTMLDivElement>(null)
-  const handleRef = useRef<HTMLDivElement>(null)
-  const dragging = useRef(false)
 
-  const setPos = useCallback((pct: number) => {
-    const p = (pct * 100).toFixed(2) + '%'
-    if (beforeRef.current) beforeRef.current.style.clipPath = `inset(0 0 0 ${p})`
-    if (lineRef.current) lineRef.current.style.left = p
-    if (handleRef.current) handleRef.current.style.left = p
+  useEffect(() => {
+    const el = containerRef.current
+    if (!el) return
+    const beforeImg = el.querySelector('.cs-before') as HTMLImageElement
+    const line = el.querySelector('.cs-line') as HTMLDivElement
+    const handle = el.querySelector('.cs-handle') as HTMLDivElement
+    if (!beforeImg || !line || !handle) return
+
+    let active = false
+
+    function setPos(pct: number) {
+      const p = (pct * 100).toFixed(2) + '%'
+      beforeImg.style.clipPath = 'inset(0 0 0 ' + p + ')'
+      line.style.left = p
+      handle.style.left = p
+    }
+
+    function getPct(e: MouseEvent | TouchEvent) {
+      const rect = el!.getBoundingClientRect()
+      const x = 'touches' in e ? e.touches[0].clientX : e.clientX
+      return Math.max(0.02, Math.min(0.98, (x - rect.left) / rect.width))
+    }
+
+    function onDown(e: MouseEvent | TouchEvent) {
+      e.preventDefault()
+      active = true
+      setPos(getPct(e))
+    }
+
+    function onMove(e: MouseEvent | TouchEvent) {
+      if (!active) return
+      e.preventDefault()
+      setPos(getPct(e))
+    }
+
+    function onUp() { active = false }
+
+    el.addEventListener('mousedown', onDown, { passive: false })
+    el.addEventListener('touchstart', onDown, { passive: false })
+    document.addEventListener('mousemove', onMove, { passive: false })
+    document.addEventListener('touchmove', onMove, { passive: false })
+    document.addEventListener('mouseup', onUp)
+    document.addEventListener('touchend', onUp)
+
+    setPos(0.5)
+
+    return () => {
+      el.removeEventListener('mousedown', onDown)
+      el.removeEventListener('touchstart', onDown)
+      document.removeEventListener('mousemove', onMove)
+      document.removeEventListener('touchmove', onMove)
+      document.removeEventListener('mouseup', onUp)
+      document.removeEventListener('touchend', onUp)
+    }
   }, [])
-
-  const getPct = useCallback((clientX: number) => {
-    if (!containerRef.current) return 0.5
-    const rect = containerRef.current.getBoundingClientRect()
-    return Math.max(0.02, Math.min(0.98, (clientX - rect.left) / rect.width))
-  }, [])
-
-  const onStart = useCallback((e: React.MouseEvent | React.TouchEvent) => {
-    e.preventDefault()
-    dragging.current = true
-    const clientX = 'touches' in e ? e.touches[0].clientX : e.clientX
-    setPos(getPct(clientX))
-  }, [setPos, getPct])
-
-  const onMove = useCallback((e: React.MouseEvent | React.TouchEvent) => {
-    if (!dragging.current) return
-    e.preventDefault()
-    const clientX = 'touches' in e ? e.touches[0].clientX : e.clientX
-    setPos(getPct(clientX))
-  }, [setPos, getPct])
-
-  const onEnd = useCallback(() => { dragging.current = false }, [])
 
   return (
     <div
       ref={containerRef}
-      className="relative aspect-square rounded-[14px] overflow-hidden cursor-col-resize select-none shadow-lg"
+      className="relative aspect-square rounded-[14px] overflow-hidden select-none shadow-lg"
       style={{ touchAction: 'none' }}
-      onMouseDown={onStart} onMouseMove={onMove} onMouseUp={onEnd} onMouseLeave={onEnd}
-      onTouchStart={onStart} onTouchMove={onMove} onTouchEnd={onEnd}
     >
-      {/* After image (bottom layer) */}
-      <img src={after} alt={`${alt} after retouching`} className="absolute inset-0 w-full h-full object-cover" />
-      {/* Before image (top layer, clipped from left) */}
-      <img ref={beforeRef} src={before} alt={`${alt} before retouching`} className="absolute inset-0 w-full h-full object-cover" style={{ clipPath: 'inset(0 0 0 50%)' }} />
-      {/* Slider line */}
-      <div ref={lineRef} className="absolute top-0 bottom-0 w-0.5 bg-white/85 pointer-events-none z-10" style={{ left: '50%', transform: 'translateX(-50%)' }} />
-      {/* Drag handle */}
-      <div ref={handleRef} className="absolute z-[11] w-12 h-12 rounded-full bg-white/95 shadow-lg flex items-center justify-center cursor-grab active:cursor-grabbing" style={{ top: '75%', left: '50%', transform: 'translate(-50%, -50%)', touchAction: 'none' }}>
+      <img src={after} alt={`${alt} after retouching`} className="absolute top-0 left-0 w-full h-full object-cover pointer-events-none" draggable={false} />
+      <img src={before} alt={`${alt} before retouching`} className="cs-before absolute top-0 left-0 w-full h-full object-cover pointer-events-none" draggable={false} style={{ clipPath: 'inset(0 0 0 50%)' }} />
+      <div className="cs-line absolute top-0 bottom-0 w-0.5 pointer-events-none z-10" style={{ left: '50%', transform: 'translateX(-50%)', background: 'rgba(255,255,255,0.85)' }} />
+      <div className="cs-handle absolute z-[11] w-12 h-12 rounded-full flex items-center justify-center cursor-grab active:cursor-grabbing" style={{ top: '75%', left: '50%', transform: 'translate(-50%, -50%)', touchAction: 'none', background: 'rgba(255,255,255,0.95)', boxShadow: '0 2px 10px rgba(0,0,0,0.3)' }}>
         <svg width="24" height="24" viewBox="0 0 24 24" fill="#242424"><path d="M15.5 5l-6 6 6 6"/><path d="M8.5 5l6 6-6 6"/></svg>
       </div>
-      {/* Labels */}
-      <span className="absolute bottom-3 left-3 z-[12] bg-black/55 backdrop-blur-sm text-white text-[11px] font-semibold uppercase tracking-wider px-3 py-1 rounded-full pointer-events-none">After</span>
-      <span className="absolute bottom-3 right-3 z-[12] bg-white/80 backdrop-blur-sm text-gray-900 text-[11px] font-semibold uppercase tracking-wider px-3 py-1 rounded-full pointer-events-none">Before</span>
+      <span className="absolute bottom-3 left-3 z-[12] text-white text-[11px] font-semibold uppercase tracking-wider px-3 py-1 rounded-full pointer-events-none" style={{ background: 'rgba(0,0,0,0.55)', backdropFilter: 'blur(8px)', WebkitBackdropFilter: 'blur(8px)' }}>After</span>
+      <span className="absolute bottom-3 right-3 z-[12] text-gray-900 text-[11px] font-semibold uppercase tracking-wider px-3 py-1 rounded-full pointer-events-none" style={{ background: 'rgba(255,255,255,0.8)', backdropFilter: 'blur(8px)', WebkitBackdropFilter: 'blur(8px)' }}>Before</span>
     </div>
   )
 }
