@@ -229,14 +229,14 @@ export default function StudioGo() {
           <p className="text-gray-500 text-center text-lg mb-10">Available as an optional upgrade. Drag the slider to compare.</p>
           <div className="grid grid-cols-1 md:grid-cols-2 gap-8 max-w-3xl mx-auto mb-10">
             <ComparisonSlider
-              before="/images/StudioGo_images/Carolyn-unretouched.jpg"
-              after="/images/StudioGo_images/Carolyn-retouched.jpg"
-              alt="Carolyn"
+              before="/images/StudioGo_images/retouch-before.jpg"
+              after="/images/StudioGo_images/retouch-after.jpg"
+              alt="Retouching example 1"
             />
             <ComparisonSlider
-              before="/images/StudioGo_images/Kurt_unretouched.jpg"
-              after="/images/StudioGo_images/Kurt_retouched.jpg"
-              alt="Kurt"
+              before="/images/StudioGo_images/retouch-before-2.jpg"
+              after="/images/StudioGo_images/retouch-after-2.jpg"
+              alt="Retouching example 2"
             />
           </div>
 
