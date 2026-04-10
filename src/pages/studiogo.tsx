@@ -2,6 +2,56 @@ import LayoutNoPricing from '@/components/LayoutNoPricing'
 import Image from 'next/image'
 import Link from 'next/link'
 import { Sparkles, Clock, Users, CheckCircle } from 'lucide-react'
+import { useState, useRef, useCallback } from 'react'
+
+function ComparisonSlider({ before, after, alt }: { before: string; after: string; alt: string }) {
+  const [position, setPosition] = useState(50)
+  const containerRef = useRef<HTMLDivElement>(null)
+  const dragging = useRef(false)
+
+  const updatePosition = useCallback((clientX: number) => {
+    if (!containerRef.current) return
+    const rect = containerRef.current.getBoundingClientRect()
+    const x = Math.max(0, Math.min(clientX - rect.left, rect.width))
+    setPosition((x / rect.width) * 100)
+  }, [])
+
+  const handleMove = useCallback((e: React.MouseEvent | React.TouchEvent) => {
+    if (!dragging.current) return
+    const clientX = 'touches' in e ? e.touches[0].clientX : e.clientX
+    updatePosition(clientX)
+  }, [updatePosition])
+
+  const handleStart = useCallback((e: React.MouseEvent | React.TouchEvent) => {
+    dragging.current = true
+    const clientX = 'touches' in e ? e.touches[0].clientX : e.clientX
+    updatePosition(clientX)
+  }, [updatePosition])
+
+  const handleEnd = useCallback(() => { dragging.current = false }, [])
+
+  return (
+    <div
+      ref={containerRef}
+      className="relative aspect-square rounded-lg overflow-hidden cursor-col-resize select-none"
+      onMouseDown={handleStart} onMouseMove={handleMove} onMouseUp={handleEnd} onMouseLeave={handleEnd}
+      onTouchStart={handleStart} onTouchMove={handleMove} onTouchEnd={handleEnd}
+    >
+      <Image src={after} alt={`${alt} after retouching`} fill className="object-cover" />
+      <div className="absolute inset-0 overflow-hidden" style={{ width: `${position}%` }}>
+        <Image src={before} alt={`${alt} before retouching`} fill className="object-cover" style={{ maxWidth: 'none', width: containerRef.current ? `${containerRef.current.offsetWidth}px` : '100%' }} />
+      </div>
+      <div className="absolute top-0 bottom-0" style={{ left: `${position}%`, transform: 'translateX(-50%)' }}>
+        <div className="w-0.5 h-full bg-white shadow-lg" />
+        <div className="absolute top-1/2 -translate-y-1/2 -translate-x-1/2 w-10 h-10 bg-white rounded-full shadow-lg flex items-center justify-center">
+          <svg width="20" height="20" viewBox="0 0 20 20" fill="none"><path d="M6 10L2 10M2 10L4.5 7.5M2 10L4.5 12.5M14 10L18 10M18 10L15.5 7.5M18 10L15.5 12.5" stroke="#374151" strokeWidth="1.5" strokeLinecap="round" strokeLinejoin="round"/></svg>
+        </div>
+      </div>
+      <span className="absolute top-3 left-3 bg-black/60 text-white text-xs px-2 py-1 rounded">Before</span>
+      <span className="absolute top-3 right-3 bg-black/60 text-white text-xs px-2 py-1 rounded">After</span>
+    </div>
+  )
+}
 
 const RETOUCHING_ITEMS = [
   'Blemish removal',
@@ -148,30 +198,18 @@ export default function StudioGo() {
           <h2 className="text-2xl md:text-3xl font-bold text-gray-900 text-center mb-2">
             Professional Retouching
           </h2>
-          <p className="text-gray-500 text-center text-lg mb-10">Available as an optional upgrade</p>
+          <p className="text-gray-500 text-center text-lg mb-10">Available as an optional upgrade. Drag the slider to compare.</p>
           <div className="grid grid-cols-1 md:grid-cols-2 gap-8 max-w-3xl mx-auto mb-10">
-            <div className="text-center">
-              <div className="relative aspect-[4/5] rounded-lg overflow-hidden mb-3">
-                <Image
-                  src="/images/StudioGo_images/Carolyn-unretouched.jpg"
-                  alt="Before retouching"
-                  fill
-                  className="object-cover"
-                />
-              </div>
-              <span className="text-sm text-gray-500 font-medium">Before</span>
-            </div>
-            <div className="text-center">
-              <div className="relative aspect-[4/5] rounded-lg overflow-hidden mb-3">
-                <Image
-                  src="/images/StudioGo_images/Carolyn-retouched.jpg"
-                  alt="After professional retouching"
-                  fill
-                  className="object-cover"
-                />
-              </div>
-              <span className="text-sm text-gray-500 font-medium">After</span>
-            </div>
+            <ComparisonSlider
+              before="/images/StudioGo_images/Carolyn-unretouched.jpg"
+              after="/images/StudioGo_images/Carolyn-retouched.jpg"
+              alt="Carolyn"
+            />
+            <ComparisonSlider
+              before="/images/StudioGo_images/Kurt_unretouched.jpg"
+              after="/images/StudioGo_images/Kurt_retouched.jpg"
+              alt="Kurt"
+            />
           </div>
 
           <div className="grid grid-cols-1 md:grid-cols-2 gap-8 max-w-3xl mx-auto">
