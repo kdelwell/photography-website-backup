@@ -5,50 +5,62 @@ import { Sparkles, Clock, Users, CheckCircle } from 'lucide-react'
 import { useState, useRef, useCallback } from 'react'
 
 function ComparisonSlider({ before, after, alt }: { before: string; after: string; alt: string }) {
-  const [position, setPosition] = useState(50)
   const containerRef = useRef<HTMLDivElement>(null)
+  const beforeRef = useRef<HTMLImageElement>(null)
+  const lineRef = useRef<HTMLDivElement>(null)
+  const handleRef = useRef<HTMLDivElement>(null)
   const dragging = useRef(false)
 
-  const updatePosition = useCallback((clientX: number) => {
-    if (!containerRef.current) return
-    const rect = containerRef.current.getBoundingClientRect()
-    const x = Math.max(0, Math.min(clientX - rect.left, rect.width))
-    setPosition((x / rect.width) * 100)
+  const setPos = useCallback((pct: number) => {
+    const p = (pct * 100).toFixed(2) + '%'
+    if (beforeRef.current) beforeRef.current.style.clipPath = `inset(0 0 0 ${p})`
+    if (lineRef.current) lineRef.current.style.left = p
+    if (handleRef.current) handleRef.current.style.left = p
   }, [])
 
-  const handleMove = useCallback((e: React.MouseEvent | React.TouchEvent) => {
-    if (!dragging.current) return
-    const clientX = 'touches' in e ? e.touches[0].clientX : e.clientX
-    updatePosition(clientX)
-  }, [updatePosition])
+  const getPct = useCallback((clientX: number) => {
+    if (!containerRef.current) return 0.5
+    const rect = containerRef.current.getBoundingClientRect()
+    return Math.max(0.02, Math.min(0.98, (clientX - rect.left) / rect.width))
+  }, [])
 
-  const handleStart = useCallback((e: React.MouseEvent | React.TouchEvent) => {
+  const onStart = useCallback((e: React.MouseEvent | React.TouchEvent) => {
+    e.preventDefault()
     dragging.current = true
     const clientX = 'touches' in e ? e.touches[0].clientX : e.clientX
-    updatePosition(clientX)
-  }, [updatePosition])
+    setPos(getPct(clientX))
+  }, [setPos, getPct])
 
-  const handleEnd = useCallback(() => { dragging.current = false }, [])
+  const onMove = useCallback((e: React.MouseEvent | React.TouchEvent) => {
+    if (!dragging.current) return
+    e.preventDefault()
+    const clientX = 'touches' in e ? e.touches[0].clientX : e.clientX
+    setPos(getPct(clientX))
+  }, [setPos, getPct])
+
+  const onEnd = useCallback(() => { dragging.current = false }, [])
 
   return (
     <div
       ref={containerRef}
-      className="relative aspect-square rounded-lg overflow-hidden cursor-col-resize select-none"
-      onMouseDown={handleStart} onMouseMove={handleMove} onMouseUp={handleEnd} onMouseLeave={handleEnd}
-      onTouchStart={handleStart} onTouchMove={handleMove} onTouchEnd={handleEnd}
+      className="relative aspect-square rounded-[14px] overflow-hidden cursor-col-resize select-none shadow-lg"
+      style={{ touchAction: 'none' }}
+      onMouseDown={onStart} onMouseMove={onMove} onMouseUp={onEnd} onMouseLeave={onEnd}
+      onTouchStart={onStart} onTouchMove={onMove} onTouchEnd={onEnd}
     >
-      <Image src={after} alt={`${alt} after retouching`} fill className="object-cover" sizes="(max-width: 768px) 100vw, 50vw" />
-      <div className="absolute inset-0" style={{ clipPath: `inset(0 ${100 - position}% 0 0)` }}>
-        <Image src={before} alt={`${alt} before retouching`} fill className="object-cover" sizes="(max-width: 768px) 100vw, 50vw" />
+      {/* After image (bottom layer) */}
+      <img src={after} alt={`${alt} after retouching`} className="absolute inset-0 w-full h-full object-cover" />
+      {/* Before image (top layer, clipped from left) */}
+      <img ref={beforeRef} src={before} alt={`${alt} before retouching`} className="absolute inset-0 w-full h-full object-cover" style={{ clipPath: 'inset(0 0 0 50%)' }} />
+      {/* Slider line */}
+      <div ref={lineRef} className="absolute top-0 bottom-0 w-0.5 bg-white/85 pointer-events-none z-10" style={{ left: '50%', transform: 'translateX(-50%)' }} />
+      {/* Drag handle */}
+      <div ref={handleRef} className="absolute z-[11] w-12 h-12 rounded-full bg-white/95 shadow-lg flex items-center justify-center cursor-grab active:cursor-grabbing" style={{ top: '75%', left: '50%', transform: 'translate(-50%, -50%)', touchAction: 'none' }}>
+        <svg width="24" height="24" viewBox="0 0 24 24" fill="#242424"><path d="M15.5 5l-6 6 6 6"/><path d="M8.5 5l6 6-6 6"/></svg>
       </div>
-      <div className="absolute top-0 bottom-0" style={{ left: `${position}%`, transform: 'translateX(-50%)' }}>
-        <div className="w-0.5 h-full bg-white shadow-lg" />
-        <div className="absolute top-1/2 -translate-y-1/2 -translate-x-1/2 w-10 h-10 bg-white rounded-full shadow-lg flex items-center justify-center">
-          <svg width="20" height="20" viewBox="0 0 20 20" fill="none"><path d="M6 10L2 10M2 10L4.5 7.5M2 10L4.5 12.5M14 10L18 10M18 10L15.5 7.5M18 10L15.5 12.5" stroke="#374151" strokeWidth="1.5" strokeLinecap="round" strokeLinejoin="round"/></svg>
-        </div>
-      </div>
-      <span className="absolute top-3 left-3 bg-black/60 text-white text-xs px-2 py-1 rounded">Before</span>
-      <span className="absolute top-3 right-3 bg-black/60 text-white text-xs px-2 py-1 rounded">After</span>
+      {/* Labels */}
+      <span className="absolute bottom-3 left-3 z-[12] bg-black/55 backdrop-blur-sm text-white text-[11px] font-semibold uppercase tracking-wider px-3 py-1 rounded-full pointer-events-none">After</span>
+      <span className="absolute bottom-3 right-3 z-[12] bg-white/80 backdrop-blur-sm text-gray-900 text-[11px] font-semibold uppercase tracking-wider px-3 py-1 rounded-full pointer-events-none">Before</span>
     </div>
   )
 }
