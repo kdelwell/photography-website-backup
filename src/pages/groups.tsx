@@ -680,7 +680,7 @@ const Groups = ({ frontmatter }: GroupsProps) => {
                 </div>
 
                 <div className="bg-gray-50 rounded-lg p-4 mb-6">
-                  <p className="text-gray-500 text-xs uppercase tracking-wide mb-1">Per Team Member (Sitting + Images)</p>
+                  <p className="text-gray-500 text-xs uppercase tracking-wide mb-1">Per Team Member (Session + Images)</p>
                   <p className="text-2xl font-bold text-gray-900">${ratePerPerson.toLocaleString()}</p>
                   <p className="text-gray-400 text-xs mt-1">Rate based on team size. Excludes travel, composite, and candids.</p>
                 </div>
@@ -701,7 +701,7 @@ const Groups = ({ frontmatter }: GroupsProps) => {
                 <h4 className="text-xs font-bold uppercase tracking-wide text-gray-500 mb-3">Quick Breakdown</h4>
                 <div className="space-y-2 text-sm">
                   <div className="flex justify-between">
-                    <span className="text-gray-600">Session subtotal</span>
+                    <span className="text-gray-600">Session fee</span>
                     <span className="text-gray-900">${sittingSubtotal.toLocaleString()}.00</span>
                   </div>
                   <div className={`flex justify-between ${travelFee === 0 ? 'text-gray-300' : ''}`}>
