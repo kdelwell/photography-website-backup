@@ -37,9 +37,9 @@ function ComparisonSlider({ before, after, alt }: { before: string; after: strin
       onMouseDown={handleStart} onMouseMove={handleMove} onMouseUp={handleEnd} onMouseLeave={handleEnd}
       onTouchStart={handleStart} onTouchMove={handleMove} onTouchEnd={handleEnd}
     >
-      <Image src={after} alt={`${alt} after retouching`} fill className="object-cover" />
-      <div className="absolute inset-0 overflow-hidden" style={{ width: `${position}%` }}>
-        <Image src={before} alt={`${alt} before retouching`} fill className="object-cover" style={{ maxWidth: 'none', width: containerRef.current ? `${containerRef.current.offsetWidth}px` : '100%' }} />
+      <Image src={after} alt={`${alt} after retouching`} fill className="object-cover" sizes="(max-width: 768px) 100vw, 50vw" />
+      <div className="absolute inset-0" style={{ clipPath: `inset(0 ${100 - position}% 0 0)` }}>
+        <Image src={before} alt={`${alt} before retouching`} fill className="object-cover" sizes="(max-width: 768px) 100vw, 50vw" />
       </div>
       <div className="absolute top-0 bottom-0" style={{ left: `${position}%`, transform: 'translateX(-50%)' }}>
         <div className="w-0.5 h-full bg-white shadow-lg" />
