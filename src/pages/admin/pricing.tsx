@@ -224,7 +224,7 @@ export default function AdminPricing() {
                       <input
                         type="number"
                         min={0}
-                        value={pricing.inStudioRate || 350}
+                        value={pricing.inStudioRate || 300}
                         onChange={e => setPricing({ ...pricing, inStudioRate: Number(e.target.value) })}
                         className="w-full pl-7 pr-3 py-2 rounded-lg border border-gray-300 text-gray-900 focus:outline-none focus:ring-2 focus:ring-red-500"
                       />

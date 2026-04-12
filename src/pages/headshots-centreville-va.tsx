@@ -24,7 +24,7 @@ export default function HeadshotsCentrevilleVA() {
         "name": "How much do business headshots cost in Centreville, VA?",
         "acceptedAnswer": {
           "@type": "Answer",
-          "text": "Business headshot sessions in Centreville typically range from $350-$700 depending on the package, number of looks, and turnaround time. We offer competitive pricing with same-day delivery options."
+          "text": "Business headshot sessions in Centreville typically range from $240-$700 depending on the package, number of looks, and turnaround time. We offer competitive pricing with same-day delivery options."
         }
       },
       {
@@ -272,7 +272,7 @@ export default function HeadshotsCentrevilleVA() {
             <div className="bg-white p-6 rounded-lg shadow-sm">
               <h3 className="text-xl font-bold text-gray-900 mb-3">How much do business headshots cost in Centreville, VA?</h3>
               <p className="text-gray-700">
-                Business headshot sessions in Centreville typically range from $350-$700 depending on the package,
+                Business headshot sessions in Centreville typically range from $240-$700 depending on the package,
                 number of looks, and turnaround time. We offer competitive pricing with same-day delivery options.{' '}
                 <a href="/more_info" className="text-red-500 hover:text-red-600">Get detailed pricing →</a>
               </p>

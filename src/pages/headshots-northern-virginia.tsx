@@ -25,7 +25,7 @@ export default function HeadshotsNorthernVirginia() {
         "name": "How much do headshots cost in Northern Virginia?",
         "acceptedAnswer": {
           "@type": "Answer",
-          "text": "Professional headshot sessions in Northern Virginia typically range from $350-$700 depending on the package, number of looks, and turnaround time. Because we're based in NoVA, there are no travel fees for locations throughout the region. Same-day delivery is available."
+          "text": "Professional headshot sessions in Northern Virginia typically range from $240-$700 depending on the package, number of looks, and turnaround time. Because we're based in NoVA, there are no travel fees for locations throughout the region. Same-day delivery is available."
         }
       },
       {
@@ -219,7 +219,7 @@ export default function HeadshotsNorthernVirginia() {
             <div className="bg-white p-6 rounded-lg shadow-sm">
               <h3 className="text-xl font-bold text-gray-900 mb-3">How much do headshots cost in Northern Virginia?</h3>
               <p className="text-gray-700">
-                Professional headshot sessions in Northern Virginia typically range from $350-$700 depending on
+                Professional headshot sessions in Northern Virginia typically range from $240-$700 depending on
                 the package, number of looks, and turnaround time. Because we're based in NoVA, there are no
                 travel fees for locations throughout the region.{' '}
                 <a href="/more_info" className="text-red-500 hover:text-red-600">Get detailed pricing &#8594;</a>

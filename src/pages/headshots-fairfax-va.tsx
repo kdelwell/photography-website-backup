@@ -24,7 +24,7 @@ export default function HeadshotsFairfaxVA() {
         "name": "How much do headshots cost in Fairfax, VA?",
         "acceptedAnswer": {
           "@type": "Answer",
-          "text": "Professional headshot sessions in the Fairfax area typically range from $350-$700 depending on the package, number of looks, and turnaround time. We offer competitive pricing with same-day delivery options."
+          "text": "Professional headshot sessions in the Fairfax area typically range from $240-$700 depending on the package, number of looks, and turnaround time. We offer competitive pricing with same-day delivery options."
         }
       },
       {
@@ -206,7 +206,7 @@ export default function HeadshotsFairfaxVA() {
             <div className="bg-white p-6 rounded-lg shadow-sm">
               <h3 className="text-xl font-bold text-gray-900 mb-3">How much do headshots cost in Fairfax, VA?</h3>
               <p className="text-gray-700">
-                Professional headshot sessions in the Fairfax area typically range from $350-$700 depending on the package,
+                Professional headshot sessions in the Fairfax area typically range from $240-$700 depending on the package,
                 number of looks, and turnaround time. We offer competitive pricing with same-day delivery options.{' '}
                 <a href="/more_info" className="text-red-500 hover:text-red-600">Get detailed pricing →</a>
               </p>

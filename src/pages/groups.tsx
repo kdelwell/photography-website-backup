@@ -53,7 +53,7 @@ const Groups = ({ frontmatter }: GroupsProps) => {
 
   // Look up per-person rate from tiered pricing
   function getPerPersonRate(size: number): number {
-    if (!pricing || !pricing.tiers.length) return 275 // fallback
+    if (!pricing || !pricing.tiers.length) return 245 // fallback
     // Find exact match or closest tier that doesn't exceed the size
     const tier = pricing.tiers.find(t => t.size === size)
     if (tier) return tier.perPerson
@@ -91,7 +91,7 @@ const Groups = ({ frontmatter }: GroupsProps) => {
     : `${shootMins}m`
 
   // Price calculations
-  const inStudioRate = pricing?.inStudioRate || 350
+  const inStudioRate = pricing?.inStudioRate || 300
   const ratePerPerson = onLocation ? getPerPersonRate(teamSize) : inStudioRate
   const sittingSubtotal = teamSize * ratePerPerson
   const travelFee = onLocation ? destFee : 0

@@ -328,7 +328,7 @@ export default function StudioGo() {
               </table>
             </div>
             <p className="text-xs text-gray-400 mt-4">
-              In-studio images regularly priced at $275 each. Gallery available for 15 days after the event.
+              In-studio images regularly priced at $245 each. Gallery available for 15 days after the event.
             </p>
           </div>
         </div>
