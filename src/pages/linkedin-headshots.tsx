@@ -24,7 +24,7 @@ export default function LinkedInHeadshots() {
         "name": "How much does a LinkedIn headshot cost in the Washington DC area?",
         "acceptedAnswer": {
           "@type": "Answer",
-          "text": "Professional LinkedIn headshot sessions in the DC metro area typically range from $240-$700 depending on the package, number of looks, and turnaround time. Unlike AI-generated headshots, you get magazine-quality images with professional lighting and natural expressions."
+          "text": "Professional LinkedIn headshot sessions in the DC metro area typically range from $375-$700 depending on the package, number of looks, and turnaround time. Unlike AI-generated headshots, you get magazine-quality images with professional lighting and natural expressions."
         }
       },
       {
@@ -244,7 +244,7 @@ export default function LinkedInHeadshots() {
             <div className="bg-white p-6 rounded-lg shadow-sm">
               <h3 className="text-xl font-bold text-gray-900 mb-3">How much does a LinkedIn headshot cost in the DC area?</h3>
               <p className="text-gray-700">
-                Professional LinkedIn headshot sessions in the DC metro area typically range from $240-$700 depending
+                Professional LinkedIn headshot sessions in the DC metro area typically range from $375-$700 depending
                 on the package, number of looks, and turnaround time. Unlike AI-generated headshots, you get
                 magazine-quality images with professional lighting and natural expressions.{' '}
                 <a href="/more_info" className="text-red-500 hover:text-red-600">Get detailed pricing &#8594;</a>

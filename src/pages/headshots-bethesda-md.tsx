@@ -24,7 +24,7 @@ export default function HeadshotsBethesdaMD() {
         "name": "How much do professional headshots cost in Bethesda?",
         "acceptedAnswer": {
           "@type": "Answer",
-          "text": "Professional headshot sessions in the Bethesda area typically range from $240-$700. Pricing depends on the package, number of final images, and turnaround time. Same-day delivery is available."
+          "text": "Professional headshot sessions in the Bethesda area typically range from $375-$700. Pricing depends on the package, number of final images, and turnaround time. Same-day delivery is available."
         }
       },
       {
@@ -199,7 +199,7 @@ export default function HeadshotsBethesdaMD() {
             <div className="bg-white p-6 rounded-lg shadow-sm">
               <h3 className="text-xl font-bold text-gray-900 mb-3">How much do professional headshots cost in Bethesda?</h3>
               <p className="text-gray-700">
-                Professional headshot sessions in the Bethesda area typically range from $240-$700. Pricing depends on the
+                Professional headshot sessions in the Bethesda area typically range from $375-$700. Pricing depends on the
                 package, number of final images, and turnaround time. Same-day delivery is available.{' '}
                 <a href="/more_info" className="text-red-500 hover:text-red-600">Get detailed pricing →</a>
               </p>

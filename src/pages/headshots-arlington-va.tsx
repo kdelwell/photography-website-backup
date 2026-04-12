@@ -24,7 +24,7 @@ export default function HeadshotsArlingtonVA() {
         "name": "How much do headshots cost in Arlington, VA?",
         "acceptedAnswer": {
           "@type": "Answer",
-          "text": "Professional headshot sessions in the Arlington area typically range from $240-$700 depending on the package and number of looks. We offer competitive pricing with same-day turnaround options available."
+          "text": "Professional headshot sessions in the Arlington area typically range from $375-$700 depending on the package and number of looks. We offer competitive pricing with same-day turnaround options available."
         }
       },
       {
@@ -204,7 +204,7 @@ export default function HeadshotsArlingtonVA() {
             <div className="bg-white p-6 rounded-lg shadow-sm">
               <h3 className="text-xl font-bold text-gray-900 mb-3">How much do headshots cost in Arlington, VA?</h3>
               <p className="text-gray-700">
-                Professional headshot sessions in the Arlington area typically range from $240-$700 depending on the package
+                Professional headshot sessions in the Arlington area typically range from $375-$700 depending on the package
                 and number of looks. We offer competitive pricing with same-day turnaround options available.{' '}
                 <a href="/more_info" className="text-red-500 hover:text-red-600">Get detailed pricing →</a>
               </p>
