@@ -98,15 +98,72 @@ export default function Home({ frontmatter, content }: { frontmatter: any; conte
     ]
   };
 
+  const localBusinessSchema = {
+    "@context": "https://schema.org",
+    "@type": "ProfessionalService",
+    "name": "Get aHead Shot",
+    "image": "https://getaheadshot.net/images/Logo.jpg",
+    "url": "https://getaheadshot.net",
+    "telephone": "703-802-9379",
+    "email": "kevin@getaheadshot.net",
+    "description": "Professional headshot photographer in Northern Virginia and Washington DC. Magazine-quality headshots for executives, entrepreneurs, attorneys, and business professionals. 230+ five-star reviews.",
+    "address": {
+      "@type": "PostalAddress",
+      "streetAddress": "6720 Hartwood Lane",
+      "addressLocality": "Centreville",
+      "addressRegion": "VA",
+      "postalCode": "20121",
+      "addressCountry": "US"
+    },
+    "geo": {
+      "@type": "GeoCoordinates",
+      "latitude": 38.8396,
+      "longitude": -77.4419
+    },
+    "areaServed": [
+      {"@type": "City", "name": "Centreville, VA"},
+      {"@type": "City", "name": "Fairfax, VA"},
+      {"@type": "City", "name": "Reston, VA"},
+      {"@type": "City", "name": "Arlington, VA"},
+      {"@type": "City", "name": "Alexandria, VA"},
+      {"@type": "City", "name": "Tysons Corner, VA"},
+      {"@type": "City", "name": "Washington, DC"},
+      {"@type": "City", "name": "Bethesda, MD"}
+    ],
+    "aggregateRating": {
+      "@type": "AggregateRating",
+      "ratingValue": "5.0",
+      "reviewCount": "230",
+      "bestRating": "5"
+    },
+    "priceRange": "$$",
+    "openingHoursSpecification": {
+      "@type": "OpeningHoursSpecification",
+      "dayOfWeek": ["Monday", "Tuesday", "Wednesday", "Thursday", "Friday", "Saturday"],
+      "opens": "09:00",
+      "closes": "18:00"
+    },
+    "sameAs": [
+      "https://www.facebook.com/getaheadshot",
+      "https://www.linkedin.com/in/getaheadshot/",
+      "https://www.instagram.com/getaheadshotwithkevin"
+    ]
+  };
+
   return (
     <Layout
-      title="Professional Headshot Photography Washington DC | Get aHead Shot"
-      description="Washington DC's premier headshot photographer. Magazine-quality professional headshot photography for executives, entrepreneurs, and business professionals. Same-day turnaround. Studio or on-location. Book your session today!"
+      title="Best Headshot Photographer in Northern Virginia & DC | Get aHead Shot"
+      description="Top-rated headshot photographer serving Northern Virginia & Washington DC. Magazine-quality professional headshots with expert coaching. 230+ five-star reviews. Studio or on-location. Book your session today!"
     >
       {/* FAQ Schema */}
       <script
         type="application/ld+json"
         dangerouslySetInnerHTML={{ __html: JSON.stringify(faqSchema) }}
+      />
+      {/* LocalBusiness Schema */}
+      <script
+        type="application/ld+json"
+        dangerouslySetInnerHTML={{ __html: JSON.stringify(localBusinessSchema) }}
       />
 
       {/* Option 3: Split Layout */}
@@ -190,10 +247,10 @@ export default function Home({ frontmatter, content }: { frontmatter: any; conte
         <section className="bg-white py-12">
           <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
             <h2 className="text-3xl md:text-4xl lg:text-5xl font-bold text-gray-900 text-center leading-tight">
-              Headshot Photography That Commands Attention
+              Professional Headshot Photographer in Northern Virginia &amp; Washington DC
             </h2>
             <p className="text-lg text-gray-600 text-center mt-4 max-w-3xl mx-auto">
-              Serving professionals across Washington DC and Northern Virginia, I create headshots that make a powerful first impression.
+              Headshot photography that commands attention. Serving executives, entrepreneurs, and business professionals across the DC metro area with magazine-quality results and 230+ five-star reviews.
             </p>
           </div>
         </section>
