@@ -20,6 +20,38 @@ const nextConfig = {
   // Compression and optimization
   compress: true,
   poweredByHeader: false,
+  // 301 redirects for old WordPress URLs to preserve SEO authority
+  async redirects() {
+    return [
+      { source: '/about-us', destination: '/about', permanent: true },
+      { source: '/about-us/', destination: '/about', permanent: true },
+      { source: '/headshot-photographer-centreville-va', destination: '/headshots-centreville-va', permanent: true },
+      { source: '/headshot-photographer-centreville-va/', destination: '/headshots-centreville-va', permanent: true },
+      { source: '/blog', destination: '/articles', permanent: true },
+      { source: '/blog/', destination: '/articles', permanent: true },
+      { source: '/blog/:slug', destination: '/articles', permanent: true },
+      { source: '/portfolio', destination: '/', permanent: true },
+      { source: '/portfolio/', destination: '/', permanent: true },
+      { source: '/services', destination: '/professional_individual_headshots', permanent: true },
+      { source: '/services/', destination: '/professional_individual_headshots', permanent: true },
+      { source: '/pricing-2', destination: '/pricing', permanent: true },
+      { source: '/pricing-2/', destination: '/pricing', permanent: true },
+      { source: '/corporate-headshots', destination: '/groups', permanent: true },
+      { source: '/corporate-headshots/', destination: '/groups', permanent: true },
+      { source: '/team-headshots', destination: '/groups', permanent: true },
+      { source: '/team-headshots/', destination: '/groups', permanent: true },
+      { source: '/gallery', destination: '/', permanent: true },
+      { source: '/gallery/', destination: '/', permanent: true },
+      { source: '/testimonials', destination: '/reviews', permanent: true },
+      { source: '/testimonials/', destination: '/reviews', permanent: true },
+      { source: '/faq', destination: '/faqs', permanent: true },
+      { source: '/faq/', destination: '/faqs', permanent: true },
+      { source: '/book', destination: '/schedule', permanent: true },
+      { source: '/book/', destination: '/schedule', permanent: true },
+      { source: '/book-now', destination: '/schedule', permanent: true },
+      { source: '/book-now/', destination: '/schedule', permanent: true },
+    ]
+  },
   // Security headers
   async headers() {
     return [
