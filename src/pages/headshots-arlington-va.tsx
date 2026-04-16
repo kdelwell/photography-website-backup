@@ -58,7 +58,7 @@ export default function HeadshotsArlingtonVA() {
   return (
     <Layout
       title="Professional Headshots Arlington VA | Rosslyn, Ballston & Crystal City Photographer"
-      description="Professional headshot photographer serving Arlington, VA. On-location headshots in Rosslyn, Crystal City, Ballston, Pentagon City & Clarendon. Corporate teams, LinkedIn headshots, and executive portraits. Book today!"
+      description="Headshot photographer serving Arlington, VA. On-location in Rosslyn, Crystal City, Ballston & Clarendon. Corporate and LinkedIn headshots. Book today."
     >
       <script type="application/ld+json" dangerouslySetInnerHTML={{ __html: JSON.stringify(faqSchema) }} />
       <script type="application/ld+json" dangerouslySetInnerHTML={{ __html: JSON.stringify(breadcrumbSchema) }} />

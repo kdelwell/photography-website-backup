@@ -66,7 +66,7 @@ export default function LinkedInHeadshots() {
   return (
     <Layout
       title="LinkedIn Headshot Photographer Washington DC | Professional LinkedIn Photos"
-      description="Professional LinkedIn headshot photographer serving Washington DC, Northern Virginia & Maryland. Stand out with a magazine-quality LinkedIn profile photo. On-location or studio. Same-day turnaround available. Book today!"
+      description="LinkedIn headshot photographer serving Washington DC, Northern Virginia & Maryland. Stand out with a polished profile photo. Studio or on-location. Book today."
     >
       <script type="application/ld+json" dangerouslySetInnerHTML={{ __html: JSON.stringify(faqSchema) }} />
       <script type="application/ld+json" dangerouslySetInnerHTML={{ __html: JSON.stringify(breadcrumbSchema) }} />

@@ -58,7 +58,7 @@ export default function HeadshotsRestonVA() {
   return (
     <Layout
       title="Professional Headshots Reston VA | Reston Town Center & Dulles Corridor Photographer"
-      description="Professional headshot photographer serving Reston, VA. On-location headshots at Reston Town Center, Dulles Corridor, Herndon & Sterling. Tech teams, corporate headshots, and executive portraits. Book today!"
+      description="Headshot photographer serving Reston, VA. On-location at Reston Town Center, Herndon & Sterling. Tech teams, corporate headshots, and portraits. Book today."
     >
       <script type="application/ld+json" dangerouslySetInnerHTML={{ __html: JSON.stringify(faqSchema) }} />
       <script type="application/ld+json" dangerouslySetInnerHTML={{ __html: JSON.stringify(breadcrumbSchema) }} />

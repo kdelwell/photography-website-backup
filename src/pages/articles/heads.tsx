@@ -4,11 +4,71 @@ import Link from 'next/link'
 import { ChevronLeft } from 'lucide-react'
 
 const HeadsArticle = () => {
+  const articleSchema = {
+    "@context": "https://schema.org",
+    "@type": "Article",
+    "headline": "Off With Their Head!",
+    "description": "Why did you chop off the top of my head? Learn about the deliberate art of cropping in professional photography and why tight framing creates more powerful portraits.",
+    "image": "https://getaheadshot.net/images/Articles/Heads.jpg",
+    "author": {
+      "@type": "Person",
+      "name": "Kevin Elwell",
+      "url": "https://getaheadshot.net/about"
+    },
+    "publisher": {
+      "@type": "Organization",
+      "name": "Get aHead Shot",
+      "logo": {
+        "@type": "ImageObject",
+        "url": "https://getaheadshot.net/images/Logo.jpg"
+      }
+    },
+    "datePublished": "2023-12-20",
+    "dateModified": "2023-12-20",
+    "mainEntityOfPage": {
+      "@type": "WebPage",
+      "@id": "https://getaheadshot.net/articles/heads"
+    }
+  };
+
+  const breadcrumbSchema = {
+    "@context": "https://schema.org",
+    "@type": "BreadcrumbList",
+    "itemListElement": [
+      {
+        "@type": "ListItem",
+        "position": 1,
+        "name": "Home",
+        "item": "https://getaheadshot.net"
+      },
+      {
+        "@type": "ListItem",
+        "position": 2,
+        "name": "Articles",
+        "item": "https://getaheadshot.net/articles"
+      },
+      {
+        "@type": "ListItem",
+        "position": 3,
+        "name": "Off With Their Head!",
+        "item": "https://getaheadshot.net/articles/heads"
+      }
+    ]
+  };
+
   return (
     <Layout
       title="Off With Their Head! - Get aHead Shot"
       description="Why did you chop off the top of my head? Learn about the deliberate art of cropping in professional photography and why tight framing creates more powerful portraits."
     >
+      <script
+        type="application/ld+json"
+        dangerouslySetInnerHTML={{ __html: JSON.stringify(articleSchema) }}
+      />
+      <script
+        type="application/ld+json"
+        dangerouslySetInnerHTML={{ __html: JSON.stringify(breadcrumbSchema) }}
+      />
       <div className="min-h-screen bg-white">
         {/* Back to Articles */}
         <div className="bg-gray-50 py-4">

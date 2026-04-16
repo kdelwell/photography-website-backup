@@ -3,7 +3,7 @@ import GalleryWithLightbox from './GalleryWithLightbox'
 export default function MainGallery() {
   return (
     <GalleryWithLightbox
-      priorityCount={4}
+      priorityCount={0}
       images={[
         { src: '/images/Gallery/Maggie.jpg', alt: 'Maggie - professional headshot' },
         { src: '/images/Gallery/Josh.jpg', alt: 'Josh - executive portrait' },

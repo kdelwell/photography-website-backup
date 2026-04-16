@@ -58,7 +58,7 @@ export default function HeadshotsWashingtonDC() {
   return (
     <Layout
       title="Professional Headshots Washington DC | #1 Rated Headshot Photographer Near Me"
-      description="Looking for professional headshots in Washington DC? Get aHead Shot specializes in executive headshots, corporate portraits, and LinkedIn photos. Serving DC, Arlington, Alexandria, Bethesda. Book today!"
+      description="Professional headshot photographer in Washington DC. Executive portraits, corporate headshots, and LinkedIn photos. On-location or studio. Book today."
     >
       {/* FAQ Schema */}
       <script

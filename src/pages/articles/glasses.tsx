@@ -4,11 +4,71 @@ import Link from 'next/link'
 import { ChevronLeft } from 'lucide-react'
 
 const GlassesArticle = () => {
+  const articleSchema = {
+    "@context": "https://schema.org",
+    "@type": "Article",
+    "headline": "Glasses or No Glasses?",
+    "description": "When it comes to the age-old question of whether to wear glasses for a photoshoot, there are a few factors to consider. Learn how to make the right choice for your headshots.",
+    "image": "https://getaheadshot.net/images/Articles/Glasses.webp",
+    "author": {
+      "@type": "Person",
+      "name": "Kevin Elwell",
+      "url": "https://getaheadshot.net/about"
+    },
+    "publisher": {
+      "@type": "Organization",
+      "name": "Get aHead Shot",
+      "logo": {
+        "@type": "ImageObject",
+        "url": "https://getaheadshot.net/images/Logo.jpg"
+      }
+    },
+    "datePublished": "2023-12-28",
+    "dateModified": "2023-12-28",
+    "mainEntityOfPage": {
+      "@type": "WebPage",
+      "@id": "https://getaheadshot.net/articles/glasses"
+    }
+  };
+
+  const breadcrumbSchema = {
+    "@context": "https://schema.org",
+    "@type": "BreadcrumbList",
+    "itemListElement": [
+      {
+        "@type": "ListItem",
+        "position": 1,
+        "name": "Home",
+        "item": "https://getaheadshot.net"
+      },
+      {
+        "@type": "ListItem",
+        "position": 2,
+        "name": "Articles",
+        "item": "https://getaheadshot.net/articles"
+      },
+      {
+        "@type": "ListItem",
+        "position": 3,
+        "name": "Glasses or No Glasses?",
+        "item": "https://getaheadshot.net/articles/glasses"
+      }
+    ]
+  };
+
   return (
     <Layout
       title="Glasses or No Glasses? - Get aHead Shot"
       description="When it comes to the age-old question of whether to wear glasses for a photoshoot, there are a few factors to consider. Learn how to make the right choice for your headshots."
     >
+      <script
+        type="application/ld+json"
+        dangerouslySetInnerHTML={{ __html: JSON.stringify(articleSchema) }}
+      />
+      <script
+        type="application/ld+json"
+        dangerouslySetInnerHTML={{ __html: JSON.stringify(breadcrumbSchema) }}
+      />
       <div className="min-h-screen bg-white">
         {/* Back to Articles */}
         <div className="bg-gray-50 py-4">

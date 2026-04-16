@@ -66,7 +66,7 @@ export default function HeadshotsCentrevilleVA() {
   return (
     <Layout
       title="Business & Corporate Headshots Centreville VA | Executive Headshot Photographer"
-      description="Business headshot photographer based in Centreville, VA. Professional business headshots, corporate headshots, executive portraits, and team photography. On-location in Centreville, Chantilly, Clifton & Westfields. Book today!"
+      description="Centreville, VA headshot photographer. Professional business headshots, executive portraits, and team photography. Studio and on-location. Book today."
     >
       <script type="application/ld+json" dangerouslySetInnerHTML={{ __html: JSON.stringify(faqSchema) }} />
       <script type="application/ld+json" dangerouslySetInnerHTML={{ __html: JSON.stringify(breadcrumbSchema) }} />

@@ -58,7 +58,7 @@ export default function HeadshotsBethesdaMD() {
   return (
     <Layout
       title="Professional Headshots Bethesda MD | Chevy Chase & Potomac Headshot Photographer"
-      description="Professional headshot photographer serving Bethesda, MD. On-location headshots in Bethesda, Chevy Chase, Potomac, North Bethesda & Rockville. Healthcare professionals, executives, and corporate teams. Book today!"
+      description="Headshot photographer serving Bethesda, MD. On-location in Chevy Chase, Potomac & Rockville. Healthcare professionals, executives, and teams. Book today."
     >
       <script type="application/ld+json" dangerouslySetInnerHTML={{ __html: JSON.stringify(faqSchema) }} />
       <script type="application/ld+json" dangerouslySetInnerHTML={{ __html: JSON.stringify(breadcrumbSchema) }} />

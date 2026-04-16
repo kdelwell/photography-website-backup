@@ -4,11 +4,71 @@ import Link from 'next/link'
 import { ChevronLeft } from 'lucide-react'
 
 const ColorArticle = () => {
+  const articleSchema = {
+    "@context": "https://schema.org",
+    "@type": "Article",
+    "headline": "Need to Add Color to Your Brand?",
+    "description": "Color is undeniably powerful. It possesses the ability to captivate the eye, commanding attention amidst the endless scroll of digital content. Learn how to harness color in photography.",
+    "image": "https://getaheadshot.net/images/Articles/Color.jpg",
+    "author": {
+      "@type": "Person",
+      "name": "Kevin Elwell",
+      "url": "https://getaheadshot.net/about"
+    },
+    "publisher": {
+      "@type": "Organization",
+      "name": "Get aHead Shot",
+      "logo": {
+        "@type": "ImageObject",
+        "url": "https://getaheadshot.net/images/Logo.jpg"
+      }
+    },
+    "datePublished": "2024-01-10",
+    "dateModified": "2024-01-10",
+    "mainEntityOfPage": {
+      "@type": "WebPage",
+      "@id": "https://getaheadshot.net/articles/color"
+    }
+  };
+
+  const breadcrumbSchema = {
+    "@context": "https://schema.org",
+    "@type": "BreadcrumbList",
+    "itemListElement": [
+      {
+        "@type": "ListItem",
+        "position": 1,
+        "name": "Home",
+        "item": "https://getaheadshot.net"
+      },
+      {
+        "@type": "ListItem",
+        "position": 2,
+        "name": "Articles",
+        "item": "https://getaheadshot.net/articles"
+      },
+      {
+        "@type": "ListItem",
+        "position": 3,
+        "name": "Need to Add Color to Your Brand?",
+        "item": "https://getaheadshot.net/articles/color"
+      }
+    ]
+  };
+
   return (
     <Layout
       title="Need to Add Color to Your Brand? - Get aHead Shot"
       description="Color is undeniably powerful. It possesses the ability to captivate the eye, commanding attention amidst the endless scroll of digital content. Learn how to harness color in photography."
     >
+      <script
+        type="application/ld+json"
+        dangerouslySetInnerHTML={{ __html: JSON.stringify(articleSchema) }}
+      />
+      <script
+        type="application/ld+json"
+        dangerouslySetInnerHTML={{ __html: JSON.stringify(breadcrumbSchema) }}
+      />
       <div className="min-h-screen bg-white">
         {/* Back to Articles */}
         <div className="bg-gray-50 py-4">

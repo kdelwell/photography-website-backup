@@ -58,7 +58,7 @@ export default function HeadshotsAlexandriaVA() {
   return (
     <Layout
       title="Professional Headshots Alexandria VA | Old Town & Del Ray Headshot Photographer"
-      description="Professional headshot photographer serving Alexandria, VA. On-location headshots in Old Town, Del Ray, Carlyle, Eisenhower Valley & West End. LinkedIn headshots, corporate teams, and executive portraits. Book today!"
+      description="Headshot photographer serving Alexandria, VA. On-location in Old Town, Del Ray, Carlyle & West End. LinkedIn and corporate headshots. Book today."
     >
       <script type="application/ld+json" dangerouslySetInnerHTML={{ __html: JSON.stringify(faqSchema) }} />
       <script type="application/ld+json" dangerouslySetInnerHTML={{ __html: JSON.stringify(breadcrumbSchema) }} />

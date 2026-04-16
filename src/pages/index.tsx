@@ -153,7 +153,7 @@ export default function Home({ frontmatter, content }: { frontmatter: any; conte
   return (
     <Layout
       title="Best Headshot Photographer in Northern Virginia & DC | Get aHead Shot"
-      description="Top-rated headshot photographer serving Northern Virginia & Washington DC. Magazine-quality professional headshots with expert coaching. 230+ five-star reviews. Studio or on-location. Book your session today!"
+      description="DC & Northern Virginia headshot photographer with 230+ five-star reviews. Studio or on-location sessions with same-day delivery. Book today."
     >
       {/* FAQ Schema */}
       <script
@@ -216,7 +216,7 @@ export default function Home({ frontmatter, content }: { frontmatter: any; conte
         <div className="relative h-full flex items-center justify-center">
           <div className="text-center text-white px-8 max-w-5xl">
             <h1 className="text-3xl md:text-5xl lg:text-6xl font-bold mb-4 md:mb-8 leading-tight">
-              Magazine-Quality Headshot Photography with Expert Coaching
+              Professional Headshot Photographer in Northern Virginia &amp; Washington DC
             </h1>
 
             <p className="text-xl md:text-3xl mb-6 md:mb-12 font-light leading-relaxed">
@@ -247,10 +247,10 @@ export default function Home({ frontmatter, content }: { frontmatter: any; conte
         <section className="bg-white py-12">
           <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
             <h2 className="text-3xl md:text-4xl lg:text-5xl font-bold text-gray-900 text-center leading-tight">
-              Professional Headshot Photographer in Northern Virginia &amp; Washington DC
+              Magazine-Quality Headshot Photography with Expert Coaching
             </h2>
             <p className="text-lg text-gray-600 text-center mt-4 max-w-3xl mx-auto">
-              Headshot photography that commands attention. Serving executives, entrepreneurs, and business professionals across the DC metro area with magazine-quality results and 230+ five-star reviews.
+              Headshot photography that commands attention. Based in Centreville, VA and serving professionals across Northern Virginia, Washington DC, and the DMV with magazine-quality results and 230+ five-star reviews.
             </p>
           </div>
         </section>

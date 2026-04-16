@@ -58,7 +58,7 @@ export default function HeadshotsFairfaxVA() {
   return (
     <Layout
       title="Professional Headshots Fairfax VA | Tysons, Vienna & Fair Oaks Headshot Photographer"
-      description="Professional headshot photographer serving Fairfax, VA. On-location headshots in Fairfax City, Tysons Corner, Vienna, Fair Oaks, Oakton & Burke. Corporate teams, executives, and LinkedIn headshots. Book today!"
+      description="Headshot photographer serving Fairfax, VA. On-location in Tysons, Vienna, Fair Oaks & Burke. Corporate, executive, and LinkedIn headshots. Book today."
     >
       <script type="application/ld+json" dangerouslySetInnerHTML={{ __html: JSON.stringify(faqSchema) }} />
       <script type="application/ld+json" dangerouslySetInnerHTML={{ __html: JSON.stringify(breadcrumbSchema) }} />

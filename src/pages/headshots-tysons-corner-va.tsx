@@ -59,7 +59,7 @@ export default function HeadshotsTysonsCornerVA() {
   return (
     <Layout
       title="Professional Headshots Tysons Corner VA | McLean & Vienna Headshot Photographer"
-      description="Professional headshot photographer serving Tysons Corner, VA. On-location corporate headshots, executive portraits, and LinkedIn photos in Tysons, McLean, Vienna & Falls Church. Book today!"
+      description="Headshot photographer serving Tysons Corner, VA. Corporate headshots, executive portraits, and LinkedIn photos in McLean, Vienna & Falls Church. Book today."
     >
       <script type="application/ld+json" dangerouslySetInnerHTML={{ __html: JSON.stringify(faqSchema) }} />
       <script type="application/ld+json" dangerouslySetInnerHTML={{ __html: JSON.stringify(breadcrumbSchema) }} />

@@ -59,7 +59,7 @@ export default function HeadshotsNorthernVirginia() {
   return (
     <Layout
       title="Headshot Photographer Northern Virginia | Professional Headshots NoVA & DMV"
-      description="Northern Virginia's premier headshot photographer. Professional headshots for executives, corporate teams, and LinkedIn profiles across NoVA — Arlington, Fairfax, Tysons, Reston, Centreville & more. On-location. Book today!"
+      description="Northern Virginia headshot photographer with 230+ five-star reviews. Corporate teams, executives, and LinkedIn headshots across NoVA. Book today."
     >
       <script type="application/ld+json" dangerouslySetInnerHTML={{ __html: JSON.stringify(faqSchema) }} />
       <script type="application/ld+json" dangerouslySetInnerHTML={{ __html: JSON.stringify(breadcrumbSchema) }} />

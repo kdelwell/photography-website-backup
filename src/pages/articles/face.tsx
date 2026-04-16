@@ -4,11 +4,71 @@ import Link from 'next/link'
 import { ChevronLeft } from 'lucide-react'
 
 const FaceArticle = () => {
+  const articleSchema = {
+    "@context": "https://schema.org",
+    "@type": "Article",
+    "headline": "Which Side of My Face is Better?",
+    "description": "The question of which side of the face is more flattering is a common inquiry during photography sessions. Learn about facial symmetry and presenting your best angle.",
+    "image": "https://getaheadshot.net/images/Articles/Side.webp",
+    "author": {
+      "@type": "Person",
+      "name": "Kevin Elwell",
+      "url": "https://getaheadshot.net/about"
+    },
+    "publisher": {
+      "@type": "Organization",
+      "name": "Get aHead Shot",
+      "logo": {
+        "@type": "ImageObject",
+        "url": "https://getaheadshot.net/images/Logo.jpg"
+      }
+    },
+    "datePublished": "2024-01-05",
+    "dateModified": "2024-01-05",
+    "mainEntityOfPage": {
+      "@type": "WebPage",
+      "@id": "https://getaheadshot.net/articles/face"
+    }
+  };
+
+  const breadcrumbSchema = {
+    "@context": "https://schema.org",
+    "@type": "BreadcrumbList",
+    "itemListElement": [
+      {
+        "@type": "ListItem",
+        "position": 1,
+        "name": "Home",
+        "item": "https://getaheadshot.net"
+      },
+      {
+        "@type": "ListItem",
+        "position": 2,
+        "name": "Articles",
+        "item": "https://getaheadshot.net/articles"
+      },
+      {
+        "@type": "ListItem",
+        "position": 3,
+        "name": "Which Side of My Face is Better?",
+        "item": "https://getaheadshot.net/articles/face"
+      }
+    ]
+  };
+
   return (
     <Layout
       title="Which Side of My Face is Better? - Get aHead Shot"
       description="The question of which side of the face is more flattering is a common inquiry during photography sessions. Learn about facial symmetry and presenting your best angle."
     >
+      <script
+        type="application/ld+json"
+        dangerouslySetInnerHTML={{ __html: JSON.stringify(articleSchema) }}
+      />
+      <script
+        type="application/ld+json"
+        dangerouslySetInnerHTML={{ __html: JSON.stringify(breadcrumbSchema) }}
+      />
       <div className="min-h-screen bg-white">
         {/* Back to Articles */}
         <div className="bg-gray-50 py-4">
