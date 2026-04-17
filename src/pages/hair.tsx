@@ -141,15 +141,42 @@ const Hair = ({ frontmatter }: HairProps) => {
           />
         </section>
 
-        {/* Text Section */}
+        {/* Pricing Section */}
         <ScrollReveal animation="fade-up">
-        <section className="bg-white" style={{ marginTop: '20px', marginBottom: '20px', paddingTop: '20px', paddingBottom: '20px' }}>
-          <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-            <div className="text-center">
-              <p className="text-lg md:text-xl text-gray-700 max-w-3xl mx-auto leading-relaxed">
-                We offer hair and makeup services to our clients that creates a natural look. We use lighting that is on a par with that which is use in television studios – they're very bright. Because of this we recommend professional hair and makeup services that compensate for that lighting.
-              </p>
+        <section className="bg-white py-12">
+          <div className="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8">
+            <h2 className="text-2xl md:text-3xl font-bold text-gray-900 text-center mb-8">Pricing</h2>
+            <div className="grid grid-cols-1 md:grid-cols-2 gap-6 max-w-2xl mx-auto">
+              {/* Mallory */}
+              <div className="bg-gray-50 rounded-xl p-6 border border-gray-200">
+                <h3 className="text-lg font-bold text-gray-900 mb-1">Mallory</h3>
+                <p className="text-sm text-gray-500 mb-4">Lead Hair & Makeup Artist</p>
+                <div className="space-y-3">
+                  <div className="flex justify-between items-baseline">
+                    <span className="text-gray-700">Makeup Only</span>
+                    <span className="text-xl font-bold text-gray-900">$100</span>
+                  </div>
+                  <div className="flex justify-between items-baseline">
+                    <span className="text-gray-700">Hair & Makeup</span>
+                    <span className="text-xl font-bold text-gray-900">$185</span>
+                  </div>
+                </div>
+              </div>
+              {/* Other Artists */}
+              <div className="bg-gray-50 rounded-xl p-6 border border-gray-200">
+                <h3 className="text-lg font-bold text-gray-900 mb-1">Other Artists</h3>
+                <p className="text-sm text-gray-500 mb-4">Professional Hair & Makeup</p>
+                <div className="space-y-3">
+                  <div className="flex justify-between items-baseline">
+                    <span className="text-gray-700">Hair & Makeup</span>
+                    <span className="text-xl font-bold text-gray-900">$200</span>
+                  </div>
+                </div>
+              </div>
             </div>
+            <p className="text-center text-gray-500 text-sm mt-6 max-w-2xl mx-auto">
+              We use lighting on a par with television studios — professional hair and makeup compensates for that lighting and ensures you look your absolute best on camera.
+            </p>
           </div>
         </section>
         </ScrollReveal>
