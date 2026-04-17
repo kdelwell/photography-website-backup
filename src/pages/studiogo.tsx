@@ -203,32 +203,17 @@ function EventPricingCalculator() {
           {/* What's included */}
           <div className="border-t border-gray-100 pt-6">
             <h4 className="text-xs font-bold uppercase tracking-wide text-gray-500 mb-3">Included</h4>
-            <div className="grid grid-cols-2 gap-2 text-sm text-gray-700">
-              <div className="flex items-center gap-2">
-                <CheckCircle className="w-4 h-4 text-red-600 flex-shrink-0" />
-                <span>Professional photographer</span>
-              </div>
-              <div className="flex items-center gap-2">
-                <CheckCircle className="w-4 h-4 text-red-600 flex-shrink-0" />
-                <span>Studio lighting & backdrop</span>
-              </div>
-              <div className="flex items-center gap-2">
-                <CheckCircle className="w-4 h-4 text-red-600 flex-shrink-0" />
-                <span>On-site retouching</span>
-              </div>
-              <div className="flex items-center gap-2">
-                <CheckCircle className="w-4 h-4 text-red-600 flex-shrink-0" />
-                <span>Digital delivery to attendees</span>
-              </div>
-              <div className="flex items-center gap-2">
-                <CheckCircle className="w-4 h-4 text-red-600 flex-shrink-0" />
-                <span>QR code registration</span>
-              </div>
-              <div className="flex items-center gap-2">
-                <CheckCircle className="w-4 h-4 text-red-600 flex-shrink-0" />
-                <span>Attendee lead capture</span>
-              </div>
-            </div>
+            <ul className="space-y-2">
+              {SETUP_INCLUDES.map((item) => (
+                <li key={item} className="flex items-start gap-2 text-sm text-gray-600">
+                  <CheckCircle className="w-4 h-4 text-green-500 flex-shrink-0 mt-0.5" />
+                  {item}
+                </li>
+              ))}
+            </ul>
+            <p className="text-xs text-gray-400 mt-4">
+              Base price includes up to three hours of on-site coverage. Each attendee receives one complimentary image cropped for LinkedIn.
+            </p>
           </div>
 
           {/* CTA */}
@@ -402,31 +387,12 @@ export default function StudioGo() {
       </section>
 
       {/* Pricing */}
+      <ScrollReveal animation="fade-up">
+      <EventPricingCalculator />
+      </ScrollReveal>
+
       <section style={{ backgroundColor: '#f3f4f6' }} className="py-12">
         <div className="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8">
-          <h2 className="text-2xl md:text-3xl font-bold text-gray-900 text-center mb-10">
-            Pricing
-          </h2>
-
-          {/* Event Setup */}
-          <div className="bg-white rounded-lg shadow-sm p-6 md:p-8 mb-8">
-            <div className="flex items-baseline justify-between mb-4">
-              <h3 className="text-xl font-bold text-gray-900">Event Setup</h3>
-              <span className="text-2xl font-bold text-gray-900">$1,500</span>
-            </div>
-            <ul className="space-y-2">
-              {SETUP_INCLUDES.map((item) => (
-                <li key={item} className="flex items-start gap-2 text-sm text-gray-600">
-                  <CheckCircle className="w-4 h-4 text-green-500 flex-shrink-0 mt-0.5" />
-                  {item}
-                </li>
-              ))}
-            </ul>
-            <p className="text-xs text-gray-400 mt-4">
-              Includes up to three hours of on-site coverage. Each attendee receives one complimentary image cropped square for LinkedIn and professional profiles.
-            </p>
-          </div>
-
           {/* Attendee Upgrade Options */}
           <div className="bg-white rounded-lg shadow-sm p-6 md:p-8">
             <h3 className="text-xl font-bold text-gray-900 mb-2">Attendee Upgrade Options</h3>
@@ -487,11 +453,6 @@ export default function StudioGo() {
           </div>
         </div>
       </section>
-
-      {/* Event Pricing Calculator */}
-      <ScrollReveal animation="fade-up">
-      <EventPricingCalculator />
-      </ScrollReveal>
 
       {/* CTA */}
       <section style={{ backgroundColor: '#242424' }} className="py-10">
