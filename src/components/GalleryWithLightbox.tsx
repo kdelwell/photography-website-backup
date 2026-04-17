@@ -86,8 +86,9 @@ const GalleryWithLightbox = ({
 
       {/* Lightbox Modal */}
       {selectedImage && (
-        <div 
-          className="fixed inset-0 z-50 bg-black/90 flex items-center justify-center p-4"
+        <div
+          className="fixed inset-0 flex items-center justify-center p-4"
+          style={{ zIndex: 9999, backgroundColor: 'rgba(0,0,0,0.95)' }}
           onClick={closeLightbox}
         >
           <button
