@@ -122,7 +122,7 @@ const GalleryWithLightbox = ({
             <ChevronRight className="w-6 h-6 text-white" />
           </button>
           
-          <div className="relative max-w-5xl max-h-[90vh] w-full h-full">
+          <div className="relative w-[95vw] h-[90vh]">
             <Image
               src={selectedImage.src}
               alt={selectedImage.alt}
