@@ -2,6 +2,7 @@ import Layout from '../../components/Layout'
 import Image from 'next/image'
 import Link from 'next/link'
 import { ChevronLeft } from 'lucide-react'
+import ScrollReveal from '@/components/ScrollReveal'
 
 const TimeArticle = () => {
   const articleSchema = {
@@ -104,6 +105,7 @@ const TimeArticle = () => {
           </div>
 
           {/* Hero Image */}
+          <ScrollReveal animation="fade-in">
           <div className="relative w-full h-[400px] md:h-[500px] lg:h-[600px] mb-12 rounded-lg overflow-hidden">
             <Image
               src="/images/Articles/Time.webp"
@@ -113,8 +115,10 @@ const TimeArticle = () => {
               priority
             />
           </div>
+          </ScrollReveal>
 
           {/* Article Content */}
+          <ScrollReveal animation="fade-up">
           <div className="prose prose-lg prose-gray max-w-none">
             <p className="text-xl md:text-2xl text-gray-700 leading-relaxed mb-8 font-light">
               Time is a relentless force, etching its mark on all of us. These snapshots I've captured over the years of my two boys, Jacob and Zachary, serve as poignant reminders of this immutable truth. Witnessing their dramatic transformations over the past five years is a testament to the inexorable passage of time—a journey that promises to reshape their appearances in the years to come.
@@ -141,7 +145,10 @@ const TimeArticle = () => {
             </p>
           </div>
 
+          </ScrollReveal>
+
           {/* Author Bio */}
+          <ScrollReveal animation="fade-up">
           <div className="border-t border-gray-200 pt-8 mt-12">
             <div className="flex items-center">
               <div className="relative w-16 h-16 rounded-full overflow-hidden mr-4">
@@ -158,6 +165,7 @@ const TimeArticle = () => {
               </div>
             </div>
           </div>
+          </ScrollReveal>
 
           {/* CTA Section */}
           <div className="bg-amber-50 rounded-lg p-8 mt-12 text-center border border-amber-100">

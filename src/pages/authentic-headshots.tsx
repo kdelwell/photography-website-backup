@@ -1,6 +1,7 @@
 import Layout from '@/components/Layout'
 import Image from 'next/image'
 import Link from 'next/link'
+import ScrollReveal from '@/components/ScrollReveal'
 
 const CTA_URL = '/consult'
 const CTA_TEXT = 'Schedule a Call'
@@ -53,6 +54,7 @@ export default function AuthenticHeadshots() {
       </section>
 
       {/* ===== RELATABILITY / PROBLEM ===== */}
+      <ScrollReveal animation="fade-up">
       <section className="bg-gray-50 py-16 md:py-20">
         <div className="max-w-3xl mx-auto px-4 sm:px-6 lg:px-8">
           <h2 className="text-3xl md:text-4xl font-bold text-gray-900 text-center mb-8">
@@ -75,6 +77,8 @@ export default function AuthenticHeadshots() {
         </div>
       </section>
 
+      </ScrollReveal>
+
       {/* ===== CTA BREAK ===== */}
       <section className="bg-white" style={{ paddingTop: '24px', paddingBottom: '24px' }}>
         <div className="text-center">
@@ -83,6 +87,7 @@ export default function AuthenticHeadshots() {
       </section>
 
       {/* ===== DIFFERENCE SECTION ===== */}
+      <ScrollReveal animation="fade-up">
       <section className="bg-white py-16 md:py-20">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
           <h2 className="text-3xl md:text-4xl font-bold text-gray-900 text-center mb-12">
@@ -117,7 +122,10 @@ export default function AuthenticHeadshots() {
         </div>
       </section>
 
+      </ScrollReveal>
+
       {/* ===== OUTCOME SECTION ===== */}
+      <ScrollReveal animation="fade-in">
       <section className="bg-gray-50 py-16 md:py-20">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
           <div className="grid grid-cols-1 lg:grid-cols-2 gap-12 items-center">
@@ -159,6 +167,8 @@ export default function AuthenticHeadshots() {
         </div>
       </section>
 
+      </ScrollReveal>
+
       {/* ===== CTA BREAK ===== */}
       <section className="bg-white" style={{ paddingTop: '24px', paddingBottom: '24px' }}>
         <div className="text-center">
@@ -167,6 +177,7 @@ export default function AuthenticHeadshots() {
       </section>
 
       {/* ===== TESTIMONIALS ===== */}
+      <ScrollReveal animation="fade-up">
       <section style={{ backgroundColor: '#242424', paddingTop: '48px', paddingBottom: '64px' }}>
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
           <h2 className="text-3xl md:text-4xl font-bold text-white text-center mb-12">
@@ -204,7 +215,10 @@ export default function AuthenticHeadshots() {
         </div>
       </section>
 
+      </ScrollReveal>
+
       {/* ===== PROCESS ===== */}
+      <ScrollReveal animation="fade-up">
       <section className="bg-white py-16 md:py-20">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
           <h2 className="text-3xl md:text-4xl font-bold text-gray-900 text-center mb-12">
@@ -240,7 +254,10 @@ export default function AuthenticHeadshots() {
         </div>
       </section>
 
+      </ScrollReveal>
+
       {/* ===== FINAL CTA ===== */}
+      <ScrollReveal animation="fade-up">
       <section className="bg-gray-50 py-16 md:py-20">
         <div className="max-w-3xl mx-auto px-4 sm:px-6 lg:px-8 text-center">
           <h2 className="text-3xl md:text-4xl font-bold text-gray-900 mb-6">
@@ -255,6 +272,7 @@ export default function AuthenticHeadshots() {
           </p>
         </div>
       </section>
+      </ScrollReveal>
     </Layout>
   )
 }

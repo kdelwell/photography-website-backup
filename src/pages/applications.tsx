@@ -1,6 +1,7 @@
 import Layout from '@/components/Layout'
 import Image from 'next/image'
 import Link from 'next/link'
+import ScrollReveal from '@/components/ScrollReveal'
 
 export default function Applications() {
   return (
@@ -23,6 +24,7 @@ export default function Applications() {
       </section>
 
       {/* Section 1 - Dark */}
+      <ScrollReveal animation="fade-left">
       <section className="bg-[#242424] py-4">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
           <div className="grid grid-cols-1 lg:grid-cols-2 gap-8 items-center">
@@ -47,7 +49,10 @@ export default function Applications() {
         </div>
       </section>
 
+      </ScrollReveal>
+
       {/* Section 2 - Light */}
+      <ScrollReveal animation="fade-right">
       <section className="bg-white py-4">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
           <div className="grid grid-cols-1 lg:grid-cols-2 gap-8 items-center">
@@ -72,7 +77,10 @@ export default function Applications() {
         </div>
       </section>
 
+      </ScrollReveal>
+
       {/* Section 3 - Dark */}
+      <ScrollReveal animation="fade-left">
       <section className="bg-[#242424] py-4">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
           <div className="grid grid-cols-1 lg:grid-cols-2 gap-8 items-center">
@@ -97,7 +105,10 @@ export default function Applications() {
         </div>
       </section>
 
+      </ScrollReveal>
+
       {/* Section 4 - Light */}
+      <ScrollReveal animation="fade-right">
       <section className="bg-white py-4">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
           <div className="grid grid-cols-1 lg:grid-cols-2 gap-8 items-center">
@@ -122,7 +133,10 @@ export default function Applications() {
         </div>
       </section>
 
+      </ScrollReveal>
+
       {/* Section 5 - Dark */}
+      <ScrollReveal animation="fade-left">
       <section className="bg-[#242424] py-4">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
           <div className="grid grid-cols-1 lg:grid-cols-2 gap-8 items-center">
@@ -147,7 +161,10 @@ export default function Applications() {
         </div>
       </section>
 
+      </ScrollReveal>
+
       {/* Section 6 - Light */}
+      <ScrollReveal animation="fade-right">
       <section className="bg-white py-4">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
           <div className="grid grid-cols-1 lg:grid-cols-2 gap-8 items-center">
@@ -172,7 +189,10 @@ export default function Applications() {
         </div>
       </section>
 
+      </ScrollReveal>
+
       {/* Section 7 - Dark */}
+      <ScrollReveal animation="fade-left">
       <section className="bg-[#242424] py-4">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
           <div className="grid grid-cols-1 lg:grid-cols-2 gap-8 items-center">
@@ -200,7 +220,10 @@ export default function Applications() {
         </div>
       </section>
 
+      </ScrollReveal>
+
       {/* Section 8 - Light */}
+      <ScrollReveal animation="fade-right">
       <section className="bg-white py-4">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
           <div className="grid grid-cols-1 lg:grid-cols-2 gap-8 items-center">
@@ -228,7 +251,10 @@ export default function Applications() {
         </div>
       </section>
 
+      </ScrollReveal>
+
       {/* CTA Section */}
+      <ScrollReveal animation="fade-up">
       <section className="bg-gray-50 py-16">
         <div className="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8 text-center">
           <h2 className="text-3xl md:text-4xl font-bold text-gray-900 mb-4">
@@ -248,6 +274,7 @@ export default function Applications() {
           </a>
         </div>
       </section>
+      </ScrollReveal>
     </Layout>
   )
 }

@@ -5,6 +5,7 @@ import fs from 'fs'
 import path from 'path'
 import matter from 'gray-matter'
 import { ChevronLeft, ChevronRight, X } from 'lucide-react'
+import ScrollReveal from '@/components/ScrollReveal'
 
 interface HairProps {
   frontmatter: { title: string; description: string }
@@ -141,6 +142,7 @@ const Hair = ({ frontmatter }: HairProps) => {
         </section>
 
         {/* Text Section */}
+        <ScrollReveal animation="fade-up">
         <section className="bg-white" style={{ marginTop: '20px', marginBottom: '20px', paddingTop: '20px', paddingBottom: '20px' }}>
           <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
             <div className="text-center">
@@ -150,8 +152,10 @@ const Hair = ({ frontmatter }: HairProps) => {
             </div>
           </div>
         </section>
+        </ScrollReveal>
 
         {/* Hair Images Grid */}
+        <ScrollReveal animation="fade-in">
         <section className="bg-white">
           <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-0">
             {hairImages.map((image, index) => (
@@ -171,8 +175,10 @@ const Hair = ({ frontmatter }: HairProps) => {
             ))}
           </div>
         </section>
+        </ScrollReveal>
 
         {/* CTA Section */}
+        <ScrollReveal animation="fade-up">
         <section className="bg-gray-50 py-16">
           <div className="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8 text-center">
             <h2 className="text-3xl md:text-4xl font-bold text-gray-900 mb-4">
@@ -189,6 +195,7 @@ const Hair = ({ frontmatter }: HairProps) => {
             </a>
           </div>
         </section>
+        </ScrollReveal>
 
         {/* Lightbox */}
         {lightboxOpen && (

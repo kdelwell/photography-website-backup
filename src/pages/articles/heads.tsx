@@ -2,6 +2,7 @@ import Layout from '../../components/Layout'
 import Image from 'next/image'
 import Link from 'next/link'
 import { ChevronLeft } from 'lucide-react'
+import ScrollReveal from '@/components/ScrollReveal'
 
 const HeadsArticle = () => {
   const articleSchema = {
@@ -101,6 +102,7 @@ const HeadsArticle = () => {
           </div>
 
           {/* Hero Image */}
+          <ScrollReveal animation="fade-in">
           <div className="relative w-full h-[400px] md:h-[500px] lg:h-[600px] mb-12 rounded-lg overflow-hidden">
             <Image
               src="/images/Articles/Heads.jpg"
@@ -110,8 +112,10 @@ const HeadsArticle = () => {
               priority
             />
           </div>
+          </ScrollReveal>
 
           {/* Article Content */}
+          <ScrollReveal animation="fade-up">
           <div className="prose prose-lg prose-gray max-w-none">
             <p className="text-xl md:text-2xl text-gray-700 leading-relaxed mb-8 font-light">
               "Why did you chop off the top of my head?" It's a question I encounter frequently when delivering images to my clients. Ironically, many of these same clients chose me as their photographer after seeing my website images—each one carefully composed with the top of their heads not fully visible. They didn't seem to notice at the time, and it's a phenomenon I find intriguing.
@@ -138,7 +142,10 @@ const HeadsArticle = () => {
             </p>
           </div>
 
+          </ScrollReveal>
+
           {/* Author Bio */}
+          <ScrollReveal animation="fade-up">
           <div className="border-t border-gray-200 pt-8 mt-12">
             <div className="flex items-center">
               <div className="relative w-16 h-16 rounded-full overflow-hidden mr-4">
@@ -155,6 +162,7 @@ const HeadsArticle = () => {
               </div>
             </div>
           </div>
+          </ScrollReveal>
 
           {/* CTA Section */}
           <div className="bg-purple-50 rounded-lg p-8 mt-12 text-center border border-purple-100">

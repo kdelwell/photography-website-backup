@@ -2,6 +2,7 @@ import Layout from '@/components/Layout'
 import Image from 'next/image'
 import { useState } from 'react'
 import { ChevronDown, ChevronUp, X } from 'lucide-react'
+import ScrollReveal from '@/components/ScrollReveal'
 
 interface FAQItem {
   question: string
@@ -71,6 +72,7 @@ export default function FAQs() {
         </div>
 
         {/* Hero Images Section */}
+        <ScrollReveal animation="fade-in">
         <div className="w-full bg-white pb-8">
           <div className="grid grid-cols-2 md:grid-cols-4 gap-0">
             {faqImages.map((image, index) => (
@@ -90,7 +92,10 @@ export default function FAQs() {
           </div>
         </div>
 
+        </ScrollReveal>
+
         {/* FAQ Items Section */}
+        <ScrollReveal animation="fade-up">
         <div className="bg-white">
           <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-12">
           <div className="grid md:grid-cols-2 gap-6">
@@ -128,7 +133,10 @@ export default function FAQs() {
           </div>
         </div>
 
+        </ScrollReveal>
+
         {/* Call to Action Section */}
+        <ScrollReveal animation="fade-up">
         <div className="bg-gray-300 text-gray-800 py-16">
           <div className="max-w-4xl mx-auto text-center px-4">
             <h2 className="text-3xl md:text-4xl font-light mb-6">
@@ -153,6 +161,8 @@ export default function FAQs() {
             </div>
           </div>
         </div>
+
+        </ScrollReveal>
 
         {/* Image Lightbox */}
         {lightboxOpen && (

@@ -4,6 +4,7 @@ import matter from 'gray-matter'
 import fs from 'fs'
 import path from 'path'
 import { useEffect, useState } from 'react'
+import ScrollReveal from '@/components/ScrollReveal'
 
 export default function About({ frontmatter, content }: { frontmatter: any; content: string }) {
   const [scrollY, setScrollY] = useState(0)
@@ -65,6 +66,7 @@ export default function About({ frontmatter, content }: { frontmatter: any; cont
       </div>
       
       {/* 2x2 image grid full width with no gaps */}
+      <ScrollReveal animation="fade-in">
       <div className="w-full">
         <div className="grid grid-cols-1 md:grid-cols-2 gap-0">
           {/* First row */}
@@ -196,6 +198,7 @@ export default function About({ frontmatter, content }: { frontmatter: any; cont
           </div>
         </div>
       </div>
+      </ScrollReveal>
     </Layout>
   )
 }

@@ -8,6 +8,7 @@ import MainGallery from '@/components/MainGallery'
 import HeadshotProcess from '@/components/HeadshotProcess'
 import HeadshotReviews from '@/components/HeadshotReviews'
 import BeforeAfter from '@/components/BeforeAfter'
+import ScrollReveal from '@/components/ScrollReveal'
 
 export default function ProfessionalIndividualHeadshots({ frontmatter, content }: { frontmatter: any; content: string }) {
   const breadcrumbSchema = {
@@ -64,10 +65,14 @@ export default function ProfessionalIndividualHeadshots({ frontmatter, content }
       </section>
 
       {/* Full Width Gallery Section */}
-      <MainGallery />
+      <ScrollReveal animation="fade-in">
+        <MainGallery />
+      </ScrollReveal>
 
       {/* Process Section */}
-      <HeadshotProcess />
+      <ScrollReveal animation="fade-up">
+        <HeadshotProcess />
+      </ScrollReveal>
 
       {/* More Info Section */}
       <section className="bg-[#242424] py-8">
@@ -108,10 +113,14 @@ export default function ProfessionalIndividualHeadshots({ frontmatter, content }
       </section>
 
       {/* Reviews Section */}
-      <HeadshotReviews />
+      <ScrollReveal animation="fade-up">
+        <HeadshotReviews />
+      </ScrollReveal>
 
       {/* Transformations Gallery Section */}
-      <BeforeAfter />
+      <ScrollReveal animation="fade-in">
+        <BeforeAfter />
+      </ScrollReveal>
 
     </Layout>
   )

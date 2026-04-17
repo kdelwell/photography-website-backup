@@ -2,6 +2,7 @@ import Layout from '../../components/Layout'
 import Image from 'next/image'
 import Link from 'next/link'
 import { ChevronLeft } from 'lucide-react'
+import ScrollReveal from '@/components/ScrollReveal'
 
 const GlassesArticle = () => {
   const articleSchema = {
@@ -101,6 +102,7 @@ const GlassesArticle = () => {
           </div>
 
           {/* Hero Image */}
+          <ScrollReveal animation="fade-in">
           <div className="relative w-full h-[400px] md:h-[500px] lg:h-[600px] mb-12 rounded-lg overflow-hidden">
             <Image
               src="/images/Articles/Glasses.webp"
@@ -110,8 +112,10 @@ const GlassesArticle = () => {
               priority
             />
           </div>
+          </ScrollReveal>
 
           {/* Article Content */}
+          <ScrollReveal animation="fade-up">
           <div className="prose prose-lg prose-gray max-w-none">
             <p className="text-xl md:text-2xl text-gray-700 leading-relaxed mb-8 font-light">
               When it comes to the age-old question of whether to wear glasses for a photoshoot, there are a few factors to consider. The decision ultimately depends on your personal brand, comfort level, and the image you want to project.
@@ -134,7 +138,10 @@ const GlassesArticle = () => {
             </p>
           </div>
 
+          </ScrollReveal>
+
           {/* Author Bio */}
+          <ScrollReveal animation="fade-up">
           <div className="border-t border-gray-200 pt-8 mt-12">
             <div className="flex items-center">
               <div className="relative w-16 h-16 rounded-full overflow-hidden mr-4">
@@ -151,6 +158,7 @@ const GlassesArticle = () => {
               </div>
             </div>
           </div>
+          </ScrollReveal>
 
           {/* CTA Section */}
           <div className="bg-green-50 rounded-lg p-8 mt-12 text-center border border-green-100">

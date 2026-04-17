@@ -5,6 +5,7 @@ import HeadshotProcess from '@/components/HeadshotProcess'
 import HeadshotReviews from '@/components/HeadshotReviews'
 import BeforeAfter from '@/components/BeforeAfter'
 import PricingCTA from '@/components/PricingCTA'
+import ScrollReveal from '@/components/ScrollReveal'
 
 export default function HeadshotsTysonsCornerVA() {
   const faqSchema = {
@@ -87,6 +88,7 @@ export default function HeadshotsTysonsCornerVA() {
       </section>
 
       {/* Location-Specific Content */}
+      <ScrollReveal animation="fade-up">
       <section className="bg-white py-16">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
           <div className="grid grid-cols-1 lg:grid-cols-2 gap-12 items-center">
@@ -146,8 +148,10 @@ export default function HeadshotsTysonsCornerVA() {
           </div>
         </div>
       </section>
+      </ScrollReveal>
 
       {/* Portfolio */}
+      <ScrollReveal animation="fade-in">
       <section id="portfolio" className="bg-gray-50">
         <div className="py-8">
           <h2 className="text-3xl md:text-4xl font-bold text-gray-900 text-center mb-8">
@@ -156,10 +160,16 @@ export default function HeadshotsTysonsCornerVA() {
           <MainGallery />
         </div>
       </section>
+      </ScrollReveal>
 
+      <ScrollReveal animation="fade-up">
       <HeadshotProcess />
+      </ScrollReveal>
+      <ScrollReveal animation="fade-in">
       <BeforeAfter />
+      </ScrollReveal>
 
+      <ScrollReveal animation="fade-up">
       {/* Neighborhoods Served */}
       <section className="bg-white py-16">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
@@ -187,10 +197,14 @@ export default function HeadshotsTysonsCornerVA() {
           </p>
         </div>
       </section>
+      </ScrollReveal>
 
+      <ScrollReveal animation="fade-up">
       <HeadshotReviews />
+      </ScrollReveal>
 
       {/* FAQ Section */}
+      <ScrollReveal animation="fade-up">
       <section className="bg-gray-50 py-16">
         <div className="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8">
           <h2 className="text-3xl md:text-4xl font-bold text-gray-900 text-center mb-12">
@@ -233,8 +247,11 @@ export default function HeadshotsTysonsCornerVA() {
           </div>
         </div>
       </section>
+      </ScrollReveal>
 
+      <ScrollReveal animation="fade-up">
       <PricingCTA />
+      </ScrollReveal>
 
       {/* Local SEO Content */}
       <section className="bg-white py-16">

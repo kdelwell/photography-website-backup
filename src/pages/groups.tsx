@@ -5,6 +5,7 @@ import fs from 'fs'
 import path from 'path'
 import matter from 'gray-matter'
 import { ChevronLeft, ChevronRight } from 'lucide-react'
+import ScrollReveal from '@/components/ScrollReveal'
 
 interface GroupsProps {
   frontmatter: { title: string; description: string }
@@ -50,6 +51,28 @@ const Groups = ({ frontmatter }: GroupsProps) => {
   const [quoteSubmitting, setQuoteSubmitting] = useState(false)
   const [quoteSubmitted, setQuoteSubmitted] = useState(false)
   const [quoteError, setQuoteError] = useState('')
+  const [contactCaptured, setContactCaptured] = useState(false)
+
+  // Check if required fields are filled
+  const contactComplete = quoteForm.firstName.trim().length > 0 && quoteForm.email.trim().includes('@') && quoteForm.phone.trim().length >= 7
+
+  // Abandoned cart capture — silently save contact as they type
+  useEffect(() => {
+    if (contactCaptured || !contactComplete) return
+    setContactCaptured(true)
+    // Fire and forget — capture their info in background
+    fetch('/api/group-quote-capture', {
+      method: 'POST',
+      headers: { 'Content-Type': 'application/json' },
+      body: JSON.stringify({
+        firstName: quoteForm.firstName.trim(),
+        lastName: quoteForm.lastName.trim(),
+        email: quoteForm.email.trim(),
+        phone: quoteForm.phone.trim(),
+        company: quoteForm.company.trim(),
+      }),
+    }).catch(() => {})
+  }, [contactComplete, contactCaptured, quoteForm])
 
   // Look up per-person rate from tiered pricing
   function getPerPersonRate(size: number): number {
@@ -121,6 +144,23 @@ const Groups = ({ frontmatter }: GroupsProps) => {
     e.preventDefault()
     setQuoteSubmitting(true)
     setQuoteError('')
+
+    // Validate required fields from column 1
+    if (!quoteForm.firstName.trim() || !quoteForm.lastName.trim()) {
+      setQuoteError('Please enter your name in Step 1.')
+      setQuoteSubmitting(false)
+      return
+    }
+    if (!quoteForm.email.trim()) {
+      setQuoteError('Please enter your email in Step 1.')
+      setQuoteSubmitting(false)
+      return
+    }
+    if (!quoteForm.phone.trim()) {
+      setQuoteError('Please enter your phone number in Step 1.')
+      setQuoteSubmitting(false)
+      return
+    }
     try {
       const resp = await fetch('/api/group-quote', {
         method: 'POST',
@@ -251,6 +291,7 @@ const Groups = ({ frontmatter }: GroupsProps) => {
         </section>
 
         {/* Company Composites Section */}
+        <ScrollReveal animation="fade-in">
         <div className="bg-[#242424] pt-8 pb-16">
           <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
             <h2 className="text-3xl md:text-4xl font-bold text-center text-white mb-12 tracking-wide">
@@ -279,6 +320,8 @@ const Groups = ({ frontmatter }: GroupsProps) => {
           </div>
         </div>
 
+        </ScrollReveal>
+
         {/* Options Heading */}
         <div id="experience" className="bg-gray-300" style={{ paddingTop: '20px', paddingBottom: '20px' }}>
           <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
@@ -299,6 +342,7 @@ const Groups = ({ frontmatter }: GroupsProps) => {
         </div>
 
         {/* Options Section */}
+        <ScrollReveal animation="fade-up">
         <div className="bg-[#242424] py-16">
           <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
 
@@ -408,7 +452,10 @@ const Groups = ({ frontmatter }: GroupsProps) => {
           </div>
         </div>
 
+        </ScrollReveal>
+
         {/* Unparalleled Service Section */}
+        <ScrollReveal animation="fade-up">
         <div className="bg-white" style={{ paddingTop: '30px', paddingBottom: '64px' }}>
           <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
             <h2 className="text-4xl md:text-5xl font-bold text-center text-black mb-16 tracking-wide">
@@ -505,7 +552,10 @@ const Groups = ({ frontmatter }: GroupsProps) => {
           </div>
         </div>
 
+        </ScrollReveal>
+
         {/* Group Shot Option Section */}
+        <ScrollReveal animation="fade-in">
         <div id="composite" className="bg-[#242424]" style={{ paddingTop: '48px', paddingBottom: '20px' }}>
           <div className="max-w-5xl mx-auto px-4 sm:px-6 lg:px-8">
             <h2 className="text-4xl md:text-5xl font-bold text-white text-center tracking-wide mb-2">
@@ -559,6 +609,8 @@ const Groups = ({ frontmatter }: GroupsProps) => {
           </div>
         </div>
 
+        </ScrollReveal>
+
         {/* Get Pricing Section */}
         <div className="bg-white" style={{ paddingTop: '20px', paddingBottom: '20px' }}>
           <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
@@ -577,6 +629,7 @@ const Groups = ({ frontmatter }: GroupsProps) => {
         </div>
 
         {/* Team Pricing Calculator */}
+        <ScrollReveal animation="fade-up">
         <div id="calculator" className="bg-[#242424] overflow-hidden" style={{ paddingTop: '48px', paddingBottom: '48px' }}>
           <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 overflow-hidden">
             <h2 className="text-3xl md:text-4xl font-bold text-white text-center mb-2 tracking-wide">
@@ -587,9 +640,54 @@ const Groups = ({ frontmatter }: GroupsProps) => {
             </p>
 
             <div className="grid grid-cols-1 lg:grid-cols-3 gap-8">
-              {/* Column 1: Inputs */}
+              {/* Column 1: Contact Form (Start Here) */}
               <div className="bg-white rounded-lg p-6">
                 <h3 className="text-lg font-bold text-gray-900 mb-1">1. Start Here</h3>
+                <p className="text-gray-500 text-xs mb-5">Tell us about yourself. Then customize your estimate.</p>
+
+                <div className="space-y-4 mb-4">
+                  <div className="grid grid-cols-2 gap-4">
+                    <div>
+                      <label className="block text-xs font-semibold text-gray-700 mb-1">First Name *</label>
+                      <input type="text" required placeholder="First name" name="given-name" autoComplete="given-name"
+                        value={quoteForm.firstName} onChange={e => setQuoteForm(f => ({ ...f, firstName: e.target.value }))}
+                        className="w-full border border-gray-300 rounded-md px-3 py-2 text-gray-900 text-sm" />
+                    </div>
+                    <div>
+                      <label className="block text-xs font-semibold text-gray-700 mb-1">Last Name *</label>
+                      <input type="text" required placeholder="Last name" name="family-name" autoComplete="family-name"
+                        value={quoteForm.lastName} onChange={e => setQuoteForm(f => ({ ...f, lastName: e.target.value }))}
+                        className="w-full border border-gray-300 rounded-md px-3 py-2 text-gray-900 text-sm" />
+                    </div>
+                  </div>
+                  <div>
+                    <label className="block text-xs font-semibold text-gray-700 mb-1">Email *</label>
+                    <input type="email" required placeholder="you@company.com" name="email" autoComplete="email"
+                      value={quoteForm.email} onChange={e => setQuoteForm(f => ({ ...f, email: e.target.value }))}
+                      className="w-full border border-gray-300 rounded-md px-3 py-2 text-gray-900 text-sm" />
+                  </div>
+                  <div>
+                    <label className="block text-xs font-semibold text-gray-700 mb-1">Phone *</label>
+                    <input type="tel" required placeholder="(555) 555-5555" name="tel" autoComplete="tel"
+                      value={quoteForm.phone} onChange={e => setQuoteForm(f => ({ ...f, phone: e.target.value }))}
+                      className="w-full border border-gray-300 rounded-md px-3 py-2 text-gray-900 text-sm" />
+                  </div>
+                  <div>
+                    <label className="block text-xs font-semibold text-gray-700 mb-1">Company</label>
+                    <input type="text" placeholder="Company name" name="organization" autoComplete="organization"
+                      value={quoteForm.company} onChange={e => setQuoteForm(f => ({ ...f, company: e.target.value }))}
+                      className="w-full border border-gray-300 rounded-md px-3 py-2 text-gray-900 text-sm" />
+                  </div>
+                </div>
+
+                <p className="text-gray-400 text-xs">
+                  <strong>Privacy:</strong> We do not sell or share your information — ever. Your details are used only to send your quote.
+                </p>
+              </div>
+
+              {/* Column 2: Team Options */}
+              <div className="bg-white rounded-lg p-6">
+                <h3 className="text-lg font-bold text-gray-900 mb-1">2. Customize Your Quote</h3>
                 <p className="text-gray-500 text-xs mb-5">Enter your basics. Your estimate updates instantly.</p>
 
                 <div className="grid grid-cols-2 gap-4 mb-4">
@@ -600,7 +698,7 @@ const Groups = ({ frontmatter }: GroupsProps) => {
                         className="border border-gray-300 rounded-l-md px-3 py-2 text-gray-700 bg-gray-50 hover:bg-gray-100 text-lg font-bold leading-none select-none">&minus;</button>
                       <input type="number" min={2} value={teamSize} onChange={e => { const v = Math.max(2, parseInt(e.target.value) || 2); setTeamSize(v); if (v > 10 && !onLocation) setOnLocation(true); if (v < 5 && onLocation) setOnLocation(false); }}
                         className="w-full border-y border-gray-300 px-3 py-2 text-gray-900 text-center [appearance:textfield] [&::-webkit-outer-spin-button]:appearance-none [&::-webkit-inner-spin-button]:appearance-none" />
-                      <button type="button" onClick={() => { const v = teamSize + 1; setTeamSize(v); if (v > 10 && !onLocation) setOnLocation(true); }}
+                      <button type="button" onClick={() => { const v = Math.max(2, teamSize + 1); setTeamSize(v); if (v > 10 && !onLocation) setOnLocation(true); }}
                         className="border border-gray-300 rounded-r-md px-3 py-2 text-gray-700 bg-gray-50 hover:bg-gray-100 text-lg font-bold leading-none select-none">+</button>
                     </div>
                     <p className="text-gray-400 text-xs mt-1">Minimum 2 people</p>
@@ -668,9 +766,17 @@ const Groups = ({ frontmatter }: GroupsProps) => {
                 </div>
               </div>
 
-              {/* Column 2: Estimate */}
-              <div className="bg-white rounded-lg p-6">
-                <h3 className="text-lg font-bold text-gray-900 mb-1">2. Your Estimate</h3>
+              {/* Column 3: Estimate + Submit */}
+              <div className="bg-white rounded-lg p-6 relative">
+                {!contactComplete && (
+                  <div className="absolute inset-0 bg-white/80 backdrop-blur-sm rounded-lg z-10 flex items-center justify-center">
+                    <div className="text-center px-6">
+                      <div className="text-3xl mb-3">&#128274;</div>
+                      <p className="text-gray-700 font-semibold text-sm">Enter your name, email, and phone in Step 1 to unlock your estimate.</p>
+                    </div>
+                  </div>
+                )}
+                <h3 className="text-lg font-bold text-gray-900 mb-1">3. Your Estimate</h3>
                 <p className="text-gray-500 text-xs mb-5">Clear numbers for budgeting and planning.</p>
 
                 <div className="bg-gray-100 rounded-lg p-4 mb-6" style={{ minHeight: '100px' }}>
@@ -737,66 +843,21 @@ const Groups = ({ frontmatter }: GroupsProps) => {
                     <span>${total.toLocaleString()}.00</span>
                   </div>
                 </div>
-              </div>
 
-              {/* Column 3: Contact Form */}
-              <div className="bg-white rounded-lg p-6">
-                <h3 className="text-lg font-bold text-gray-900 mb-1">3. Get This Quote Sent to Me</h3>
-                <p className="text-gray-500 text-xs mb-5">Private, no spam, used only to send your quote.</p>
+                {quoteError && <p className="text-red-600 text-sm mt-4">{quoteError}</p>}
 
                 {quoteSubmitted ? (
-                  <div className="text-center py-8">
+                  <div className="text-center py-6 mt-4">
                     <div className="text-green-600 text-4xl mb-3">&#10003;</div>
                     <h4 className="text-lg font-bold text-gray-900 mb-2">Quote Sent!</h4>
                     <p className="text-gray-600 text-sm">Check your email for a copy of your estimate. Kevin will follow up with you shortly.</p>
                   </div>
                 ) : (
-                  <form onSubmit={handleQuoteSubmit} className="space-y-4">
-                    <div className="grid grid-cols-2 gap-4">
-                      <div>
-                        <label className="block text-xs font-semibold text-gray-700 mb-1">First Name *</label>
-                        <input type="text" required placeholder="First name" name="given-name" autoComplete="given-name"
-                          value={quoteForm.firstName} onChange={e => setQuoteForm(f => ({ ...f, firstName: e.target.value }))}
-                          className="w-full border border-gray-300 rounded-md px-3 py-2 text-gray-900 text-sm" />
-                      </div>
-                      <div>
-                        <label className="block text-xs font-semibold text-gray-700 mb-1">Last Name *</label>
-                        <input type="text" required placeholder="Last name" name="family-name" autoComplete="family-name"
-                          value={quoteForm.lastName} onChange={e => setQuoteForm(f => ({ ...f, lastName: e.target.value }))}
-                          className="w-full border border-gray-300 rounded-md px-3 py-2 text-gray-900 text-sm" />
-                      </div>
-                    </div>
-                    <div className="grid grid-cols-2 gap-4">
-                      <div>
-                        <label className="block text-xs font-semibold text-gray-700 mb-1">Email *</label>
-                        <input type="email" required placeholder="you@company.com" name="email" autoComplete="email"
-                          value={quoteForm.email} onChange={e => setQuoteForm(f => ({ ...f, email: e.target.value }))}
-                          className="w-full border border-gray-300 rounded-md px-3 py-2 text-gray-900 text-sm" />
-                      </div>
-                      <div>
-                        <label className="block text-xs font-semibold text-gray-700 mb-1">Phone</label>
-                        <input type="tel" placeholder="(555) 555-5555" name="tel" autoComplete="tel"
-                          value={quoteForm.phone} onChange={e => setQuoteForm(f => ({ ...f, phone: e.target.value }))}
-                          className="w-full border border-gray-300 rounded-md px-3 py-2 text-gray-900 text-sm" />
-                      </div>
-                    </div>
-                    <div>
-                      <label className="block text-xs font-semibold text-gray-700 mb-1">Company</label>
-                      <input type="text" placeholder="Company name" name="organization" autoComplete="organization"
-                        value={quoteForm.company} onChange={e => setQuoteForm(f => ({ ...f, company: e.target.value }))}
-                        className="w-full border border-gray-300 rounded-md px-3 py-2 text-gray-900 text-sm" />
-                    </div>
-
-                    {quoteError && <p className="text-red-600 text-sm">{quoteError}</p>}
-
+                  <form onSubmit={handleQuoteSubmit}>
                     <button type="submit" disabled={quoteSubmitting}
-                      className="w-full bg-red-600 hover:bg-red-700 disabled:bg-gray-400 text-white py-3 rounded-md font-semibold text-sm uppercase tracking-wide transition-colors">
+                      className="w-full bg-red-600 hover:bg-red-700 disabled:bg-gray-400 text-white py-3 rounded-md font-semibold text-sm uppercase tracking-wide transition-colors mt-6">
                       {quoteSubmitting ? 'Sending...' : 'Get This Quote Sent to Me'}
                     </button>
-
-                    <p className="text-gray-400 text-xs">
-                      <strong>Privacy:</strong> We do not sell or share your information — ever. Your details are used only to send your quote and help coordinate your session.
-                    </p>
                   </form>
                 )}
               </div>
@@ -813,6 +874,7 @@ const Groups = ({ frontmatter }: GroupsProps) => {
             }
           `}</style>
         </div>
+        </ScrollReveal>
 
         {/* Image Lightbox */}
         {lightboxOpen && (

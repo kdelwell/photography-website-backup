@@ -4,6 +4,7 @@ import { useState } from 'react'
 import Image from 'next/image'
 import allReviews from '@/data/reviews.json'
 import reviewImages from '@/data/review-images.json'
+import ScrollReveal from '@/components/ScrollReveal'
 
 const imageMap: Record<string, string> = reviewImages as Record<string, string>
 
@@ -124,6 +125,7 @@ export default function ReviewsPage() {
       </section>
 
       {/* Featured corporate section */}
+      <ScrollReveal animation="fade-up">
       <section style={{ backgroundColor: '#242424', paddingTop: '48px', paddingBottom: '48px' }}>
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
           <h2 className="text-2xl md:text-3xl font-bold text-white text-center mb-4">
@@ -187,8 +189,10 @@ export default function ReviewsPage() {
           </div>
         </div>
       </section>
+      </ScrollReveal>
 
       {/* Client profile summaries — SEO-rich category descriptions */}
+      <ScrollReveal animation="fade-up">
       <section className="bg-white py-12 md:py-16">
         <div className="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8">
           <h2 className="text-2xl md:text-3xl font-bold text-gray-900 text-center mb-4">
@@ -264,6 +268,8 @@ export default function ReviewsPage() {
           </div>
         </div>
       </section>
+
+      </ScrollReveal>
 
       {/* Filter bar */}
       <section className="bg-gray-50 border-b border-gray-200 sticky top-0 z-10">

@@ -6,6 +6,7 @@ import HeadshotProcess from '@/components/HeadshotProcess'
 import HeadshotReviews from '@/components/HeadshotReviews'
 import BeforeAfter from '@/components/BeforeAfter'
 import PricingCTA from '@/components/PricingCTA'
+import ScrollReveal from '@/components/ScrollReveal'
 
 export default function HeadshotsWashingtonDC() {
   const faqSchema = {
@@ -95,6 +96,7 @@ export default function HeadshotsWashingtonDC() {
       </section>
 
       {/* Location-Specific Content */}
+      <ScrollReveal animation="fade-up">
       <section className="bg-white py-16">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
           <div className="grid grid-cols-1 lg:grid-cols-2 gap-12 items-center">
@@ -156,8 +158,10 @@ export default function HeadshotsWashingtonDC() {
           </div>
         </div>
       </section>
+      </ScrollReveal>
 
       {/* Portfolio Gallery */}
+      <ScrollReveal animation="fade-in">
       <section id="portfolio" className="bg-gray-50">
         <div className="py-8">
           <h2 className="text-3xl md:text-4xl font-bold text-gray-900 text-center mb-8">
@@ -166,13 +170,19 @@ export default function HeadshotsWashingtonDC() {
           <MainGallery />
         </div>
       </section>
+      </ScrollReveal>
 
       {/* Our Process */}
+      <ScrollReveal animation="fade-up">
       <HeadshotProcess />
+      </ScrollReveal>
 
       {/* Before & After */}
+      <ScrollReveal animation="fade-in">
       <BeforeAfter />
+      </ScrollReveal>
 
+      <ScrollReveal animation="fade-up">
       {/* Service Areas */}
       <section className="bg-white py-16">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
@@ -220,11 +230,15 @@ export default function HeadshotsWashingtonDC() {
           </p>
         </div>
       </section>
+      </ScrollReveal>
 
       {/* Reviews */}
+      <ScrollReveal animation="fade-up">
       <HeadshotReviews />
+      </ScrollReveal>
 
       {/* FAQ Section */}
+      <ScrollReveal animation="fade-up">
       <section className="bg-gray-50 py-16">
         <div className="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8">
           <h2 className="text-3xl md:text-4xl font-bold text-gray-900 text-center mb-12">
@@ -285,9 +299,12 @@ export default function HeadshotsWashingtonDC() {
           </div>
         </div>
       </section>
+      </ScrollReveal>
 
       {/* Final CTA */}
+      <ScrollReveal animation="fade-up">
       <PricingCTA />
+      </ScrollReveal>
 
       {/* Local SEO Content */}
       <section className="bg-white py-16">

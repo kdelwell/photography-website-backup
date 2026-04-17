@@ -2,6 +2,7 @@ import Layout from '../../components/Layout'
 import Image from 'next/image'
 import Link from 'next/link'
 import { ChevronLeft } from 'lucide-react'
+import ScrollReveal from '@/components/ScrollReveal'
 
 const FaceArticle = () => {
   const articleSchema = {
@@ -101,6 +102,7 @@ const FaceArticle = () => {
           </div>
 
           {/* Hero Image */}
+          <ScrollReveal animation="fade-in">
           <div className="relative w-full h-[400px] md:h-[500px] lg:h-[600px] mb-12 rounded-lg overflow-hidden">
             <Image
               src="/images/Articles/Side.webp"
@@ -110,8 +112,10 @@ const FaceArticle = () => {
               priority
             />
           </div>
+          </ScrollReveal>
 
           {/* Article Content */}
+          <ScrollReveal animation="fade-up">
           <div className="prose prose-lg prose-gray max-w-none">
             <p className="text-xl md:text-2xl text-gray-700 leading-relaxed mb-8 font-light">
               The question of which side of the face is more flattering is a common inquiry that arises during my photography sessions. There are patterns that emerge when considering human preferences and anatomy. Statistically, a majority of people tend to favor their left side when posing for photographs.
@@ -138,7 +142,10 @@ const FaceArticle = () => {
             </p>
           </div>
 
+          </ScrollReveal>
+
           {/* Author Bio */}
+          <ScrollReveal animation="fade-up">
           <div className="border-t border-gray-200 pt-8 mt-12">
             <div className="flex items-center">
               <div className="relative w-16 h-16 rounded-full overflow-hidden mr-4">
@@ -155,6 +162,7 @@ const FaceArticle = () => {
               </div>
             </div>
           </div>
+          </ScrollReveal>
 
           {/* CTA Section */}
           <div className="bg-blue-50 rounded-lg p-8 mt-12 text-center border border-blue-100">

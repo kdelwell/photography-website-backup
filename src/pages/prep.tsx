@@ -6,6 +6,7 @@ import { useState } from 'react'
 import { X } from 'lucide-react'
 import fs from 'fs'
 import path from 'path'
+import ScrollReveal from '@/components/ScrollReveal'
 
 export default function Prep({ frontmatter, content }: { frontmatter: any; content: string }) {
   const [lightboxOpen, setLightboxOpen] = useState(false)
@@ -38,6 +39,7 @@ export default function Prep({ frontmatter, content }: { frontmatter: any; conte
         </div>
 
         {/* Images Grid */}
+        <ScrollReveal animation="fade-in">
         <div className="w-full bg-white pb-2">
           <div className="grid grid-cols-2 md:grid-cols-4 gap-0">
             {prepImages.map((image, index) => (
@@ -57,7 +59,10 @@ export default function Prep({ frontmatter, content }: { frontmatter: any; conte
           </div>
         </div>
 
+        </ScrollReveal>
+
         {/* Content */}
+        <ScrollReveal animation="fade-up">
         <div className="bg-white">
           <div className="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8 pt-4 pb-12">
             <div className="text-gray-700 leading-relaxed">
@@ -78,6 +83,8 @@ export default function Prep({ frontmatter, content }: { frontmatter: any; conte
             </div>
           </div>
         </div>
+
+        </ScrollReveal>
 
         {/* Image Lightbox */}
         {lightboxOpen && (

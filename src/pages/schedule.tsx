@@ -4,6 +4,7 @@ import Link from 'next/link'
 import Script from 'next/script'
 import { useState, useEffect, useCallback } from 'react'
 import { Camera, Monitor, Clock, Sparkles } from 'lucide-react'
+import ScrollReveal from '@/components/ScrollReveal'
 
 const REVIEW_SNIPPETS = [
   {
@@ -95,6 +96,7 @@ export default function Schedule() {
       </section>
 
       {/* Review snippets */}
+      <ScrollReveal animation="fade-up">
       <section className="bg-gray-50 py-8">
         <div className="max-w-5xl mx-auto px-4 sm:px-6 lg:px-8">
           <div className="grid grid-cols-1 md:grid-cols-3 gap-4">
@@ -111,7 +113,10 @@ export default function Schedule() {
         </div>
       </section>
 
+      </ScrollReveal>
+
       {/* Image gallery */}
+      <ScrollReveal animation="fade-in">
       <section style={{ paddingTop: '0px', paddingBottom: '0px' }}>
         <div className="grid grid-cols-2 md:grid-cols-4 h-auto">
           {GALLERY_IMAGES.map((img, index) => (
@@ -133,7 +138,10 @@ export default function Schedule() {
         </div>
       </section>
 
+      </ScrollReveal>
+
       {/* What to expect */}
+      <ScrollReveal animation="fade-up">
       <section className="bg-white py-8">
         <div className="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8">
           <h2 className="text-xl font-bold text-gray-900 text-center mb-6">
@@ -207,7 +215,10 @@ export default function Schedule() {
         />
       </section>
 
+      </ScrollReveal>
+
       {/* FAQ / Objection handlers */}
+      <ScrollReveal animation="fade-up">
       <section className="bg-white py-12">
         <div className="max-w-3xl mx-auto px-4 sm:px-6 lg:px-8">
           <h2 className="text-xl font-bold text-gray-900 text-center mb-8">
@@ -248,7 +259,10 @@ export default function Schedule() {
         </div>
       </section>
 
+      </ScrollReveal>
+
       {/* Final CTA */}
+      <ScrollReveal animation="fade-up">
       <section style={{ backgroundColor: '#242424' }} className="py-10">
         <div className="max-w-3xl mx-auto px-4 sm:px-6 lg:px-8 text-center">
           <p className="text-white text-lg font-medium mb-2">
@@ -265,6 +279,7 @@ export default function Schedule() {
           </Link>
         </div>
       </section>
+      </ScrollReveal>
       {/* Lightbox */}
       {selectedIndex !== null && (
         <div
