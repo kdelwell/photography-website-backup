@@ -11,7 +11,7 @@ export default function Header({ hideMenu = false }: HeaderProps) {
   const [isMenuOpen, setIsMenuOpen] = useState(false)
 
   const navigation = [
-    { name: 'HEADSHOTS', href: '/professional_individual_headshots', external: false },
+    { name: 'HEADSHOTS', href: '/applications', external: false },
     { name: 'GROUPS', href: '/groups', external: false },
     { name: 'EVENTS', href: '/studiogo', external: false },
     { name: 'HAIR & MAKEUP', href: '/hair', external: false },
