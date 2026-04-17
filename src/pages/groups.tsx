@@ -280,7 +280,7 @@ const Groups = ({ frontmatter }: GroupsProps) => {
     <Layout title={frontmatter.title} description={frontmatter.description}>
       <div className="min-h-screen overflow-x-hidden">
         {/* Hero Section */}
-        <section className="bg-gray-100 py-6">
+        <section className="bg-white py-6">
           <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
             <div className="text-center">
               <h1 className="text-3xl md:text-4xl lg:text-5xl font-bold text-gray-900 text-center leading-tight">
@@ -323,7 +323,7 @@ const Groups = ({ frontmatter }: GroupsProps) => {
         </ScrollReveal>
 
         {/* Options Heading */}
-        <div id="experience" className="bg-gray-300" style={{ paddingTop: '20px', paddingBottom: '20px' }}>
+        <div id="experience" className="bg-gray-100" style={{ paddingTop: '20px', paddingBottom: '20px' }}>
           <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
             <h2 className="text-3xl md:text-4xl font-bold text-center text-black tracking-wide">
               Options
