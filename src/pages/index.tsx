@@ -327,9 +327,21 @@ export default function Home({ frontmatter, content }: { frontmatter: any; conte
       </ScrollReveal>
 
       {/* Transformations Gallery Section */}
-      <ScrollReveal animation="fade-in">
-        <BeforeAfter />
-      </ScrollReveal>
+      <div id="transformations">
+        <ScrollReveal animation="fade-in">
+          <BeforeAfter />
+        </ScrollReveal>
+        <ScrollReveal animation="fade-in">
+          <GalleryWithLightbox
+            images={[
+              { src: '/images/Transformations/Bridget_BA.jpg', alt: 'Bridget Professional Transformation' },
+              { src: '/images/Transformations/Tiger_BA.png', alt: 'Tiger Professional Transformation' },
+              { src: '/images/Transformations/Tristan_BA.png', alt: 'Tristan Professional Transformation' },
+              { src: '/images/Transformations/Noelle_BA.jpg', alt: 'Noelle Professional Transformation' },
+            ]}
+          />
+        </ScrollReveal>
+      </div>
 
       {/* Reviews Section */}
       <ScrollReveal animation="fade-up">
