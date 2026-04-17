@@ -2,7 +2,8 @@ import LayoutNoPricing from '@/components/LayoutNoPricing'
 import Image from 'next/image'
 import Link from 'next/link'
 import { Sparkles, Clock, Users, CheckCircle } from 'lucide-react'
-import { useRef, useEffect } from 'react'
+import { useRef, useEffect, useState } from 'react'
+import ScrollReveal from '@/components/ScrollReveal'
 
 function ComparisonSlider({ before, after, alt }: { before: string; after: string; alt: string }) {
   const containerRef = useRef<HTMLDivElement>(null)
@@ -114,6 +115,139 @@ const ORGANIZER_BENEFITS = [
   'Requires minimal coordination from your team',
   'Attendee registration doubles as lead collection for your organization',
 ]
+
+const DEFAULT_EVENT_TIERS = [
+  { hours: 3, price: 2950 },
+  { hours: 4, price: 3450 },
+  { hours: 5, price: 3950 },
+  { hours: 6, price: 4450 },
+  { hours: 7, price: 4950 },
+  { hours: 8, price: 5450 },
+  { hours: 9, price: 5700 },
+  { hours: 10, price: 5950 },
+  { hours: 11, price: 6450 },
+  { hours: 12, price: 6950 },
+]
+
+function EventPricingCalculator() {
+  const [hours, setHours] = useState(3)
+  const [tiers, setTiers] = useState(DEFAULT_EVENT_TIERS)
+
+  useEffect(() => {
+    fetch('/api/event-pricing')
+      .then(r => r.ok ? r.json() : null)
+      .then(data => { if (data?.eventTiers?.length) setTiers(data.eventTiers) })
+      .catch(() => {})
+  }, [])
+
+  const sorted = [...tiers].sort((a, b) => a.hours - b.hours)
+  const minHours = sorted.length > 0 ? sorted[0].hours : 3
+  const maxHours = sorted.length > 0 ? sorted[sorted.length - 1].hours : 12
+
+  function getPrice(h: number): number {
+    const exact = sorted.find(t => t.hours === h)
+    if (exact) return exact.price
+    // Interpolate between tiers
+    for (let i = 0; i < sorted.length - 1; i++) {
+      if (h > sorted[i].hours && h < sorted[i + 1].hours) {
+        const ratio = (h - sorted[i].hours) / (sorted[i + 1].hours - sorted[i].hours)
+        return Math.round(sorted[i].price + ratio * (sorted[i + 1].price - sorted[i].price))
+      }
+    }
+    return sorted[sorted.length - 1]?.price || 0
+  }
+
+  const price = getPrice(hours)
+  const perHour = hours > 0 ? Math.round(price / hours) : 0
+
+  return (
+    <section className="bg-gray-50 py-16">
+      <div className="max-w-3xl mx-auto px-4 sm:px-6 lg:px-8">
+        <h2 className="text-2xl md:text-3xl font-bold text-gray-900 text-center mb-2">
+          Event Pricing
+        </h2>
+        <p className="text-gray-500 text-center text-sm mb-10">
+          Professional headshot coverage for your event. Includes setup, photographer, on-site retouching, and digital delivery.
+        </p>
+
+        <div className="bg-white rounded-xl shadow-sm border border-gray-200 p-8">
+          {/* Slider */}
+          <div className="mb-8">
+            <label className="block text-xs font-semibold text-gray-700 mb-2 uppercase tracking-wide">
+              Hours of Coverage
+            </label>
+            <input
+              type="range"
+              min={minHours}
+              max={maxHours}
+              value={hours}
+              onChange={e => setHours(parseInt(e.target.value))}
+              className="w-full h-2 bg-gray-200 rounded-lg appearance-none cursor-pointer accent-red-600"
+            />
+            <div className="flex justify-between text-xs text-gray-400 mt-1">
+              <span>{minHours} hours</span>
+              <span>{maxHours} hours</span>
+            </div>
+          </div>
+
+          {/* Price display */}
+          <div className="text-center mb-6">
+            <div className="text-5xl font-bold text-gray-900 mb-1">
+              ${price.toLocaleString()}
+            </div>
+            <div className="text-gray-500 text-sm">
+              {hours} hours of coverage &middot; ${perHour}/hour
+            </div>
+          </div>
+
+          {/* What's included */}
+          <div className="border-t border-gray-100 pt-6">
+            <h4 className="text-xs font-bold uppercase tracking-wide text-gray-500 mb-3">Included</h4>
+            <div className="grid grid-cols-2 gap-2 text-sm text-gray-700">
+              <div className="flex items-center gap-2">
+                <CheckCircle className="w-4 h-4 text-red-600 flex-shrink-0" />
+                <span>Professional photographer</span>
+              </div>
+              <div className="flex items-center gap-2">
+                <CheckCircle className="w-4 h-4 text-red-600 flex-shrink-0" />
+                <span>Studio lighting & backdrop</span>
+              </div>
+              <div className="flex items-center gap-2">
+                <CheckCircle className="w-4 h-4 text-red-600 flex-shrink-0" />
+                <span>On-site retouching</span>
+              </div>
+              <div className="flex items-center gap-2">
+                <CheckCircle className="w-4 h-4 text-red-600 flex-shrink-0" />
+                <span>Digital delivery to attendees</span>
+              </div>
+              <div className="flex items-center gap-2">
+                <CheckCircle className="w-4 h-4 text-red-600 flex-shrink-0" />
+                <span>QR code registration</span>
+              </div>
+              <div className="flex items-center gap-2">
+                <CheckCircle className="w-4 h-4 text-red-600 flex-shrink-0" />
+                <span>Attendee lead capture</span>
+              </div>
+            </div>
+          </div>
+
+          {/* CTA */}
+          <div className="mt-8 text-center">
+            <Link
+              href="/consult"
+              className="inline-block bg-red-600 hover:bg-red-700 text-white px-8 py-3 rounded-md font-semibold transition-colors"
+            >
+              Get a Custom Quote
+            </Link>
+            <p className="text-gray-400 text-xs mt-3">
+              Pricing may vary based on location and specific event requirements.
+            </p>
+          </div>
+        </div>
+      </div>
+    </section>
+  )
+}
 
 export default function StudioGo() {
   return (
@@ -353,6 +487,11 @@ export default function StudioGo() {
           </div>
         </div>
       </section>
+
+      {/* Event Pricing Calculator */}
+      <ScrollReveal animation="fade-up">
+      <EventPricingCalculator />
+      </ScrollReveal>
 
       {/* CTA */}
       <section style={{ backgroundColor: '#242424' }} className="py-10">
