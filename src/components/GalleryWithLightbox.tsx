@@ -87,13 +87,26 @@ const GalleryWithLightbox = ({
       {/* Lightbox Modal */}
       {selectedImage && (
         <div
-          className="fixed inset-0 flex items-center justify-center p-4"
-          style={{ zIndex: 9999, backgroundColor: 'rgba(0,0,0,0.95)' }}
           onClick={closeLightbox}
+          style={{
+            position: 'fixed',
+            top: 0,
+            left: 0,
+            right: 0,
+            bottom: 0,
+            width: '100vw',
+            height: '100vh',
+            zIndex: 99999,
+            backgroundColor: '#000',
+            display: 'flex',
+            alignItems: 'center',
+            justifyContent: 'center',
+          }}
         >
           <button
             onClick={closeLightbox}
-            className="absolute top-4 right-4 text-white hover:text-gray-300 transition-colors z-10"
+            style={{ position: 'absolute', top: 16, right: 16, zIndex: 10 }}
+            className="text-white hover:text-gray-300 transition-colors"
             aria-label="Close lightbox"
           >
             <X className="w-8 h-8" />
@@ -105,7 +118,8 @@ const GalleryWithLightbox = ({
               e.stopPropagation()
               goToPrevious()
             }}
-            className="absolute left-4 top-1/2 -translate-y-1/2 z-10 bg-white/20 hover:bg-white/30 rounded-full p-3 transition-all"
+            style={{ position: 'absolute', left: 16, top: '50%', transform: 'translateY(-50%)', zIndex: 10 }}
+            className="bg-white/20 hover:bg-white/30 rounded-full p-3 transition-all"
             aria-label="Previous image"
           >
             <ChevronLeft className="w-6 h-6 text-white" />
@@ -117,13 +131,14 @@ const GalleryWithLightbox = ({
               e.stopPropagation()
               goToNext()
             }}
-            className="absolute right-4 top-1/2 -translate-y-1/2 z-10 bg-white/20 hover:bg-white/30 rounded-full p-3 transition-all"
+            style={{ position: 'absolute', right: 16, top: '50%', transform: 'translateY(-50%)', zIndex: 10 }}
+            className="bg-white/20 hover:bg-white/30 rounded-full p-3 transition-all"
             aria-label="Next image"
           >
             <ChevronRight className="w-6 h-6 text-white" />
           </button>
-          
-          <div className="relative w-[95vw] h-[90vh]">
+
+          <div style={{ position: 'relative', width: '90vw', height: '85vh' }}>
             <Image
               src={selectedImage.src}
               alt={selectedImage.alt}
