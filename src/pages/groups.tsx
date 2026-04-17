@@ -46,9 +46,31 @@ const Groups = ({ frontmatter }: GroupsProps) => {
   const [hairMakeupCount, setHairMakeupCount] = useState(0)
   const [touchupCount, setTouchupCount] = useState(0)
 
-  // Contact form
-  const [quoteForm, setQuoteForm] = useState({ firstName: '', lastName: '', email: '', phone: '', company: '' })
+  // Contact form — check for pre-filled data from StudiGo workflow
+  const getInitialQuoteForm = () => {
+    if (typeof window === 'undefined') return { firstName: '', lastName: '', email: '', phone: '', company: '' }
+    try {
+      const hash = window.location.hash
+      if (hash.startsWith('#quote=')) {
+        const data = JSON.parse(decodeURIComponent(hash.substring(7)))
+        window.history.replaceState(null, '', '/groups')
+        return { firstName: data.f || '', lastName: data.l || '', email: data.e || '', phone: data.p || '', company: data.c || '' }
+      }
+    } catch {}
+    return { firstName: '', lastName: '', email: '', phone: '', company: '' }
+  }
+  const [quoteForm, setQuoteForm] = useState(getInitialQuoteForm)
   const [quoteSubmitting, setQuoteSubmitting] = useState(false)
+
+  // Scroll to calculator if pre-filled from workflow
+  useEffect(() => {
+    if (quoteForm.firstName && typeof window !== 'undefined' && window.location.hash === '') {
+      // hash was cleared by getInitialQuoteForm, meaning we had pre-fill data
+      setTimeout(() => {
+        document.getElementById('calculator')?.scrollIntoView({ behavior: 'smooth' })
+      }, 500)
+    }
+  }, []) // eslint-disable-line react-hooks/exhaustive-deps
   const [quoteSubmitted, setQuoteSubmitted] = useState(false)
   const [quoteError, setQuoteError] = useState('')
   const [contactCaptured, setContactCaptured] = useState(false)
