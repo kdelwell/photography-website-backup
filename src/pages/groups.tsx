@@ -45,6 +45,9 @@ const Groups = ({ frontmatter }: GroupsProps) => {
   const [candidHours, setCandidHours] = useState(0)
   const [hairMakeupCount, setHairMakeupCount] = useState(0)
   const [touchupCount, setTouchupCount] = useState(0)
+  const [couponCode, setCouponCode] = useState('')
+  const [couponApplied, setCouponApplied] = useState<{ code: string; percent: number } | null>(null)
+  const [couponError, setCouponError] = useState('')
 
   // Contact form
   const [quoteForm, setQuoteForm] = useState({ firstName: '', lastName: '', email: '', phone: '', company: '' })
@@ -145,7 +148,41 @@ const Groups = ({ frontmatter }: GroupsProps) => {
   const candidCost = candidHours * addOns.candidHour
   const hairMakeupCost = hairMakeupCount * addOns.hairMakeup
   const touchupCost = touchupCount * addOns.makeupTouchup
-  const total = sittingSubtotal + travelFee + extraImageCost + additionalDayCost + compositeCost + candidCost + hairMakeupCost + touchupCost
+  const subtotal = sittingSubtotal + travelFee + extraImageCost + additionalDayCost + compositeCost + candidCost + hairMakeupCost + touchupCost
+  const discountAmount = couponApplied ? Math.round(subtotal * couponApplied.percent / 100) : 0
+  const total = subtotal - discountAmount
+
+  // Coupon validation
+  const VALID_COUPONS: Record<string, number> = {
+    'GETAHEAD10OFF': 10,
+    'GETAHEAD15OFF': 15,
+    'GETAHEAD20OFF': 20,
+    'GETAHEAD25OFF': 25,
+    'GETAHEAD30OFF': 30,
+    'GETAHEAD35OFF': 35,
+    'GETAHEAD40OFF': 40,
+    'GETAHEAD45OFF': 45,
+    'GETAHEAD50OFF': 50,
+  }
+
+  function applyCoupon() {
+    const code = couponCode.trim().toUpperCase()
+    if (!code) { setCouponError('Enter a coupon code'); return }
+    const percent = VALID_COUPONS[code]
+    if (percent) {
+      setCouponApplied({ code, percent })
+      setCouponError('')
+    } else {
+      setCouponError('Invalid coupon code')
+      setCouponApplied(null)
+    }
+  }
+
+  function removeCoupon() {
+    setCouponApplied(null)
+    setCouponCode('')
+    setCouponError('')
+  }
 
   function buildQuoteNotes() {
     const lines = [`Team Size: ${teamSize}`, `Location: ${onLocation ? 'On-Location' : 'In-Studio'}`, `Estimated Shoot Time: ${shootTimeDisplay} (${minutesPerPerson} min/person)`]
@@ -157,6 +194,7 @@ const Groups = ({ frontmatter }: GroupsProps) => {
     if (candidHours) lines.push(`Candids: $${candidCost.toLocaleString()} ($${addOns.candidHour} x ${candidHours} hr)`)
     if (hairMakeupCount) lines.push(`Hair & Makeup: $${hairMakeupCost.toLocaleString()} ($${addOns.hairMakeup} x ${hairMakeupCount})`)
     if (touchupCount) lines.push(`Makeup Touch-ups: $${touchupCost.toLocaleString()} ($${addOns.makeupTouchup} x ${touchupCount})`)
+    if (couponApplied) lines.push(`Discount: -$${discountAmount.toLocaleString()} (${couponApplied.code} — ${couponApplied.percent}% off)`)
     lines.push(`\nEstimated Total: $${total.toLocaleString()}`)
     return lines.join('\n')
   }
@@ -785,6 +823,29 @@ const Groups = ({ frontmatter }: GroupsProps) => {
                     </div>
                   </div>
                 </div>
+
+                <h4 className="text-xs font-bold text-gray-700 uppercase tracking-wide mb-3 mt-6 border-t border-gray-200 pt-4">Coupon Code</h4>
+                <div className="flex gap-2">
+                  <input
+                    type="text"
+                    placeholder="Enter code..."
+                    value={couponCode}
+                    onChange={e => { setCouponCode(e.target.value); setCouponError(''); }}
+                    onKeyDown={e => { if (e.key === 'Enter') { e.preventDefault(); applyCoupon(); } }}
+                    className="flex-1 border border-gray-300 rounded-md px-3 py-2 text-gray-900 text-sm uppercase"
+                  />
+                  {couponApplied ? (
+                    <button type="button" onClick={removeCoupon}
+                      className="px-4 py-2 bg-red-100 text-red-700 rounded-md text-sm font-semibold">Remove</button>
+                  ) : (
+                    <button type="button" onClick={applyCoupon}
+                      className="px-4 py-2 bg-gray-900 text-white rounded-md text-sm font-semibold">Apply</button>
+                  )}
+                </div>
+                {couponError && <p className="text-red-600 text-xs mt-1">{couponError}</p>}
+                {couponApplied && (
+                  <p className="text-green-600 text-xs mt-1 font-semibold">{couponApplied.percent}% discount applied!</p>
+                )}
               </div>
 
               {/* Column 3: Estimate + Submit */}
@@ -802,8 +863,15 @@ const Groups = ({ frontmatter }: GroupsProps) => {
 
                 <div className="bg-gray-100 rounded-lg p-4 mb-6" style={{ minHeight: '100px' }}>
                   <p className="text-gray-500 text-xs uppercase tracking-wide mb-1">Estimated Total</p>
-                  <p className="text-3xl font-bold text-gray-900">${total.toLocaleString()}.00</p>
-                  <p className="text-gray-400 text-xs mt-1">This is an estimate for budgeting and planning.</p>
+                  <p className="text-3xl font-bold text-gray-900">
+                    {couponApplied && <span className="text-lg text-gray-400 line-through mr-2">${subtotal.toLocaleString()}</span>}
+                    ${total.toLocaleString()}.00
+                  </p>
+                  {couponApplied ? (
+                    <p className="text-green-600 text-xs mt-1 font-semibold">Saving ${discountAmount.toLocaleString()} with {couponApplied.percent}% discount</p>
+                  ) : (
+                    <p className="text-gray-400 text-xs mt-1">This is an estimate for budgeting and planning.</p>
+                  )}
                 </div>
 
                 <div className="bg-gray-50 rounded-lg p-4 mb-6">
@@ -859,6 +927,12 @@ const Groups = ({ frontmatter }: GroupsProps) => {
                     <span className={touchupCost > 0 ? 'text-gray-600' : ''}>Makeup touch-ups</span>
                     <span className={touchupCost > 0 ? 'text-gray-900' : ''}>${touchupCost.toLocaleString()}.00</span>
                   </div>
+                  {couponApplied && (
+                    <div className="flex justify-between text-green-600">
+                      <span>Discount ({couponApplied.code} &mdash; {couponApplied.percent}% off)</span>
+                      <span>-${discountAmount.toLocaleString()}.00</span>
+                    </div>
+                  )}
                   <div className="flex justify-between border-t border-gray-200 pt-2 font-bold text-gray-900">
                     <span>Estimated total</span>
                     <span>${total.toLocaleString()}.00</span>
