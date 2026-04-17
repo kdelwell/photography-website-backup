@@ -149,7 +149,7 @@ const Hair = ({ frontmatter }: HairProps) => {
               <h3 className="text-lg font-bold text-gray-900 mb-1">Professional Hair & Makeup</h3>
               <p className="text-3xl font-bold text-gray-900 mt-4">$185 – $200</p>
             </div>
-            <p className="text-center text-gray-500 text-sm mt-6 max-w-2xl mx-auto">
+            <p className="text-center text-gray-600 text-lg mt-6 max-w-2xl mx-auto leading-relaxed">
               We use lighting on a par with television studios — professional hair and makeup compensates for that lighting and ensures you look your absolute best on camera.
             </p>
           </div>
