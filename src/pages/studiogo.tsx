@@ -117,15 +117,15 @@ const ORGANIZER_BENEFITS = [
 ]
 
 const DEFAULT_EVENT_TIERS = [
-  { hours: 3, price: 2950 },
-  { hours: 4, price: 3450 },
-  { hours: 5, price: 3950 },
-  { hours: 6, price: 4450 },
-  { hours: 7, price: 4950 },
-  { hours: 8, price: 5450 },
-  { hours: 9, price: 5700 },
-  { hours: 10, price: 5950 },
-  { hours: 11, price: 6450 },
+  { hours: 3, price: 1500 },
+  { hours: 4, price: 2100 },
+  { hours: 5, price: 2700 },
+  { hours: 6, price: 3250 },
+  { hours: 7, price: 3800 },
+  { hours: 8, price: 4300 },
+  { hours: 9, price: 4800 },
+  { hours: 10, price: 5400 },
+  { hours: 11, price: 6100 },
   { hours: 12, price: 6950 },
 ]
 
