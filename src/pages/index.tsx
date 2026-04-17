@@ -328,16 +328,23 @@ export default function Home({ frontmatter, content }: { frontmatter: any; conte
 
       {/* Transformations Gallery Section */}
       <div id="transformations">
+        <ScrollReveal animation="fade-up">
+          <section className="bg-gray-200 py-8">
+            <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 text-center">
+              <h2 className="text-3xl md:text-4xl font-bold text-gray-900">Need a Transformation?</h2>
+            </div>
+          </section>
+        </ScrollReveal>
         <ScrollReveal animation="fade-in">
           <BeforeAfter />
         </ScrollReveal>
         <ScrollReveal animation="fade-in">
           <GalleryWithLightbox
             images={[
-              { src: '/images/Transformations/Bridget_BA.jpg', alt: 'Bridget Professional Transformation' },
-              { src: '/images/Transformations/Tiger_BA.png', alt: 'Tiger Professional Transformation' },
-              { src: '/images/Transformations/Tristan_BA.png', alt: 'Tristan Professional Transformation' },
-              { src: '/images/Transformations/Noelle_BA.jpg', alt: 'Noelle Professional Transformation' },
+              { src: '/images/Transformations/Paula_BA.jpg', alt: 'Paula Professional Transformation' },
+              { src: '/images/Transformations/Ben_BA.jpg', alt: 'Ben Professional Transformation' },
+              { src: '/images/Transformations/Joe_BA.jpg', alt: 'Joe Professional Transformation' },
+              { src: '/images/Transformations/Sofia_BA.jpg', alt: 'Sofia Professional Transformation' },
             ]}
           />
         </ScrollReveal>

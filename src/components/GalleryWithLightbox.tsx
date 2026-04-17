@@ -1,4 +1,5 @@
 import { useState, useEffect } from 'react'
+import { createPortal } from 'react-dom'
 import Image from 'next/image'
 import { ChevronLeft, ChevronRight, X } from 'lucide-react'
 
@@ -25,10 +26,12 @@ const GalleryWithLightbox = ({
 
   const openLightbox = (image: GalleryImage) => {
     setSelectedImage(image)
+    document.body.style.overflow = 'hidden'
   }
 
   const closeLightbox = () => {
     setSelectedImage(null)
+    document.body.style.overflow = ''
   }
 
   const goToNext = () => {
@@ -47,7 +50,7 @@ const GalleryWithLightbox = ({
     }
   }
 
-  // Keyboard navigation
+  // Keyboard navigation + cleanup
   useEffect(() => {
     const handleKeyDown = (e: KeyboardEvent) => {
       if (!selectedImage) return
@@ -57,7 +60,10 @@ const GalleryWithLightbox = ({
     }
 
     window.addEventListener('keydown', handleKeyDown)
-    return () => window.removeEventListener('keydown', handleKeyDown)
+    return () => {
+      window.removeEventListener('keydown', handleKeyDown)
+      document.body.style.overflow = ''
+    }
   }, [selectedImage])
 
   return (
@@ -84,70 +90,60 @@ const GalleryWithLightbox = ({
         </div>
       </section>
 
-      {/* Lightbox Modal */}
-      {selectedImage && (
+      {/* Lightbox Modal — rendered via portal at document.body to escape all stacking contexts */}
+      {selectedImage && typeof document !== 'undefined' && createPortal(
         <div
           onClick={closeLightbox}
           style={{
             position: 'fixed',
             top: 0,
             left: 0,
-            right: 0,
-            bottom: 0,
-            width: '100vw',
-            height: '100vh',
-            zIndex: 99999,
-            backgroundColor: '#000',
+            width: '100%',
+            height: '100%',
+            zIndex: 999999,
+            backgroundColor: '#000000',
             display: 'flex',
             alignItems: 'center',
             justifyContent: 'center',
+            padding: '20px',
           }}
         >
           <button
             onClick={closeLightbox}
-            style={{ position: 'absolute', top: 16, right: 16, zIndex: 10 }}
-            className="text-white hover:text-gray-300 transition-colors"
+            style={{ position: 'absolute', top: 20, right: 20, zIndex: 10, background: 'none', border: 'none', cursor: 'pointer' }}
             aria-label="Close lightbox"
           >
-            <X className="w-8 h-8" />
+            <X style={{ width: 32, height: 32, color: '#fff' }} />
           </button>
 
-          {/* Previous button */}
           <button
-            onClick={(e) => {
-              e.stopPropagation()
-              goToPrevious()
-            }}
-            style={{ position: 'absolute', left: 16, top: '50%', transform: 'translateY(-50%)', zIndex: 10 }}
-            className="bg-white/20 hover:bg-white/30 rounded-full p-3 transition-all"
+            onClick={(e) => { e.stopPropagation(); goToPrevious(); }}
+            style={{ position: 'absolute', left: 16, top: '50%', transform: 'translateY(-50%)', zIndex: 10, background: 'rgba(255,255,255,0.2)', border: 'none', borderRadius: '50%', padding: 12, cursor: 'pointer' }}
             aria-label="Previous image"
           >
-            <ChevronLeft className="w-6 h-6 text-white" />
+            <ChevronLeft style={{ width: 24, height: 24, color: '#fff' }} />
           </button>
 
-          {/* Next button */}
           <button
-            onClick={(e) => {
-              e.stopPropagation()
-              goToNext()
-            }}
-            style={{ position: 'absolute', right: 16, top: '50%', transform: 'translateY(-50%)', zIndex: 10 }}
-            className="bg-white/20 hover:bg-white/30 rounded-full p-3 transition-all"
+            onClick={(e) => { e.stopPropagation(); goToNext(); }}
+            style={{ position: 'absolute', right: 16, top: '50%', transform: 'translateY(-50%)', zIndex: 10, background: 'rgba(255,255,255,0.2)', border: 'none', borderRadius: '50%', padding: 12, cursor: 'pointer' }}
             aria-label="Next image"
           >
-            <ChevronRight className="w-6 h-6 text-white" />
+            <ChevronRight style={{ width: 24, height: 24, color: '#fff' }} />
           </button>
 
-          <div style={{ position: 'relative', width: '90vw', height: '85vh' }}>
+          <div style={{ position: 'relative', width: '92vw', height: '88vh', maxWidth: '1800px' }}>
             <Image
               src={selectedImage.src}
               alt={selectedImage.alt}
               fill
               className="object-contain"
+              sizes="92vw"
               onClick={(e) => e.stopPropagation()}
             />
           </div>
-        </div>
+        </div>,
+        document.body
       )}
     </>
   )
