@@ -336,11 +336,12 @@ export default function Home({ frontmatter, content }: { frontmatter: any; conte
           </section>
         </ScrollReveal>
         <ScrollReveal animation="fade-in">
-          <BeforeAfter />
-        </ScrollReveal>
-        <ScrollReveal animation="fade-in">
           <GalleryWithLightbox
             images={[
+              { src: '/images/Transformations/Deepak_BA.jpg', alt: 'Deepak Professional Transformation' },
+              { src: '/images/Transformations/Kurt_BA.jpg', alt: 'Kurt Professional Transformation' },
+              { src: '/images/Transformations/Marva_BA.jpg', alt: 'Marva Professional Transformation' },
+              { src: '/images/Transformations/Monica_BA.jpg', alt: 'Monica Professional Transformation' },
               { src: '/images/Transformations/Paula_BA.jpg', alt: 'Paula Professional Transformation' },
               { src: '/images/Transformations/Ben_BA.jpg', alt: 'Ben Professional Transformation' },
               { src: '/images/Transformations/Joe_BA.jpg', alt: 'Joe Professional Transformation' },
