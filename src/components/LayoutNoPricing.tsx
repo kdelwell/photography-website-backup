@@ -29,6 +29,14 @@ export default function LayoutNoPricing({ children, title, description, noindex 
           type: 'website',
           url: canonicalUrl,
           site_name: 'Get aHead Shot',
+          images: [
+            {
+              url: 'https://getaheadshot.net/images/og-default.jpg',
+              width: 1200,
+              height: 630,
+              alt: title,
+            },
+          ],
         }}
       />
 

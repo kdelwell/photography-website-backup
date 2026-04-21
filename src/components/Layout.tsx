@@ -19,7 +19,7 @@ export default function Layout({
   title = 'Photography Studio',
   description = 'Professional photography services',
   hideMenu = false,
-  image = 'https://getaheadshot.net/images/Logo.jpg',
+  image = 'https://getaheadshot.net/images/og-default.jpg',
   noindex = false
 }: LayoutProps) {
   const router = useRouter()
