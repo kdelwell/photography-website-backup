@@ -26,14 +26,15 @@ export default function App({ Component, pageProps }: AppProps) {
         }}
       />
       <Script
-        src="https://www.googletagmanager.com/gtag/js?id=AW-399963959"
+        src="https://www.googletagmanager.com/gtag/js?id=G-9PNL0CCN6V"
         strategy="lazyOnload"
       />
-      <Script id="google-ads-gtag" strategy="lazyOnload">
+      <Script id="gtag-init" strategy="lazyOnload">
         {`
           window.dataLayer = window.dataLayer || [];
           function gtag(){dataLayer.push(arguments);}
           gtag('js', new Date());
+          gtag('config', 'G-9PNL0CCN6V');
           gtag('config', 'AW-399963959');
         `}
       </Script>
