@@ -89,7 +89,7 @@ const Terms = ({ frontmatter }: TermsProps) => {
 
               <h2 className="text-2xl font-bold text-gray-900 mb-4">1. Introduction</h2>
               <p className="text-gray-700 leading-relaxed mb-6">
-                These Terms & Conditions ("Terms") govern your use of the website https://getaheadshot.net ("Site") and your booking of photography services with Get aHead Shot ("we," "our," or "us"). By accessing our Site or booking services, you agree to these Terms.
+                These Terms & Conditions ("Terms") govern your use of the website https://getaheadshot.net ("Site") and your booking of photography services with Kevin Elwell Photography LLC, a Virginia limited liability company doing business as Get aHead Shot ("we," "our," or "us"). By accessing our Site or booking services, you agree to these Terms.
               </p>
 
               <h2 className="text-2xl font-bold text-gray-900 mb-4">2. Services</h2>
@@ -150,7 +150,8 @@ const Terms = ({ frontmatter }: TermsProps) => {
               <h2 className="text-2xl font-bold text-gray-900 mb-4">11. Contact Us</h2>
               <p className="text-gray-700 leading-relaxed mb-6">
                 If you have questions about these Terms, please contact us at:<br />
-                <strong>Get aHead Shot</strong><br />
+                <strong>Kevin Elwell Photography LLC</strong> (d/b/a Get aHead Shot)<br />
+                6720 Hartwood Ln, Centreville, VA 20121<br />
                 Email: <a href="mailto:kevin@getaheadshot.net" className="text-red-600 hover:text-red-700">kevin@getaheadshot.net</a><br />
                 Phone: <a href="tel:703-802-9379" className="text-red-600 hover:text-red-700">703-802-9379</a><br />
                 Website: <a href="https://getaheadshot.net" className="text-red-600 hover:text-red-700" target="_blank" rel="noopener noreferrer">https://getaheadshot.net</a>

@@ -89,7 +89,7 @@ const Privacy = ({ frontmatter }: PrivacyProps) => {
 
               <h2 className="text-2xl font-bold text-gray-900 mb-4">1. Introduction</h2>
               <p className="text-gray-700 leading-relaxed mb-6">
-                Get aHead Shot ("we," "our," or "us") values your privacy. This Privacy Policy explains how we collect, use, and protect your personal information when you visit our website, schedule a session, or interact with us through email, SMS, or other marketing channels. By using our website or providing your information, you consent to the practices described in this policy.
+                Get aHead Shot is a trade name of Kevin Elwell Photography LLC, a Virginia limited liability company ("we," "our," or "us"). This Privacy Policy explains how we collect, use, and protect your personal information when you visit our website, schedule a session, or interact with us through email, SMS, or other marketing channels. By using our website or providing your information, you consent to the practices described in this policy.
               </p>
 
               <h2 className="text-2xl font-bold text-gray-900 mb-4">2. Information We Collect</h2>
@@ -169,7 +169,8 @@ const Privacy = ({ frontmatter }: PrivacyProps) => {
               <h2 className="text-2xl font-bold text-gray-900 mb-4">11. Contact Us</h2>
               <p className="text-gray-700 leading-relaxed mb-6">
                 If you have questions about this Privacy Policy, please contact us at:<br />
-                <strong>Get aHead Shot</strong><br />
+                <strong>Kevin Elwell Photography LLC</strong> (d/b/a Get aHead Shot)<br />
+                6720 Hartwood Ln, Centreville, VA 20121<br />
                 Email: <a href="mailto:kevin@getaheadshot.net" className="text-red-600 hover:text-red-700">kevin@getaheadshot.net</a><br />
                 Phone: <a href="tel:703-802-9379" className="text-red-600 hover:text-red-700">703-802-9379</a><br />
                 Website: <a href="https://getaheadshot.net" className="text-red-600 hover:text-red-700" target="_blank" rel="noopener noreferrer">https://getaheadshot.net</a>

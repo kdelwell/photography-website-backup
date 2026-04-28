@@ -67,6 +67,9 @@ export default function Footer() {
             </div>
           </div>
         </div>
+        <div className="mt-6 pt-4 border-t border-gray-700 text-center text-xs text-gray-400">
+          Get aHead Shot is a trade name of Kevin Elwell Photography LLC · 6720 Hartwood Ln, Centreville, VA 20121
+        </div>
       </div>
     </footer>
   )
