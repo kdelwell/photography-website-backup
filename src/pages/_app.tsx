@@ -32,6 +32,8 @@ export default function App({ Component, pageProps }: AppProps) {
         track('email_click', { email: href.replace('mailto:', '').split('?')[0], location: location.pathname });
       } else if (/17hats\.com\/p#\/(scheduling|embed)/.test(href) || /admin\.getaheadshot\.net\/embed\/book/.test(href)) {
         track('book_click', { dest: href, location: location.pathname });
+      } else if (href === '/more_info' || href.startsWith('/more_info?') || href.startsWith('/more_info#')) {
+        track('pricing_click', { location: location.pathname });
       }
     }
 
