@@ -32,8 +32,11 @@ const nextConfig = {
       { source: '/blog/:slug', destination: '/articles', permanent: true },
       { source: '/portfolio', destination: '/', permanent: true },
       { source: '/portfolio/', destination: '/', permanent: true },
-      { source: '/services', destination: '/professional_individual_headshots', permanent: true },
-      { source: '/services/', destination: '/professional_individual_headshots', permanent: true },
+      { source: '/services', destination: '/linkedin-headshots', permanent: true },
+      { source: '/services/', destination: '/linkedin-headshots', permanent: true },
+      // Consolidated into /linkedin-headshots — same intent, single canonical
+      { source: '/professional_individual_headshots', destination: '/linkedin-headshots', permanent: true },
+      { source: '/professional_individual_headshots/', destination: '/linkedin-headshots', permanent: true },
       { source: '/pricing-2', destination: '/pricing', permanent: true },
       { source: '/pricing-2/', destination: '/pricing', permanent: true },
       { source: '/corporate-headshots', destination: '/groups', permanent: true },
