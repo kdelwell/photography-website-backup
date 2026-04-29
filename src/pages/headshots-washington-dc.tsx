@@ -137,7 +137,15 @@ export default function HeadshotsWashingtonDC() {
                 </li>
                 <li className="flex items-start">
                   <span className="text-red-500 mr-2">✓</span>
-                  <span><strong>Lawyers & Consultants</strong> - Professional credibility</span>
+                  <span><strong><a href="/law-firm-headshots-dc" className="text-red-500 hover:text-red-600">Law Firm & Attorney Headshots</a></strong> - Directory-ready partner & associate photos</span>
+                </li>
+                <li className="flex items-start">
+                  <span className="text-red-500 mr-2">✓</span>
+                  <span><strong><a href="/consultant-headshots-dc" className="text-red-500 hover:text-red-600">Consultant Headshots</a></strong> - Proposal & capability deck imagery</span>
+                </li>
+                <li className="flex items-start">
+                  <span className="text-red-500 mr-2">✓</span>
+                  <span><strong><a href="/government-contractor-headshots" className="text-red-500 hover:text-red-600">Government Contractor Headshots</a></strong> - Capability statements & federal proposals</span>
                 </li>
                 <li className="flex items-start">
                   <span className="text-red-500 mr-2">✓</span>
@@ -315,7 +323,7 @@ export default function HeadshotsWashingtonDC() {
           <div className="prose prose-lg max-w-none text-gray-700">
             <p>
               In Washington DC's competitive professional landscape, your headshot is often your first impression.
-              Whether you're a lobbyist on K Street, a consultant in Dupont Circle, a lawyer on Capitol Hill, or
+              Whether you're a lobbyist on K Street, a <a href="/consultant-headshots-dc" className="text-red-500 hover:text-red-600">consultant in Dupont Circle</a>, a <a href="/law-firm-headshots-dc" className="text-red-500 hover:text-red-600">lawyer on Capitol Hill</a>, or
               an executive in Rosslyn, your professional image matters.
             </p>
             <p>

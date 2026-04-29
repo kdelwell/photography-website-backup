@@ -116,7 +116,7 @@ export default function HeadshotsNorthernVirginia() {
               <ul className="space-y-2 text-lg text-gray-700">
                 <li className="flex items-start">
                   <span className="text-red-500 mr-2">&#10003;</span>
-                  <span><strong>Government Contractors</strong> — Headshots for proposals, capability statements, and team pages</span>
+                  <span><strong><a href="/government-contractor-headshots" className="text-red-500 hover:text-red-600">Government Contractors</a></strong> — Headshots for proposals, capability statements, and team pages</span>
                 </li>
                 <li className="flex items-start">
                   <span className="text-red-500 mr-2">&#10003;</span>
@@ -132,7 +132,11 @@ export default function HeadshotsNorthernVirginia() {
                 </li>
                 <li className="flex items-start">
                   <span className="text-red-500 mr-2">&#10003;</span>
-                  <span><strong>Entrepreneurs & Consultants</strong> — Build trust before the first meeting</span>
+                  <span><strong>Entrepreneurs & <a href="/consultant-headshots-dc" className="text-red-500 hover:text-red-600">Consultants</a></strong> — Build trust before the first meeting</span>
+                </li>
+                <li className="flex items-start">
+                  <span className="text-red-500 mr-2">&#10003;</span>
+                  <span><strong><a href="/law-firm-headshots-dc" className="text-red-500 hover:text-red-600">Law Firm Attorneys</a></strong> — Directory-ready partner & associate photos for NoVA firms</span>
                 </li>
               </ul>
             </div>
