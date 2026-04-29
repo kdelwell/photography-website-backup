@@ -50,6 +50,9 @@ const nextConfig = {
       { source: '/book/', destination: '/schedule', permanent: true },
       { source: '/book-now', destination: '/schedule', permanent: true },
       { source: '/book-now/', destination: '/schedule', permanent: true },
+      // Consolidate duplicate consultation pages — /consult is canonical
+      { source: '/consultation', destination: '/consult', permanent: true },
+      { source: '/consultation/', destination: '/consult', permanent: true },
       // Old WordPress blog posts and pages from Search Console 404s
       { source: '/need-to-add-color-to-your-brand', destination: '/articles/color', permanent: true },
       { source: '/need-to-add-color-to-your-brand/', destination: '/articles/color', permanent: true },
