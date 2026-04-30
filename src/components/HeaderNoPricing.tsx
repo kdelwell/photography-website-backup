@@ -7,7 +7,7 @@ export default function HeaderNoPricing() {
   const [isMenuOpen, setIsMenuOpen] = useState(false)
 
   const navigation = [
-    { name: 'HEADSHOTS', href: '/linkedin-headshots', external: false },
+    { name: 'APPLICATIONS', href: '/applications', external: false },
     { name: 'GROUPS', href: '/groups', external: false },
     { name: 'EVENTS', href: '/events', external: false },
     { name: 'HAIR & MAKEUP', href: '/hair', external: false },
