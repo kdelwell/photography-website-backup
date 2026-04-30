@@ -13,7 +13,7 @@ export default function Header({ hideMenu = false }: HeaderProps) {
   const navigation = [
     { name: 'APPLICATIONS', href: '/applications', external: false },
     { name: 'GROUPS', href: '/groups', external: false },
-    { name: 'EVENTS', href: '/special-events', external: false },
+    { name: 'EVENTS', href: '/events', external: false },
     { name: 'HAIR & MAKEUP', href: '/hair', external: false },
     { name: 'ABOUT', href: '/about', external: false },
   ]

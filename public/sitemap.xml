@@ -94,10 +94,17 @@
   </url>
 
   <url>
-    <loc>https://getaheadshot.net/special-events</loc>
+    <loc>https://getaheadshot.net/events</loc>
     <lastmod>2026-04-29</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.85</priority>
+  </url>
+
+  <url>
+    <loc>https://getaheadshot.net/special-events</loc>
+    <lastmod>2026-04-29</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.6</priority>
   </url>
 
   <!-- Vertical Landing Pages -->

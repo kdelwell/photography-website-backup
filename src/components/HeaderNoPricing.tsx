@@ -9,7 +9,7 @@ export default function HeaderNoPricing() {
   const navigation = [
     { name: 'HEADSHOTS', href: '/linkedin-headshots', external: false },
     { name: 'GROUPS', href: '/groups', external: false },
-    { name: 'EVENTS', href: '/special-events', external: false },
+    { name: 'EVENTS', href: '/events', external: false },
     { name: 'HAIR & MAKEUP', href: '/hair', external: false },
     { name: 'ABOUT', href: '/about', external: false },
   ]
