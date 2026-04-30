@@ -2,17 +2,11 @@ import { useState } from 'react'
 import Link from 'next/link'
 import { Menu, X } from 'lucide-react'
 import Image from 'next/image'
+import { siteNav } from './siteNav'
 
 export default function HeaderNoPricing() {
   const [isMenuOpen, setIsMenuOpen] = useState(false)
-
-  const navigation = [
-    { name: 'APPLICATIONS', href: '/applications', external: false },
-    { name: 'GROUPS', href: '/groups', external: false },
-    { name: 'EVENTS', href: '/events', external: false },
-    { name: 'HAIR & MAKEUP', href: '/hair', external: false },
-    { name: 'ABOUT', href: '/about', external: false },
-  ]
+  const navigation = siteNav
 
   return (
     <header className="sticky top-0 z-50">
