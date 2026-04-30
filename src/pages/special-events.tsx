@@ -234,7 +234,7 @@ function EventPricingCalculator() {
   )
 }
 
-export default function StudioGo() {
+export default function SpecialEvents() {
   return (
     <LayoutNoPricing
       title="StudioGo — Event Headshots for Conferences & Hiring Events | Get aHead Shot"

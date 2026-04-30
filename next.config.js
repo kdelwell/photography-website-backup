@@ -37,6 +37,12 @@ const nextConfig = {
       // Consolidated into /linkedin-headshots — same intent, single canonical
       { source: '/professional_individual_headshots', destination: '/linkedin-headshots', permanent: true },
       { source: '/professional_individual_headshots/', destination: '/linkedin-headshots', permanent: true },
+      // StudiGo product page renamed to /special-events; old /events
+      // scheduling stub also redirected to the new canonical
+      { source: '/studiogo', destination: '/special-events', permanent: true },
+      { source: '/studiogo/', destination: '/special-events', permanent: true },
+      { source: '/events', destination: '/special-events', permanent: true },
+      { source: '/events/', destination: '/special-events', permanent: true },
       { source: '/pricing-2', destination: '/pricing', permanent: true },
       { source: '/pricing-2/', destination: '/pricing', permanent: true },
       { source: '/corporate-headshots', destination: '/groups', permanent: true },

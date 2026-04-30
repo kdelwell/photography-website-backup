@@ -37,7 +37,7 @@ Website: https://photography-website-9i18mag4t-kevin-elwells-projects.vercel.app
 ## Additional Pages
 - Schedule: /schedule - Book a session
 - Articles: /articles - Photography tips and industry insights
-- Events: /events - Group headshot events
+- Special Events: /special-events - On-site headshot stations for conferences, hiring events, and corporate gatherings (StudiGo)
 - Consultation: /consult - Pre-session consultation booking
 - Preparation: /prep - How to prepare for your headshot session
 - Group Sessions: /groups - Information about group photography sessions
