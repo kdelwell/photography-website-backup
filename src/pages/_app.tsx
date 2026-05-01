@@ -1,7 +1,7 @@
 import type { AppProps } from 'next/app'
 import Script from 'next/script'
 import { useEffect } from 'react'
-import { useRouter } from 'next/router'
+import Router from 'next/router'
 import { DefaultSeo } from 'next-seo'
 import '@/styles/globals.css'
 
@@ -13,8 +13,6 @@ declare global {
 }
 
 export default function App({ Component, pageProps }: AppProps) {
-  const router = useRouter()
-
   useEffect(() => {
     function track(name: string, params: Record<string, any> = {}) {
       if (typeof window.gtag === 'function') {
@@ -97,23 +95,23 @@ export default function App({ Component, pageProps }: AppProps) {
           gtagReady: typeof window.gtag === 'function',
         });
         track('funnel_conversion', {
-          source,
-          utm_source: utmSource,
-          utm_campaign: utmCampaign,
-          referrer: ref,
+          funnel_source: source,
+          funnel_utm_source: utmSource,
+          funnel_utm_campaign: utmCampaign,
+          funnel_referrer: ref,
         });
       }
     }
 
-    handleRoute(router.asPath);
-    router.events.on('routeChangeComplete', handleRoute);
+    handleRoute(window.location.pathname + window.location.search);
+    Router.events.on('routeChangeComplete', handleRoute);
 
     return () => {
       document.removeEventListener('click', onClick, true);
       document.removeEventListener('submit', onSubmit, true);
-      router.events.off('routeChangeComplete', handleRoute);
+      Router.events.off('routeChangeComplete', handleRoute);
     };
-  }, [router]);
+  }, []);
 
   return (
     <>
@@ -143,11 +141,10 @@ export default function App({ Component, pageProps }: AppProps) {
       <Script id="gtag-init" strategy="lazyOnload">
         {`
           window.dataLayer = window.dataLayer || [];
-          function gtag(){dataLayer.push(arguments);}
-          window.gtag = gtag;
-          gtag('js', new Date());
-          gtag('config', 'G-9PNL0CCN6V');
-          gtag('config', 'AW-399963959');
+          window.gtag = window.gtag || function(){window.dataLayer.push(arguments);};
+          window.gtag('js', new Date());
+          window.gtag('config', 'G-9PNL0CCN6V');
+          window.gtag('config', 'AW-399963959');
         `}
       </Script>
       <Component {...pageProps} />
