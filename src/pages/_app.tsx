@@ -15,11 +15,18 @@ declare global {
 export default function App({ Component, pageProps }: AppProps) {
   useEffect(() => {
     function track(name: string, params: Record<string, any> = {}) {
-      if (typeof window.gtag === 'function') {
-        window.gtag('event', name, params);
-      } else {
-        (window.dataLayer = window.dataLayer || []).push(['event', name, params]);
+      // Ensure dataLayer + gtag stub exist before gtag.js finishes loading.
+      // Without this, an event fired during mount (e.g. funnel_conversion on
+      // the initial /pricing render) hits the lazyOnload gap and gets pushed
+      // to the queue in the wrong format — gtag.js then ignores it.
+      window.dataLayer = window.dataLayer || [];
+      if (typeof window.gtag !== 'function') {
+        window.gtag = function () {
+          // eslint-disable-next-line prefer-rest-params
+          window.dataLayer!.push(arguments);
+        } as typeof window.gtag;
       }
+      window.gtag!('event', name, params);
     }
 
     function onClick(e: MouseEvent) {
@@ -50,27 +57,59 @@ export default function App({ Component, pageProps }: AppProps) {
     document.addEventListener('click', onClick, true);
     document.addEventListener('submit', onSubmit, true);
 
-    // Funnel attribution runs on initial mount AND on every client-side route
-    // change. Without the route handler, Next.js SPA navigation from /more_info
-    // to /pricing would never fire `funnel_conversion`, since useEffect with
-    // empty deps only runs once.
+    // Funnel events fire on initial mount and on every client-side route change.
+    //   funnel_entry      → user landed on /more_info
+    //   funnel_engaged    → user has been on /more_info ≥ 20s (intent signal,
+    //                       since 17hats iframe content is opaque to us)
+    //   funnel_abandoned  → user is leaving /more_info without having reached
+    //                       /pricing in this session
+    //   funnel_conversion → user reached /pricing
+    let engagedTimer: ReturnType<typeof setTimeout> | null = null;
+    let onMoreInfoPage = false;
+
+    function clearEngagedTimer() {
+      if (engagedTimer) { clearTimeout(engagedTimer); engagedTimer = null; }
+    }
+
     function handleRoute(url: string) {
       const path = url.split('?')[0].split('#')[0];
-      // eslint-disable-next-line no-console
-      console.log('[funnel] handleRoute', { url, path });
 
-      // Stamp sessionStorage when entering /more_info, so a later /pricing
-      // arrival can be attributed even if the referrer is stripped.
-      if (path === '/more_info') {
-        try {
-          sessionStorage.setItem('funnelEnteredAt', String(Date.now()));
-          // eslint-disable-next-line no-console
-          console.log('[funnel] stamped /more_info entry in sessionStorage');
-        } catch (e) {}
+      // Leaving /more_info: if we never converted, count as abandonment.
+      if (onMoreInfoPage && path !== '/more_info') {
+        let converted = false;
+        try { converted = sessionStorage.getItem('funnelConverted') === '1'; } catch (e) {}
+        if (!converted && path !== '/pricing') {
+          let timeOnPage = 0;
+          try {
+            const stamp = parseInt(sessionStorage.getItem('funnelEnteredAt') || '0', 10) || 0;
+            if (stamp) timeOnPage = Math.round((Date.now() - stamp) / 1000);
+          } catch (e) {}
+          track('funnel_abandoned', { funnel_next_path: path, funnel_time_on_page_sec: timeOnPage });
+        }
+        clearEngagedTimer();
+        onMoreInfoPage = false;
       }
 
-      // Conversion: user reached /pricing. Three signals — UTM, referrer,
-      // 24h sessionStorage flag — any one is enough.
+      if (path === '/more_info') {
+        onMoreInfoPage = true;
+        try {
+          sessionStorage.setItem('funnelEnteredAt', String(Date.now()));
+          sessionStorage.removeItem('funnelConverted');
+        } catch (e) {}
+        const search = url.includes('?') ? url.split('?')[1].split('#')[0] : '';
+        const params = new URLSearchParams(search);
+        track('funnel_entry', {
+          funnel_utm_source: params.get('utm_source') || '',
+          funnel_utm_campaign: params.get('utm_campaign') || '',
+          funnel_referrer: document.referrer || '',
+        });
+        clearEngagedTimer();
+        engagedTimer = setTimeout(() => {
+          track('funnel_engaged', { funnel_time_on_page_sec: 20 });
+          engagedTimer = null;
+        }, 20000);
+      }
+
       if (path === '/pricing') {
         const search = url.includes('?') ? url.split('?')[1].split('#')[0] : '';
         const params = new URLSearchParams(search);
@@ -89,11 +128,7 @@ export default function App({ Component, pageProps }: AppProps) {
         else if (refMatch) source = 'more_info_redirect';
         else if (within24h) source = 'more_info_session';
 
-        // eslint-disable-next-line no-console
-        console.log('[funnel] firing funnel_conversion', {
-          source, utmSource, utmCampaign, ref, funnelStamp, within24h,
-          gtagReady: typeof window.gtag === 'function',
-        });
+        try { sessionStorage.setItem('funnelConverted', '1'); } catch (e) {}
         track('funnel_conversion', {
           funnel_source: source,
           funnel_utm_source: utmSource,
@@ -103,13 +138,31 @@ export default function App({ Component, pageProps }: AppProps) {
       }
     }
 
+    // Fire funnel_abandoned on tab close / hard navigation away from /more_info.
+    // Use sendBeacon-friendly path: gtag handles transport; no async work allowed.
+    function onPageHide() {
+      if (!onMoreInfoPage) return;
+      let converted = false;
+      try { converted = sessionStorage.getItem('funnelConverted') === '1'; } catch (e) {}
+      if (converted) return;
+      let timeOnPage = 0;
+      try {
+        const stamp = parseInt(sessionStorage.getItem('funnelEnteredAt') || '0', 10) || 0;
+        if (stamp) timeOnPage = Math.round((Date.now() - stamp) / 1000);
+      } catch (e) {}
+      track('funnel_abandoned', { funnel_next_path: 'unload', funnel_time_on_page_sec: timeOnPage });
+    }
+    window.addEventListener('pagehide', onPageHide);
+
     handleRoute(window.location.pathname + window.location.search);
     Router.events.on('routeChangeComplete', handleRoute);
 
     return () => {
       document.removeEventListener('click', onClick, true);
       document.removeEventListener('submit', onSubmit, true);
+      window.removeEventListener('pagehide', onPageHide);
       Router.events.off('routeChangeComplete', handleRoute);
+      clearEngagedTimer();
     };
   }, []);
 
