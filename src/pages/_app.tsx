@@ -48,6 +48,22 @@ export default function App({ Component, pageProps }: AppProps) {
 
     document.addEventListener('click', onClick, true);
     document.addEventListener('submit', onSubmit, true);
+
+    // Funnel conversion: someone reached /pricing AFTER going through /more_info
+    // (the 17hats iframe form). The 17hats embed lives on a different origin so
+    // we can't see form submits directly — but if they end up on /pricing with
+    // a /more_info or 17hats referrer, that's the conversion signal.
+    function checkFunnelConversion() {
+      if (location.pathname !== '/pricing') return;
+      const ref = document.referrer || '';
+      const fromMoreInfo = ref.includes('/more_info') || /17hats\.com/.test(ref);
+      track('funnel_conversion', {
+        source: fromMoreInfo ? 'more_info' : 'direct',
+        referrer: ref,
+      });
+    }
+    checkFunnelConversion();
+
     return () => {
       document.removeEventListener('click', onClick, true);
       document.removeEventListener('submit', onSubmit, true);
