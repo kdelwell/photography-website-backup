@@ -113,8 +113,23 @@ const Terms = ({ frontmatter }: TermsProps) => {
               </ul>
 
               <h2 className="text-2xl font-bold text-gray-900 mb-4">5. Communications Consent</h2>
-              <p className="text-gray-700 leading-relaxed mb-6">
+              <p className="text-gray-700 leading-relaxed mb-4">
                 By providing your email or phone number, you consent to receive service-related and promotional communications via email, SMS, or phone. You may opt out at any time (see our Privacy Policy).
+              </p>
+              <p className="text-gray-700 leading-relaxed mb-4">
+                <strong>2.</strong> You can cancel the SMS service at any time. Just text &quot;STOP&quot; to the short code. After you send the SMS message &quot;STOP&quot; to us, we will send you an SMS message to confirm that you have been unsubscribed. After this, you will no longer receive SMS messages from us. If you want to join again, just sign up as you did the first time and we will start sending SMS messages to you again.
+              </p>
+              <p className="text-gray-700 leading-relaxed mb-4">
+                <strong>3.</strong> If you are experiencing issues with the messaging program you can reply with the keyword HELP for more assistance, or you can get help directly at <a href="mailto:kevin@getaheadshot.net" className="text-red-600 hover:text-red-700">kevin@getaheadshot.net</a> or <a href="tel:703-802-9379" className="text-red-600 hover:text-red-700">703-802-9379</a>.
+              </p>
+              <p className="text-gray-700 leading-relaxed mb-4">
+                <strong>4.</strong> Carriers are not liable for delayed or undelivered messages.
+              </p>
+              <p className="text-gray-700 leading-relaxed mb-4">
+                <strong>5.</strong> As always, message and data rates may apply for any messages sent to you from us and to us from you. You will receive up to 5 messages per month related to your session and bookings. If you have any questions about your text plan or data plan, it is best to contact your wireless provider.
+              </p>
+              <p className="text-gray-700 leading-relaxed mb-6">
+                <strong>6.</strong> If you have any questions regarding privacy, please read our privacy policy: <a href="/privacy" className="text-red-600 hover:text-red-700">https://getaheadshot.net/privacy</a>.
               </p>
 
               <h2 className="text-2xl font-bold text-gray-900 mb-4">6. Website Use</h2>
