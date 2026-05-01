@@ -118,7 +118,7 @@ const Privacy = ({ frontmatter }: PrivacyProps) => {
                 <li><strong>Emails:</strong> You may unsubscribe at any time by clicking the "unsubscribe" link in our emails.</li>
               </ul>
               <p className="text-gray-700 leading-relaxed mb-6">
-                No mobile data will be shared with third parties/affiliates for marketing/promotional purposes at any time.
+                We do not share mobile contact information with third parties or affiliates for marketing or promotional purposes. Information may be shared with subcontractors in support services, such as customer service. All other categories exclude text messaging originator opt-in data and consent; this information will not be shared with any third parties.
               </p>
 
               <h2 className="text-2xl font-bold text-gray-900 mb-4">5. Sharing Your Information</h2>
