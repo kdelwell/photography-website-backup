@@ -21,10 +21,8 @@ export default function App({ Component, pageProps }: AppProps) {
       // to the queue in the wrong format — gtag.js then ignores it.
       window.dataLayer = window.dataLayer || [];
       if (typeof window.gtag !== 'function') {
-        window.gtag = function () {
-          // eslint-disable-next-line prefer-rest-params
-          window.dataLayer!.push(arguments);
-        } as typeof window.gtag;
+        // eslint-disable-next-line prefer-rest-params
+        window.gtag = function () { window.dataLayer!.push(arguments); };
       }
       window.gtag!('event', name, params);
     }
