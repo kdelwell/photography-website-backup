@@ -1,6 +1,7 @@
 import type { AppProps } from 'next/app'
 import Script from 'next/script'
 import { useEffect } from 'react'
+import { useRouter } from 'next/router'
 import { DefaultSeo } from 'next-seo'
 import '@/styles/globals.css'
 
@@ -12,6 +13,8 @@ declare global {
 }
 
 export default function App({ Component, pageProps }: AppProps) {
+  const router = useRouter()
+
   useEffect(() => {
     function track(name: string, params: Record<string, any> = {}) {
       if (typeof window.gtag === 'function') {
@@ -49,54 +52,57 @@ export default function App({ Component, pageProps }: AppProps) {
     document.addEventListener('click', onClick, true);
     document.addEventListener('submit', onSubmit, true);
 
-    // Funnel: when someone lands on /more_info, stamp a sessionStorage flag
-    // so we can attribute later /pricing arrivals back to the funnel even if
-    // referrer is stripped (e.g., when 17hats redirects through itself, or
-    // they come back from an email link in the same browser session).
-    if (location.pathname === '/more_info') {
-      try {
-        sessionStorage.setItem('funnelEnteredAt', String(Date.now()));
-      } catch (e) { /* sessionStorage blocked — fall back to referrer/UTM */ }
+    // Funnel attribution runs on initial mount AND on every client-side route
+    // change. Without the route handler, Next.js SPA navigation from /more_info
+    // to /pricing would never fire `funnel_conversion`, since useEffect with
+    // empty deps only runs once.
+    function handleRoute(url: string) {
+      const path = url.split('?')[0].split('#')[0];
+
+      // Stamp sessionStorage when entering /more_info, so a later /pricing
+      // arrival can be attributed even if the referrer is stripped.
+      if (path === '/more_info') {
+        try { sessionStorage.setItem('funnelEnteredAt', String(Date.now())); } catch (e) {}
+      }
+
+      // Conversion: user reached /pricing. Three signals — UTM, referrer,
+      // 24h sessionStorage flag — any one is enough.
+      if (path === '/pricing') {
+        const search = url.includes('?') ? url.split('?')[1].split('#')[0] : '';
+        const params = new URLSearchParams(search);
+        const utmSource = params.get('utm_source') || '';
+        const utmCampaign = params.get('utm_campaign') || '';
+        const ref = document.referrer || '';
+        let funnelStamp = 0;
+        try { funnelStamp = parseInt(sessionStorage.getItem('funnelEnteredAt') || '0', 10) || 0; } catch (e) {}
+        const within24h = funnelStamp > 0 && (Date.now() - funnelStamp) < 24 * 60 * 60 * 1000;
+
+        const utmMatch = /more_info|welcome_email/i.test(utmSource) || /more_info/i.test(utmCampaign);
+        const refMatch = ref.includes('/more_info') || /17hats\.com/.test(ref);
+
+        let source: 'more_info_email' | 'more_info_redirect' | 'more_info_session' | 'direct' = 'direct';
+        if (utmMatch) source = 'more_info_email';
+        else if (refMatch) source = 'more_info_redirect';
+        else if (within24h) source = 'more_info_session';
+
+        track('funnel_conversion', {
+          source,
+          utm_source: utmSource,
+          utm_campaign: utmCampaign,
+          referrer: ref,
+        });
+      }
     }
 
-    // Funnel conversion: user reached /pricing AFTER going through /more_info.
-    // Three signals checked, any one is enough:
-    //   1. UTM params (set on the welcome-email pricing link in 17hats)
-    //   2. document.referrer (works for the immediate post-submit redirect)
-    //   3. sessionStorage flag set 24 hours ago or less (catches same-browser
-    //      delayed clicks even when referrer is stripped)
-    function checkFunnelConversion() {
-      if (location.pathname !== '/pricing') return;
-      const params = new URLSearchParams(location.search);
-      const utmSource = params.get('utm_source') || '';
-      const utmCampaign = params.get('utm_campaign') || '';
-      const ref = document.referrer || '';
-      let funnelStamp = 0;
-      try { funnelStamp = parseInt(sessionStorage.getItem('funnelEnteredAt') || '0', 10) || 0; } catch (e) {}
-      const within24h = funnelStamp > 0 && (Date.now() - funnelStamp) < 24 * 60 * 60 * 1000;
-
-      const utmMatch = /more_info|welcome_email/i.test(utmSource) || /more_info/i.test(utmCampaign);
-      const refMatch = ref.includes('/more_info') || /17hats\.com/.test(ref);
-
-      let source: 'more_info_email' | 'more_info_redirect' | 'more_info_session' | 'direct' = 'direct';
-      if (utmMatch) source = 'more_info_email';
-      else if (refMatch) source = 'more_info_redirect';
-      else if (within24h) source = 'more_info_session';
-
-      track('funnel_conversion', {
-        source,
-        utm_source: utmSource,
-        utm_campaign: utmCampaign,
-        referrer: ref,
-      });
-    }
-    checkFunnelConversion();
+    handleRoute(router.asPath);
+    router.events.on('routeChangeComplete', handleRoute);
 
     return () => {
       document.removeEventListener('click', onClick, true);
       document.removeEventListener('submit', onSubmit, true);
+      router.events.off('routeChangeComplete', handleRoute);
     };
-  }, []);
+  }, [router]);
 
   return (
     <>
