@@ -58,11 +58,17 @@ export default function App({ Component, pageProps }: AppProps) {
     // empty deps only runs once.
     function handleRoute(url: string) {
       const path = url.split('?')[0].split('#')[0];
+      // eslint-disable-next-line no-console
+      console.log('[funnel] handleRoute', { url, path });
 
       // Stamp sessionStorage when entering /more_info, so a later /pricing
       // arrival can be attributed even if the referrer is stripped.
       if (path === '/more_info') {
-        try { sessionStorage.setItem('funnelEnteredAt', String(Date.now())); } catch (e) {}
+        try {
+          sessionStorage.setItem('funnelEnteredAt', String(Date.now()));
+          // eslint-disable-next-line no-console
+          console.log('[funnel] stamped /more_info entry in sessionStorage');
+        } catch (e) {}
       }
 
       // Conversion: user reached /pricing. Three signals — UTM, referrer,
@@ -85,6 +91,11 @@ export default function App({ Component, pageProps }: AppProps) {
         else if (refMatch) source = 'more_info_redirect';
         else if (within24h) source = 'more_info_session';
 
+        // eslint-disable-next-line no-console
+        console.log('[funnel] firing funnel_conversion', {
+          source, utmSource, utmCampaign, ref, funnelStamp, within24h,
+          gtagReady: typeof window.gtag === 'function',
+        });
         track('funnel_conversion', {
           source,
           utm_source: utmSource,
