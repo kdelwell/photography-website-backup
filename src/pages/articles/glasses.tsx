@@ -146,7 +146,7 @@ const GlassesArticle = () => {
             <div className="flex items-center">
               <div className="relative w-16 h-16 rounded-full overflow-hidden mr-4">
                 <Image
-                  src="/images/Kevin_about.jpg"
+                  src="/images/ME_2026_5x4.jpg"
                   alt="Kevin Elwell, Professional Photographer"
                   fill
                   className="object-cover"

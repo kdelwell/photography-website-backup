@@ -134,7 +134,7 @@ export default function HeadshotsRestonVA() {
             </div>
             <div className="relative h-[500px] rounded-lg overflow-hidden shadow-2xl">
               <Image
-                src="/images/Kevin_about.jpg"
+                src="/images/ME_2026_5x4.jpg"
                 alt="Professional headshot photographer Kevin Elwell serving Reston VA"
                 fill
                 priority
