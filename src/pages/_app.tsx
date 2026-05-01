@@ -49,16 +49,44 @@ export default function App({ Component, pageProps }: AppProps) {
     document.addEventListener('click', onClick, true);
     document.addEventListener('submit', onSubmit, true);
 
-    // Funnel conversion: someone reached /pricing AFTER going through /more_info
-    // (the 17hats iframe form). The 17hats embed lives on a different origin so
-    // we can't see form submits directly — but if they end up on /pricing with
-    // a /more_info or 17hats referrer, that's the conversion signal.
+    // Funnel: when someone lands on /more_info, stamp a sessionStorage flag
+    // so we can attribute later /pricing arrivals back to the funnel even if
+    // referrer is stripped (e.g., when 17hats redirects through itself, or
+    // they come back from an email link in the same browser session).
+    if (location.pathname === '/more_info') {
+      try {
+        sessionStorage.setItem('funnelEnteredAt', String(Date.now()));
+      } catch (e) { /* sessionStorage blocked — fall back to referrer/UTM */ }
+    }
+
+    // Funnel conversion: user reached /pricing AFTER going through /more_info.
+    // Three signals checked, any one is enough:
+    //   1. UTM params (set on the welcome-email pricing link in 17hats)
+    //   2. document.referrer (works for the immediate post-submit redirect)
+    //   3. sessionStorage flag set 24 hours ago or less (catches same-browser
+    //      delayed clicks even when referrer is stripped)
     function checkFunnelConversion() {
       if (location.pathname !== '/pricing') return;
+      const params = new URLSearchParams(location.search);
+      const utmSource = params.get('utm_source') || '';
+      const utmCampaign = params.get('utm_campaign') || '';
       const ref = document.referrer || '';
-      const fromMoreInfo = ref.includes('/more_info') || /17hats\.com/.test(ref);
+      let funnelStamp = 0;
+      try { funnelStamp = parseInt(sessionStorage.getItem('funnelEnteredAt') || '0', 10) || 0; } catch (e) {}
+      const within24h = funnelStamp > 0 && (Date.now() - funnelStamp) < 24 * 60 * 60 * 1000;
+
+      const utmMatch = /more_info|welcome_email/i.test(utmSource) || /more_info/i.test(utmCampaign);
+      const refMatch = ref.includes('/more_info') || /17hats\.com/.test(ref);
+
+      let source: 'more_info_email' | 'more_info_redirect' | 'more_info_session' | 'direct' = 'direct';
+      if (utmMatch) source = 'more_info_email';
+      else if (refMatch) source = 'more_info_redirect';
+      else if (within24h) source = 'more_info_session';
+
       track('funnel_conversion', {
-        source: fromMoreInfo ? 'more_info' : 'direct',
+        source,
+        utm_source: utmSource,
+        utm_campaign: utmCampaign,
         referrer: ref,
       });
     }
