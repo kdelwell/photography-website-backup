@@ -15,15 +15,13 @@ declare global {
 export default function App({ Component, pageProps }: AppProps) {
   useEffect(() => {
     function track(name: string, params: Record<string, any> = {}) {
-      // Ensure dataLayer + gtag stub exist before gtag.js finishes loading.
-      // Without this, an event fired during mount (e.g. funnel_conversion on
-      // the initial /pricing render) hits the lazyOnload gap and gets pushed
-      // to the queue in the wrong format — gtag.js then ignores it.
       window.dataLayer = window.dataLayer || [];
       if (typeof window.gtag !== 'function') {
         // eslint-disable-next-line prefer-rest-params
         window.gtag = function () { window.dataLayer!.push(arguments); };
       }
+      // eslint-disable-next-line no-console
+      console.log('[track]', name, params, 'gtagReady=', typeof window.gtag === 'function', 'dataLayerLen=', window.dataLayer.length);
       window.gtag!('event', name, params);
     }
 
@@ -71,6 +69,8 @@ export default function App({ Component, pageProps }: AppProps) {
 
     function handleRoute(url: string) {
       const path = url.split('?')[0].split('#')[0];
+      // eslint-disable-next-line no-console
+      console.log('[funnel] handleRoute', { url, path, onMoreInfoPage });
 
       // Leaving /more_info: if we never converted, count as abandonment.
       if (onMoreInfoPage && path !== '/more_info') {
