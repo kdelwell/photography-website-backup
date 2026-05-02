@@ -180,6 +180,19 @@ export default function Document() {
         {/* Google Search Console Verification */}
         <meta name="google-site-verification" content="gXklOuDGOMYfYLh6s806C9uOfObEU-fDn_H15yK0BZA" />
 
+        {/* Google Analytics + Google Ads — load synchronously so window.gtag is
+            defined before any React code (including page-level Script tags
+            with afterInteractive strategy) runs. The previous setup put gtag
+            init in _app.tsx with lazyOnload, which loaded after page-level
+            Scripts that referenced bare gtag — those threw ReferenceError and
+            broke the config chain, silently dropping events. */}
+        <script async src="https://www.googletagmanager.com/gtag/js?id=G-9PNL0CCN6V" />
+        <script
+          dangerouslySetInnerHTML={{
+            __html: `window.dataLayer=window.dataLayer||[];function gtag(){dataLayer.push(arguments);}window.gtag=gtag;gtag('js',new Date());gtag('config','G-9PNL0CCN6V');gtag('config','AW-399963959');`,
+          }}
+        />
+
         {/* Organization Schema */}
         <script
           type="application/ld+json"

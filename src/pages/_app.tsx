@@ -1,5 +1,4 @@
 import type { AppProps } from 'next/app'
-import Script from 'next/script'
 import { useEffect } from 'react'
 import Router from 'next/router'
 import { DefaultSeo } from 'next-seo'
@@ -15,14 +14,11 @@ declare global {
 export default function App({ Component, pageProps }: AppProps) {
   useEffect(() => {
     function track(name: string, params: Record<string, any> = {}) {
-      window.dataLayer = window.dataLayer || [];
-      if (typeof window.gtag !== 'function') {
-        // eslint-disable-next-line prefer-rest-params
-        window.gtag = function () { window.dataLayer!.push(arguments); };
+      // gtag is initialized synchronously in _document.tsx head, so it's
+      // always defined here. Defensive guard in case that ever changes.
+      if (typeof window.gtag === 'function') {
+        window.gtag('event', name, params);
       }
-      // eslint-disable-next-line no-console
-      console.log('[track]', name, params, 'gtagReady=', typeof window.gtag === 'function', 'dataLayerLen=', window.dataLayer.length);
-      window.gtag!('event', name, params);
     }
 
     function onClick(e: MouseEvent) {
@@ -69,8 +65,6 @@ export default function App({ Component, pageProps }: AppProps) {
 
     function handleRoute(url: string) {
       const path = url.split('?')[0].split('#')[0];
-      // eslint-disable-next-line no-console
-      console.log('[funnel] handleRoute', { url, path, onMoreInfoPage });
 
       // Leaving /more_info: if we never converted, count as abandonment.
       if (onMoreInfoPage && path !== '/more_info') {
@@ -185,19 +179,6 @@ export default function App({ Component, pageProps }: AppProps) {
           cardType: 'summary_large_image',
         }}
       />
-      <Script
-        src="https://www.googletagmanager.com/gtag/js?id=G-9PNL0CCN6V"
-        strategy="lazyOnload"
-      />
-      <Script id="gtag-init" strategy="lazyOnload">
-        {`
-          window.dataLayer = window.dataLayer || [];
-          window.gtag = window.gtag || function(){window.dataLayer.push(arguments);};
-          window.gtag('js', new Date());
-          window.gtag('config', 'G-9PNL0CCN6V');
-          window.gtag('config', 'AW-399963959');
-        `}
-      </Script>
       <Component {...pageProps} />
     </>
   )
